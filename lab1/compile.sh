@@ -1,0 +1,1 @@
+g++ -Wall -g -o resolve "lab1-resolve-skel.cpp"
