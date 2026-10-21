@@ -163,7 +163,9 @@ The Internet protocol suite provides two main transport paradigms for client-ser
 
 Within a given networking context, a TCP connection is identified by a **connection socket pair** (a 4-tuple consisting of the client socket address and the server socket address):
 
-$$\{\text{client\_IP}:\text{client\_port},\ \text{server\_IP}:\text{server\_port}\}$$
+```math
+\{\text{client\_IP}:\text{client\_port},\ \text{server\_IP}:\text{server\_port}\}
+```
 
 ```mermaid
 flowchart LR
