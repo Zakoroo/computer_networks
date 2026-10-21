@@ -1105,7 +1105,7 @@ struct timeval {
   * `int FD_ISSET(int fd, fd_set *fdset);` — Test whether the bit for `fd` is turned on in `fdset`.
 * **Value-Result Sets:** Because **`select()` modifies the descriptor sets pointed to by `readset`, `writeset`, and `exceptset` in place** to indicate which descriptors are ready upon return, you must re-enable (`FD_SET`) the bits of interest before every call to `select()` in a loop!
 * **Reset timeout as well:** Linux may modify the timeout structure; reconstruct it before reuse. The return value counts set bits across the returned sets, so one descriptor represented in two sets can be counted twice.
-* **Why is the first argument `maxfdp1` ($\text{max\_{fd}} + 1$)?** `maxfdp1` specifies the *number* of descriptors to test starting from descriptor `0`. This is a descriptor-number bound, not the number of active descriptors. Because descriptors are zero-indexed ($0, 1, \dots, \text{max\_{fd}}$), the total count of descriptors to scan is $\text{max\_{fd}} + 1$ (e.g., to test `{1, 4, 5}`, `maxfdp1` is $5 + 1 = 6$).
+* **Why is the first argument `maxfdp1` ($`\mathrm{fd}_{max} + 1`$)?** `maxfdp1` specifies the *number* of descriptors to test starting from descriptor `0`. This is a descriptor-number bound, not the number of active descriptors. Because descriptors are zero-indexed ($`0, 1, \dots, \mathrm{fd}_{max}`$), the total count of descriptors to scan is $`\mathrm{fd}_{max} + 1`$ (e.g., to test `{1, 4, 5}`, `maxfdp1` is $`5 + 1 = 6`$).
 
 #### Under What Conditions is a Socket Descriptor Ready in `select()`?
 
