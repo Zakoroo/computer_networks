@@ -1043,31 +1043,31 @@ sequenceDiagram
     participant App as Application
     participant K as Kernel
 
-    rect rgb(245, 245, 245)
-    Note over App,K: 1. Blocking I/O Model (Default)
+    rect
+    Note over App,K: 1. Blocking I/O model (default)
     App->>K: recvfrom() (blocks)
-    Note over K: Phase 1: Wait for data...; Datagram ready!; Phase 2: Copy kernel -> user
+    Note over K: Phase 1: wait for data, datagram ready!<br/>Phase 2: copy from kernel to user
     K-->>App: Return OK (process datagram)
     end
 
-    rect rgb(245, 245, 245)
-    Note over App,K: 2. Nonblocking I/O Model (Polling)
+    rect
+    Note over App,K: 2. Nonblocking I/O model (polling)
     App->>K: recvfrom()
     K-->>App: EWOULDBLOCK (no data ready)
     App->>K: recvfrom()
     K-->>App: EWOULDBLOCK (no data ready)
     App->>K: recvfrom() (data now ready!)
-    Note over K: Phase 2: Copy kernel -> user (blocks)
+    Note over K: Phase 2: copy from kernel to user (blocks)
     K-->>App: Return OK (process datagram)
     end
 
-    rect rgb(245, 245, 245)
-    Note over App,K: 3. I/O Multiplexing Model (select / poll)
+    rect
+    Note over App,K: 3. I/O multiplexing model (select / poll)
     App->>K: select() (blocks waiting on many sockets)
-    Note over K: Phase 1: Wait for data...; Datagram ready!
+    Note over K: Phase 1: wait for data, datagram ready!
     K-->>App: Return readable
     App->>K: recvfrom()
-    Note over K: Phase 2: Copy kernel -> user (blocks)
+    Note over K: Phase 2: copy from kernel to user (blocks)
     K-->>App: Return OK (process datagram)
     end
 ```
