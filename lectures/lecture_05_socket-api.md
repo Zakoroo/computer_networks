@@ -453,9 +453,9 @@ A typical blocking TCP client-server interaction follows this sequence. The kern
 sequenceDiagram
     participant C as TCP Client
     participant S as TCP Server
-    Note over S: socket(); bind() (well-known port); listen() (passive open); [open_listenfd]
+    Note over S: socket(), bind() (well-known port), listen() (passive open), [open_listenfd]
     Note over S: accept() (blocks waiting for client)
-    Note over C: socket(); connect() (active open); [open_clientfd]
+    Note over C: socket(), connect() (active open), [open_clientfd]
     C->>S: TCP Connection Request (3-way handshake)
     Note over C,S: connect() and accept() return (ESTABLISHED)
     C->>S: write() (Request data)
@@ -463,7 +463,7 @@ sequenceDiagram
     S->>C: write() (Reply data)
     Note over C: read() reply
     C->>S: close() (Active close -> sends FIN)
-    Note over S: read() returns 0 (EOF); close() connfd; Loop back to accept() next client
+    Note over S: read() returns 0 (EOF), close() connfd, Loop back to accept() next client
 ```
 
 ### 3.2 Detailed Specification of Core Socket System Calls
