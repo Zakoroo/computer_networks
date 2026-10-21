@@ -1,0 +1,418 @@
+{
+  "topic": "10 Maximal Matching",
+  "questions": [
+    {
+      "question": "Which of the following statements about a matching in a graph G = (V, E) is true?",
+      "options": [
+        "A matching M \u2286 E is a set of edges where every vertex is connected by at least two edges.",
+        "A matching M \u2286 E is a set of edges that forms a complete graph.",
+        "A matching M \u2286 E is a set of edges in which no two edges share a vertex.",
+        "A matching M \u2286 E is a set of edges in which all edges share a common vertex."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the difference between a maximal matching and a maximum matching?",
+      "options": [
+        "A maximal matching cannot be extended by adding more edges, while a maximum matching contains the largest possible number of edges.",
+        "A maximal matching is a subset of a larger matching, while a maximum matching is not.",
+        "A maximal matching contains the largest possible number of edges, while a maximum matching is not a subset of any other matching.",
+        "A maximal matching and a maximum matching are the same in all cases."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is an application of matching in wireless networks?",
+      "options": [
+        "Data encryption in network protocols",
+        "Implementing routing algorithms for shortest paths",
+        "Signal interference minimization in satellite networks",
+        "Establishing communication links in Cognitive Radio Networks"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is matching used in cloud and edge computing environments?",
+      "options": [
+        "It ensures data privacy across distributed computing platforms.",
+        "It helps in allocating resources to optimize the use of computing nodes.",
+        "It helps in routing data packets through the shortest path in the network.",
+        "It is used to balance the power consumption of data centers."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main purpose of the variant function technique?",
+      "options": [
+        "To prove convergence by using a bounded function over a configuration set.",
+        "To minimize ratio between the number of faulty and non-faulty processors in a system.",
+        "To prove the system is running correctly.",
+        "To identify faulty processors."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In a variant function, what property must the function exhibit when processors execute a step?",
+      "options": [
+        "The function value must oscillate between a highest and the lowest values.",
+        "The function value must remain constant.",
+        "The function value must monotonically decrease or increase.",
+        "The function value must reset after each step."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the term \"safe configuration\" refer to in the context of the variant function technique?",
+      "options": [
+        "A configuration where processors randomly change states.",
+        "A configuration where no processors are active.",
+        "A configuration after which no changes occur.",
+        "A configuration where processors can read each other\u2019s states."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the central daemon play in the maximal matching algorithm?",
+      "options": [
+        "It randomly assigns new tasks to processors.",
+        "It ensures only one processor is activated at a time.",
+        "It deactivates processors according to a uniformly random distribution.",
+        "It coordinates simultaneous processor activity."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens in the maximal matching algorithm when a processor has a null pointer and finds a neighbor whose pointer points to it?",
+      "options": [
+        "The processor resets its pointer.",
+        "The processor points to that neighbor.",
+        "The processor waits for the next step.",
+        "The processor terminates its execution."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the significance of having no two neighboring processors with null pointers in the maximal matching algorithm?",
+      "options": [
+        "It ensures the solution is maximal.",
+        "It prevents the system from deadlocking.",
+        "It guarantees that no processor is left idle.",
+        "It allows processors to exchange data."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does it mean for a processor to be \"matched\" in a configuration?",
+      "options": [
+        "Its pointer points to a neighbor, and the neighbor's pointer points back to it.",
+        "It has no neighbors with null pointers.",
+        "It is waiting for a neighboring processor to point back to it .",
+        "It has a pointer pointing to multiple neighbors."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When is a processor considered \"single\" in a configuration?",
+      "options": [
+        "When it is matched with a neighbor.",
+        "When its pointer points to a neighbor with a null pointer.",
+        "When its pointer is null, and all neighbors are matched.",
+        "When it has no neighbors."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the studied maximal matching algorithm, what does a processor do if it is \"waiting\" in a configuration?",
+      "options": [
+        "It waits for the central daemon to deactivate.",
+        "It points to a neighbor, and that neighbor points to another processor, which is not itself.",
+        "It points to a neighbor that already points to it.",
+        "It points to a neighbor whose pointer is null.",
+        "It resets its pointer."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What condition makes a processor \"free\" in a configuration?",
+      "options": [
+        "It is waiting for the central daemon.",
+        "It has a null pointer, and at least one neighbor is not matched.",
+        "It has a null pointer, and all neighbors are matched.",
+        "It is matched with another processor.",
+        "It has a null pointer, and each of its neighbors has a non-null pointer."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does \"chaining\" refer to in a configuration?",
+      "options": [
+        "A processor is waiting for a neighbor's pointer to be reset.",
+        "A processor points to a neighbor, and that neighbor points to back to itself.",
+        "A processor points to a null value.",
+        "A processor points to a neighbor, and that neighbor points to another processor, which is not itself.",
+        "A processor has no neighbors."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which processor property is incremented when the assignment in line 3 is executed?",
+      "options": [
+        "The number of chaining processors.",
+        "The number of free processors.",
+        "The number of matched processors.",
+        "The number of single processors."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when the assignment in line 6 is executed?",
+      "options": [
+        "The number of chaining processors increases.",
+        "The number of waiting processors increases.",
+        "The number of free processors decreases.",
+        "Both B and C.",
+        "Both A and B."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the case when no neighboring processor points to $p_i$, what happens when the assignment in line 8 is executed?",
+      "options": [
+        "The processor remains unchanged as long as none of its neighbors does not change their state.",
+        "The processor becomes chained.",
+        "The processor changes status to \"waiting.\"",
+        "The processor changes status to \"single\" if all neighbors are matched."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the second case of line 8 execution, what immediately happens when at least one neighbor points toward $p_i$?",
+      "options": [
+        "The status of $p_i$ is changed to \"free,\" and the neighboring processor's status changes to \"waiting.\"",
+        "The status of $p_i$ changes to \"single.\"",
+        "The neighboring processor becomes chained.",
+        "Both processors stop executing steps.",
+        "The neighboring processor's status changes to \"matched.\"",
+        "The neighboring processor's status changes to \"waiting.\""
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the result of every change in pointer value in the system?",
+      "options": [
+        "It decreases the value of the variant function.",
+        "It reduces the number of free processors.",
+        "It resets the system to a safe configuration.",
+        "It increase the number of matched or single processors.",
+        "It reduces the number of waiting processors.",
+        "It increases the value of the variant function.",
+        "It reduces the number of chaining processors.",
+        "It increases the number of waiting processors."
+      ],
+      "correct_answers": [
+        5
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In a safe configuration, the value of the variant function is:",
+      "options": [
+        "(0, n, 0, 0)",
+        "(n, 0, 0, 0)",
+        "(0, 0, n, 0)",
+        "(m + s,w, f, c)",
+        "(n, n, n, n)"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the value of the variant function tell us about the system?",
+      "options": [
+        "The number of chaining, free, matched + single, and waiting processors.",
+        "The amount of time needed for the system execution until it reaches a safe configuration.",
+        "The number of steps remaining to reach a safe configuration.",
+        "The system's memory usage.",
+        "The stability of the system."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the number of pointer-value changes bounded in the algorithm?",
+      "options": [
+        "By O(n^3) pointer-value changes.",
+        "By O(n^2) pointer-value changes.",
+        "By O(n) pointer-value changes.",
+        "By O(n^4) pointer-value changes.",
+        "By O(log n) pointer-value changes."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best describes the lexicographical order of variant function values?",
+      "options": [
+        "They are compared based on their sum.",
+        "They are compared element by element, from left to right.",
+        "They are compared based on their difference.",
+        "They are compared based on their alphabetical order, i.e., chaining, free, matched, single, and waiting."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the system reach a safe configuration within O(n^3) steps?",
+      "options": [
+        "Because the central daemon optimizes the steps.",
+        "Because, for a given network topology, there is only one possible safe configuration.",
+        "Because the number of all possible vector values of the variant function is O(n^3).",
+        "Because the algorithm is efficient."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

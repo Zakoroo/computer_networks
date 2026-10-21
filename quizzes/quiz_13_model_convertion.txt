@@ -1,0 +1,902 @@
+{
+  "topic": "13 Model Convertion",
+  "questions": [
+    {
+      "question": "What is a fundamental behavioral difference between a distributed daemon and a central daemon in self-stabilizing systems?",
+      "options": [
+        "A central daemon schedules processors randomly, while a distributed daemon follows a strict round-robin pattern",
+        "A distributed daemon ensures deterministic execution order across all nodes",
+        "Both models guarantee that processors with identical states evolve identically",
+        "Both activate all processors simultaneously, but with different priorities",
+        "A distributed daemon activates multiple processors concurrently, while a central daemon activates only one at a time"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do many self-stabilizing algorithms assume daemon-based scheduling instead of read/write atomicity?",
+      "options": [
+        "Because daemons eliminate the need for atomic read/write operations",
+        "Because read/write atomicity prevents convergence proofs",
+        "Because daemons simplify reasoning by serializing executions",
+        "Because read/write atomicity leads to unbounded nondeterminism",
+        "Because daemons ensure message ordering consistent with real-time"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary consequence of converting daemon-based algorithms into read/write atomicity models?",
+      "options": [
+        "Algorithms become more applicable in realistic distributed environments",
+        "System performance is reduced due to serialized activations",
+        "Synchronization overhead is eliminated entirely",
+        "Algorithms can no longer guarantee convergence from arbitrary states",
+        "Safety is compromised because atomicity removes scheduling control"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What key implication follows if an algorithm stabilizes under a distributed daemon?",
+      "options": [
+        "Its stabilization speed necessarily improves under a central daemon",
+        "It requires additional fairness conditions to stabilize",
+        "It will also stabilize under a central daemon",
+        "It cannot stabilize under a central daemon due to serialization",
+        "It becomes unsuitable for shared-memory implementations"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can mutual exclusion be used to emulate the behavior of a central daemon in a distributed system?",
+      "options": [
+        "By ensuring only one processor can enter a critical section at a time",
+        "By eliminating the need for communication channels entirely",
+        "By guaranteeing all processors execute in lock-step synchrony",
+        "By storing global state in a shared central register",
+        "By assigning priorities so all processors eventually run simultaneously"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is leader election often assumed when emulating a special processor in arbitrary communication graphs?",
+      "options": [
+        "It designates a unique processor to act as the central daemon",
+        "It prevents deadlock during mutual exclusion entry",
+        "It removes the requirement for initial configuration knowledge",
+        "It eliminates the need for fairness in execution",
+        "It ensures that processors always execute in parallel"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of the fair composition technique when combining spanning-tree and mutual exclusion algorithms?",
+      "options": [
+        "It guarantees deterministic execution independent of scheduling",
+        "It ensures mutual exclusion ignores spanning-tree variables entirely",
+        "It guarantees that both sub-algorithms run without interference and eventually stabilize",
+        "It removes the need for convergence proofs of the individual algorithms",
+        "It forces the spanning-tree algorithm to complete before mutual exclusion starts"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When composing a daemon-to-read/write compiler with mutual exclusion, what convergence property must hold?",
+      "options": [
+        "The composed system must stabilize regardless of initial configuration",
+        "The system stabilizes only if processors share identical identifiers",
+        "The mutual exclusion algorithm discards the compiler\u2019s state variables",
+        "The compiler preserves safety only if mutual exclusion stabilizes first",
+        "The compiler guarantees convergence without relying on fairness assumptions"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In an arbitrary initial configuration of the composed algorithm, what may occur before mutual exclusion stabilizes?",
+      "options": [
+        "Convergence is guaranteed in a single cycle regardless of conflicts",
+        "No state changes are possible until mutual exclusion first stabilizes",
+        "Multiple processors may attempt to change state simultaneously",
+        "Only one processor can move, since critical section is always preserved",
+        "Processors remain permanently blocked from entering their critical sections"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might task algorithm A not converge to a safe configuration immediately when composed with mutual exclusion?",
+      "options": [
+        "Because convergence of A is delayed until mutual exclusion itself stabilizes",
+        "Because mutual exclusion prevents A from accessing its local variables",
+        "Because task A loses fairness guarantees when composed with mutual exclusion",
+        "Because task A requires synchronous scheduling of all processors",
+        "Because task A is permanently prevented from executing during stabilization"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the exact behavior of the task algorithm during the stabilization of mutual exclusion considered unimportant?",
+      "options": [
+        "Because mutual exclusion deterministically forces task outputs",
+        "Because the task algorithm ceases execution entirely during stabilization",
+        "Because the task algorithm cannot affect global variables before convergence",
+        "Because fairness assumptions enforce identical outcomes across tasks",
+        "Because the mutual exclusion algorithm guarantees safety regardless of task algorithm actions"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When mutual exclusion reaches a safe configuration, what property is guaranteed for the system regardless of the state of task A?",
+      "options": [
+        "Every processor is forced into the critical section sequentially",
+        "Fairness guarantees are no longer needed to ensure progress",
+        "All processors immediately synchronize their local states",
+        "The system halts until task A also reaches a safe state",
+        "At most one processor is permitted in the critical section"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What key property of self-stabilizing algorithms allows task A to reach a safe configuration under a central daemon?",
+      "options": [
+        "They guarantee immediate convergence in the first activation",
+        "They converge to correctness from any arbitrary global configuration",
+        "They rely on synchronous rounds to eliminate nondeterminism",
+        "They require a unique leader to provide global coordination",
+        "They enforce global resets whenever a fault is detected"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the compiled algorithm eventually converge once mutual exclusion has stabilized?",
+      "options": [
+        "Because compilation enforces determinism across all processor actions",
+        "Because compilation eliminates any possibility of simultaneous moves",
+        "Because the task algorithm converges under central daemon scheduling",
+        "Because fairness guarantees immediate global synchronization",
+        "Because mutual exclusion resets task states to initial values"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does separating the stabilization of the scheduling mechanism from that of the task algorithm enhance system correctness?",
+      "options": [
+        "It prevents faults in the task algorithm from affecting scheduling",
+        "It ensures once the scheduler stabilizes, the task algorithm\u2019s convergence follows independently",
+        "It allows the scheduler to permanently block unstable task executions",
+        "It removes the need for correctness proofs of the task algorithm",
+        "It guarantees bounded convergence time regardless of algorithm complexity"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of the conversion discussed in Section 4.3?",
+      "options": [
+        "To replace all local variables with shared global state",
+        "To ensure all processors simultaneously execute the same step",
+        "To eliminate the requirement for spanning-tree construction",
+        "To translate algorithms that assume unique identifiers into ones that rely only on a special processor",
+        "To remove the need for fairness assumptions in scheduling"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the ranking task in distributed systems?",
+      "options": [
+        "Assigning each processor a unique identifier from 1 to n",
+        "Ordering messages globally according to logical clocks",
+        "Electing a single leader among n processors",
+        "Ensuring all processors enter the critical section in round-robin order",
+        "Dividing processors into groups based on degree of connectivity"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does combining counting, naming, and spanning-tree construction achieve the ranking task?",
+      "options": [
+        "Counting replaces the need for spanning-tree construction",
+        "Spanning-tree construction automatically assigns unique identifiers",
+        "Naming alone is sufficient for ranking without counting",
+        "None of the three sub-algorithms is required for ranking",
+        "Counting determines tree sizes, naming assigns identifiers, and spanning trees provide structure"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What assumptions does the self-stabilizing counting algorithm make?",
+      "options": [
+        "A central daemon schedules all processors sequentially",
+        "Processors can atomically broadcast their states to all neighbors",
+        "A rooted spanning tree exists and processors know parent/child relationships",
+        "Message delays are bounded and synchronous",
+        "Every processor begins with a unique identifier"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do leaves initialize counti = 1 in the counting algorithm, and how does this support correctness?",
+      "options": [
+        "Initialization to one guarantees immediate convergence in a single round",
+        "Leaves initialize to zero, and higher nodes increment until reaching global size",
+        "Initializing to one ensures only leaf nodes can participate in convergence",
+        "Leaves contribute a base count of one, and induction on tree height ensures all processors compute correct subtree sizes",
+        "Leaves contribute a random initial value to break symmetry"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes the counting algorithm an example of the convergecast technique?",
+      "options": [
+        "Each processor independently computes global size without communication",
+        "Information flows cyclically around the ring until convergence",
+        "Values propagate from leaves toward the root, combining information at each step",
+        "All processors broadcast their counts simultaneously to every other node",
+        "Convergecast requires synchronous activation of all processors"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the naming algorithm use counts to assign identifiers?",
+      "options": [
+        "The root arbitrarily assigns identifiers to all processors",
+        "Each processor computes identifiers based solely on its degree",
+        "Identifiers are broadcast randomly until processors pick one",
+        "Each processor uses its parent\u2019s count plus its position among siblings to determine its identifier",
+        "Identifiers are predetermined and not computed during execution"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is induction on distance from the root used to prove the stabilization of the naming algorithm?",
+      "options": [
+        "Because correctness of closer nodes can be established first, then extended outward",
+        "Because identifiers must be reassigned at random at each step",
+        "Because simultaneous activation of all nodes cannot be guaranteed",
+        "Because nodes beyond diameter d cannot be analyzed",
+        "Because induction avoids the need for fairness assumptions"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the counting algorithm adapted for non-rooted trees?",
+      "options": [
+        "Each processor maintains counti[j] for every neighbor j, representing the size of the subtree through j",
+        "Processors exchange random identifiers until a root emerges",
+        "Processors elect a new root and restart the rooted version of the algorithm",
+        "Each processor ignores subtree structure and counts only its own degree",
+        "The algorithm fails entirely without a root processor"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the correctness proof of the counting algorithm, why do leaves assign count = 1 at the base case?",
+      "options": [
+        "Because each leaf contributes one to the size of its subtree, forming the foundation of the induction",
+        "Because leaves are the only nodes that execute in the first cycle",
+        "Because leaves must prevent their parents from updating counts",
+        "Because initializing to zero would accelerate convergence speed",
+        "Because this guarantees unique identifiers without further computation"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the induction step in the counting algorithm extend correctness to higher registers?",
+      "options": [
+        "Convergence is guaranteed without communication between levels",
+        "Registers of larger height ignore lower registers to remain consistent",
+        "Correctness requires synchronous updates of all height levels",
+        "Each register of height h uses values from smaller registers, ensuring correctness propagates upward",
+        "Each processor recomputes values randomly to avoid deadlock"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is stabilization of the counting algorithm bounded by O(d) cycles, where d is the system diameter?",
+      "options": [
+        "Because the algorithm requires all processors to reach identical local states",
+        "Because register heights cannot exceed the network diameter, limiting induction depth",
+        "Because leader election completes in at most d steps",
+        "Because synchronous execution enforces a maximum of d steps",
+        "Because each processor transmits its entire state in one cycle"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might two leaders be elected in a counting-based leader election, and how is this issue resolved?",
+      "options": [
+        "Processors may fail to count correctly, requiring resets",
+        "Symmetry in the graph may prevent unique root selection, requiring additional symmetry-breaking mechanisms",
+        "Fairness assumptions may be violated, requiring synchronous scheduling",
+        "Message delays may cause duplicate identifiers, requiring rollback",
+        "Convergence speed may be too fast, requiring throttling"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does leader election support the naming algorithm in distributed systems?",
+      "options": [
+        "The leader ensures message delays are globally bounded",
+        "The leader resets all processors to identical initial states",
+        "The leader synchronizes all processors to execute simultaneously",
+        "The elected leader coordinates assignment of consistent unique identifiers",
+        "The leader prevents processors from entering critical sections"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can the counting algorithm be the basis for electing a leader in a tree topology?",
+      "options": [
+        "By identifying the root(s) as possible leaders once subtree sizes are computed"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes counting in a rooted tree from counting in a non-rooted tree?",
+      "options": [
+        "Rooted trees require synchronous rounds, while non-rooted trees are asynchronous",
+        "Rooted trees converge faster but non-rooted trees fail entirely",
+        "Non-rooted trees rely on randomness to break ties, while rooted trees do not",
+        "Both rely on a designated root for correctness",
+        "Rooted trees aggregate counts toward a root, while non-rooted trees require per-neighbor count maintenance"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the correctness proof for non-rooted counting, how is induction on register height applied?",
+      "options": [
+        "By assuming a central processor verifies all counts",
+        "By requiring synchronous rounds for each register level",
+        "By discarding intermediate values until global convergence occurs",
+        "By proving correctness at lower heights and extending results to higher registers",
+        "By randomly reassigning counts at each height to avoid conflicts"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does completing the counting and naming process finalize the ranking conversion?",
+      "options": [
+        "By halting execution until every processor enters its critical section",
+        "By forcing all processors to share a common random identifier",
+        "By designating the processor with maximum degree as the leader",
+        "By resetting all processors once counts exceed the system diameter",
+        "By ensuring each processor receives a unique identifier consistent with the system\u2019s structure"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the definition of the update (UP) task in a distributed system?",
+      "options": [
+        "Every processor eventually assigns itself the maximum identifier value",
+        "All processors simultaneously reset their identifiers to zero",
+        "Every processor eventually learns the identifiers of all processors in its connected component",
+        "Each processor eventually learns only the identifiers of its immediate neighbors",
+        "One designated processor eventually learns all identifiers in the system"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can update tasks enable conversion from unique-leader systems to id-based systems?",
+      "options": [
+        "By removing the need for identifiers entirely in algorithm execution",
+        "By allowing the leader to generate fresh identifiers for each processor",
+        "By propagating each processor\u2019s identifier throughout the component so all can simulate unique identifiers",
+        "By enforcing synchronous execution rounds across the component",
+        "By replacing identifiers with randomized hash values"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is an O(N)-cycle stabilization time for leader election problematic in dynamic or partitioned systems?",
+      "options": [
+        "Because O(N) time always violates fairness assumptions",
+        "Because stabilization speed has no effect on correctness",
+        "Because O(N) implies processors cannot maintain unique identifiers",
+        "Because O(N) always exceeds polynomial time bounds",
+        "Because partitions may heal faster than O(N) cycles, making stabilization irrelevant"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it desirable for update algorithms to stabilize in O(d) cycles, where d is the component diameter?",
+      "options": [
+        "Because O(d) forces processors to share identical states",
+        "Because O(d) ensures synchrony across all processors",
+        "Because O(d) guarantees minimal communication overhead in all networks",
+        "Because convergence time should scale with distance information must travel",
+        "Because O(d) eliminates the need for mutual exclusion"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do many classical self-stabilizing algorithms assume the existence of a special processor?",
+      "options": [
+        "To automatically construct spanning trees without communication",
+        "To guarantee bounded memory consumption for all processors",
+        "To enforce synchronous global rounds in every system execution",
+        "To simplify design by giving one processor unique authority or state",
+        "To eliminate the need for fairness in scheduling"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is self-stabilizing mutual exclusion impossible in a ring of processors without a special processor?",
+      "options": [
+        "Because message delays make it impossible to preserve safety",
+        "Because symmetry prevents any processor from being distinguished to enforce exclusivity",
+        "Because rings do not allow for communication of states",
+        "Because fairness assumptions cannot hold in ring topologies",
+        "Because processors cannot maintain unique local variables"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the oriented 4-processor ring proof, why does symmetry persist when processors execute in the order P1, P3, P2, P4?",
+      "options": [
+        "Because the central daemon enforces identical states on all processors",
+        "Because randomization prevents any processor from breaking symmetry",
+        "Because P1 and P3 are symmetric, as are P2 and P4, so state changes mirror one another",
+        "Because the proof assumes processors stop executing after one move",
+        "Because each processor can only change state if its two neighbors do not change"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the transition function f(sl, s, sr) in the oriented 4-ring proof demonstrate?",
+      "options": [
+        "That fairness assumptions eliminate the need for transition functions",
+        "That each processor\u2019s next state depends on its own and neighbors\u2019 states, preserving symmetry",
+        "That processors can independently update states without coordination",
+        "That central daemon intervention is necessary for progress",
+        "That states are determined only by processor identifiers"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the oriented 4-ring proof show that two processors can retain identical permissions to enter the critical section?",
+      "options": [
+        "Because message loss forces processors to request multiple entries",
+        "Because each processor in the ring holds a unique identifier",
+        "Because fairness assumptions break under distributed daemon",
+        "Because symmetric positions in the ring evolve identically under the transition function",
+        "Because processors execute asynchronously in lock-step fashion"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens in a prime-sized ring without a central daemon when processors attempt self-stabilizing mutual exclusion?",
+      "options": [
+        "A leader always emerges, since prime rings break symmetry automatically",
+        "Symmetry ensures processors remain indistinguishable, preventing unique critical section entry",
+        "Random identifiers are generated to guarantee uniqueness of entry",
+        "Every processor converges to identical states and enters the critical section simultaneously",
+        "All processors eventually halt until a daemon is introduced"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do anonymous systems without identifiers struggle to achieve self-stabilizing mutual exclusion?",
+      "options": [
+        "Because processors cannot break initial symmetry without unique identifiers",
+        "Because communication channels are absent in anonymous systems",
+        "Because fairness assumptions are invalid in anonymous settings",
+        "Because anonymity implies processors cannot execute state transitions",
+        "Because processors lack the ability to store local variables"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can randomization help overcome symmetry limitations in anonymous systems?",
+      "options": [
+        "By allowing processors to make probabilistic choices that break deterministic symmetry",
+        "By guaranteeing that fairness assumptions are no longer needed",
+        "By forcing one processor to act as a special processor",
+        "By synchronizing all processors to update simultaneously",
+        "By ensuring identifiers are immediately reassigned uniquely"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a drawback of randomized self-stabilizing algorithms for mutual exclusion?",
+      "options": [
+        "They cannot work in ring topologies",
+        "They require synchronous global coordination",
+        "They always converge slower than deterministic algorithms",
+        "They eliminate fairness assumptions",
+        "They may require unbounded expected time to converge"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is token circulation a common method to achieve mutual exclusion in rings?",
+      "options": [
+        "Because token circulation eliminates message passing requirements",
+        "Because fairness is not required when tokens are used",
+        "Because tokens automatically break symmetry by creating processor identifiers",
+        "Because tokens guarantee convergence in O(1) cycles",
+        "Because the token ensures only one processor can enter the critical section at a time"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary risk of using token circulation for self-stabilizing mutual exclusion?",
+      "options": [
+        "Fairness is no longer preserved when tokens circulate",
+        "Tokens require a central daemon to be maintained",
+        "Processors may generate duplicate tokens, creating too much exclusivity",
+        "Tokens may automatically replicate at each hop, reducing safety",
+        "Loss of the token may prevent any processor from entering the critical section"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why are duplicate tokens problematic in self-stabilizing mutual exclusion?",
+      "options": [
+        "Because tokens cannot coexist in ring topologies",
+        "Because duplicate tokens accelerate convergence beyond O(d)",
+        "Because duplicates cause processors to reset their identifiers",
+        "Because duplicates prevent fairness from being enforced",
+        "Because multiple tokens can allow more than one processor to enter the critical section simultaneously"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What mechanism allows recovery when tokens are lost or duplicated in a ring?",
+      "options": [
+        "Random identifiers force each processor to generate fresh tokens simultaneously",
+        "Self-stabilization guarantees the system eventually reconstructs a valid single token",
+        "Synchrony ensures that faulty tokens vanish automatically",
+        "Fairness guarantees prevent any processor from holding the token",
+        "The central daemon reissues a token when needed"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the time complexity of token circulation typically O(n), where n is the number of processors?",
+      "options": [
+        "Because processors broadcast token states to all neighbors simultaneously",
+        "Because the token must visit each processor sequentially in the worst case",
+        "Because convergence requires synchrony among all processors",
+        "Because identifiers must be reassigned every n steps",
+        "Because multiple tokens circulate concurrently to cover all processors"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does fairness interact with token-based mutual exclusion?",
+      "options": [
+        "Fairness ensures the token continues circulating, giving every processor eventual access",
+        "Fairness ensures tokens are duplicated to avoid starvation",
+        "Fairness guarantees the token never gets lost",
+        "Fairness requires all processors to enter the critical section simultaneously",
+        "Fairness eliminates the need for token regeneration mechanisms"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What overarching insight does token circulation provide about self-stabilizing mutual exclusion in rings?",
+      "options": [
+        "That fairness alone is sufficient to guarantee mutual exclusion",
+        "That symmetry in rings makes any mutual exclusion solution impossible",
+        "That token methods require synchronous execution to succeed",
+        "That token circulation eliminates the need for local state variables",
+        "That a simple circulating structure can enforce exclusivity and recover from faults without central coordination"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

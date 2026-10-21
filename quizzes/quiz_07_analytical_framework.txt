@@ -1,0 +1,440 @@
+{
+  "topic": "07 Analytical Framework",
+  "questions": [
+    {
+      "question": "Why do we study algorithms that utilize the shared memory model in the Computer Networks course, as opposed to focusing solely on algorithms for the message-passing model?",
+      "options": [
+        "It allows us to designed simpler algorithms for computer networks.",
+        "We will learn in the course about a transformation from shared memory to massage passing model.",
+        "Modern computer networks use Remote Direct Memory Access (RDMA) for ultra-fact communications.",
+        "All of the above is correct.",
+        "None of the above is correct and this model is wrongly included in the course materiel."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "If the network lacks globally unique identifiers for individual processors, the sender of a message may not be able to distinguish between different receivers.",
+      "options": [
+        "This is always true.",
+        "This depends on our assumptions. For example, we may assume that locally unique identifiers exist."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In semi-anonymous networks, all processors, except exactly one processor in the network, run the same program. However, the senders cannot distinguish between one receiver and another.",
+      "options": [
+        "This is always true.",
+        "This depends on our assumptions. For example, we may assume that locally unique identifiers exist."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following statements about algorithms for synchronous and asynchronous networks is correct?",
+      "options": [
+        "Algorithms for synchronous networks run faster than algorithms for asynchronous networks because the communication delays are bounded.",
+        "Algorithms for synchronous networks run faster than algorithms for asynchronous networks because the algorithm has access to (local or even global) clocks.",
+        "Algorithms for synchronous networks run faster than algorithms for asynchronous networks because the communication delays are bounded, and the algorithm has access to (local or even global) clocks.",
+        "Algorithms for synchronous networks do not run faster than algorithms for asynchronous networks since, in asynchronous networks, every processor progresses at its own pace without the need to wait for program timers to expire. This is an added delay in synchronous networks because these timers are designed to consider the slowest processor and the longest delay in the network."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How are communication channels typically represented in this course on Computer Networks?",
+      "options": [
+        "In the message-passing model, ri represents the content of communication registers of all processors.",
+        "In the shared memory model, ri,j represents a FIFO queue of messages sent from pi to pj.",
+        "In the message-passing model, ri,j represents a FIFO queue of messages sent from pi to pj.",
+        "In the shared memory model, the register ri represents the content of communication register of processor pi."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is meant by the term 'processor state' in the context of a computer system?",
+      "options": [
+        "Processor state refers to the content of the communication registers of processor pi.",
+        "Processor state is a random value assigned to processor pi during execution.",
+        "Processor state is represented by si, which is the state of the finite state machine that represents processor pi.",
+        "Processor state is a measure of the processing speed of processor pi."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Please note that more than one option is considered to be correct.",
+      "options": [
+        "A system configuration refers to the values of the incoming communication channels only.",
+        "A system configuration includes both the states of processors (s1, s2, ..., sn) and the content of communication channels/registers (r1,2, r1,3, ..., ri,j, ..., rn,n-1).",
+        "A system configuration comprises the values of the incoming communication channels and the content of local variables.",
+        "A system configuration includes only the states of processors, denoted by s1, s2, ..., sn."
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the relationship between state transitions and communication steps in a computer system?",
+      "options": [
+        "Every state transition of a processor is caused by the execution of a communication step, denoted as c1 a-> c2, indicating that configuration c2 can be reached from configuration c1 by a single applicable step a.",
+        "Communication steps are only applicable to configurations if they are followed by state transitions to a different configuration.",
+        "State transitions occur independently of communication steps, and they are not denoted by any specific notation.",
+        "State transitions and communication steps are unrelated concepts in a computer system."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the interleaving model when discussing system executions in computer networks?",
+      "options": [
+        "The interleaving model is a type of execution where actions, a0, a1, ..., occur independently of state transitions.",
+        "The interleaving model is a term used to describe a sequential execution of actions, a0, a1, ..., without any state transitions.",
+        "The interleaving model is a representation of system executions where the sequence consists only of state transitions without any actions (a0, a1, ...).",
+        "The interleaving model refers to an execution format where every state transition, ci-1 a-> ci, is followed by a corresponding action, a0, a1, ...."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What types of failures can the adversary introduce in the message-passing and shared-memory models of communication?",
+      "options": [
+        "In both the message-passing and shared-memory models, the adversary can introduce data corruption, message omission, message duplication, and message reordering.",
+        "In the message-passing model, the adversary can introduce data corruption only. In the shared-memory model, the adversary can introduce data corruption only.",
+        "In the message-passing model, the adversary can introduce data corruption, message omission, message duplication, and message reordering. In the shared-memory model, the adversary can introduce data corruption.",
+        "In the message-passing model, the adversary can introduce data corruption. In the shared-memory model, the adversary can introduce message omission, message duplication, and message reordering."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the significance of the communication fairness property in asynchronous computer networks?",
+      "options": [
+        "Communication fairness is irrelevant in asynchronous computer networks as message transmission and reception are independent of each other.",
+        "Communication fairness ensures that a message sent over a communication channel is received exactly once, preventing duplicates.",
+        "Communication fairness dictates that messages sent infinitely often over a communication channel will also be received infinitely often, ensuring that the link is not broken.",
+        "Communication fairness guarantees that messages can be sent over a best effort communication channel an unlimited number of times without any concerns about the receiver's ability to receive them."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the implication of the Communication Fairness Property in asynchronous computer networks?",
+      "options": [
+        "Communication Fairness implies that only a finite number of messages may be lost until a successful message delivery occurs.",
+        "Communication Fairness guarantees that if a message is sent, it will always be received.",
+        "Communication Fairness is only valid if no messages are ever lost during transmission.",
+        "Communication Fairness ensures that an infinite number of messages can be sent, even if a finite number of them are lost."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the term used to describe a processor in a computer network that eventually stops taking steps forever?",
+      "options": [
+        "Crashed processor",
+        "Recovered processor",
+        "Dormant processor",
+        "Active processor"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Can a crashed processor ever take steps in a non-self-stabilizing network?Each of the following answers is partially correct. Please select the most correct answer.",
+      "options": [
+        "No. Fault models that consider processors that may fail-stop and then resume are not consider in this course if they require the use of failure detectors. See the course on distributed systems.",
+        "Yes, it may take a finite number of steps before it crashes, but not after it crashes",
+        "No. It never does."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following statements are correct. A) Execution Fairness ensures that every step applicable infinitely often is executed infinitely often. B) Execution Fairness depends only on the computational power of the processors involved, favoring supercomputers like HP Frontier over less powerful devices like Arduino. C) Execution Fairness is solely determined by the number of steps taken by the processors, regardless of their computational capabilities. D) Execution Fairness implies that if any set of processors takes an infinite number of steps while others take none, then the latter group is considered crashed.",
+      "options": [
+        "A, C, and D are correct but not B.",
+        "D is correct but not the others",
+        "A and B are correct but not the others",
+        "A, B, and C are correct but not D",
+        "A is correct but not the others",
+        "All are correct.",
+        "A and C are correct but not the others",
+        "A, B, and D are correct but not C.",
+        "A and D are correct but not the others"
+      ],
+      "correct_answers": [
+        8
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the significance of arbitrary transient faults in the context of computer networks?",
+      "options": [
+        "Arbitrary transient faults are minor glitches that have no impact on the overall performance of a system or network.",
+        "Arbitrary transient faults are a type of fault that occurs only during the initial phase of the execution of an algorithm.",
+        "Arbitrary transient faults are malfunctions that are impossible to detect or correct in a system, leading to system instability.",
+        "Arbitrary transient faults refer to the violation of specified assumptions in the design of a computer network, such as the reliability of CRC codes and processor (faulty) behavior."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the potential consequence of arbitrary transient faults in a computer network?",
+      "options": [
+        "Arbitrary transient faults result in a predictable and controlled network state.",
+        "Arbitrary transient faults only affect the initial configuration of the network and have no long-term consequences.",
+        "Arbitrary transient faults have no impact on the network's behavior as long as CRC codes are used.",
+        "Arbitrary transient faults can cause undetected memory/message corruption, leading to the propagation of stale information in the network in a way that can bring it to an arbitrary configuration."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Can a crashed processor ever take steps in a self-stabilizing network?Each of the following answers is partially correct. Please select the most correct and complete answer.",
+      "options": [
+        "No. It never does.",
+        "Yes, it may take a finite number of steps before it crashes. We model as a transient fault the case in which a crashed processor resume and takes steps after it was crashed.",
+        "Yes, it may take a finite number of steps before it crashes, but not after it crashes.",
+        "No. Fault models that consider processors that may fail-stop and then resume are not consider in this course if they require the use of failure detectors. See the course on distributed systems."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When can a transient fault occur during the execution of a self-stabilizing algorithm for computer networks according to Dijkstra's definitions?",
+      "options": [
+        "At the starting phase of the algorithm execution.",
+        "There is no time restriction for when a transient fault may occur (when demonstrating self-stabilization).",
+        "At the end of the execution since the algorithm needs to terminate first.",
+        "Before the start of the algorithm execution since it is assumed transient faults do not occur during the execution."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of self-stabilization, what is the set of legal executions?",
+      "options": [
+        "In the context of self-stabilization, the set of legal executions refers to all possible executions while adhering to the specified task requirements.",
+        "In the context of self-stabilization, the set of legal executions includes all possible executions, regardless of whether they adhere to task requirements.",
+        "In the context of self-stabilization, the set of legal executions consists only of the initial system state and the final desired state.",
+        "In the context of self-stabilization, the set of legal executions comprises only those executions that start from a stable initial state."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of self-stabilization, what is a safe configuration?",
+      "options": [
+        "A safe configuration is a configuration where any execution, legal or illegal, can begin.",
+        "A safe configuration is a configuration that ensures the system always starts from the same state.",
+        "A safe configuration is a configuration from which only a legal execution can start.",
+        "A safe configuration is a configuration that guarantees no faults or errors during system operation."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the goal of a self-stabilizing network?",
+      "options": [
+        "The goal of a self-stabilizing network is to achieve the fastest possible communication speed.",
+        "The goal of a self-stabilizing network is to operate with perfect fault tolerance and never experience failures.",
+        "The goal of a self-stabilizing network is to ensure that all nodes remain in a fixed configuration at all times.",
+        "The goal of a self-stabilizing network is to guarantee that the network reaches to a safe configuration regardless of the initial network configuration."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does it mean for an algorithm to be self-stabilizing for a specific task LE in the context of self-stabilizing networks?",
+      "options": [
+        "It means that the algorithm can only operate within a predefined, fixed configuration.",
+        "It means the algorithm guarantees that no faults or failures will occur during execution.",
+        "It means that every execution of the algorithm, starting from any configuration, eventually reaches a safe configuration with regard to task LE.",
+        "It means that the algorithm will always terminate successfully, regardless of the initial configuration."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the concept of the 'first asynchronous round' in the context of fair executions and stabilization time in self-stabilizing algorithms?",
+      "options": [
+        "The 'first asynchronous round' is the shortest prefix of a fair execution where each processor executes at least one step, and it marks the beginning of the stabilization process.",
+        "The 'first asynchronous round' is the round where processors execute multiple steps simultaneously.",
+        "The 'first asynchronous round' refers to the final round of execution in a fair execution.",
+        "The 'first asynchronous round' indicates the round when processors synchronize their steps for the first time in a fair execution."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the significance of the 'first asynchronous cycle' in the context of complexity measures for self-stabilizing algorithms?",
+      "options": [
+        "The 'first asynchronous cycle' is the shortest prefix of an execution where each processor completes at least one full iteration of the algorithm's do-forever loop.",
+        "The 'first asynchronous cycle' indicates when processors first synchronize their steps in an execution.",
+        "The 'first asynchronous cycle' marks the end of the algorithm's execution.",
+        "The 'first asynchronous cycle' represents the initial phase of the algorithm's execution."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must we use the terms asynchronous rounds and cycles to measure stabilization time?",
+      "options": [
+        "They enable a precise measurement of stabilization time by tracking the number of times processors synchronize or complete full iterations of the do forever loop, providing a clear understanding of the algorithm's progress towards stability.",
+        "Since asynchronous networks have no access to clocks and are absent from the notion of time, these terms offer a form of a logical time for measuring the stabilization time in term of the joint opportunity to exchange information.",
+        "They help to know how much time, in terms of computer cycles, it takes until the network stabilizes. For example, for a supercomputer, it takes much less time to stabilize than a small computer since it can run much faster.",
+        "Asynchronous rounds and cycles provide a standardized way to measure stabilization time, allowing for fair comparisons between different self-stabilizing algorithms regardless of their execution environments.",
+        "They help to know how much time it takes until the network stabilizes by counting the exact number of communication operations (in the case of asynchronous rounds) and the actual number of iterations of the do-forever loop."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why self-stabilizing algorithms for computer networks cannot be quiescent? That is, stop sending messages or writing values to the shared registers.",
+      "options": [
+        "Quiescent algorithms require a fixed, predefined network configuration, which is not practical in self-stabilizing networks, which start from arbitrary states.",
+        "There is no way for the processors of a computer network to locally know that the network has stabilized and that all stale information (which entered the system state due to transient faults) was removed from the system state. Therefore, self-stabilizing algorithms inherently involve continuous computation and exchange of communications in order to reconstruct the correctness invariants.",
+        "Quiescent algorithms lack the ability to handle transient faults, which may occur in networked systems.",
+        "Quiescent algorithms are designed only for synchronous networks and do not adapt to the dynamic nature of asynchronous networks."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

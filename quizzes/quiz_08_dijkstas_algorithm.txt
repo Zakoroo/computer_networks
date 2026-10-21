@@ -1,0 +1,364 @@
+{
+  "topic": "08 Dijkstas Algorithm",
+  "questions": [
+    {
+      "question": "What is the primary purpose of the control token in a token ring network?",
+      "options": [
+        "The control token is responsible for managing the sequential transmission of data from one station to the next, providing mutual exclusion.",
+        "The control token regulates the overall network bandwidth to prevent congestion.",
+        "The control token ensures that stations on the network transmit data concurrently to improve efficiency.",
+        "The control token is used to establish the physical ring topology of the network."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary behavior of stations in Dijkstra's Algorithm for Token Ring Management, as described in the provided pseudo code?",
+      "options": [
+        "Stations other than the root copy their neighbor's state, while the root increments its state value when equal to its predecessor neighbor.",
+        "All stations, including the root, continuously increment their state values.",
+        "All stations, including the root, decrement their state values.",
+        "Stations other than the root increment their state values, while the root copies its neighbor's state when equal to its neighbor."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How many token there are in the following figure?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How many token there are in the following figure?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answers": [
+        5
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How many token there are in the following figure?",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the definition of the set LE_{ME} in the context of legal behavior of mutual exclusion (or token ring management) in a computer network?",
+      "options": [
+        "LE_{ME} includes executions where each processor may access the critical section infinitely often, with the condition that no other processor may concurrently access it while one is inside.",
+        "LE_{ME} represents executions where processors can access the critical section only once, and all other accesses are strictly prohibited.",
+        "LE_{ME} includes all executions where each processor accesses the critical section simultaneously.",
+        "LE_{ME} comprises executions where processors access the critical section infinitely often, and during each access, other processors are allowed to access it concurrently."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key characteristic of the task ME (Mutual Exclusion) in the context of Dijkstra's self-stabilizing algorithm for token ring management?",
+      "options": [
+        "ME dictates that exactly one processor can change its state in any configuration, and every processor can change its state in infinitely many configurations in every execution.",
+        "ME requires that no processor can change its state in any configuration.",
+        "In ME, multiple processors can change their states simultaneously in any configuration.",
+        "ME mandates that every processor must change its state in every configuration."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the significance of the 'safe configuration' mentioned in Lemma 2.2 in the correctness proof of Dijkstra's self-stabilizing algorithm?",
+      "options": [
+        "A safe configuration guarantees that no processor can change its state.",
+        "This is a safe configuration is one in which all x variables are equal. It means that only the root processor may change its state.",
+        "A safe configuration ensures that all processors change their states simultaneously.",
+        "A safe configuration allows processors to change their states freely without any constraints."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of Dijkstra's self-stabilizing algorithm for token ring management, how many safe configurations are there?",
+      "options": [
+        "The number of safe configurations in Dijkstra's self-stabilizing algorithm depends solely on the total number of processors in the network, which is n. Therefore, there are exactly n different safe configurations.",
+        "This depends on the number of colors (i.e., different values that the x variables may hold), n+1, since in every safe configuration all the colors must be the same. Therefore, there are no more than n+1 different safe configurations.",
+        "This depends both on the number of colors, n+1, and the number of legitimate changes between colors, which is n. Therefore, there are at least n(n+1) different safe configurations.",
+        "The number of safe configurations is determined by the number of x variables, which is n, and the (n+1) different colors that the x variables may hold. By the Pigeonhole Principle and using the formula for x out of y choices, i.e., C(y,x), there are n out of n+1 possible assignments of these n+1 colors to the n variables of x. Therefore, there are exactly C(n+1,n) safe configurations."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does Lemma 2.3 state about the relationship between integers j and the x variables in Dijkstra's self-stabilizing algorithm?",
+      "options": [
+        "Lemma 2.3 establishes that every processor must have the same integer value for its x variable.",
+        "Lemma 2.3 asserts that for every configuration, there exists at least one integer j, such that no x variable is equal to j.",
+        "Lemma 2.3 specifies that all x variables should be set to the same integer value, j.",
+        "Lemma 2.3 describes how processors increment their x variables by one in each round."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the Pigeonhole Principle, also known as Dirichlet's box principle, used to prove?",
+      "options": [
+        "The Pigeonhole Principle proves that it is possible to distribute n items into m containers, where m is greater than or equal to n.",
+        "The Pigeonhole Principle proves that all items must be evenly distributed across containers.",
+        "The Pigeonhole Principle proves that for every item, there is a container containing exactly one item.",
+        "The Pigeonhole Principle proves that if n items are put into m containers, where m is less than n, at least one container contains more than one item."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the Pigeonhole Principle relate to the proof of Lemma 2.3?",
+      "options": [
+        "It restricts the number of colors that can be placed into a token ring network with n stations.",
+        "It ensures that all colors are evenly distributed across containers.",
+        "It proves that if n+1 colors are available to be assigned to n shared variables, at least one color is not assigned to any variable.",
+        "It guarantees that every variable x will contain exactly one color."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does one use the technique of proof by contradiction to show that a given Lemma statement is true?",
+      "options": [
+        "By assuming the given Lemma statement is false, deriving a set of logical conclusions that lead to a contradiction.",
+        "By presenting counterexamples that disprove the Lemma statement.",
+        "By assuming the given Lemma statement is false, deriving a set of logical conclusions, and demonstrating that these conclusions are consistent with the Lemma.",
+        "By assuming the given Lemma statement is true and providing supporting evidence through examples and illustrations.",
+        "By asserting that the Lemma statement is self-evident and does not require a proof."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In Dijkstra's self-stabilizing algorithm for token ring management, as stated in Lemma 2.4, what does it guarantee about the behavior of processor p1 in every fair execution starting from any configuration c?",
+      "options": [
+        "Processor p1 changes the value of x1 exactly once in every fair execution, regardless of the configuration.",
+        "Processor p1 changes the value of x1 in a pattern that depends on the number of processors in the network, n.",
+        "Processor p1 changes the value of x1 at least once in every n rounds in every fair execution starting from any configuration c.",
+        "Processor p1 always changes the value of x1 in every round, regardless of the configuration."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main result stated in Theorem 2.1 regarding the self-stabilization of Dijkstra's algorithm for ME?",
+      "options": [
+        "Theorem 2.1 establishes that Dijkstra's algorithm stabilizes within a constant number of rounds, regardless of the configuration.",
+        "Theorem 2.1 proves that Dijkstra's algorithm self-stabilizes in exactly n rounds.",
+        "Theorem 2.1 guarantees that Dijkstra's algorithm will never reach a safe configuration in any fair execution.",
+        "Theorem 2.1 states that, for every possible configuration, every fair execution that starts in that configuration reaches a safe configuration with relation to ME within O(n^2) rounds."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What do the details of the proof of Lemma 2.2 show?",
+      "options": [
+        "The details of the proof of Lemma 2.2 reveal that it is impossible for processors to change their states, implying that the network is in a safe configuration.",
+        "The details of the proof of Lemma 2.2 demonstrate that multiple processors can concurrently change their states in each round, ensuring rapid convergence back to a safe configuration within n rounds.",
+        "It shows that at any time, there is only one processor that may change its state. It also shows that within n rounds, every processor changes its state. Moreover, it shows that when starting from a safe configuration in which all x variables have the same colors, it takes at most n rounds to reach another safe configuration in which all colors are the same.",
+        "The details of the proof of Lemma 2.2 illustrate that the algorithm, when starting in a safe configuration, may not always converge back to a safe configuration. However, Theorem 2.1 shows how to resolve this unpredictable behavior."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does Lemma 2.4 state about the behavior of processor p1 in every fair execution starting from any configuration c?",
+      "options": [
+        "Processor p1 changes the value of x1 exactly once in every fair execution.",
+        "Processor p1 never changes the value of x1 during any fair execution.",
+        "Processor p1 changes the value of x1 at least once in every n rounds in every fair execution starting from any configuration c.",
+        "Processor p1 changes the value of x1 only in configurations where x1 is different from the other x variables."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of introducing configuration c2, c3, and so on in the proof of Lemma 2.4?",
+      "options": [
+        "These configurations represent alternative starting points for the algorithm.",
+        "These configurations are intermediate steps to show that the inviarinat x1=x2=x3=...=xn holds.",
+        "These configurations are used to demonstrate that the algorithm converges to a specific state.",
+        "These configurations serve as counterexamples to prove the lemma in a way of a proof by contradiction."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What contradiction is reached in the proof of Lemma 2.4?",
+      "options": [
+        "The contradiction is that processor p1 changes the value of x1 twice. Once in the (n-1)-th round and then again on the n-th round.",
+        "The contradiction is that processor p1 never changes the value of x1.",
+        "The contradiction is that processor p1 changes the value of x1 by the n-th round.",
+        "The contradiction is that processor p1 will change the value of x1 right after xn changes its value."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to Theorem 2.1, what does every fair execution starting from any possible configuration c does not reach within O(n^2) rounds?",
+      "options": [
+        "A configuration that follows an exact sequence of steps in which there are concurrent changes to the states of the different processors.",
+        "A configuration where the special processor p1 changes the value of x1.",
+        "A configuration where every processor has the same state.",
+        "A safe configuration with relation to ME."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to Lemma 2.3, for any possible configuration c, what condition must hold regarding the values of xi, where 1 \u2264 i \u2264 n?",
+      "options": [
+        "All x[i] must be equal.",
+        "x[i] must be equal to the value of j for all 1 \u2264 i \u2264 n.",
+        "All x[i] must be divisible by n+1.",
+        "There must exist at least one integer j such that xi \u2260 j in c for all 1 \u2264 i \u2264 n."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of configuration cj in the proof of Theorem 2.1?",
+      "options": [
+        "Configuration cj marks the end of the fair execution.",
+        "Configuration cj is the starting point for all processors.",
+        "Configuration cj is the initial configuration for processor pj.",
+        "Configuration cj represents an invariants in which x1 is the only shared variable to hold the value j."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

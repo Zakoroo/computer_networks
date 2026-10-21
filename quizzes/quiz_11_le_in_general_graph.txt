@@ -1,0 +1,363 @@
+{
+  "topic": "11 Le In General Graph",
+  "questions": [
+    {
+      "question": "What is a primary role of leader election in computer networks?",
+      "options": [
+        "To execute algorithms in parallel.",
+        "To reduce the number of nodes in the system.",
+        "As network traffic increases, the leader is responsible for maintain low latency and high throughput.",
+        "To select a coordinator node for decision-making and coordination."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is leader election utilized in load balancing?",
+      "options": [
+        "The leader node stores all incoming data, process them, and send the replies to the client requests. This way, it off load the work from the non-leading nodes.",
+        "The leader node shuts down non-essential nodes.",
+        "The leader node distributes incoming requests or tasks evenly among available nodes.",
+        "The leader node removes excess nodes from the network."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of clustered systems or cloud environments, what is the role of the leader node?",
+      "options": [
+        "To coordinate resource allocation, scaling, and maintenance tasks.",
+        "To act as a backup for all the nodes.",
+        "To remove inactive nodes from the cluster.",
+        "To shut down non-functioning nodes."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following applications uses leader election to select a designated router for making routing decisions?",
+      "options": [
+        "Cluster Management",
+        "Network Routing",
+        "Mobile Ad Hoc Networks (MANETs)",
+        "Sensor Networks"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In Internet of Things (IoT) deployments, what is the leader node typically responsible for?",
+      "options": [
+        "Detecting faulty devices and shutting them down before replacing them with new ones.",
+        "Direct communication with sensors.",
+        "Preprocessing and transmitting data to cloud services.",
+        "Managing energy resources across devices."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary goal of leader election in scenarios involving resource allocation?",
+      "options": [
+        "To prevent any node from utilizing resources.",
+        "To reduce the number of active nodes.",
+        "To select the node responsible for allocating resources efficiently.",
+        "To randomly distribute resources among all nodes in order to avoid bottlenecks."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is assumed about every processor in a self-stabilizing leader election algorithm?",
+      "options": [
+        "Each processor has the same identifier.",
+        "Every processor has a random identifier.",
+        "All processors share a common memory.",
+        "Each processor has a unique identifier."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main task of leader election?",
+      "options": [
+        "To ensure that every processor communicates randomly.",
+        "To select all processors as leaders.",
+        "To inform every processor of a single processor's identifier as the leader.",
+        "To ensure that exactly one processor possesses the leadership property.",
+        "To identify floating identifiers."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which processor is eventually elected as the leader in the studied leader election algorithm?",
+      "options": [
+        "The processor with the highest identifier.",
+        "The processor with the greatest number of neighbors.",
+        "The processor with the minimal identifier.",
+        "The processor that communicates first."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the mentioned non-stabilizing algorithm, how does a processor select its leader candidate?",
+      "options": [
+        "Based on the largest identifier it receives.",
+        "Based on its own random choice.",
+        "Based on the processor with the most neighbors.",
+        "Based on the smallest identifier it receives."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the non-stabilizing algorithm not self-stabilizing?",
+      "options": [
+        "Because it only works on fully connected networks.",
+        "Because it doesn\u2019t terminate.",
+        "Because it is possible that the minimal identifier z is not a processor in the system.",
+        "Because, in order to work, that system requires every processor to have access to a floating identifier."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What are floating identifiers in the context of leader election?",
+      "options": [
+        "Using a random function to generate identifiers can result in non-unique identifiers, which are referred to as floating identifiers.",
+        "Identifiers that appear in the system state but are not actual processor identifiers.",
+        "Identifiers that belong to leader nodes.",
+        "Identifiers that change with each execution."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the leader election algorithm for general graphs, what does a processor $p_i$ store?",
+      "options": [
+        "The identifier of a processor chosen as a leader and the distance to that leader.",
+        "The number of processors in the system.",
+        "Its own distance from the leader.",
+        "The identifier of the processor with the largest degree."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of using the distance variable in the leader election algorithm?",
+      "options": [
+        "To eliminate floating identifiers.",
+        "To measure the time taken by the algorithm.",
+        "To compute the shortest path between nodes.",
+        "To balance the network load.",
+        "The studied leader election algorithm does not use the distance variable."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the general graph leader election algorithm, what happens when $p_i$ reads the identifier of a neighbor?",
+      "options": [
+        "It chooses the largest identifier if the distance to that identifier is less than N.",
+        "It reassigns its own identifier.",
+        "It chooses the largest identifier.",
+        "It ignores the identifier.",
+        "None of the other options.",
+        "It chooses the smallest identifier if the distance to that identifier is more than N."
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the first convergence stair in the proof of correctness for the algorithm?",
+      "options": [
+        "A predicate that guarantees minimal distances to the node with the minimal identifier.",
+        "A predicate that verifies the network has stabilized.",
+        "A predicate that ensures all processors are matched.",
+        "A predicate that verifies no floating identifiers exist.",
+        "A predicate that guarantees minimal distances to the node with the maximal identifier."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the second convergence stair ensure?",
+      "options": [
+        "Every processor chooses the minimal identifier of a processor in the system as the leader.",
+        "All floating identifiers have minimal distances.",
+        "No processor changes its state.",
+        "Every processor chooses the processor with the highest identifier as the leader."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens if a floating identifier exists in the system?",
+      "options": [
+        "It remains unchanged until the end of the algorithm.",
+        "It is immediately eliminated.",
+        "Its minimal distance increases during O(\u0394) rounds.",
+        "It is chosen as the leader."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the minimal distance of a floating identifier increased?",
+      "options": [
+        "By choosing a new processor as the leader.",
+        "By reading identifiers from neighbors and assigning a distance that is one greater.",
+        "By removing the identifier from the system.",
+        "By increasing the number of nodes in the system and reducing the number of links, i.e., the construction of a spanning tree."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens once the minimal distance of a floating identifier reaches N?",
+      "options": [
+        "It is chosen as the leader.",
+        "The system disconnects from that processor.",
+        "It becomes the maximal distance.",
+        "It resets to zero.",
+        "It is eliminated from the system."
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does Lemma 2.5 state?",
+      "options": [
+        "Every fair execution eventually chooses the processor with the maximal identifier.",
+        "Every fair execution eliminates floating identifiers in O(N^2) rounds.",
+        "Every fair execution that starts from any arbitrary configuration has a suffix where no floating identifier exists.",
+        "Every fair execution stabilizes after N rounds."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does Theorem 2.3 conclude about every fair execution?",
+      "options": [
+        "Every fair execution reaches a safe configuration.",
+        "Every fair execution eliminates the largest processor from the system.",
+        "Every fair execution reaches a configuration with multiple leaders.",
+        "Every fair execution halts after a fixed number of rounds."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

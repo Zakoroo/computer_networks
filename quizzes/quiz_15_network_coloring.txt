@@ -1,0 +1,515 @@
+{
+  "topic": "15 Network Coloring",
+  "questions": [
+    {
+      "question": "After a failure event but before all adjustments finish, what consequence follows from the guarantee style adopted by dynamic algorithms?",
+      "options": [
+        "They require immediate restoration of a legitimate state before any service resumes",
+        "They suspend all processing until a global reinitialization completes",
+        "They relax guarantees during convergence, matching self-stabilizing algorithms",
+        "They ensure that no state changes occur during the adjustment interval",
+        "They provide specified behavior throughout adjustment, so services can continue predictably"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is preserving a passage predicate during convergence considered useful in superstabilization?",
+      "options": [
+        "It enforces full legitimacy during all intermediate states, eliminating any temporary violations",
+        "It removes the need to detect topology changes before initiating recovery actions",
+        "It allows unrestricted crash combinations without affecting system guarantees",
+        "It guarantees optimal adjustment time regardless of network size, ensuring one cycle convergence",
+        "It provides a weaker but meaningful safety condition that survives topology changes, guiding controlled adjustments"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the leader-election task, which passage predicate would ensure useful system behavior during convergence after a topology change?",
+      "options": [
+        "At least one leader must always exist",
+        "The number of leaders equals the number of connected components",
+        "Exactly one leader must always exist",
+        "Leaders may change arbitrarily without restriction",
+        "No more than one leader exists at any time"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which statement best describes the adjustment measure in superstabilization?",
+      "options": [
+        "It is the minimal number of processors that must reset after any transient fault",
+        "It counts only processors directly adjacent to the fault location",
+        "It is the maximum number of processors that must change state after a topology change",
+        "It equals the stabilizing time divided by the superstabilizing time",
+        "It is the average number of processors that change state across all executions"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which assumption is commonly made by dynamic distributed algorithms but not guaranteed in practice?",
+      "options": [
+        "Processors may fail in all possible combinations",
+        "Corrupted messages are always detectable and discarded",
+        "Every link has unbounded capacity",
+        "Message buffers can hold arbitrary many undelivered packets",
+        "Arbitrary configurations cannot be reached after crashes"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes the convergence behavior of correct self-stabilizing algorithms?",
+      "options": [
+        "They place no restrictions on intermediate behavior, only on eventual convergence to legitimacy",
+        "They enforce bounded time convergence regardless of initial state",
+        "They guarantee passage predicates are preserved during any convergence sequence",
+        "They require explicit event detection to constrain convergence paths",
+        "They guarantee full safety properties at every step until legitimacy is restored"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do dynamic and self-stabilizing algorithms differ in their modeling of topology changes?",
+      "options": [
+        "Self-stabilizing algorithms ignore topology changes entirely during execution",
+        "Both require global reinitialization when a new processor joins",
+        "Both rely on explicit event notifications to ensure safe initialization",
+        "Dynamic algorithms use event signals to initialize joining processors, while self-stabilizing algorithms treat the change as a new state requiring convergence",
+        "Dynamic algorithms guarantee legitimacy regardless of initial state, while self-stabilizing ones cannot recover from faults"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the potential benefit of a self-stabilizing algorithm that incorporates event awareness during convergence?",
+      "options": [
+        "It ensures adjustment measure is always minimized to one processor",
+        "It makes the algorithm immune to arbitrary message corruption",
+        "It guarantees exact legitimacy immediately after any fault",
+        "It can maintain nearly legitimate states during convergence, improving system behavior",
+        "It eliminates the need for processors to initialize state upon joining"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the spanning tree example, what happens when a link fails, and why is superstabilization useful?",
+      "options": [
+        "The system ignores the failure and continues with arbitrary routing",
+        "All virtual circuits are immediately terminated to avoid inconsistencies",
+        "The tree becomes disconnected, but virtual circuits within components remain, and superstabilization reconnects with minimal impact",
+        "The system reinitializes globally, halting all circuits until reconnection",
+        "The spanning tree remains fully connected, preventing any disruption"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is \u0394+1 coloring used in the superstabilizing coloring example rather than minimizing the number of colors?",
+      "options": [
+        "Because \u0394+1 coloring guarantees chromatic optimality",
+        "Because minimizing colors is computationally infeasible, while \u0394+1 colors suffice to demonstrate superstabilization properties",
+        "Because \u0394+1 coloring guarantees symmetry breaking without event detection",
+        "Because minimizing colors would require global reinitialization after faults",
+        "Because using fewer colors prevents evaluation of passage predicates"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the self-stabilizing coloring algorithm, why does Pi accumulate into GColors only the colors of neighbors with identifiers greater than i?",
+      "options": [
+        "To minimize memory usage by storing fewer colors",
+        "To detect message corruption during read operations",
+        "To guarantee that Pi never changes color once chosen",
+        "To enforce that lower-ID processors decide colors first and higher-ID ones adjust later, breaking symmetry",
+        "To prevent \u0394 from exceeding the system\u2019s chromatic number"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can the basic self-stabilizing coloring algorithm in Figure 7.1 cause nearly all processors to change color after a new link appears?",
+      "options": [
+        "Because the algorithm discards prior colors whenever any neighbor changes",
+        "Because each processor must immediately pick the smallest color in \u03a3",
+        "Because recoloring is synchronized across the network by a global clock",
+        "Because resolving one local conflict may create new conflicts that propagate along adjacency chains",
+        "Because processors always prefer the color of their lowest-ID neighbor"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How are time complexity and passage predicate preservation related in superstabilization?",
+      "options": [
+        "They are orthogonal, meaning fast convergence does not imply predicate preservation",
+        "They are mutually exclusive, one cannot achieve both at once",
+        "They are equivalent, preserving a predicate ensures minimal convergence time",
+        "They always increase together, slower convergence means weaker predicates",
+        "They are unrelated because predicates apply only to message-passing systems"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What condition must hold for the correctness of the self-stabilizing coloring algorithm in Figure 7.1?",
+      "options": [
+        "Neighboring processors can hold the same color if they differ in ID",
+        "Every processor eventually adopts the same color",
+        "Processors recolor indefinitely to maintain fairness",
+        "Every two neighboring processors eventually hold different colors, and colors stop changing",
+        "Each processor eventually chooses the smallest color not used globally"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the proof of Figure 7.2\u2019s superstabilization, why does the processor with the largest identifier stabilize first?",
+      "options": [
+        "Because it recolors to match the smallest available color globally",
+        "Because no higher-ID neighbor can force it to change its color",
+        "Because it executes more steps per asynchronous cycle",
+        "Because it ignores passage predicates during convergence",
+        "Because it resets to \u22a5 more frequently than others"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which passage predicate is demonstrated by the superstabilizing coloring algorithm in Figure 7.2?",
+      "options": [
+        "Neighboring processors always differ in color during convergence after a single edge change",
+        "All processors eventually converge to the same color",
+        "Neighboring processors may temporarily share colors during convergence",
+        "Exactly one processor holds a unique color across the system",
+        "No processor is ever assigned \u22a5 during recovery"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the superstabilizing time complexity of the coloring algorithm in Figure 7.2, compared to its stabilizing complexity?",
+      "options": [
+        "Superstabilizing time is unbounded, stabilizing complexity is finite",
+        "Both superstabilizing and stabilizing time are O(n) cycles",
+        "Superstabilizing time is O(n), stabilizing complexity is one cycle",
+        "Both superstabilizing and stabilizing time equal one cycle",
+        "Superstabilizing time is one cycle, stabilizing complexity is O(n) cycles"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the superstabilizing coloring algorithm, what is the adjustment measure when considering link additions or removals?",
+      "options": [
+        "Only one processor needs to change color",
+        "Exactly \u0394 processors recolor, where \u0394 is the maximum degree",
+        "A random subset of processors recolor depending on scheduling",
+        "Adjustment measure cannot be bounded in terms of processor count",
+        "All processors recolor once in the worst case"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In executions of the superstabilizing coloring algorithm without topology changes, what holds after the first asynchronous cycle?",
+      "options": [
+        "All processors continue to execute the interrupt section each cycle",
+        "Every processor must recolor once per cycle to preserve safety",
+        "Some processors keep colori equal to \u22a5 for tie breaking",
+        "No colori or ri.color equals \u22a5 and only lines 1 to 12 execute thereafter",
+        "Only the highest-degree processor retains \u22a5 until neighbors stabilize"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the effect of the guard colori equals \u22a5 or colori in GColors followed by colori assigned from \u03a3 \\ AColors in Figure 7.2?",
+      "options": [
+        "It chooses the smallest color globally to accelerate convergence",
+        "It preserves current color regardless of neighbor states",
+        "It avoids conflicts only with higher-ID neighbors, lower-ID conflicts can persist",
+        "It forces both endpoints of every changed edge to recolor simultaneously",
+        "It avoids conflicts with any neighbor by excluding all observed neighbor colors"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the text assume that adding a processor or link does not violate the bound \u03b4 on a processor\u2019s number of neighbors?",
+      "options": [
+        "Because recoloring requires global synchronization when \u03b4 is unbounded",
+        "Because the passage predicate is defined only when \u03b4 is constant across nodes",
+        "Because the interrupt section depends on \u03b4 to detect corrupt messages",
+        "Because \u0394+1 coloring is correct only if \u03b4 equals 1 everywhere",
+        "Because \u0394+1 coloring relies on an upper bound on degree to keep the color set sufficient"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the superstabilizing algorithm prevent the chain-wide recoloring cascade seen in Figure 7.1 when a link between Pn\u22121 and Pn recovers with equal colors?",
+      "options": [
+        "It signals the lower-ID endpoint to set \u22a5, localizing the adjustment to a single processor",
+        "It removes the recovered link from the topology until colors stabilize",
+        "It forces both endpoints to reset to \u22a5 and recolor simultaneously",
+        "It instructs all processors in the component to adopt Pn\u2019s current color",
+        "It delays recoloring until a global reinitialization completes"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the inductive proof for Figure 7.2, what ensures that processor Pn\u22121 selects a stable color after Pn has stabilized?",
+      "options": [
+        "Pn\u22121 inherits Pn\u2019s color and then locks it permanently",
+        "Pn\u2019s color is fixed, so Pn\u22121 avoids it when selecting a new color",
+        "Pn\u22121 resets to \u22a5 indefinitely until Pn recolors",
+        "Pn\u22121 always chooses the smallest color in \u03a3",
+        "Pn\u22121 ignores Pn\u2019s color because lower-ID nodes are prioritized"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the proof extend stabilization inductively from Pn\u22121 to processors with even lower identifiers?",
+      "options": [
+        "All processors recolor synchronously in the second cycle",
+        "Processors ignore neighbors with higher IDs once initial cycles finish",
+        "Lower-ID nodes recolor randomly until the system stabilizes",
+        "Each Pi chooses a color different from every neighbor Pj with j greater than i, fixing it after the jth cycle",
+        "Each Pi adopts the same color as its lowest-ID neighbor"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of the special symbol \u22a5 in the superstabilizing coloring algorithm?",
+      "options": [
+        "It permanently marks processors that have crashed",
+        "It prevents recoloring by processors with higher identifiers",
+        "It signals a processor to choose a new color after a link recovery event",
+        "It indicates that a processor\u2019s color is globally unique",
+        "It guarantees that recoloring affects all neighbors simultaneously"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the superstabilizing coloring algorithm\u2019s time complexity considered better than the stabilizing complexity?",
+      "options": [
+        "Because it requires no processor recoloring under link recovery",
+        "Because it reaches legitimacy in one cycle after a topology change instead of O(n) cycles",
+        "Because it always terminates in fewer than \u0394 steps",
+        "Because it ignores transient faults entirely",
+        "Because it guarantees minimal chromatic number with \u0394+1 colors"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the superstabilizing algorithm of Figure 7.2 improve on the basic self-stabilizing coloring of Figure 7.1?",
+      "options": [
+        "It guarantees permanent \u22a5 values for fault detection",
+        "It prevents cascades of recoloring by localizing adjustments",
+        "It reduces message complexity to zero",
+        "It ensures simultaneous recoloring across all components",
+        "It eliminates the need for \u0394+1 colors"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which pair of complexity measures best distinguishes superstabilizing evaluations from stabilizing ones?",
+      "options": [
+        "Recovery latency and probability of crash detection",
+        "Passage predicate and system throughput",
+        "Adjustment measure and superstabilizing time",
+        "Synchronization delay and fairness index",
+        "Message complexity and processor memory usage"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of the coloring task, what does the passage predicate guarantee during a topology change?",
+      "options": [
+        "No processor ever changes its color",
+        "All processors recolor simultaneously in the next cycle",
+        "At most one processor holds the color \u22a5",
+        "No two neighboring processors share the same color until legitimacy is restored",
+        "The system always maintains exactly \u0394 distinct colors"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it argued that a complexity measure based on topology changes may be more relevant than one based solely on transient faults?",
+      "options": [
+        "Because transient faults are rare, but topology changes may be frequent",
+        "Because topology changes are guaranteed to preserve legitimacy",
+        "Because transient faults always resolve in one cycle",
+        "Because transient faults can never harm the system state",
+        "Because topology changes always require global reinitialization"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

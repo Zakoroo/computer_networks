@@ -1,0 +1,532 @@
+{
+  "topic": "02 Dns",
+  "questions": [
+    {
+      "question": "Which of the following best explains why the Domain Name System (DNS) is necessary in modern networking?",
+      "options": [
+        "To prevent IP address conflicts on LANs",
+        "To ensure reliable packet delivery in IP networks",
+        "To dynamically allocate MAC addresses to devices",
+        "To control routing decisions across autonomous systems",
+        "To map human-readable names to IP addresses"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best explains why the Domain Name System (DNS) is necessary in modern networking?",
+      "options": [
+        "To control routing decisions across autonomous systems",
+        "To dynamically allocate MAC addresses to devices",
+        "To map human-readable names to IP addresses",
+        "To prevent IP address conflicts on LANs",
+        "To ensure reliable packet delivery in IP networks"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What was a major limitation of the hosts.txt approach that motivated the development of DNS?",
+      "options": [
+        "It was limited to DNSSEC-signed zones",
+        "It used TCP instead of UDP for lookups",
+        "It lacked compatibility with IPv6",
+        "It centralized control and scaled poorly",
+        "It enforced global consistency through blockchain"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is aggressive caching a reasonable design choice in DNS?",
+      "options": [
+        "Because DNS data is mostly read-only and loosely consistent",
+        "Because DNS records are updated more often than they are queried",
+        "Because updates are cryptographically signed",
+        "Because DNS uses TCP for most queries",
+        "Because each lookup involves every authoritative name server"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following statements about recursive DNS queries is accurate?",
+      "options": [
+        "Recursive queries reduce the load on local resolvers",
+        "Recursive queries are only used between root servers",
+        "Recursive queries are typically issued by authoritative name servers",
+        "Recursive queries instruct a DNS server to fully resolve a name before replying",
+        "Recursive queries are prohibited in DNSSEC deployments"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which field in a DNS resource record determines how long the record may be cached?",
+      "options": [
+        "TTL",
+        "TYPE",
+        "RDATA",
+        "CLASS",
+        "OPCODE"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main role of a glue record in DNS?",
+      "options": [
+        "To improve name compression efficiency",
+        "To authenticate responses from recursive resolvers",
+        "To provide an IP address for a name server within the delegated zone",
+        "To specify query retry intervals in secondary servers",
+        "To link a CNAME to its canonical name"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which section of a DNS reply contains glue records?",
+      "options": [
+        "Additional",
+        "Question",
+        "Header",
+        "Answer",
+        "Authority"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the RD (recursion desired) bit in a DNS header indicate?",
+      "options": [
+        "That the response is from a root server",
+        "That this is an authoritative answer",
+        "That the client requests the server to perform recursion",
+        "That the query is signed with DNSSEC",
+        "That the server is using TCP instead of UDP"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In DNS message compression, what does a label starting with bits '11' (e.g., 0xC0) represent?",
+      "options": [
+        "A negative response for NXDOMAIN",
+        "A truncated answer due to UDP limit",
+        "A compressed TXT record",
+        "A pointer to a previously encoded domain name",
+        "An indicator of an authoritative name server"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which SOA record field controls how often a secondary server checks for zone updates?",
+      "options": [
+        "Retry",
+        "Refresh",
+        "Minimum TTL",
+        "Expire",
+        "Serial Number"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key consequence of using a CNAME record in DNS?",
+      "options": [
+        "It requires an extra lookup to resolve the canonical name",
+        "It blocks DNSSEC validation for the original domain",
+        "It prevents the use of additional sections in replies",
+        "It eliminates the need for zone file delegation",
+        "It allows multiple IPs for a single name without A records"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which DNS server type typically provides the location of a TLD server when resolving a domain name?",
+      "options": [
+        "Forwarding proxy",
+        "Authoritative server",
+        "Recursive resolver",
+        "Stub resolver",
+        "Root server"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when a DNS query receives an NXDOMAIN response?",
+      "options": [
+        "The domain is permanently blacklisted by the resolver",
+        "The resolver retries using TCP instead of UDP",
+        "The resolver generates a REFUSED status for future queries",
+        "The result is cached for the TTL specified in the SOA\u2019s minimum field",
+        "The response is forwarded to a higher-level authoritative server"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "If a zone includes a wildcard record *.example.com, what happens when a query for unknown.example.com is made?",
+      "options": [
+        "The wildcard generates a synthetic answer",
+        "The query triggers a fallback to the root zone",
+        "The query is redirected using a glue record",
+        "The query is rewritten using the original zone apex",
+        "The query always fails with NXDOMAIN"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does DNS implement basic load balancing using A records?",
+      "options": [
+        "By ordering multiple A records and rotating them in responses",
+        "By assigning each user to a unique resolver",
+        "By issuing TCP resets to distribute query load",
+        "By delegating each query to a random authoritative server",
+        "By hashing the client\u2019s IP to select a response path"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a practical impact of setting a very long TTL on DNS records?",
+      "options": [
+        "It increases DNSSEC validation overhead",
+        "It guarantees frequent updates from authoritative servers",
+        "It causes authoritative servers to ignore refresh requests",
+        "It disables client-side caching",
+        "It reduces DNS lookup latency but slows update propagation"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best describes a DNS delegation?",
+      "options": [
+        "The act of forwarding a query through NAT",
+        "The process of caching answers at a recursive resolver",
+        "The replication of data between secondary servers",
+        "The dynamic update of resource records from DHCP",
+        "The linking of a parent zone to a child zone's name server"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes DNS cache poisoning a viable attack vector?",
+      "options": [
+        "DNS responses can be spoofed if the transaction ID is predicted",
+        "DNS queries are always encrypted end-to-end",
+        "DNSSEC always validates CNAME records only",
+        "Authoritative servers enforce TTL constraints",
+        "Recursive resolvers ignore glue records"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What problem is DNSSEC primarily designed to solve?",
+      "options": [
+        "Provide authenticity and integrity of DNS data",
+        "Prevent recursive queries to root servers",
+        "Reduce latency by enforcing client caching",
+        "Eliminate the need for glue records",
+        "Guarantee authoritative servers are online"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of a Delegation Signer (DS) record in DNSSEC?",
+      "options": [
+        "It replaces NS records for child zones",
+        "It signals that caching should be disabled for a zone",
+        "It encrypts the query payload for confidentiality",
+        "It carries a hashed public key of the child zone",
+        "It serves as a backup TTL in case of RRSIG expiration"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best distinguishes DNS redirection from HTTP redirection?",
+      "options": [
+        "HTTP redirection can change the URL shown to the user, unlike DNS redirection",
+        "HTTP redirection relies on recursive resolvers to modify records",
+        "DNS redirection requires browser cookie support",
+        "DNS redirection is only used in load balancing while HTTP redirection is not",
+        "DNS redirection works at the application layer using TCP"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does a recursive resolver do when a cached DNS entry's TTL has expired?",
+      "options": [
+        "Increases TTL to prevent overloading name servers",
+        "Blocks all queries for the corresponding domain",
+        "Returns a REFUSED error to the client",
+        "Forwards the expired answer with a warning",
+        "Drops the record and re-queries the authoritative server"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does DNS use UDP for most of its queries?",
+      "options": [
+        "UDP allows encryption and compression by default",
+        "TCP is not supported by most recursive resolvers",
+        "TCP requires DNSSEC, which is rarely used",
+        "UDP supports longer queries than TCP",
+        "UDP reduces latency due to its connectionless nature"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What event causes a DNS client to retry the query using TCP instead of UDP?",
+      "options": [
+        "The SOA record is unsigned",
+        "The AA bit is missing from the response",
+        "The response contains a wildcard record",
+        "The RD bit is set to 0",
+        "The response includes the TC (truncated) flag"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes DNS susceptible to amplification attacks?",
+      "options": [
+        "It allows unauthenticated updates to zone files",
+        "It requires frequent refresh of negative caches",
+        "It uses TCP which supports session hijacking",
+        "Zone transfers are broadcast to all root servers",
+        "A small query can trigger a large response from an open resolver"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key benefit of using DNS over HTTPS (DoH) or DNS over TLS (DoT)?",
+      "options": [
+        "It encrypts DNS queries to prevent eavesdropping",
+        "It guarantees DNSSEC validation at the client",
+        "It replaces the need for recursive resolution entirely",
+        "It reduces the size of DNS packets using compression",
+        "It eliminates the need for authoritative name servers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a major privacy concern with using a public recursive DNS resolver?",
+      "options": [
+        "It caches records for longer TTLs than private resolvers",
+        "It can log and profile client queries without consent",
+        "It disables caching to preserve consistency",
+        "It forces all queries to be recursive",
+        "It must run on the same subnet as the client"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the function of a stub resolver in DNS resolution?",
+      "options": [
+        "It sends queries to a recursive resolver on behalf of an application",
+        "It modifies TTLs to match local caching policies",
+        "It performs full recursive resolution without external help",
+        "It maintains the authoritative records for its domain",
+        "It stores glue records for local name servers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does Dynamic DNS (DDNS) enable in conjunction with DHCP?",
+      "options": [
+        "Preloading all authoritative records into stub resolvers",
+        "Real-time updates of DNS records when IPs are assigned",
+        "Conversion of MAC addresses into domain names",
+        "Client-side certificate validation for recursive resolvers",
+        "Replacing the DNS hierarchy with flat namespaces"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the function of the DNS root zone in the overall hierarchy?",
+      "options": [
+        "It issues wildcard certificates for secure DNS",
+        "It replicates zone files to recursive resolvers",
+        "It stores the IPs of all authoritative servers globally",
+        "It delegates queries to appropriate top-level domain (TLD) servers",
+        "It resolves all queries involving CNAME chains"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

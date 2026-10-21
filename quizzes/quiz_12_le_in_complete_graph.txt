@@ -1,0 +1,396 @@
+{
+  "topic": "12 Le In Complete Graph",
+  "questions": [
+    {
+      "question": "What is the role of randomization in self-stabilizing algorithms?",
+      "options": [
+        "To help break symmetry when it is impossible to do so deterministically.",
+        "To reduce communication overhead between processors.",
+        "To guarantee faster execution times.",
+        "To ensure unique identifiers for all processors."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the scheduler treated in the context of randomized self-stabilizing algorithms?",
+      "options": [
+        "To remove inactive nodes from the cluster.",
+        "As a friendly agent that ensures fairness.",
+        "As an adversary with unlimited resources.",
+        "As a resource allocator."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When is an algorithm considered randomized self-stabilizing for a task LE?",
+      "options": [
+        "When it reaches a safe configuration within an expected number of rounds, bounded by a constant k, under a fair scheduler.",
+        "When it assigns unique identifiers to all processors.",
+        "When it ensures all processors act simultaneously.",
+        "When it guarantees a safe configuration within a fixed number of steps, regardless of the scheduler."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the goal of a leader election algorithm?",
+      "options": [
+        "To designate a single processor as the leader and ensure every processor knows whether it is the leader or not.",
+        "To assign unique identifiers to all processors.",
+        "To randomize processor identities.",
+        "To ensure all processors are leaders."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is often required to break symmetry in leader election algorithms for anonymous systems? Select the most complete and accurate answer.",
+      "options": [
+        "Unique identifiers.",
+        "Shared memory.",
+        "A central daemon.",
+        "Randomization."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What system topology is used in the example of the randomized self-stabilizing leader election algorithm?",
+      "options": [
+        "Complete graph.",
+        "Star topology.",
+        "Ring topology.",
+        "Tree topology."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In an id-based system, how is a leader elected in a trivial self-stabilizing algorithm?",
+      "options": [
+        "By selecting the processor with the maximal or minimal identifier.",
+        "Using random coin tosses.",
+        "By central coordination."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes uniform self-stabilizing algorithms more subtle than non-uniform ones?",
+      "options": [
+        "The need for a central daemon.",
+        "The absence of unique identifiers.",
+        "The use of randomization.",
+        "The use of a complete graph topology."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of the central daemon in the deterministic leader election example?",
+      "options": [
+        "To ensure only one person is standing at a time.",
+        "To activate processors randomly.",
+        "To perform coin tosses.",
+        "To assign unique identifiers."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is assumed in the algorithm presented for leader election in a complete graph?",
+      "options": [
+        "Each step consists of a single read or write operation.",
+        "The algorithm does not use randomization.",
+        "Multiple processors can perform steps simultaneously.",
+        "The system has unique processor identifiers."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the function of the leader register in the leader election algorithm?",
+      "options": [
+        "It stores the random number generated by the processor.",
+        "It records the number of rounds completed.",
+        "It stores the leader status of each processor.",
+        "It manages communication between processors."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does a processor decide whether it is a candidate for a leader?",
+      "options": [
+        "By tossing a coin if no leader exists.",
+        "By selecting the processor with the maximal id.",
+        "By reading the leader status of the central daemon.",
+        "By appointing itself as leader."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the leader election algorithm, what is the result if a processor's coin toss returns 1?",
+      "options": [
+        "It assigns 0 to its leader register.",
+        "It assigns 1 to its leader register.",
+        "It waits for another coin toss.",
+        "It immediately exits the algorithm."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the definition of a safe configuration in the leader election algorithm?",
+      "options": [
+        "The central daemon has been deactivated.",
+        "All processors have their leader register set to 1.",
+        "No processor has its leader register set to 1.",
+        "Exactly one processor has its leader register set to 1, and all others have theirs set to 0."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is true about the stabilization time of the algorithm?",
+      "options": [
+        "It stabilizes within a constant number of rounds.",
+        "It stabilizes within an exponential expected number of rounds.",
+        "It stabilizes instantly.",
+        "It stabilizes within a linear number of rounds."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to Lemma 2.6, what is the expected number of rounds before the algorithm stabilizes?",
+      "options": [
+        "n^O(2).",
+        "2n.",
+        "n^2.",
+        "2^O(n)."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is luck's strategy in the SL-game for the algorithm?",
+      "options": [
+        "To flip the coin for all processors to 1.",
+        "To ensure one processor becomes the leader by fixing coin tosses.",
+        "To prevent the algorithm from stabilizing.",
+        "To intervene randomly in the middle of the algorithm."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the probability of Luck's strategy winning the SL-game?",
+      "options": [
+        "1/n.",
+        "1/2.",
+        "1/2^n.",
+        "1/n^2."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the scheduler's strategy in Lemma 2.7 to prevent stabilization?",
+      "options": [
+        "To suspend processors before they write their coin toss result."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens after the processors in Lemma 2.7 are all about to write 0?",
+      "options": [
+        "They all write 0 in their leader registers."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to Lemma 2.7, what ensures that the system never stabilizes under fine atomicity?",
+      "options": [
+        "A scheduler that prevents immediate writes of coin toss results."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the algorithm not stabilize under fine atomicity?",
+      "options": [
+        "The coin toss is separated from the read/write operation."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following describes a legal execution of the leader election algorithm?",
+      "options": [
+        "A single processor remains the leader throughout the execution."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the effect of coarse atomicity on the algorithm?",
+      "options": [
+        "It combines coin tosses with subsequent read/write operations."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the SL-game method show about the randomized leader election algorithm?",
+      "options": [
+        "It stabilizes under coarse atomicity but not fine atomicity."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the difference between coarse and fine atomicity in the leader election algorithm?",
+      "options": [
+        "The timing of I/O operations and coin flipping."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

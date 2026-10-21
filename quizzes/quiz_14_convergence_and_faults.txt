@@ -1,0 +1,957 @@
+{
+  "topic": "14 Convergence And Faults",
+  "questions": [
+    {
+      "question": "Under the lock step synchronous pulse model described in Section 6.1, which sequence best matches what each processor does during a pulse?",
+      "options": [
+        "Randomly alternate between reading and updating until convergence",
+        "Send its clock value, skip reading neighbors, then increment by one",
+        "Read neighbors, compute the next value, then update its own clock",
+        "Compute the next value, update its clock, then read neighbors",
+        "Update its clock, then read neighbors, then compute the maximum"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which description best characterizes a safe configuration c for digital clock synchronization?",
+      "options": [
+        "All clocks are identical and thereafter all clocks increment by one each pulse",
+        "Clocks are pairwise within one of each other and remain bounded",
+        "All clocks are zero and remain zero forever",
+        "All clocks are distinct but increase by the same amount every other pulse",
+        "At least one clock equals the network diameter and others follow"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "From an arbitrary initial configuration, after how many pulses are clocks synchronized under the unbounded max plus one algorithm?",
+      "options": [
+        "Only after all clocks first reach M minus one",
+        "After at most two pulses regardless of topology",
+        "After at least d pulses, where d is the network diameter",
+        "Never, because identical processors cannot synchronize deterministically",
+        "After exactly n pulses, where n is the number of processors"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In proving correctness of the unbounded max plus one algorithm, why is induction on distance from the maximal node Pm used?",
+      "options": [
+        "To bound the memory usage by the bit-width of the clock register",
+        "To demonstrate that the maximal clock value propagates one hop per pulse outward from Pm",
+        "To prove that randomization ensures eventual synchronization",
+        "To show that the number of pulses equals the number of processors",
+        "To ensure that each processor selects the minimum neighbor value"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the use of unbounded clock values problematic in self-stabilizing digital clock algorithms?",
+      "options": [
+        "Because modulo arithmetic introduces deadlocks in the system",
+        "Because memory is finite and transient faults can set a clock directly to its maximum",
+        "Because processors must distinguish between leader and follower roles",
+        "Because the algorithm cannot handle asynchronous scheduling",
+        "Because propagation takes longer than O(d) pulses"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the pigeonhole principle applied in proving correctness of the first bounded algorithm?",
+      "options": [
+        "To guarantee that there exist two clock values with a gap of at least d + 1",
+        "To prove that clocks cannot wrap around modulo M simultaneously",
+        "To ensure that every processor must eventually generate a zero clock value",
+        "To guarantee that the minimal value propagates faster than the maximal value",
+        "To ensure that after M pulses all processors have identical identifiers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What key modification distinguishes the second bounded algorithm (Figure 6.3) from the first?",
+      "options": [
+        "It abandons modulo arithmetic entirely",
+        "It uses randomization to select between min and max rules",
+        "It increments by two modulo 2d + 1 instead of by one",
+        "It requires M > (n + 1)d\u00b2 instead of M > (n + 1)d",
+        "It replaces the maximum neighbor rule with the minimum neighbor rule"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the bounded algorithm using max and modulo M, what consequence follows once two values x and y are at least d+1 apart with no intermediate values?",
+      "options": [
+        "No clock value can exceed x+i and be less than y+i for i steps until y reaches M",
+        "Processors with values between x and y catch up immediately",
+        "The gap collapses to at most one within two pulses",
+        "All processors reset to zero simultaneously in the next pulse",
+        "All processors increment by two each pulse until synchronization"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How many pulses are required for synchronization in the bounded algorithm I after identifying a pair x,y with y\u2212x \u2265 d+1?",
+      "options": [
+        "Synchronization is immediate after one pulse",
+        "M\u2212y+1 pulses to shrink spread plus d to propagate",
+        "n pulses where n is the number of processors",
+        "Exactly 2d pulses",
+        "At most d pulses"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when all processors hold the value M\u22121 simultaneously in bounded algorithm I?",
+      "options": [
+        "All increment to one in staggered order",
+        "All reset to zero together in the next pulse",
+        "Synchronization is broken because wrap causes divergence",
+        "All increment to M then stall",
+        "Only processors with odd identifiers reset to zero"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the second bounded algorithm using minimum values, what bound on M suffices for correctness?",
+      "options": [
+        "M > 2d",
+        "M > log d",
+        "M > (n+1)d",
+        "M is irrelevant as long as values wrap eventually",
+        "M > n\u00b2"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the number of distinct clock values never increase during execution of the min-based bounded algorithm?",
+      "options": [
+        "Because each processor increments a newly invented value",
+        "Because each processor averages neighbor values, producing convergence",
+        "Because processors stop updating once two values are equal",
+        "Because each processor resets to zero when it detects multiple distinct values",
+        "Because each processor chooses an existing neighbor value and increments it"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the second bounded algorithm, what ensures convergence when no processor assigns zero in the first d pulses?",
+      "options": [
+        "Randomization eventually forces all values to coincide",
+        "Each processor switches to max-based behavior after d pulses",
+        "Processors stop updating until a global reset occurs",
+        "The maximum value propagates outward from the largest initial clock",
+        "An induction on distance shows all processors adopt the minimal value within d pulses"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What common feature of the two cases in bounded algorithm II ensures eventual synchronization?",
+      "options": [
+        "Both rely on randomized resets of outliers",
+        "Both guarantee that eventually only one distinct value remains",
+        "Both depend on the existence of a unique leader node",
+        "Both ensure that zero is eventually held by every processor",
+        "Both require processors to alternate between min and max rules"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the unidirected ring lower bound proof, how is the transition function f defined?",
+      "options": [
+        "f maps the set of all processor states to a single global update",
+        "f maps each processor\u2019s state and its left neighbor\u2019s state to the processor\u2019s next state",
+        "f maps a processor\u2019s state and its right neighbor\u2019s state to the neighbor\u2019s next state",
+        "f maps the maximum of neighbor states to the processor\u2019s identifier",
+        "f maps each processor\u2019s current state to a random next state"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the unidirected ring lower bound proof, how is the infinite sequence of states s1, s2, \u2026 constructed?",
+      "options": [
+        "By choosing values randomly from the set of possible states",
+        "By averaging neighbor states until convergence",
+        "By concatenating the outputs of all processors in parallel",
+        "By iterating the transition function f over pairs of consecutive states",
+        "By assigning each processor a unique identifier and incrementing sequentially"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What behavior is observed in the unidirected ring when the constructed sequence of states is used?",
+      "options": [
+        "Half of the processors stop updating while others increment",
+        "Processors alternate between two values forever",
+        "The set of states rotates one place to the left each pulse without stabilizing",
+        "The system synchronizes but with period two instead of period one",
+        "All processors eventually reset to zero simultaneously"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can the infinite rotation of states in the unidirected ring never yield stabilization?",
+      "options": [
+        "Because states rotate without changing, violating the requirement of increment per pulse",
+        "Because every state encodes the same clock value, preventing increment",
+        "Because identifiers are required to break ties in the rotation",
+        "Because modulo arithmetic forces oscillation",
+        "Because processors eventually stop updating after k steps"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How is the lower bound proof extended to bidirectional rings?",
+      "options": [
+        "By doubling the number of states to break symmetry",
+        "By requiring processors to alternate between left and right neighbor updates",
+        "By considering triples (si\u22121, si, si+1) and constructing sequences of length O(|S|\u00b3)",
+        "By replacing modulo arithmetic with averaging",
+        "By adding random resets when a processor has two neighbors"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the randomized constant-state algorithm achieve stabilization?",
+      "options": [
+        "Each processor uses random identifiers to elect a leader and synchronize",
+        "Each processor resets to zero whenever a conflict is detected",
+        "Each processor alternates deterministically between left and right neighbors",
+        "Each processor always increments its own value by two",
+        "Each processor randomly picks its own or a neighbor\u2019s value, then increments by one modulo M"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes hybrid fault tolerance in clock synchronization algorithms?",
+      "options": [
+        "It addresses both transient faults and permanent processor faults",
+        "It ensures correctness only when no faults occur during convergence",
+        "It assumes all processors can eventually crash permanently",
+        "It eliminates the need for synchronous pulses",
+        "It tolerates only faults that occur after a safe configuration is reached"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why are napping faults considered more severe than crash failures?",
+      "options": [
+        "Because a napping processor may resume operation and disrupt convergence",
+        "Because napping processors cannot be detected by neighbors",
+        "Because crash failures can occur only in rings, not complete graphs",
+        "Because crash failures require unique identifiers, while napping does not",
+        "Because napping processors consume more memory than crashed processors"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does it mean for a clock synchronization algorithm to be wait-free and self-stabilizing?",
+      "options": [
+        "Clocks converge only when processors wait for acknowledgment messages",
+        "Every processor can increment its clock by one per pulse regardless of other processors\u2019 behavior",
+        "Processors must elect a leader before convergence can begin",
+        "Every processor eventually halts, avoiding dependence on neighbors",
+        "Agreement is guaranteed only if fewer than half the processors are faulty"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which pair of properties must a wait-free self-stabilizing clock algorithm satisfy?",
+      "options": [
+        "Adjustment and agreement",
+        "Safety and deadlock-freedom",
+        "Agreement and randomness",
+        "Adjustment and fairness",
+        "Fairness and liveness"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following illustrates an algorithm that meets only one of the adjustment or agreement requirements?",
+      "options": [
+        "Every processor sets its clock to a random number in each pulse",
+        "Every processor increments by averaging all neighbor values",
+        "Every processor compares neighbors and adopts the maximum value plus one",
+        "Every processor elects a leader, then increments by following that leader",
+        "Every processor increments its clock by one each pulse without communication"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the simple wait-free self-stabilizing algorithm with k=1, how does a non-crashed processor update its clock?",
+      "options": [
+        "It chooses the maximal clock among all processors and assigns that value plus one",
+        "It averages neighbor clocks and rounds to the nearest integer",
+        "It chooses the minimal clock among neighbors and increments it",
+        "It increments its own value by one regardless of others",
+        "It resets to zero whenever its value reaches M\u22121"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do the clocks of all non-crashed processors executing k=1 steps agree?",
+      "options": [
+        "Because each processor reads all others and updates to the same maximal value plus one",
+        "Because they all reset to zero every d pulses",
+        "Because each processor increments by its own unique identifier",
+        "Because randomness ensures values converge probabilistically",
+        "Because they alternate between min and max updates"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the k=1 algorithm handle transient faults that lead to arbitrary initial configurations?",
+      "options": [
+        "It requires randomized resets to converge",
+        "It may deadlock until faults stop occurring",
+        "It immediately recovers, since each step re-establishes max-based agreement",
+        "It requires O(d) pulses to propagate minimal values",
+        "It diverges if more than half of the processors are faulty"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the bounded modulo M variant of the k=1 algorithm fail under napping faults?",
+      "options": [
+        "Because crashed processors cannot be distinguished from active ones",
+        "Because the minimal value propagates too slowly compared to the maximum",
+        "Because processors cannot compute max+1 without unique identifiers",
+        "Because a napping processor holding M\u22121 can repeatedly cause others to wrap to zero",
+        "Because modulo arithmetic prevents agreement after transient faults"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the arrow mechanism play in the bounded wait-free self-stabilizing algorithm?",
+      "options": [
+        "It distinguishes between crashed and napping processors",
+        "It prevents modulo wraparound from occurring simultaneously",
+        "It ensures that only processors with even identifiers increment clocks",
+        "It forces processors to alternate increments to avoid conflicts",
+        "It allows processors to detect when they are behind and adjust order variables"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the scissors, paper, stone analogy implement the arrow mechanism?",
+      "options": [
+        "Each processor increments its clock twice if it wins against its neighbor",
+        "Each processor maintains an order variable modulo 3, compared against neighbors",
+        "Each processor assigns random priorities that expire every pulse",
+        "Each processor flips a coin to decide whether it is ahead or behind",
+        "Each processor uses a binary flag that alternates between active and passive"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to the arrow mechanism, when is processor Pi considered behind Pj?",
+      "options": [
+        "When Pi has a smaller clock value than Pj",
+        "When (orderij + 1) mod 3 = orderji",
+        "When Pi and Pj share the same minimal clock value",
+        "When Pi fails to update for two consecutive pulses",
+        "When orderij = orderji"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens to the arrow between Pi and Pj when both execute a step simultaneously?",
+      "options": [
+        "The arrow alternates direction every pulse",
+        "The arrow has no direction, meaning neither is behind the other",
+        "The arrow becomes permanently directed toward Pi",
+        "The arrow oscillates unpredictably between the two",
+        "The arrow becomes permanently directed toward Pj"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "If Pi continues executing steps while Pj is napping, what is the resulting relation when Pj resumes?",
+      "options": [
+        "Both become permanently out of sync and cannot recover",
+        "Pi resets its order variable to zero, forcing Pj to catch up",
+        "Pj and Pi alternate between being behind indefinitely",
+        "Pj is behind Pi and must increment its order variable",
+        "Pi is behind Pj until Pi executes again"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of the set A, processors not behind any other, in the bounded wait-free algorithm?",
+      "options": [
+        "It assigns unique identifiers for processors to follow during convergence",
+        "It identifies processors that must reset to zero in the next pulse",
+        "It ensures that only processors in A advance clocks to maintain agreement",
+        "It forces processors outside A to increment by two instead of one",
+        "It guarantees fairness by rotating leadership among processors"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the bounded wait-free algorithm, what happens if the set A is empty during a pulse?",
+      "options": [
+        "The system halts permanently and cannot recover",
+        "All processors reset their clocks to zero",
+        "No processor changes its clock value in that pulse",
+        "Each processor switches to the unbounded algorithm",
+        "Every processor increments by one regardless of neighbors"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What value of k is established by Theorem 6.1 for the bounded wait-free self-stabilizing algorithm?",
+      "options": [
+        "k = d",
+        "k = n",
+        "k = 2",
+        "k is unbounded",
+        "k = 1"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the proof of Theorem 6.1 show that the agreement requirement holds?",
+      "options": [
+        "By proving that the minimal value propagates to all nodes within d pulses",
+        "By requiring processors to elect a global leader before updating",
+        "By demonstrating that processors always reset to zero simultaneously",
+        "By showing that every processor in A chooses the same maximal value",
+        "By showing that processors eventually alternate increments in sync"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the proof of Theorem 6.1 conclude that the adjustment requirement is satisfied?",
+      "options": [
+        "Because processors randomize their updates to avoid conflicts",
+        "Because every processor increments by one modulo M when in A",
+        "Because processors reset to zero when all hold M\u22121",
+        "Because processors halt after two steps to preserve stability",
+        "Because the minimal value propagates to overwrite outliers"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to Theorem 6.1, why does Pi need to execute at least two successive steps before both adjustment and agreement are guaranteed?",
+      "options": [
+        "Because the algorithm requires Pi to reset to zero on the first step",
+        "Because the minimal value must propagate at least twice before convergence",
+        "Because order variables require three increments before stabilization",
+        "Because the first step may leave Pi outside set A",
+        "Because the first step ensures A is non-empty, and the second ensures all processors in A select the same clock"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do processors that execute a step in the same pulse compute the same set A?",
+      "options": [
+        "Because they synchronize via random resets before each pulse",
+        "Because each processor uses unique identifiers to break ties",
+        "Because processors alternate leader roles to coordinate",
+        "Because the minimal value propagates globally at the start of each pulse",
+        "Because they all observe the same order variables at that pulse"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the proof of Theorem 6.1 show that processors in A reach agreement after Pi\u2019s second step?",
+      "options": [
+        "They independently select the same maximal value from A and increment it",
+        "They use randomization to select one of the values in A",
+        "They each reset to zero if they detect a gap larger than d",
+        "They average neighbor clocks until values match",
+        "They coordinate by sending acknowledgment messages"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What assumption about the starting configuration is made in the proof of Theorem 6.1?",
+      "options": [
+        "That only one processor starts with the maximal clock value",
+        "That processors begin synchronized in pairs",
+        "That order variables and clock values may start arbitrarily",
+        "That all clocks initially hold zero",
+        "That all processors belong to set A initially"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Compared to the unbounded wait-free algorithm with k=1, what tradeoff does the bounded wait-free algorithm with k=2 introduce?",
+      "options": [
+        "Simpler implementation but probabilistic guarantees",
+        "Faster convergence but weaker fault tolerance",
+        "Slower convergence but bounded memory usage",
+        "Larger state space with identical convergence speed",
+        "Reduced agreement property but faster adjustment"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the combination of adjustment and agreement in the bounded wait-free algorithm guarantee?",
+      "options": [
+        "That clocks eventually synchronize and increment together despite arbitrary starts",
+        "That processors elect a leader to decide increments",
+        "That modulo wraparound is prevented entirely",
+        "That faults cannot occur during convergence",
+        "That processors reset to zero after each complete cycle"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the bounded wait-free algorithm use modulo M arithmetic for clock updates?",
+      "options": [
+        "To eliminate the need for order variables",
+        "To allow each processor to select the minimal neighbor value",
+        "To ensure that clock values remain within a finite range",
+        "To reduce communication complexity to O(1)",
+        "To guarantee convergence in exactly d pulses"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the bounded wait-free algorithm ensure progress despite the presence of napping processors?",
+      "options": [
+        "By alternating between synchronous and asynchronous steps",
+        "By resetting all clocks after every timeout interval",
+        "By forcing all processors to wait until every neighbor responds",
+        "By relying on majority voting across active processors",
+        "By ignoring napping processors through the arrow mechanism and set A"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best characterizes the bounded wait-free algorithm?",
+      "options": [
+        "Probabilistic, converging with high probability but not certainty",
+        "Unbounded, requiring arbitrarily large registers for clock values",
+        "Majority-based, requiring more than half the processors to be correct",
+        "Randomized, using coin flips to select which clock value to adopt",
+        "Deterministic, using bounded states and order variables to achieve k=2 stabilization"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the core contribution of the bounded wait-free algorithm with k=2?",
+      "options": [
+        "It eliminates the need for any inter-processor communication",
+        "It shows that deterministic leader election is necessary for progress",
+        "It proves that transient faults cannot occur during convergence",
+        "It demonstrates that bounded memory and wait-freedom can coexist",
+        "It introduces probabilistic guarantees into clock synchronization"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it impossible to design a uniform digital clock-synchronization algorithm with only a constant number of states per processor?",
+      "options": [
+        "Because large rings can exhibit infinite state rotations without convergence",
+        "Because processors require unique identifiers",
+        "Because agreement requires randomized resets",
+        "Because modulo arithmetic always breaks synchronization",
+        "Because transient faults prevent convergence regardless of state space"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the unidirected ring lower bound, what key property leads to non-stabilization?",
+      "options": [
+        "State transitions rotate around the ring without reducing diversity",
+        "Each processor can only read its right neighbor\u2019s clock",
+        "Majority consensus cannot be reached in odd-sized rings",
+        "The minimal value propagates too slowly",
+        "Randomization is required to break ties"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What convergence guarantee does the randomized constant-state algorithm provide?",
+      "options": [
+        "Converges with probability at least 0.5 after O(n) pulses",
+        "Converges within exactly d pulses deterministically",
+        "Converges with probability 1 in every infinite execution",
+        "Converges only if fewer than half the processors are faulty",
+        "Never converges but maintains bounded disagreement"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does choosing a neighbor\u2019s clock value at random help the constant-state algorithm stabilize?",
+      "options": [
+        "It eliminates the need for bounded registers",
+        "It reduces the number of distinct clock values in the system over time",
+        "It guarantees that all processors select the same value in every pulse",
+        "It forces every processor to synchronize to the minimal value",
+        "It prevents processors from exceeding M\u22121 simultaneously"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the randomized constant-state algorithm, what role does the designated node Pl play in the sl-game analogy?",
+      "options": [
+        "It detects when the system has stabilized",
+        "It serves as a leader whose clock is copied directly by all others",
+        "It randomly assigns initial states to break symmetry",
+        "It is a special node that increments twice per pulse",
+        "It is the target node toward which processors reduce their distance when selecting neighbors"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "According to the randomized strategy, within how many pulses does the system stabilize once nodes consistently choose paths toward Pl?",
+      "options": [
+        "Within d pulses",
+        "Within O(n) pulses",
+        "Within 2d pulses",
+        "Within 1 pulse",
+        "It cannot be bounded deterministically"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes the randomized constant-state algorithm from the deterministic impossibility result?",
+      "options": [
+        "It introduces randomness, ensuring convergence with probability 1 despite constant states",
+        "It guarantees convergence deterministically within d pulses",
+        "It requires majority agreement to stabilize",
+        "It increases the number of states beyond a constant",
+        "It uses leader election to break symmetry"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

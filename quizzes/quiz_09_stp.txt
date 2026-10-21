@@ -1,0 +1,408 @@
+{
+  "topic": "09 Stp",
+  "questions": [
+    {
+      "question": "What is a switching loop in a network?",
+      "options": [
+        "A network configuration where all nodes are directly connected to a central switch, which uses a do-forever loop to control them.",
+        "A network topology where data is transmitted in a circular path between multiple nodes.",
+        "A network safety mechanism to prevent unauthorized access to switches.",
+        "A network issue that occurs when there are several data-link layer paths between two nodes."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the consequence of a switching loop in a network?",
+      "options": [
+        "The potential for broadcast storms and repeated broadcasting of frames.",
+        "Efficient broadcast of Ethernet frames to all nodes.",
+        "Reduced data transmission speed across the network.",
+        "Enhanced network performance due to redundant paths."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can frames proliferate forever in a looped network topology?",
+      "options": [
+        "Because the data-link layer does not use the TTL technique, allowing frames to circulate endlessly.",
+        "Because the network uses Time To Live (TTL) technique to limit frame propagation.",
+        "Because frames are dropped when they encounter a looped topology.",
+        "Because the data-link layer employs CRC codes to secure frame transmission, but these code may fail understandably."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary purpose of the Spanning Tree Protocol (STP) in a network?",
+      "options": [
+        "To construct a loop-free logical topology and prevent broadcast storms.",
+        "To enable all network links for high-speed data transmission.",
+        "To maximize the number of active paths between network nodes.",
+        "To create redundant links for load balancing."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does STP achieve its goal of preventing broadcast storms in a network?",
+      "options": [
+        "By regulating the broadcast rate when flooding the network with messages.",
+        "By disabling network links in which the broadcast storms occur.",
+        "By constructing a spanning tree that enables specific links and disables others.",
+        "By creating multiple active paths for data transmission."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What action does STP take in response to the failure of an active network link?",
+      "options": [
+        "STP increases the broadcast storm to signal the link failure.",
+        "STP includes backup links to replace the failed active links.",
+        "STP creates additional active paths to compensate for the failure.",
+        "STP does not have the capability to handle link failures."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which protocol was originally standardized as IEEE 802.1D and introduced by Radia Perlman?",
+      "options": [
+        "Standard Spanning Tree Protocol (STP)",
+        "Local Area Network (LAN)",
+        "Rapid Spanning Tree Protocol (RSTP)",
+        "Multiple Spanning Tree Protocol (MSTP)"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What was the primary motivation for introducing Rapid Spanning Tree Protocol (RSTP) as IEEE 802.1w in 2001?",
+      "options": [
+        "To add support for wireless networks.",
+        "To slow down the spanning tree convergence process.",
+        "To improve the speed of spanning tree convergence.",
+        "To limit the complexity of network management."
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is RSTP no longer in use, and what replaced it in modern network standards?",
+      "options": [
+        "RSTP was deprecated because it caused network instability.",
+        "RSTP is still widely used due to its effectiveness.",
+        "RSTP is used exclusively in metropolitan area networks.",
+        "RSTP is replaced by the IEEE 802.1Q-2014 standard, which incorporates its functionality."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary objective of the Breadth-First Search (BFS) algorithm in the context of network routing?",
+      "options": [
+        "To perform a depth-first search of the network.",
+        "To explore the neighboring nodes before the root node.",
+        "To find the longest path from the root node.",
+        "To construct a directed tree with edges pointing toward the root."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does the term \"root\" refer to in the context of the BFS algorithm?",
+      "options": [
+        "The starting node for the BFS traversal.",
+        "The last node to be explored in the BFS traversal.",
+        "The node located furthest from the current position.",
+        "The node with the most neighbors."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it essential to construct a directed tree with edges pointing toward the root in BFS?",
+      "options": [
+        "The number of neighbors a node has.",
+        "The time it takes for a message to travel from the root node.",
+        "The physical distance between network nodes.",
+        "The number of hops between a given node and the root in the network."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the initial value of the \"distance\" variable for root processors in non-self-stabilizing Distributed BFS?",
+      "options": [
+        "It is set to 0.",
+        "It is set to a random value.",
+        "It is set to \u221e.",
+        "It is set to 1."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What action does a non-root processor take upon receiving a message \"<d>\" from its neighbor \"pj\" in non-self-stabilizing Distributed BFT?",
+      "options": [
+        "It updates its distance to \"d+1\" and sets \"parent\" to \"j.\"",
+        "It ignores the message.",
+        "It increments its own distance by \"d.\"",
+        "It assigns its distance to min(distance,d+1) and sets \"parent\" to j in case this assignment changed distance value.",
+        "It sends a message \"<distance>\" to its neighbors."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Can there be more than one BFS tree rooted at a given node in a graph?",
+      "options": [
+        "Yes, there can be more than one BFS tree rooted at the same node.",
+        "Yes, there can be multiple BFS trees, but they must have different root nodes.",
+        "No, there can only be one BFS tree for any node.",
+        "It depends on the size of the graph."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of First-BFS, what is the purpose of selecting the \"first\" path when there are multiple shortest paths to the root?",
+      "options": [
+        "To ensure the constructed tree is specifies exactly one tree.",
+        "To minimize the number of edges in the tree.",
+        "To create redundancy in the BFS tree.",
+        "To prioritize longer paths for optimization."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "When there are multiple shortest paths to the root in a graph, how does First-BFT decide which path to select as the \"first\" path?",
+      "options": [
+        "It uses local identifiers to determine the lexicographic order among all shortest paths to the root.",
+        "It picks the path with the most branches.",
+        "It selects the path with the highest total number of edges.",
+        "It chooses the path with the fewest nodes."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the First-BFS construction, what does the constant \u03b4 (\"delta\") represent for a processor?",
+      "options": [
+        "The distance between the processor and the root.",
+        "The number of rounds required for tree construction.",
+        "The total number of processors in the network.",
+        "The number of neighbors that a given processor has."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which processor(s) in the First-BFS construction are responsible for informing their neighbors about their distance from the root?",
+      "options": [
+        "Only the processors with the highest distance.",
+        "Only the root processor.",
+        "The non-root processors.",
+        "All processors in the network."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of the \"FirstFound\" flag in the First-BFS construction?",
+      "options": [
+        "It tracks the distance of non-root processors.",
+        "It indicates the total number of processors that can connect directly to the root.",
+        "It marks the first processor to receive a message.",
+        "None of the other options.",
+        "It determines the root processor.",
+        "It marks that the first neighboring processor on the shortest path was selected."
+      ],
+      "correct_answers": [
+        5
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the First-BFS construction, how are parent-child relationships between processors determined?",
+      "options": [
+        "Remotely assigned by the root processor.",
+        "By selecting the first processor with the shortest distance to the root as the parent.",
+        "Based on the total number of neighbors a processor has.",
+        "By selecting as the parent the closest neighbor."
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary idea behind the concept of \"Fair Composition\" in self-stabilizing algorithms?",
+      "options": [
+        "Combining algorithms so that the stabilized behavior of one is used by the other.",
+        "Preventing algorithms from interacting with each other.",
+        "Ensuring that every algorithm can independently detect stability.",
+        "Composing algorithms to create a more complex behavior."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of fair composition, what is the role of the server algorithm, such as AL1?",
+      "options": [
+        "It ensures that some server properties will hold in a way that can be used by the client.",
+        "It modifies properties to be used by the server.",
+        "It stabilizes the entire system independently.",
+        "It ensures that the client algorithm remains stabelizes quicker."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "For a self-stabilizing algorithm AL2 for task T2 given task T1, under what condition is AL2 considered self-stabilizing in a fair composition with AL1 for task T1?",
+      "options": [
+        "AL2 is self-stabilizing for T2 if it can independently detect the stability of T1.",
+        "AL2 is self-stabilizing for T2 if it executes only the steps of AL1.",
+        "AL2 is self-stabilizing for T2 if it has no connection to T1.",
+        "AL2 is self-stabilizing for T2 if any fair execution of AL2 with an A-projection in T1 has a suffix in T2."
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the Euler tour technique primarily used for in the context of trees?",
+      "options": [
+        "Traversing the tree and labeling edges to show the traversal order.",
+        "Identifying loops and cycles within the tree structure.",
+        "Finding the shortest path between two tree nodes.",
+        "Calculating the height of the tree."
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

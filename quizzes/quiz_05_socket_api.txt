@@ -1,0 +1,1365 @@
+{
+  "topic": "05 Socket Api",
+  "questions": [
+    {
+      "question": "What fundamental issue arises if the socket API were implemented entirely in user space, assuming the TCP/IP stack remains in the kernel?",
+      "options": [
+        "Applications would need to handle ARP resolution manually",
+        "Sockets would only be usable by root processes",
+        "Applications could bypass kernel protection, causing security violations",
+        "Applications would require privileged access to device drivers to transmit packets",
+        "TCP congestion control would no longer operate correctly"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary flexibility gained by separating bind() and connect() in the socket API?",
+      "options": [
+        "It guarantees that sockets never share the same local port",
+        "It ensures only blocking sockets may initiate connections",
+        "It allows servers to accept multiple simultaneous connections",
+        "It allows applications to bind to a chosen local port or interface before connecting",
+        "It prevents sockets from entering the TIME_WAIT state"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens if two processes both attempt to bind TCP sockets to the same port without special socket options?",
+      "options": [
+        "Subsequent bind() calls fail with EADDRINUSE",
+        "The first bind() silently overrides the second without error",
+        "Both bind() calls succeed, but only one process can call listen()",
+        "The kernel alternates connections randomly between the processes",
+        "Connections are merged across both processes\u2019 accept() queues"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Under what condition can accept() return a valid connected socket even if the client has already closed the connection?",
+      "options": [
+        "When the listen backlog is larger than the system maximum",
+        "When the server sets the socket to non-blocking mode",
+        "When a non-blocking connect() from the client times out",
+        "When the client aborts with RST before the handshake completes",
+        "When the handshake completes but the client closes before the server calls accept()"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might recv() return less data than the application requested, even if the sender wrote a larger amount in one call?",
+      "options": [
+        "recv() is truncated whenever delayed ACKs are in use",
+        "TCP delivers a byte stream, so recv() may return only what is currently buffered",
+        "recv() splits returns strictly along TCP segment boundaries",
+        "recv() always waits until a complete application message has arrived",
+        "The receiver\u2019s advertised window limits each recv() call\u2019s length"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens if the client\u2019s final ACK in the three-way handshake is lost?",
+      "options": [
+        "The server assumes the connection succeeded and moves to ESTABLISHED immediately",
+        "Both endpoints fall back to LISTEN and wait for a new connection attempt",
+        "The client retries the ACK automatically with exponential backoff",
+        "The client enters ESTABLISHED, but the server remains in SYN_RCVD and retransmits SYN+ACK until timeout or the ACK arrives",
+        "The server drops the connection and closes it with RST"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the TIME_WAIT state enforced specifically on the active closer in TCP?",
+      "options": [
+        "Because TIME_WAIT ensures the passive closer cannot reopen the same port prematurely",
+        "Because TIME_WAIT is required to guarantee congestion window reset for the next connection",
+        "Because FIN segments must be acknowledged twice to ensure reliability",
+        "Because the active closer must retransmit the final ACK if lost and absorb delayed duplicate segments for twice the MSL (2MSL)",
+        "Because the passive closer must free resources sooner for scalability"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when both endpoints of a TCP connection issue close() at the same time?",
+      "options": [
+        "The connection resets immediately with RST from both sides",
+        "Both endpoints block indefinitely waiting for each other\u2019s FIN",
+        "One side skips TIME_WAIT entirely because FIN segments cross in flight",
+        "Both sides transition through FIN_WAIT_1, may enter CLOSING, and then TIME_WAIT",
+        "One side stays in ESTABLISHED while the other closes normally"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens if a TCP client program omits the connect() call but still calls send() or recv()?",
+      "options": [
+        "The socket silently upgrades to UDP mode and sends datagrams instead",
+        "The compiler rejects the code because connect() is mandatory",
+        "The program compiles, but at runtime send/recv fail immediately with ENOTCONN",
+        "The socket automatically connects to the loopback address on port 0",
+        "The kernel queues the data and transmits it when connect() is eventually called"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is zeroing out the sockaddr_in structure before use necessary in the daytime client?",
+      "options": [
+        "It ensures that the socket uses IPv6 by default",
+        "It forces the operating system to initialize the ARP cache",
+        "It prevents undefined values in unused fields from causing connection errors",
+        "It guarantees that the kernel will assign an ephemeral port correctly",
+        "It prevents the socket from falling back to UDP when TCP fails"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What error occurs if a TCP server attempts to bind to a port that is already in use, and how can this be resolved?",
+      "options": [
+        "bind() fails with EPIPE, resolved by calling shutdown before bind",
+        "bind() fails with ECONNRESET, resolved by closing all existing sockets",
+        "bind() fails with ENOTCONN, resolved by retrying after a delay",
+        "bind() fails silently, resolved by restarting the kernel\u2019s TCP stack",
+        "bind() fails with EADDRINUSE, resolved by using SO_REUSEADDR"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In what case might listen() appear to succeed even if bind() was misconfigured, and why is this dangerous?",
+      "options": [
+        "When bind() sets a privileged port without permissions, listen() ignores it",
+        "When bind() is called on a UDP socket, listen() always returns success",
+        "When bind() was skipped entirely, listen() defaults to port 0, masking errors",
+        "When bind() used SO_REUSEPORT incorrectly, listen() may drop connections",
+        "When bind() used INADDR_ANY without a valid interface, listen() silently accepts"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main problem if an echo server handles multiple clients in a single blocking loop without multiplexing?",
+      "options": [
+        "The server deadlocks after serving one client",
+        "The server silently converts blocking sockets into non-blocking ones",
+        "All clients share a single socket descriptor, leading to data corruption",
+        "Kernel buffers overflow, causing TCP connections to reset",
+        "Clients experience starvation because one blocked read halts others"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What unexpected result can arise if two hosts with different endianness exchange data without using htons/ntohs conversions?",
+      "options": [
+        "Multi-byte fields are interpreted with reversed byte significance",
+        "The data payload is truncated to half its intended size",
+        "The connection stalls because SYN/ACK packets cannot be parsed",
+        "TCP checksum validation always fails on the receiver",
+        "IP addresses are swapped with port numbers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can a program behave correctly in a lab environment but fail in production if byte order conversion functions (htons/ntohs) are skipped?",
+      "options": [
+        "Lab networks disable endianness checks, but production routers enforce them",
+        "The compiler pads socket structures differently on test vs production systems",
+        "Lab sockets silently auto-convert, but production sockets do not",
+        "All lab machines happen to use little-endian, but production may use big-endian",
+        "Skipped functions cause ARP caches to misinterpret MAC addresses"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What key advantage does getaddrinfo provide over gethostbyname when writing dual-stack (IPv4/IPv6) applications?",
+      "options": [
+        "It returns both IPv4 and IPv6 results in a protocol-independent structure",
+        "It caches DNS responses internally across processes",
+        "It forces all sockets to prefer IPv6 unless overridden",
+        "It guarantees IPv6 resolution even if DNS only stores IPv4 records",
+        "It automatically retries failed DNS lookups without application logic"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can incorrect use of hints to getaddrinfo cause a server to accept only IPv6 connections?",
+      "options": [
+        "Forgetting to set ai_socktype results in undefined behavior in bind()",
+        "Setting ai_protocol to IPPROTO_TCP forces IPv6 preference",
+        "Setting ai_family to AF_INET causes the server to ignore IPv6 clients",
+        "Forgetting to zero out the hints structure triggers IPv6-only fallback",
+        "Using AF_INET6 in hints restricts results to IPv6 addresses only"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does inet_pton sometimes succeed with malformed dotted-decimal strings like 300.1.1.1?",
+      "options": [
+        "It interprets out-of-range octets as negative signed values",
+        "It only validates string format, not numeric ranges of octets",
+        "It defers error detection until connect() is called",
+        "The kernel automatically normalizes invalid octets into valid ones",
+        "It silently wraps values above 255 into valid 8-bit integers"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the socket API require passing a sockaddr pointer instead of a sockaddr_in pointer to functions like bind()?",
+      "options": [
+        "To allow support for multiple address families with a common type",
+        "To guarantee compatibility with UDP but not TCP",
+        "To simplify byte-order conversions of port numbers",
+        "To prevent buffer overflows when casting socket structures",
+        "To enforce stricter type safety in C compilers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is the TIME_WAIT state essential for TCP correctness, despite appearing wasteful?",
+      "options": [
+        "It guarantees delayed duplicate segments are not misinterpreted by new connections",
+        "It ensures passive closers cannot reopen the same socket prematurely",
+        "It prevents half-open connections from persisting indefinitely",
+        "It forces retransmission of SYN packets until acknowledged",
+        "It ensures routers can flush stale ARP entries before reuse"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does using fork() for TCP server concurrency compare to select()-based concurrency in terms of system behavior?",
+      "options": [
+        "fork() always outperforms select() when handling short-lived connections",
+        "fork() eliminates zombie processes automatically without signals",
+        "fork() provides stronger memory isolation but higher process overhead",
+        "select() allows true parallelism across cores without extra mechanisms",
+        "select() guarantees better performance regardless of number of clients"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can fork-based concurrency lead to zombie processes, and how should they be prevented?",
+      "options": [
+        "Zombies arise when multiple processes bind to the same port concurrently",
+        "The parent must reap terminated children with wait(), or they persist as zombies",
+        "Clients that disconnect abruptly create zombie sockets in the kernel",
+        "Children retain open file descriptors, causing resource leaks",
+        "The kernel delays FIN processing, leaving processes in zombie state"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must a TCP server install a SIGCHLD handler when using fork() concurrency?",
+      "options": [
+        "To ensure terminated child processes are reaped and do not accumulate",
+        "To synchronize TCP sequence numbers across child processes",
+        "To prevent kernel buffer exhaustion from unhandled signals",
+        "To allow children to inherit the parent\u2019s listen queue safely",
+        "To avoid orphaning sockets after children terminate"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Under what condition might the readn function block indefinitely?",
+      "options": [
+        "When the sender uses TCP_NODELAY to transmit fragmented data",
+        "When the sender closes the socket before sending EOF",
+        "When the receiver\u2019s buffer size is smaller than the requested n",
+        "When the receiver mistakenly calls writen instead of readn",
+        "When the peer sends fewer than n bytes without closing the connection"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What edge case does writen handle that a naive write loop might miss?",
+      "options": [
+        "Reassembly of fragmented TCP segments into full messages",
+        "Guarantee that all writes are aligned to page boundaries",
+        "Conversion between blocking and non-blocking modes",
+        "Automatic flushing of stdio buffers on socket close",
+        "EINTR interruptions that cause write to return prematurely"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does the readline function require peeking at each byte instead of reading large blocks directly?",
+      "options": [
+        "To maintain TCP\u2019s urgent data semantics across sockets",
+        "To detect newline termination without consuming extra bytes",
+        "To synchronize reads with TCP segment boundaries",
+        "To guarantee that read() never returns partial lines",
+        "To prevent buffer overflows when users input long lines"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must the fd_set passed to select() be reinitialized before each call?",
+      "options": [
+        "Because fd_set cannot store more than 32 descriptors at a time",
+        "Because select() internally clears all descriptors upon return",
+        "Because fd_set is only valid for the first descriptor ready event",
+        "Because kernel reuses the same fd_set for asynchronous I/O",
+        "Because fd_set values are undefined after close() is called"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What subtle bug occurs if an application fails to reinitialize fd_set before select()?",
+      "options": [
+        "select() silently increases timeout values across iterations",
+        "select() consumes kernel buffers without returning data",
+        "select() immediately returns -1 with EBADF",
+        "select() blocks indefinitely even if descriptors are ready",
+        "select() reports readiness for descriptors that were ready in previous calls"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does select() address the problem of blocked reads in multi-client servers?",
+      "options": [
+        "It guarantees non-blocking reads by converting sockets to datagrams",
+        "It informs the application which sockets have data available before read()",
+        "It multiplexes CPU instructions to run one process per descriptor",
+        "It preemptively resends lost TCP segments on behalf of the kernel",
+        "It replaces recv() entirely with a synchronous batch read interface"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What limitation does select() introduce when scaling to thousands of concurrent connections?",
+      "options": [
+        "select() restricts each process to at most 16 sockets",
+        "fd_set must be scanned linearly, leading to O(n) overhead per call",
+        "select() cannot be used in combination with non-blocking sockets",
+        "select() requires each descriptor to be bound to the same port",
+        "select() consumes TCP sequence numbers at a faster rate"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does combining select() with readn/writen improve fault tolerance in networked servers?",
+      "options": [
+        "Because select retries failed system calls automatically",
+        "Because readn prevents TCP retransmissions from being triggered",
+        "Because readn/writen ensure complete transfers once sockets are marked ready",
+        "Because select forces sockets into non-blocking mode by default",
+        "Because writen bypasses the kernel\u2019s socket buffer limits"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is proper EOF handling essential in a robust echo client?",
+      "options": [
+        "To allow select() to recycle descriptors immediately",
+        "To ensure the client does not misinterpret empty reads as zero-length messages",
+        "To prevent the client from entering the TIME_WAIT state",
+        "To guarantee the server always sends FIN before the client does",
+        "To avoid triggering TCP keepalive probes prematurely"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main tradeoff of enabling SO_REUSEADDR when restarting a TCP server quickly?",
+      "options": [
+        "It eliminates TIME_WAIT entirely, risking packet misdelivery",
+        "It allows rebinding to a port in TIME_WAIT but risks accepting stray duplicates",
+        "It disables the server\u2019s ability to listen on privileged ports",
+        "It improves backlog queue capacity at the expense of security",
+        "It forces kernel to close all sockets bound to that port prematurely"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is TCP keepalive not enabled by default in most systems?",
+      "options": [
+        "Because it risks false peer death detection in lossy networks",
+        "Because it interferes with DNS caching mechanisms",
+        "Because it consumes file descriptors per connection",
+        "Because it automatically closes sockets on application errors",
+        "Because it requires IPv6-only operation"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can blindly enabling non-blocking mode on a socket lead to busy-waiting or CPU starvation?",
+      "options": [
+        "Because signals cannot interrupt non-blocking I/O",
+        "Because select() stops reporting readiness for non-blocking sockets",
+        "Because TCP disables congestion control in non-blocking mode",
+        "Because the kernel disables interrupts for all socket I/O",
+        "Because read/write return EAGAIN repeatedly if no readiness checks are done"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can a non-blocking connect() appear successful even though the TCP handshake is incomplete?",
+      "options": [
+        "Because connect() automatically retries until SYN-ACK is received",
+        "Because the kernel pre-allocates a connected descriptor before validation",
+        "Because select() immediately marks the socket writable regardless of state",
+        "Because EINTR is misinterpreted as success by the application",
+        "Because EINPROGRESS indicates the connection is pending, not established"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must both the read and write sets be checked with FD_ISSET in a select-based TCP client?",
+      "options": [
+        "Because select discards all events if only one set is inspected",
+        "Because a socket can be simultaneously ready for reading and writing",
+        "Because TCP readiness events are delivered alternately to each set",
+        "Because write readiness always implies urgent data handling",
+        "Because read readiness is unreliable without checking write readiness"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can a file descriptor marked writable by select() still fail on the next write()?",
+      "options": [
+        "Because select marks sockets writable only once per connection",
+        "Because TCP resets sequence numbers after every select cycle",
+        "Because select() confuses blocking and non-blocking modes",
+        "Because write() calls are truncated to MTU boundaries automatically",
+        "Because readiness only indicates buffer space, not guaranteed success"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What scalability limitation is imposed by FD_SETSIZE in select()?",
+      "options": [
+        "It restricts applications to one listening socket per protocol",
+        "It causes starvation when descriptors exceed system cache lines",
+        "It prevents select from being combined with epoll or poll",
+        "It fixes the maximum number of concurrent sockets at compile time",
+        "It enforces per-process limits regardless of hardware capacity"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is mixing stdin with sockets in select() sometimes tricky across systems?",
+      "options": [
+        "Because stdin readiness is ignored if it is line-buffered",
+        "Because stdin may not always be a true file descriptor suitable for select",
+        "Because stdin forces all sockets into blocking mode when included",
+        "Because select always prioritizes stdin over network descriptors",
+        "Because select() limits stdin readiness to one check per process"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What problem occurs if a socket is closed without being removed from all fd_sets before the next select()?",
+      "options": [
+        "select() returns EBADF for the closed descriptor",
+        "select() automatically reopens the descriptor with a new socket",
+        "select() misinterprets the descriptor as stdin readiness",
+        "select() blocks forever on the closed descriptor",
+        "select() discards all events for other descriptors"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must EINTR be handled explicitly when select() is interrupted by a signal?",
+      "options": [
+        "Because select() permanently disables signals after EINTR",
+        "Because EINTR resets the kernel\u2019s connection backlog",
+        "Because EINTR implies that sockets have been closed by the kernel",
+        "Because select() ignores all descriptors after an interrupt",
+        "Because otherwise signals may cause infinite loops or missed events"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How should a select-based server handle client disconnections to avoid file descriptor leaks?",
+      "options": [
+        "It must reset maxfd to zero unconditionally after every select()",
+        "It must rebind the listening socket to release closed descriptors",
+        "It must call shutdown() with SHUT_WR but leave the socket open",
+        "It must ignore read() returning zero, since TCP handles cleanup",
+        "It must call close() on the disconnected socket and remove it from fd_set"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What subtle bug arises if a server reuses closed file descriptors without resetting maxfd in a select loop?",
+      "options": [
+        "select() reports readiness for invalid descriptors beyond maxfd",
+        "select() delivers signals instead of readiness events",
+        "select() interprets the reused descriptor as ready for all events",
+        "select() blocks forever, ignoring new incoming connections",
+        "select() silently truncates the descriptor list, dropping clients"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does enabling SO_LINGER with a zero timeout affect TCP close() behavior?",
+      "options": [
+        "It delays connection teardown until all retransmissions succeed",
+        "It forces an immediate RST instead of graceful FIN exchange",
+        "It allows passive close to bypass the FIN_WAIT state",
+        "It disables TCP checksum verification for the final segment",
+        "It extends the TIME_WAIT state duration to double the default"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can disabling Nagle\u2019s algorithm with TCP_NODELAY improve responsiveness but reduce throughput?",
+      "options": [
+        "Because the kernel disables delayed ACKs when Nagle is off",
+        "Because small writes are sent immediately, increasing packet overhead",
+        "Because TCP_NODELAY disables congestion control in favor of speed",
+        "Because Nagle\u2019s algorithm is required for IPv6 but optional for IPv4",
+        "Because disabling Nagle forces every write() to wait for an ACK"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What tradeoff results from aggressively lowering TCP keepalive idle timeout?",
+      "options": [
+        "Elimination of TIME_WAIT but increased probability of SYN floods",
+        "Faster detection of dead peers but higher network overhead",
+        "Guaranteed protection against delayed duplicate segments",
+        "Improved fairness among flows but worse latency on LANs",
+        "Reduced RTT variance but increased risk of buffer overflow"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does poll() improve over select() in environments with many descriptors?",
+      "options": [
+        "poll internally uses multiple threads to parallelize socket checks",
+        "poll provides O(1) readiness detection regardless of number of descriptors",
+        "poll disables TCP buffering to reduce per-socket memory usage",
+        "poll scales better because it accepts arrays without FD_SETSIZE limits",
+        "poll guarantees readiness ordering based on descriptor value"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is poll() considered more scalable than select() for large descriptor sets?",
+      "options": [
+        "Because poll() uses interrupt coalescing to batch readiness events",
+        "Because poll() offloads descriptor scanning to the NIC hardware",
+        "Because poll() avoids copying fd_set data between user and kernel space",
+        "Because poll() allows dynamic arrays without compile-time limits",
+        "Because poll() guarantees constant-time updates regardless of n"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can closing sockets in TIME_WAIT state while using poll() lead to missed events?",
+      "options": [
+        "Because poll() only monitors writable sockets, not readable ones",
+        "Because closed sockets may still generate late events that are dropped",
+        "Because poll() suppresses duplicate descriptors in the pollfd array",
+        "Because TIME_WAIT sockets must be re-added after every poll call",
+        "Because poll() ignores sockets that transition from TIME_WAIT to CLOSED"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does a poll() return value of zero indicate, and what risk does misinterpretation pose?",
+      "options": [
+        "It means no descriptors are ready before the timeout expired",
+        "It means all descriptors are permanently closed by the kernel",
+        "It means poll() was interrupted by a signal without reporting EINTR",
+        "It means one socket is ready, but the kernel deferred notification",
+        "It means readiness information was truncated due to array limits"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it dangerous for an application to ignore POLLERR and POLLHUP flags in poll()?",
+      "options": [
+        "Because they cause socket descriptors to be recycled unpredictably",
+        "Because they automatically disable TCP keepalive timers",
+        "Because they force poll() into non-blocking mode permanently",
+        "Because they disable EPOLL compatibility in hybrid programs",
+        "Because they may signal conditions requiring close() or cleanup"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it critical to update the pollfd array after closing a socket?",
+      "options": [
+        "Because poll() reopens closed descriptors automatically",
+        "Because TCP sequence numbers must be reset when sockets close",
+        "Because closed descriptors left in the array can signal spurious readiness",
+        "Because poll() otherwise discards all other descriptors silently",
+        "Because poll() requires descriptors to be renumbered continuously"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What concurrency challenge arises when using poll() to multiplex both stdin and socket input?",
+      "options": [
+        "poll() disables line-buffering in stdin, breaking user-space semantics",
+        "stdin readiness can conflict with socket readiness, requiring careful handling",
+        "poll() always prioritizes sockets over stdin, starving user input",
+        "poll() requires stdin and sockets to use the same file descriptor numbers",
+        "poll() automatically discards stdin events if sockets are also active"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does array-based tracking of clients in a poll-based server complicate dynamic client management?",
+      "options": [
+        "Because poll() discards descriptors from arrays after timeouts",
+        "Because poll() requires all clients to use contiguous port numbers",
+        "Because removing clients requires compacting the array manually",
+        "Because poll() assigns readiness flags inconsistently across clients",
+        "Because array size must always equal the number of connected clients"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What semantic change occurs if SO_LINGER is set with a nonzero timeout during close()?",
+      "options": [
+        "close() forces FIN retransmission even after timeout",
+        "close() blocks until pending data is sent or timeout expires",
+        "close() ignores application data and discards buffers silently",
+        "close() converts the socket into non-blocking mode automatically",
+        "close() immediately sends an RST regardless of timeout value"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can SO_LINGER introduce delays during close() in a concurrent TCP server?",
+      "options": [
+        "Because SO_LINGER disables TCP\u2019s sliding window mechanism",
+        "Because close() may block until unsent data is acknowledged",
+        "Because close() automatically enters TIME_WAIT twice with linger set",
+        "Because FIN packets must be retransmitted multiple times",
+        "Because the kernel waits for DNS resolution before closing"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does epoll edge-triggered (ET) mode differ from level-triggered (LT) mode?",
+      "options": [
+        "ET disables write readiness events entirely, unlike LT",
+        "ET guarantees FIFO ordering of readiness events, LT does not",
+        "ET reports readiness only once until the state changes, while LT reports until consumed",
+        "LT only applies to UDP sockets, while ET is required for TCP",
+        "LT requires O(n) scanning per event, while ET is always O(1)"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must epoll edge-triggered servers read in a loop until EAGAIN after a readiness event?",
+      "options": [
+        "Because EAGAIN signals that the TCP connection has closed gracefully",
+        "Because edge-triggered events are only delivered once until the buffer empties",
+        "Because epoll discards subsequent readiness flags for already-read sockets",
+        "Because epoll_wait automatically alternates between sockets each cycle",
+        "Because kernel resets the socket buffer after each epoll_wait call"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What failure arises if an epoll edge-triggered server does not loop on write() until EAGAIN?",
+      "options": [
+        "The server may block in epoll_wait forever on writable events",
+        "The socket descriptor is demoted to level-triggered behavior",
+        "The kernel closes the socket automatically after a short write",
+        "TCP disables Nagle\u2019s algorithm permanently for that socket",
+        "The application may lose unsent data due to incomplete buffer flushes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is calling epoll_ctl with EPOLL_CTL_DEL after closing a socket essential?",
+      "options": [
+        "To automatically convert edge-triggered mode back to level-triggered",
+        "To reset TCP sequence numbers for new connections",
+        "To flush the kernel\u2019s send buffer explicitly",
+        "To prevent epoll from reporting readiness on a stale descriptor",
+        "To guarantee that the descriptor enters TIME_WAIT immediately"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can epoll report a writable socket even if the peer has already closed it?",
+      "options": [
+        "Because epoll does not support write readiness for IPv6 sockets",
+        "Because writability reflects local buffer space, not peer state",
+        "Because epoll aggregates readiness across all descriptors",
+        "Because the kernel reuses closed socket descriptors prematurely",
+        "Because TCP disables FIN detection in edge-triggered mode"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What risk arises if the same file descriptor is registered multiple times with epoll?",
+      "options": [
+        "epoll blocks until all duplicates are removed manually",
+        "Readiness notifications may be unpredictable or duplicated",
+        "The kernel discards all readiness events for that descriptor",
+        "The descriptor is excluded from level-triggered mode",
+        "epoll forces the descriptor into non-blocking mode automatically"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why can level-triggered epoll cause repeated wakeups for the same socket?",
+      "options": [
+        "Because the kernel retransmits FIN packets until acknowledged",
+        "Because epoll recycles descriptors after every wakeup",
+        "Because readiness events are converted into signals repeatedly",
+        "Because readiness persists until data is consumed from the buffer",
+        "Because TCP disables congestion control in level-triggered mode"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What risk arises if a high-traffic epoll server does not drain its accept() queue quickly?",
+      "options": [
+        "New connections may be dropped once the backlog overflows",
+        "Existing connections are reset due to SYN flooding defense",
+        "The listen socket is silently converted to non-blocking mode",
+        "The kernel automatically closes all established sockets",
+        "epoll stops reporting readiness for the listen socket permanently"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How should an epoll-based server handle partial writes on sockets flagged as writable?",
+      "options": [
+        "Switch the socket to blocking mode until the buffer is flushed",
+        "Treat them as fatal errors and close the socket immediately",
+        "Retry write() in a loop until all data is sent or EAGAIN is returned",
+        "Re-register the socket with EPOLL_CTL_DEL before continuing",
+        "Wait for the next epoll event to retry automatically"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does mixing stdin with sockets in an epoll loop require different handling compared to select()?",
+      "options": [
+        "Because select() automatically line-buffers stdin, while epoll does not",
+        "Because epoll treats stdin as edge-triggered only, unlike sockets",
+        "Because stdin readiness events persist indefinitely in epoll without manual reads",
+        "Because epoll requires stdin to be polled in blocking mode",
+        "Because epoll cannot register regular file descriptors like stdin reliably"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does reading zero bytes from a TCP socket indicate connection closure?",
+      "options": [
+        "Because the socket automatically switches to UDP mode on closure",
+        "Because TCP appends a null terminator to the receive buffer",
+        "Because the kernel converts empty reads into EOF when peer closes",
+        "Because zero-byte reads reflect an error in the socket API call",
+        "Because read() truncates the buffer when segment boundaries align"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What subtle bug can occur if a server removes a socket from epoll only after the peer has closed it?",
+      "options": [
+        "TCP retransmissions are disabled for all connections",
+        "The server may receive repeated EPOLLHUP events on a closed socket",
+        "The server may downgrade all sockets to level-triggered mode",
+        "The server may leak descriptors because epoll retains stale entries",
+        "The socket is automatically re-added by epoll with default flags"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does shutdown() differ from close() in handling half-duplex TCP shutdowns?",
+      "options": [
+        "shutdown() immediately resets the connection with RST",
+        "close() leaves the socket usable for further read/write, shutdown() does not",
+        "close() guarantees flushing of unsent data, shutdown() does not",
+        "shutdown() can disable only read or write streams, while close() affects both",
+        "shutdown() converts blocking sockets into non-blocking automatically"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must echo clients be prepared to handle recv() returning partial lines instead of assuming one call equals one message?",
+      "options": [
+        "Because sockets in blocking mode truncate data after 512 bytes",
+        "Because the kernel enforces segmentation at application message boundaries",
+        "Because partial lines only occur when TCP_NODELAY is enabled",
+        "Because TCP is a stream protocol and may deliver data in fragments",
+        "Because recv() is limited to the MTU size regardless of request"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What risk arises from using fixed-size application buffers with variable TCP segment sizes?",
+      "options": [
+        "Kernel TCP buffers are automatically resized to match application buffer size",
+        "Data may be fragmented across multiple buffers, complicating parsing",
+        "Buffers force the NIC to split packets into equal-sized chunks",
+        "Messages larger than the buffer cause recv() to silently truncate data",
+        "recv() always blocks until the buffer is filled completely"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What bug can occur if EOF on stdin is not handled correctly in an echo client multiplexing stdin and sockets?",
+      "options": [
+        "The server may hang waiting for input that never arrives",
+        "The client switches to non-blocking mode unexpectedly",
+        "The socket is silently promoted to a listening socket",
+        "The kernel reopens stdin automatically, causing data corruption",
+        "The client may keep sending null bytes to the server indefinitely"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it unsafe to reuse closed socket descriptors in long-running epoll servers without cleanup?",
+      "options": [
+        "Because TCP sequence numbers reset improperly on reused descriptors",
+        "Because descriptors persist until the system reboots",
+        "Because epoll may still associate events with the old descriptor number",
+        "Because the kernel automatically converts the descriptor into UDP mode",
+        "Because epoll requires descriptors to be contiguous in memory"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is synchronous user interaction harder to implement over epoll than raw socket I/O?",
+      "options": [
+        "Because epoll introduces buffering delays in interactive sessions",
+        "Because epoll disables canonical terminal mode by default",
+        "Because epoll requires stdin to use edge-triggered mode only",
+        "Because epoll forces applications to multiplex user input with network events",
+        "Because epoll limits each process to a single user input descriptor"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What timing bug can occur when one peer calls shutdown(SHUT_WR) before the other is ready to read?",
+      "options": [
+        "The socket automatically transitions into non-blocking mode",
+        "The kernel retransmits FIN indefinitely, blocking new connections",
+        "The peer interprets the FIN as an urgent data segment",
+        "The FIN may arrive before the application is prepared, causing data loss",
+        "TCP disables delayed ACKs permanently for that connection"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why must an echo server flush pending writes before teardown?",
+      "options": [
+        "Because FIN cannot be sent if application buffers remain non-empty",
+        "Because TCP automatically discards unsent data at close time",
+        "Because unflushed buffers may lead to partial or corrupted responses",
+        "Because TIME_WAIT is shortened if buffers are flushed manually",
+        "Because kernel requires explicit fsync() for sockets during teardown"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is explicit write-buffer cleanup logic important during server shutdown?",
+      "options": [
+        "Because partial sends may leave clients with incomplete responses",
+        "Because cleanup shortens TIME_WAIT by half in Linux implementations",
+        "Because otherwise retransmissions may overlap with new connections",
+        "Because shutdown() automatically blocks until buffers are empty",
+        "Because kernel sockets cannot close without empty buffers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does teardown handling differ between poll() and epoll()?",
+      "options": [
+        "poll requires manual removal of descriptors, epoll removes them automatically",
+        "epoll prevents TIME_WAIT entirely, poll enforces it strictly",
+        "poll queues hangup events persistently, epoll discards them immediately",
+        "epoll requires explicit EPOLL_CTL_DEL calls, while poll ignores closed descriptors",
+        "poll works only with UDP sockets during teardown, not TCP"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is consistent teardown logic across all socket states essential in long-running servers?",
+      "options": [
+        "Because inconsistent teardown prevents select() from monitoring descriptors",
+        "Because inconsistent handling can leak resources and misinterpret readiness",
+        "Because TIME_WAIT duration doubles for sockets with varied teardown paths",
+        "Because the kernel enforces identical teardown for all sockets automatically",
+        "Because epoll and poll convert inconsistent sockets into UDP mode"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

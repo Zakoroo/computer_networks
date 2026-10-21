@@ -1,0 +1,1705 @@
+{
+  "topic": "01 Routing",
+  "questions": [
+    {
+      "question": "What is the primary role of the IP layer in the Internet protocol stack?",
+      "options": [
+        "Detect and correct transmission errors at the link level",
+        "Determine the next hop for each packet toward its destination",
+        "Ensure reliable end-to-end delivery of application data",
+        "Establish virtual circuits for session management",
+        "Translate domain names into IP addresses"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which IP header field is primarily responsible for limiting the lifetime of a datagram in the network?",
+      "options": [
+        "Total Length",
+        "Fragment Offset",
+        "Identification",
+        "Header Checksum",
+        "Time to Live"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best describes the behavior of ARP when a destination IP address is not found in the cache?",
+      "options": [
+        "The router queries DNS for the MAC address",
+        "The packet is discarded and an ICMP error is returned",
+        "The node sends a broadcast to resolve the IP-to-MAC mapping",
+        "The packet is queued until the destination initiates contact",
+        "The node falls back to default gateway routing"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is a key limitation of the virtual circuit switching model compared to datagram switching?",
+      "options": [
+        "It cannot guarantee in-order delivery",
+        "Packets can arrive out of sequence due to routing changes",
+        "It lacks mechanisms for resource reservation",
+        "Each packet must include the full destination address",
+        "It requires a connection setup phase before data transfer"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which switching fabric architecture offers the highest aggregate throughput potential but becomes costly with increased port counts?",
+      "options": [
+        "Self-routing switch",
+        "Shared memory switch",
+        "Crossbar switch",
+        "Token ring switch",
+        "Shared bus switch"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following correctly describes the benefit of Classless Inter-Domain Routing (CIDR)?",
+      "options": [
+        "It increases header size to accommodate additional subnet information",
+        "It guarantees unique global IP addresses through manual allocation",
+        "It requires all IP addresses to belong to Class A, B, or C",
+        "It eliminates the need for ARP in local networks",
+        "It enables finer-grained route aggregation using variable-length prefixes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary purpose of split horizon with poison reverse in distance vector routing?",
+      "options": [
+        "Prevent routing loops caused by inconsistent neighbor state",
+        "Increase convergence speed during route advertisement",
+        "Guarantee shortest-path delivery through centralized updates",
+        "Compress routing tables for storage efficiency",
+        "Detect incorrect checksum values in packet headers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which statement best characterizes the difference between link-state and distance-vector routing?",
+      "options": [
+        "Link-state protocols require each node to flood full routing tables periodically",
+        "Link-state builds a global view of the network; distance-vector relies on local updates",
+        "Distance-vector is more scalable but requires more global knowledge",
+        "Distance-vector uses Dijkstra's algorithm; link-state uses Bellman-Ford",
+        "Link-state protocols exchange only next-hop costs; distance-vector sends topology maps"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In Dijkstra\u2019s algorithm, what determines the next node to be added to the set of incorporated nodes?",
+      "options": [
+        "The node with the largest number of incoming edges",
+        "The node with the longest sequence number in LSPs",
+        "The node with the fewest neighbors not yet visited",
+        "The node with the lowest total cost from the source",
+        "The node with the smallest hop count from any source"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is longest prefix match essential in IP forwarding under CIDR?",
+      "options": [
+        "It minimizes routing table lookup latency by reducing match entries",
+        "It reduces packet fragmentation during routing",
+        "It ensures packets are always sent to the physically nearest router",
+        "It guarantees load balancing across all equal-cost paths",
+        "It selects the route with the most specific network match to a destination IP"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is a key tradeoff when choosing trie-based forwarding tables over TCAMs?",
+      "options": [
+        "TCAMs support only exact-match queries, limiting CIDR use",
+        "TCAMs provide faster updates but lower lookup speed",
+        "Tries require specialized hardware, unlike TCAMs",
+        "Tries are software-friendly but slower for longest prefix match",
+        "Tries consume more power but offer constant-time lookups"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the choice of switching technique affect end-to-end delay in high-speed routers?",
+      "options": [
+        "Crossbar switches reduce contention, lowering delay under load",
+        "Output queuing leads to minimal queuing delay regardless of load",
+        "Input queuing eliminates head-of-line blocking entirely",
+        "Shared-memory switches guarantee constant end-to-end delay",
+        "Virtual circuits always outperform datagram switching for delay"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is a tradeoff introduced by Network Address Translation (NAT) in IPv4 networks?",
+      "options": [
+        "NAT enables reuse of private address space but complicates inbound connections",
+        "NAT guarantees end-to-end packet integrity and IP transparency",
+        "NAT allows direct access to devices behind firewalls without port forwarding",
+        "NAT increases IPv6 adoption by embedding IPsec in every datagram",
+        "NAT simplifies peer-to-peer applications by removing stateful mappings"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is Network Address Translation (NAT) said to violate the end-to-end principle?",
+      "options": [
+        "It changes destination MAC addresses during each hop",
+        "It prioritizes routing metrics over application-layer behavior",
+        "It obscures host identity by altering source IP and port fields",
+        "It tunnels datagrams using overlay protocols without notice",
+        "It blocks packets that use TCP options for performance"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is fast convergence especially critical in intra-domain (intra-AS) routing protocols?",
+      "options": [
+        "Because intra-AS networks use satellite links with high delays",
+        "Because external ASes rely on interior routers to forward their packets",
+        "Because intra-AS routing updates are encrypted and hard to verify",
+        "Because routing loops can persist longer due to fixed BGP timers",
+        "Because failures inside the AS must be handled without notifying BGP"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the count-to-infinity problem arise in distance vector routing?",
+      "options": [
+        "Routers misconfigure metric weights and overestimate costs",
+        "Routers exchange full topology graphs without synchronization",
+        "Routing loops cause route advertisements to grow in cost indefinitely",
+        "TTL fields expire prematurely, causing route drops",
+        "Link-layer retransmissions interfere with routing updates"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Under what network conditions does link-state routing outperform distance-vector routing?",
+      "options": [
+        "When topologies are static and routing loops are tolerable",
+        "When link failures occur frequently and convergence time matters",
+        "When end-to-end delays are symmetric and predictable",
+        "When routers are added slowly and metrics remain constant",
+        "When routing decisions depend solely on local neighbor costs"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does OSPF ensure all routers in an area compute consistent shortest paths?",
+      "options": [
+        "By flooding link-state advertisements and running Dijkstra locally",
+        "By relying on round-robin updates via a designated gateway",
+        "By using BGP path attributes to prioritize paths",
+        "By synchronizing timers across all routers",
+        "By distributing a global topology map through distance vectors"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary scalability benefit of organizing OSPF into areas?",
+      "options": [
+        "It limits LSA flooding scope, reducing control message overhead",
+        "It permits routers to select different link-layer protocols",
+        "It shifts routing decisions to centralized OSPF root servers",
+        "It allows routers to ignore global addressing formats",
+        "It enables routing based solely on MAC address learning"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does inter-domain routing prioritize policy over optimality?",
+      "options": [
+        "Because distance-vector algorithms always produce routing loops at scale",
+        "Because IP addresses change dynamically within each AS",
+        "Because it must ensure MAC-level broadcast domains remain isolated",
+        "Because shortest-path routing often conflicts with administrative preferences",
+        "Because link-state protocols cannot scale to the size of the global Internet"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does BGP use path vector routing to prevent persistent loops?",
+      "options": [
+        "By incrementing a loop counter in each UPDATE message",
+        "By requiring routers to flood link-state advertisements",
+        "By discarding all routes containing multiple equal-cost paths",
+        "By tagging each route with the sequence of ASes traversed",
+        "By ignoring prefix advertisements from transit providers"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the BGP UPDATE message play in maintaining Internet-wide routing?",
+      "options": [
+        "It synchronizes router clocks to ensure global loop prevention",
+        "It provides guaranteed packet delivery through ACKs and retransmissions",
+        "It encodes AS policies using OSPF-compatible link-state data",
+        "It installs new routes and withdraws obsolete ones between BGP peers",
+        "It broadcasts Ethernet-level neighbor discovery information"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do the LOCAL_PREF and AS_PATH attributes influence BGP route selection?",
+      "options": [
+        "LOCAL_PREF favors longer AS paths to improve resilience",
+        "AS_PATH is used only to detect packet loss at the link layer",
+        "LOCAL_PREF encodes IP precedence values from application headers",
+        "AS_PATH ensures that updates are rate-limited by time intervals",
+        "LOCAL_PREF applies within a single AS to prefer specific exits"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can an autonomous system (AS) prevent certain prefixes from being advertised to specific neighbors?",
+      "options": [
+        "By applying prefix filters in BGP export policies",
+        "By using OSPF area boundaries to mask internal prefixes",
+        "By increasing the LOCAL_PREF value beyond maximum range",
+        "By configuring the TTL field to expire near border routers",
+        "By setting IP fragmentation flags to restrict propagation"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do ASes in a peer-to-peer relationship typically avoid acting as transit for each other's traffic?",
+      "options": [
+        "Because peers are required to route traffic via a central registrar",
+        "Because peer-to-peer links use lower-cost copper cables",
+        "Because BGP lacks support for policy-based filtering between peers",
+        "Because peers must run identical link-state protocols internally",
+        "Because carrying third-party traffic offers no economic benefit"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What routing anomaly can occur if an AS violates the valley-free routing principle?",
+      "options": [
+        "It disables BGP UPDATE messages on internal interfaces",
+        "It can reduce the TTL of all received packets to zero",
+        "It may unintentionally advertise transit routes for peers and providers",
+        "It causes iBGP routers to announce the same route multiple times",
+        "It leads to inconsistent MAC address resolution at border routers"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do export filters help reinforce economic relationships in BGP routing?",
+      "options": [
+        "By controlling which routes are advertised to peers and providers",
+        "By rejecting all routes with AS_PATH lengths exceeding a threshold",
+        "By rerouting traffic toward slower but cheaper backup paths",
+        "By modifying IP headers to prioritize paying traffic",
+        "By adjusting path MTU values based on AS type"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What causes path exploration to slow down BGP convergence after a link failure?",
+      "options": [
+        "The routing table must be rebuilt from scratch by all ASes",
+        "BGP routers broadcast ARP requests during link changes",
+        "Multiple invalid alternate paths are briefly accepted and then withdrawn",
+        "The TTL of all prefixes must be extended during failure events",
+        "AS_PATH values are encrypted and delay route processing"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does iBGP require a full mesh or route reflectors to function correctly?",
+      "options": [
+        "Because iBGP lacks UPDATE messages and relies on TCP flooding",
+        "Because iBGP routers cannot determine MAC addresses of peers",
+        "Because iBGP performs NAT at each AS border by default",
+        "Because iBGP does not propagate routes learned from other iBGP peers",
+        "Because iBGP must recompute shortest paths using OSPF weights"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a tradeoff introduced by using route reflectors in iBGP to reduce full mesh requirements?",
+      "options": [
+        "Route reflectors must be external to the AS and use eBGP instead",
+        "Route reflectors require per-neighbor OSPF flooding",
+        "Route reflectors disable TCP-based message authentication",
+        "Route reflectors violate the valley-free routing model",
+        "Route reflectors can introduce path asymmetries or suboptimal routes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is BGP particularly vulnerable to prefix hijacking attacks?",
+      "options": [
+        "It requires ASes to re-announce their prefixes hourly",
+        "It only supports hop-by-hop MAC address validation",
+        "It lacks global authentication of advertised prefixes",
+        "It uses fixed-length subnet masks for all advertisements",
+        "It encrypts routing updates, delaying propagation"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does RPKI improve BGP security compared to the traditional model?",
+      "options": [
+        "By encrypting all BGP routing updates with symmetric keys",
+        "By rewriting IP headers at IXPs to match verified policies",
+        "By limiting the number of peering sessions per AS",
+        "By authenticating AS_PATHs using DHCP-assigned policies",
+        "By verifying route origin using cryptographically signed prefix-authority mappings"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best illustrates the separation between control and data planes in modern networks?",
+      "options": [
+        "Load balancers directing traffic based on TLS certificate content",
+        "NAT rewriting headers during TCP connection establishment",
+        "DNS resolving hostnames to IP addresses using recursive queries",
+        "ARP resolving MAC addresses across autonomous systems",
+        "Routers forwarding packets based on a table computed by a distinct routing protocol"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What kind of network behavior can traceroute help identify that routing tables alone might miss?",
+      "options": [
+        "Fragmentation anomalies at the application layer",
+        "Incorrect NAT bindings on UDP-based firewalls",
+        "DNS spoofing events inside a local subnet",
+        "BGP loop prevention settings at the IXPs",
+        "Forwarding inconsistencies caused by policy-based routing or failures"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a potential limitation of using Equal-Cost Multi-Path (ECMP) routing based on flow hashing?",
+      "options": [
+        "It always results in packet reordering across all flows",
+        "It prevents path failure detection due to static routing tables",
+        "It disables MPLS label switching at edge routers",
+        "It can lead to uneven load distribution when many flows hash to the same path",
+        "It requires each flow to be acknowledged by all available paths"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is IP anycast particularly suitable for services like DNS root servers?",
+      "options": [
+        "It avoids BGP convergence delays by using static host routes",
+        "It ensures all queries are answered by the same replica for consistency",
+        "It establishes persistent TCP sessions across all replicas simultaneously",
+        "It directs clients to a nearby instance without requiring client-side changes",
+        "It guarantees full application-layer failover using HTTP redirects"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a challenge introduced by using IP anycast for DNS service deployment?",
+      "options": [
+        "Anycast disables local caching of DNS records",
+        "Anycast routes only to IPv6 endpoints, not IPv4",
+        "Anycast prevents TCP queries from reaching authoritative servers",
+        "Clients may receive inconsistent responses if routed to different replicas",
+        "DNSSEC cannot be used over anycast due to key distribution limits"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which BGP mechanism allows a multihomed AS to influence incoming traffic from different providers?",
+      "options": [
+        "Broadcasting MAC addresses across upstream ASes",
+        "Injecting traceroute paths into the routing table",
+        "Adjusting the OSPF cost for internal links",
+        "Prepending its own AS multiple times in route advertisements",
+        "Disabling BGP UPDATE messages for backup providers"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is convergence typically slower in inter-domain routing compared to intra-domain routing?",
+      "options": [
+        "Because intra-domain routing lacks support for failure recovery",
+        "Because inter-domain updates depend on physical cable types",
+        "Because inter-domain routing uses shorter prefix lengths",
+        "Because inter-domain policies delay or filter route propagation",
+        "Because intra-domain routers must wait for eBGP to stabilize first"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best illustrates the functional separation between routing and forwarding?",
+      "options": [
+        "Forwarding updates route metrics based on congestion state",
+        "Forwarding protocols advertise AS_PATHs to external peers",
+        "Routing determines packet checksums at each hop",
+        "Forwarding executes per-packet lookups based on routing-derived tables",
+        "Routing applies encryption to payloads before transit"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is hierarchical routing essential for large-scale network scalability?",
+      "options": [
+        "It hides link failures by tunneling control messages",
+        "It prevents routing loops using Time-to-Live (TTL) mechanisms",
+        "It disables inter-AS forwarding unless pre-approved by IANA",
+        "It increases the bit-length of subnet masks in local routers",
+        "It limits the scope of routing updates to manageable areas"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which key distinction separates distance-vector from link-state routing algorithms?",
+      "options": [
+        "Link-state algorithms build a global view before computing routes",
+        "Distance-vector ignores next-hop cost when updating metrics",
+        "Link-state routes are computed by neighbors and pushed downstream",
+        "Distance-vector requires flooding of topology updates to all routers",
+        "Distance-vector uses full network maps to calculate shortest paths"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes BGP both powerful and risky in inter-domain routing?",
+      "options": [
+        "It automatically encrypts all route updates and hides AS identity",
+        "It forces routers to recompute shortest paths after every packet",
+        "It enables flexible policy enforcement but lacks route authenticity checks",
+        "It supports path vector routing but requires centralized control",
+        "It enforces consistent metrics across all ASes without exception"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a common risk associated with overly permissive BGP export policies?",
+      "options": [
+        "They cause routers to ignore default routes and drop all traffic",
+        "They force neighboring ASes to run OSPF instead of BGP",
+        "They disable shortest path computation inside the exporting AS",
+        "They increase the maximum length of AS_PATH attributes",
+        "They may unintentionally allow an AS to become a transit for unwanted prefixes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is observability of the control plane behavior a key challenge in inter-domain routing?",
+      "options": [
+        "Because control messages are broadcast over link-layer multicast",
+        "Because routing loops cannot be detected by traceroute",
+        "Because BGP hides the internal topology of neighboring ASes",
+        "Because BGP routers use randomized TTLs to confuse observers",
+        "Because data plane forwarding is always encrypted end-to-end"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What makes the Internet particularly difficult to debug from a routing perspective?",
+      "options": [
+        "Control-plane decisions are often hidden and influenced by opaque policies",
+        "Applications use symmetric NAT to bypass standard routing",
+        "All routing tables are encrypted and hosted on external DNS servers",
+        "Routers actively drop ICMP packets to preserve privacy",
+        "TCP headers are stripped before forwarding in core networks"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does TCP handle sequence number wraparound after long connections?",
+      "options": [
+        "It resets the connection and reestablishes new initial sequence numbers",
+        "It uses modulo arithmetic to compare and interpret sequence numbers",
+        "It re-encodes segment headers using 64-bit values instead of 32-bit",
+        "It ignores all acknowledgments until the next window opens",
+        "It flushes out-of-order segments and closes the connection"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Under what conditions does TCP unnecessarily retransmit data, and how can this be mitigated?",
+      "options": [
+        "When acknowledgments are reordered, triggering spurious fast retransmits",
+        "When data is sent via UDP and received on TCP",
+        "When packets are dropped due to ECN markings in IPv6 headers",
+        "When the advertised window is zero and retransmit timer is too short",
+        "When TCP options are misconfigured to use SACK only"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What are the consequences of accepting only in-order TCP segments, and how does it differ from standard TCP behavior?",
+      "options": [
+        "It enables rapid congestion avoidance but increases round-trip delay",
+        "It blocks out-of-order data that standard TCP would buffer for reassembly",
+        "It simplifies sender logic but reduces reliability for long-lived connections",
+        "It prevents window updates from being processed during loss episodes",
+        "It improves bandwidth by avoiding retransmissions of duplicate ACKs"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What could happen if the TTL field in the IP header is misconfigured or not decremented correctly?",
+      "options": [
+        "It causes packet reordering across multipath routes",
+        "It prevents fragmentation by setting the DF flag",
+        "It disables IPsec authentication at the receiving host",
+        "It allows packets caught in loops to circulate indefinitely",
+        "It forces ARP table updates at each hop"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can ECN help reduce packet loss in IP networks, and what is a key limitation?",
+      "options": [
+        "ECN marks packets before drops but requires both endpoints to support it",
+        "ECN prevents congestion by switching to TCP Reno under load",
+        "ECN reduces loss by buffering traffic at the application layer",
+        "ECN disables TCP retransmissions during congestion",
+        "ECN adjusts TTL to avoid saturated routers"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the fragment offset field play in IP reassembly, and how can overlapping fragments be exploited?",
+      "options": [
+        "It limits packet size based on hop count",
+        "It identifies the destination host\u2019s MTU for upstream routing",
+        "It enables simultaneous transmission of TCP and UDP in a single datagram",
+        "It specifies whether packets should be routed via core routers",
+        "It determines where each fragment fits in the original packet, which can be manipulated to overwrite valid data"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might allowing all ICMP message types through a firewall pose security or stability risks?",
+      "options": [
+        "ICMP messages can be used to reroute TCP packets via alternate ports",
+        "ICMP disables checksum verification when fragmented",
+        "Some ICMP types can reveal internal topology or facilitate DoS attacks",
+        "ICMP packets are converted into unicast ARP messages",
+        "Allowing ICMP breaks DNSSEC integrity validation"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can ICMP Redirect messages introduce security or stability issues in a network?",
+      "options": [
+        "They fragment IP packets to reduce performance",
+        "They increase ARP traffic by forcing host reconfiguration",
+        "They bypass firewalls by rewriting TCP headers",
+        "They allow malicious routers to influence host routing tables",
+        "They disable ECMP hashing in multi-path networks"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when a NAT device using port overloading exhausts its available port space?",
+      "options": [
+        "It switches to a static NAT mapping scheme for new flows",
+        "It increases the TTL to delay flow termination",
+        "It drops new outbound connections or reuses ports, risking collisions",
+        "It resets all active connections to free resources",
+        "It tunnels all subsequent packets through IPv6 encapsulation"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which technique enables two peers behind NATs to establish direct connectivity, and what is a key limitation?",
+      "options": [
+        "TCP Fast Open bypasses NATs using TLS probes",
+        "UPnP automates firewall configuration but requires manual keying",
+        "STUN allows peers to discover public IP/port but fails with symmetric NATs",
+        "DHCP relay solves NAT traversal by extending subnet masks",
+        "SNMP triggers NAT rebinding using flow tables"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What function do OSPF Area Border Routers (ABRs) serve in a hierarchical network?",
+      "options": [
+        "They encrypt control traffic between backbone and stub areas",
+        "They aggregate LSAs to reduce update scope between areas",
+        "They act as DHCP relays in multi-area domains",
+        "They override OSPF metrics using administrative distance",
+        "They inject external BGP routes into all OSPF areas"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What can happen if the BGP NEXT_HOP attribute is misconfigured?",
+      "options": [
+        "OSPF will override the BGP decision based on LSA types",
+        "Routers will drop packets due to TTL mismatches",
+        "BGP will merge paths from different ASes into a loop",
+        "The AS_PATH attribute will be incorrectly reset to null",
+        "Prefixes will be treated as unreachable due to invalid forwarding paths"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do LOCAL_PREF and MED differ in BGP route selection, and what conflict can arise?",
+      "options": [
+        "LOCAL_PREF applies only to eBGP, while MED applies only to OSPF",
+        "MED adjusts TTL for routes, whereas LOCAL_PREF affects ECMP balancing",
+        "MED always overrides LOCAL_PREF when received from external ASes",
+        "LOCAL_PREF is used within an AS, MED is used across AS boundaries",
+        "Conflicts arise because both override BGP\u2019s loop detection rule"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What advantage does the BGP Community attribute provide, and what is one associated risk?",
+      "options": [
+        "It adjusts TCP retransmission behavior under congestion",
+        "It enables compression of IP prefixes but requires OSPF support",
+        "It allows tagging of routes for shared policy enforcement, but can propagate unintended markings",
+        "It prevents MED conflicts by disabling local preferences",
+        "It replaces AS_PATH but increases loop formation probability"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the prefix length in CIDR notation impact both routing decisions and address allocation?",
+      "options": [
+        "Longer prefixes mean larger subnet sizes and less efficient routing",
+        "Shorter prefixes increase aggregation but reduce routing precision",
+        "Prefix length only affects DNS lookups, not routing or allocation",
+        "Shorter prefixes result in more specific forwarding entries",
+        "Longer prefixes match more routes but reduce address utilization"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What failure mode can occur from overly aggressive prefix aggregation in BGP?",
+      "options": [
+        "Loss of reachability for disaggregated subnets (routing holes)",
+        "Increased convergence delay due to flooding of LSAs",
+        "Formation of microloops due to inconsistent ECMP hashing",
+        "Excessive NAT table usage across stub networks",
+        "Creation of infinite AS_PATHs from inconsistent MED values"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can export prefix filtering help an AS defend against accidental route leaks?",
+      "options": [
+        "It ensures that only authorized prefixes are advertised externally",
+        "It blocks BGP communities tagged as transit-only",
+        "It redirects traffic toward root DNS servers",
+        "It avoids TTL manipulation by upstream routers",
+        "It disables DNSSEC validation for untrusted domains"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What limitation of classful IP addressing motivated the adoption of classless addressing (CIDR)?",
+      "options": [
+        "Classful schemes had poor alignment with actual network size needs",
+        "Classful addressing used encrypted headers, hindering route lookup",
+        "Classful routing used OSPF instead of RIP, increasing complexity",
+        "CIDR reduced address reuse by enforcing fixed subnet sizes",
+        "CIDR increased MAC-to-IP mapping latency"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key functional difference between the Forwarding Information Base (FIB) and the Routing Information Base (RIB)?",
+      "options": [
+        "FIB handles ARP resolution; RIB manages TCP flow states",
+        "RIB applies BGP policies, while FIB buffers packets during link failure",
+        "FIB stores all protocol metrics, while RIB caches TTL values",
+        "RIB is queried per-packet, while FIB is updated by DNS servers",
+        "RIB holds the complete routing table; FIB is optimized for fast lookups"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What problem arises from head-of-line blocking in input-buffered routers?",
+      "options": [
+        "It causes packets from one input to block others, reducing throughput",
+        "It creates infinite loops due to ARP resolution failures",
+        "It causes checksum collisions between packets from different sources",
+        "It increases TTL values beyond safe limits",
+        "It leads to exponential growth in routing table size"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does a shared bus architecture limit throughput in high-speed routers?",
+      "options": [
+        "It enforces TTL synchronization across interfaces",
+        "Packets are serialized over a single data path, creating a bottleneck",
+        "IP headers must be compressed before transmission",
+        "Each packet must pass through both ingress and egress buffers",
+        "It duplicates packets for multicast by default"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a major challenge in using crossbar switch fabric in routers?",
+      "options": [
+        "They require prefix compression for efficient route matching",
+        "The scheduler must resolve conflicts for simultaneous port requests",
+        "TCP congestion control must be embedded in the hardware",
+        "Crossbars cannot support full-duplex traffic",
+        "Crossbars introduce MTU fragmentation on long links"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do multistage interconnection networks like Clos improve router scalability?",
+      "options": [
+        "They route packets using VLAN tags to bypass loops",
+        "They eliminate the need for link-layer retransmissions",
+        "They parallelize switching using multiple internal paths",
+        "They reduce total port-to-port delay by eliminating buffering",
+        "They aggregate TCP segments across interfaces"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is TCAM commonly used for longest prefix match (LPM) in IP forwarding, and what is a key limitation?",
+      "options": [
+        "TCAM supports flow hashing but requires link-state updates",
+        "TCAM buffers full routing tables and encrypts lookups",
+        "TCAM reduces BGP churn but increases MTU overhead",
+        "TCAM selects prefixes based on destination port availability",
+        "TCAM enables parallel prefix matching but is power-hungry and size-limited"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What causes persistent route oscillation in BGP and how can it be mitigated?",
+      "options": [
+        "High TCP retransmission rates; switch to UDP-based peering",
+        "Loopback misconfiguration; solution is to enable ICMP redirects",
+        "TTL mismatch between routers; use of symmetric NATs",
+        "Conflicting LOCAL_PREF settings; coordination of policies needed",
+        "Inconsistent DSCP values; ECMP hash rebalancing required"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the AS-level customer-provider topology influence route propagation?",
+      "options": [
+        "Providers always prefer peer routes to customer routes",
+        "Customers propagate all received routes upstream to ISPs",
+        "Route export policies restrict advertisement of peer routes to other peers",
+        "Stub ASes never advertise prefixes via BGP",
+        "Provider ASes use TTL=1 to prevent transit from downstream ASes"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a likely consequence of a peering dispute between large ISPs?",
+      "options": [
+        "The losing ISP is forced to adopt OSPF internally",
+        "Multicast routing replaces BGP across the peering link",
+        "End-to-end connectivity is disrupted between customers of each ISP",
+        "Peering disputes are handled by ICANN arbitration automatically",
+        "One ISP hijacks the other's prefixes using AS_PATH poisoning"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the tradeoff involved in applying route flap damping in BGP?",
+      "options": [
+        "It disables route reflection in large ASes",
+        "It increases TCP retransmissions due to loss of reachability",
+        "It prevents load balancing by removing ECMP support",
+        "It forces route aggregation, reducing address space efficiency",
+        "It reduces control-plane traffic but may suppress legitimate route changes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does OSPF support fast reroute when a primary link fails?",
+      "options": [
+        "By computing disjoint loop-free alternate paths in advance",
+        "By resetting TCP connections over affected paths",
+        "By switching to BGP until the OSPF database converges",
+        "By sending ICMP redirects to all neighbors immediately",
+        "By adjusting hop counts using DSCP fields"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does iBGP require a full mesh of sessions in a simple deployment?",
+      "options": [
+        "To allow ECN marking across TCP connections",
+        "To propagate eBGP-learned routes across the AS without re-advertisement issues",
+        "To prevent loopback interface renumbering during failover",
+        "To ensure every router can send OSPF LSAs to external peers",
+        "To maintain shortest-path forwarding across Ethernet links"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can differences in successive traceroute outputs suggest path instability?",
+      "options": [
+        "Duplicate echo replies confirm NAT table overflow",
+        "Changing TTLs indicate hosts have restarted",
+        "The absence of SYN-ACKs shows TCP congestion",
+        "Repeated ICMP unreachable errors mean DNS spoofing is active",
+        "Fluctuating intermediate hops imply load balancing or route flapping"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it recommended to establish iBGP sessions using loopback addresses?",
+      "options": [
+        "Loopbacks are stable identifiers unaffected by physical interface failures",
+        "Loopbacks allow route aggregation at the IP layer",
+        "Loopbacks allow automatic configuration of BGP MED values",
+        "Loopbacks enable ECMP to distribute BGP updates",
+        "Loopbacks avoid path MTU discovery issues on BGP traffic"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the hierarchical ISP structure shape interdomain route propagation?",
+      "options": [
+        "Stub ASes are required to act as route reflectors",
+        "Only Tier-2 ISPs are allowed to filter routes",
+        "Tier-3 ISPs advertise all peer routes to their upstream providers",
+        "Customer-provider links dictate how routes are exported and preferred",
+        "Peering agreements at Tier-1 eliminate the need for BGP"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do ISPs carefully distinguish between transit and peering relationships in BGP?",
+      "options": [
+        "To control revenue and limit unpaid traffic exchange",
+        "To enforce TCP congestion control at the interdomain level",
+        "To isolate OSPF and RIP policies within their domains",
+        "To decide which routes are loopback-eligible",
+        "To increase TTL across AS boundaries"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do design goals differ between edge routers and core routers?",
+      "options": [
+        "Core routers dynamically learn MAC addresses; edge routers statically route packets",
+        "Edge routers implement NAT; core routers encrypt control traffic",
+        "Edge routers support diverse interfaces; core routers optimize high-speed forwarding",
+        "Edge routers minimize latency by avoiding packet queuing",
+        "Core routers emphasize access control lists; edge routers focus on throughput"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is diagnosing control-plane failures in interdomain routing inherently difficult?",
+      "options": [
+        "Routing policies are decentralized and often opaque across ASes",
+        "Route oscillation is enforced by ICMP type 11",
+        "BGP hides route advertisements from RIBs",
+        "Routing loops only manifest under symmetric NATs",
+        "FIB lookups require synchronized clock sources"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is ICMP critical for Path MTU Discovery (PMTUD), and what happens when it is filtered?",
+      "options": [
+        "Filtering ICMP causes BGP to advertise stale prefixes",
+        "ICMP delivers DNSSEC keys used for secure tunnel setup",
+        "PMTUD switches to MPLS labels when ICMP is dropped",
+        "PMTUD fails, leading to blackholing of packets larger than the actual MTU",
+        "Filtering ICMP enables TCP Fast Open to detect firewalls"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why do modern routers apply rate-limiting to ICMP messages?",
+      "options": [
+        "To conserve TTL values across Ethernet domains",
+        "To avoid checksum collisions during fast packet switching",
+        "To prevent routers from being overwhelmed by reflection-based attacks",
+        "To limit diagnostic tool effectiveness for security purposes",
+        "To prioritize DNS over ICMP in routing decisions"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key tradeoff in using tunneling and overlay routing?",
+      "options": [
+        "It improves BGP convergence by exposing underlying physical topology",
+        "It increases link-layer collision domains while simplifying prefix aggregation",
+        "It enables policy-based redirection but adds encapsulation overhead and path opacity",
+        "It reduces latency by flattening AS hierarchies",
+        "It allows direct multicast replication but prevents route summarization"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a challenge associated with using anycast for load balancing?",
+      "options": [
+        "Anycast routes are ignored by interior routing protocols",
+        "It disables DNS resolution due to routing ambiguity",
+        "Client sessions may break if routed to different replicas due to path changes",
+        "Anycast requires TCP options to indicate state sharing",
+        "It requires all routers to synchronize TTLs to avoid loops"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which routing technique allows an AS to influence how incoming traffic enters its network in a multihomed setup?",
+      "options": [
+        "Filtering traceroute packets to shape AS-PATH lengths",
+        "Modifying link-layer framing to suppress inbound flows",
+        "Assigning different TTLs to provider links",
+        "Increasing path MTU values in outbound BGP messages",
+        "Using prefix-specific advertisements to upstream providers"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does BGP typically detect an upstream link failure in a multihomed AS?",
+      "options": [
+        "By comparing DSCP values in forwarded packets",
+        "By monitoring TCP RTT spikes from internal traffic",
+        "By loss of BGP keepalives, triggering session teardown and route withdrawal",
+        "By checking TTL values in DNS replies from transit providers",
+        "Via periodic ICMP probes to loopback interfaces"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How do the routing goals of BGP and OSPF differ?",
+      "options": [
+        "OSPF aggregates prefixes across AS boundaries; BGP does not",
+        "BGP emphasizes policy and reachability; OSPF targets shortest-path performance",
+        "OSPF prefers policy-based routing, while BGP focuses on convergence speed",
+        "BGP optimizes for latency; OSPF balances economic incentives",
+        "BGP relies on LSAs, while OSPF uses path vectors"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What challenge can arise when routers obtain IP configuration dynamically in large networks?",
+      "options": [
+        "Duplicate IP address assignment due to lack of DHCP coordination",
+        "ICMP echo replies are blocked by default until loopback is configured",
+        "Routing loops form before the router's DNS cache is initialized",
+        "They may use inconsistent TTLs for OSPF updates",
+        "The FIB becomes corrupted when NAT is enabled during boot"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What happens when TTL expiry ICMP messages are dropped during a persistent forwarding loop?",
+      "options": [
+        "The router resets BGP sessions with downstream peers",
+        "The forwarding loop continues silently, consuming bandwidth and CPU",
+        "The packets fragment and evade TTL checks",
+        "The source host correctly re-routes the packets via a backup path",
+        "The DNS resolver reassigns a new IP to the target host"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is end-to-end debugging across multiple ASes inherently difficult?",
+      "options": [
+        "Because MPLS tags are encrypted by upstream routers",
+        "Because routers discard RIB entries after 64 seconds",
+        "Because NAT prevents loopback-based traceability",
+        "Because DSCP rewrites interfere with BGP MED values",
+        "Because policies and state are private, and visibility is limited at AS boundaries"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does subnetting influence a host\u2019s decision to use ARP or routing?",
+      "options": [
+        "Subnet masks disable ICMP processing for remote hosts",
+        "All destinations outside the default gateway are forwarded using DNS resolution",
+        "Hosts apply NAT logic before consulting the subnet mask",
+        "Hosts use ARP only if the TTL exceeds 128",
+        "If the destination is within the same subnet, ARP is used to resolve MAC addresses"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can prefix filtering protect against accidental or malicious prefix advertisement in BGP?",
+      "options": [
+        "It enforces packet size limits to prevent data exfiltration",
+        "It disables ECMP to avoid load imbalance during attacks",
+        "It increases TCP port randomization for BGP sessions",
+        "It enables GRE tunneling for sensitive AS_PATHs",
+        "It restricts routing updates to prefixes authorized by the local AS policy"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key benefit of Internet Exchange Points (IXPs) in global Internet architecture?",
+      "options": [
+        "They allow content providers to bypass DNS caching",
+        "They enable routers to support MPLS by default",
+        "They guarantee reachability across all Tier-1 networks",
+        "They eliminate the need for BGP sessions",
+        "They reduce latency and transit costs by facilitating direct interconnection"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a tradeoff of using distributed route computation in interdomain routing?",
+      "options": [
+        "It increases load balancing accuracy at the expense of control-plane convergence",
+        "It improves fault isolation but complicates end-to-end policy enforcement",
+        "It enables per-packet load balancing by default",
+        "It eliminates the need for loop detection",
+        "It ensures shortest-path routing independent of policy"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What risk arises from excessive growth of routing table entries in core routers?",
+      "options": [
+        "Memory exhaustion leads to dropped or default-routed traffic",
+        "Routers reset TTLs at each hop",
+        "Control-plane loops form due to duplicate BGP IDs",
+        "OSPF and BGP merge into a hybrid routing protocol",
+        "RIB entries get overwritten by FIB events"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the main tradeoff in tuning a routing protocol for high responsiveness?",
+      "options": [
+        "It increases routing updates, potentially destabilizing the network",
+        "It improves control-plane convergence but reduces memory usage",
+        "It avoids route flap damping",
+        "It eliminates BGP MED values",
+        "It enables automatic prefix summarization"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does AS-PATH help prevent routing loops in BGP?",
+      "options": [
+        "It ensures only symmetric paths are accepted",
+        "It guarantees that shortest-path trees are formed",
+        "It ensures that only stub ASes receive default routes",
+        "The AS-PATH controls TTL expiry thresholds",
+        "Routers discard updates containing their own AS number"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following correctly explains why IP fragmentation can negatively impact overall network efficiency?",
+      "options": [
+        "Each fragment travels with its own transport-layer header, increasing overhead",
+        "Fragment loss requires retransmission of the entire original packet",
+        "Fragmented packets always arrive out of order and must be reassembled by routers",
+        "IP routers automatically reassemble fragments mid-path, increasing latency",
+        "Fragmented packets bypass congestion control, leading to uncontrolled bursts"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

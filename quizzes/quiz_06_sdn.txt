@@ -1,0 +1,498 @@
+{
+  "topic": "06 Sdn",
+  "questions": [
+    {
+      "question": "Which of the following best describes a consequence of separating the control and data planes in SDN?",
+      "options": [
+        "It enforces uniform packet size across all switches",
+        "It eliminates the need for routing protocols entirely",
+        "It requires every packet to be processed by a central controller",
+        "It restricts the use of standard Ethernet in the data plane",
+        "It enables centralized control while keeping forwarding distributed"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does SDN architecture differ structurally from traditional networking architectures?",
+      "options": [
+        "SDN prohibits software-based routers in enterprise networks",
+        "SDN uses static routing tables hardcoded into ASICs",
+        "SDN duplicates forwarding logic across all routers",
+        "SDN delegates control decisions to forwarding hardware",
+        "SDN consolidates control logic into a logically centralized controller"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is one advantage of SDN's programmable nature for large-scale data centers?",
+      "options": [
+        "It requires proprietary hardware for each control rule",
+        "It prevents the use of encrypted protocols across tenants",
+        "It limits controller access to edge switches only",
+        "It enables dynamic traffic engineering via global policy updates",
+        "It ensures backward compatibility with all legacy protocols"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is logically-centralized control considered beneficial in SDN?",
+      "options": [
+        "It accelerates TCP three-way handshakes",
+        "It enables consistent global network views for decision-making",
+        "It prevents loops at the physical layer automatically",
+        "It reduces the number of packet headers per flow",
+        "It eliminates the need for any failover mechanism"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does OpenFlow determine how to forward packets in SDN?",
+      "options": [
+        "By relying on VLAN IDs to infer routing intent",
+        "By hashing source and destination IPs to a random output port",
+        "By calculating shortest paths using Dijkstra\u2019s algorithm at each switch",
+        "By assigning each packet a per-hop path label",
+        "By matching packet headers to flow table entries and executing actions"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following statements best distinguishes out-of-band SDN control from in-band control?",
+      "options": [
+        "In-band restricts control communication to TCP-based protocols only",
+        "In-band uses the same physical network for both control and data traffic",
+        "Out-of-band requires controller logic to be replicated at each switch",
+        "In-band routes control messages over a dedicated fiber-optic link",
+        "Out-of-band uses separate hardware for packet forwarding"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which feature of the OpenFlow forwarding abstraction enables flexible packet handling?",
+      "options": [
+        "The use of match-action entries over arbitrary packet header fields",
+        "An exact-match requirement for IP and MAC headers",
+        "Fixed-function hardware encoding of flow state",
+        "Periodic packet buffering before control decisions",
+        "A single static routing rule per destination prefix"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a primary benefit of introducing a Network OS and Hypervisor in SDN?",
+      "options": [
+        "It reduces the control message size by replacing TCP with UDP",
+        "It enforces device-specific configurations",
+        "It abstracts distributed state into a unified global network view",
+        "It limits scalability to a single control program",
+        "It guarantees real-time forwarding even under high load"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In SDN-based access control, what is a key reason why routing changes can violate security policies?",
+      "options": [
+        "SDN controllers cannot push updates to filters",
+        "Access control must be hardcoded into switch firmware",
+        "SDN lacks the ability to detect new links in the network",
+        "SDN does not support encryption between controllers and switches",
+        "Packet filters may not update automatically when topology changes"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is indirect control considered a challenge in traditional networking?",
+      "options": [
+        "It requires changes to Ethernet frame format for routing decisions",
+        "It leads to complicated behavior when manipulating metrics instead of paths",
+        "It causes TCP flows to bypass firewalls unintentionally",
+        "It forces operators to manage encryption keys for each hop",
+        "It prevents use of static routes for performance tuning"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the match-action paradigm play in OpenFlow's design?",
+      "options": [
+        "It simplifies switching by enforcing static rule tables",
+        "It enables flexible packet handling based on header field values",
+        "It synchronizes flow entries across multiple controller instances",
+        "It limits forwarding to IPv4 and TCP headers only",
+        "It offloads control logic into network management software"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best illustrates the flexibility provided by OpenFlow rule actions?",
+      "options": [
+        "A rule that uses TTL expiration to trigger routing updates",
+        "A rule that overwrites headers and multicasts to multiple output ports",
+        "A rule that schedules packet delivery based on server CPU load",
+        "A rule that copies flow state to external cloud storage in real time",
+        "A rule that encrypts all packets using built-in switch logic"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In the context of SDN, what does network virtualization enable for data center tenants?",
+      "options": [
+        "Migration of virtual machines without any flow update requirements",
+        "Per-user QoS profiles stored at each access point",
+        "Real-time bandwidth guarantees enforced by hardware switches",
+        "Dedicated physical switches per tenant to ensure isolation",
+        "Tenant-defined topologies compiled into switch-level configurations"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does consistency among SDN controllers present a scalability challenge?",
+      "options": [
+        "OpenFlow mandates controller replication for every data plane rule",
+        "Consistency requires frequent broadcast flooding of packets",
+        "SDN switches cannot handle large rule sets",
+        "Coordinating multiple controllers increases communication overhead",
+        "Controllers require global Ethernet frame synchronization"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a common interoperability challenge when introducing SDN into existing networks?",
+      "options": [
+        "SDN requires IPv6-only transport for control traffic",
+        "All legacy switches must be upgraded to Layer 3 devices",
+        "Controller logic must be implemented in hardware firmware",
+        "SDN switches can only operate using MPLS labels",
+        "Traditional routers lack support for OpenFlow protocol"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which development most directly contributed to SDN's separation of control and data planes?",
+      "options": [
+        "The adoption of MPLS in core Internet routing",
+        "The creation of open interfaces between control and forwarding logic",
+        "The transition from IPv4 to IPv6 in enterprise networks",
+        "The shift to wireless mesh architectures",
+        "The rise of software firewalls on commodity hardware"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why has SDN gained traction particularly in cloud and datacenter environments?",
+      "options": [
+        "SDN mandates per-flow encryption by default, which benefits cloud services",
+        "OpenFlow provides native support for VMM hypervisors like VMware ESXi",
+        "The need for flexible, cost-efficient network management aligns with SDN's design",
+        "Datacenters demand rigid, hardware-defined routing structures",
+        "SDN allows real-time enforcement of multi-tenant CPU quotas"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is network virtualization considered the 'killer app' for SDN in large-scale deployments?",
+      "options": [
+        "It enables stateless packet forwarding at the physical layer",
+        "It offloads controller computation to tenant VMs",
+        "It removes the need for any centralized control logic",
+        "It enables per-tenant custom topologies and policies on shared infrastructure",
+        "It allows consolidation of all tenant traffic into a single broadcast domain"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the role of a network hypervisor in SDN-based virtualization?",
+      "options": [
+        "It assigns MAC addresses based on OpenFlow rule priorities",
+        "It encrypts all traffic flowing through tenant routers",
+        "It maps virtual tenant topologies to concrete switch configurations",
+        "It schedules CPU cycles on shared switches among tenants",
+        "It dynamically tunes MTU values across tenant networks"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does SDN manage network complexity through abstraction?",
+      "options": [
+        "It pushes all routing decisions to the hardware switches",
+        "It converts IPv6 addressing into compressed IPv4 headers",
+        "It allows each router to execute its own independent control logic",
+        "It compiles routing rules into pre-shared MAC address sets",
+        "It shifts complexity from per-application logic into reusable SDN layers"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In OpenFlow, what happens when a packet does not match any existing flow table entry?",
+      "options": [
+        "The switch rewrites the packet headers to match known flows",
+        "The switch uses the default static route to handle the packet",
+        "The switch encrypts the packet and sends it to all ports",
+        "The packet is dropped immediately to preserve security",
+        "The switch forwards the packet to the controller for decision-making"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which OpenFlow rule illustrates packet modification and multicast behavior?",
+      "options": [
+        "Match on TCP port and drop the packet",
+        "Match on MAC address, send to controller",
+        "Match on VLAN tag and send to all ports except ingress",
+        "Match on header, rewrite fields, and forward to ports 5 and 6",
+        "Match on IP header, then forward to port 1"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does OpenFlow support vendor-neutral SDN control?",
+      "options": [
+        "It uses a standard interface to define forwarding behavior across devices",
+        "It requires controller logic to be compiled into each switch",
+        "It enables custom packet formats per vendor specification",
+        "It enforces use of a single hardware architecture",
+        "It mandates switches to expose proprietary APIs"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of abstract network views in SDN virtualization?",
+      "options": [
+        "To convert IPv6 traffic into IPv4 inside tunnels",
+        "To allow tenants to define logical topologies over shared physical networks",
+        "To enforce per-user firewall rules at physical switches",
+        "To ensure symmetric routing for all TCP connections",
+        "To obfuscate IP addresses for enhanced anonymity"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How are tenant-defined SDN policies implemented in the physical network?",
+      "options": [
+        "The network hypervisor dynamically compiles policies into flow table entries",
+        "The switch firmware hardcodes access control lists at startup",
+        "Each tenant is allocated a separate physical switch via VLAN segmentation",
+        "SDN requires NAT-based routing between virtual and physical topologies",
+        "The controller spawns a VM for each switch rule"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is scalability a core challenge in SDN deployments?",
+      "options": [
+        "Each switch must recompute shortest paths independently",
+        "All control logic must be compiled into ASICs per switch",
+        "Centralized controllers may become bottlenecks as network size increases",
+        "SDN requires a separate VLAN ID for each flow",
+        "Flow table entries are broadcast to all routers in the network"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In an SDN network, what is a likely consequence of controller failure without a backup?",
+      "options": [
+        "Packets continue to be forwarded based on stale flow rules",
+        "All switches broadcast packets to all ports to compensate",
+        "Controllers from other domains take over seamlessly",
+        "Switches automatically enter self-healing mode",
+        "Traffic is rerouted through the network management plane"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which factor contributes to increased latency in SDN decision-making?",
+      "options": [
+        "Synchronous updates of all flow entries every millisecond",
+        "Compiled routing logic embedded in end hosts",
+        "Per-packet controller intervention in initial flow setup",
+        "Lack of TTL decrement at data-plane switches",
+        "The use of copper instead of fiber cables"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the key challenge in maintaining consistency across multiple SDN controllers?",
+      "options": [
+        "They use incompatible OpenFlow versions",
+        "SDN controllers must all share the same physical IP address",
+        "Controllers must synchronize updates to avoid conflicting flow rules",
+        "Flow tables cannot store more than 100 rules per switch",
+        "Each controller must act as an autonomous router"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

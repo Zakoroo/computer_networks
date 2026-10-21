@@ -1,0 +1,498 @@
+{
+  "topic": "04 Tcp",
+  "questions": [
+    {
+      "question": "Which of the following features distinguishes TCP from UDP?",
+      "options": [
+        "End-to-end datagram delivery without setup overhead",
+        "Use of checksums to detect packet corruption",
+        "Connection setup and reliable byte-stream delivery",
+        "Use of port numbers to identify applications",
+        "IP-layer fragmentation support and reassembly"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary purpose of the sequence number field in a TCP segment header?",
+      "options": [
+        "Determine the destination port for the segment",
+        "Indicate if the segment should bypass flow control",
+        "Specify the round-trip time of the connection",
+        "Identify the application-level message being transmitted",
+        "Track the first byte of data in the segment within the byte stream"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does TCP use a 32-bit sequence number space?",
+      "options": [
+        "To ensure alignment with IPv6 addressing space",
+        "To uniquely identify each byte of a stream for all users",
+        "To prevent ambiguity when sequence numbers wrap around",
+        "To provide cryptographic integrity of the stream",
+        "To reserve space for congestion control algorithms"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a tradeoff of using delayed ACKs in TCP?",
+      "options": [
+        "Increased header overhead due to acknowledgment bundling",
+        "Potential for unnecessary retransmissions due to sender timeouts",
+        "Increased RTT variation from acknowledgment priority scheduling",
+        "Reduced bandwidth utilization during high congestion",
+        "Requirement for intermediate routers to store acknowledgment state"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does TCP use an Exponentially Weighted Moving Average (EWMA) for RTT estimation?",
+      "options": [
+        "To approximate TCP congestion window growth dynamics",
+        "To minimize computational load by avoiding any averaging",
+        "To ignore RTT spikes and use only minimum observed values",
+        "To ensure equal influence of all RTT samples over time",
+        "To prioritize recent RTT measurements for timeout calculation"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does TCP's flow control mechanism prevent the sender from overwhelming the receiver?",
+      "options": [
+        "By enabling routers to throttle transmission rate directly",
+        "By limiting the maximum segment size (MSS)",
+        "By requiring the sender to poll the receiver periodically",
+        "By advertising a receiver window that constrains in-flight data",
+        "By adapting the send window to network congestion levels"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In TCP\u2019s sliding window protocol, what happens when the receiver sends an acknowledgment?",
+      "options": [
+        "The window slides forward, allowing more data to be sent",
+        "The sender resets the entire window and restarts transmission",
+        "The sender discards all unacknowledged segments",
+        "The receiver halts further transmission until it receives more data",
+        "The connection enters congestion avoidance phase immediately"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is it important to set the retransmission timeout (RTO) carefully in TCP?",
+      "options": [
+        "An improperly set RTO can cause spurious retransmissions or slow recovery",
+        "The RTO replaces congestion control mechanisms in TCP",
+        "The RTO determines the flow control window size",
+        "A low RTO may allow for higher transmission speed",
+        "A high RTO guarantees maximum bandwidth utilization"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What triggers TCP\u2019s fast retransmit mechanism?",
+      "options": [
+        "Sender's buffer reaching zero available space",
+        "Three duplicate acknowledgments for the same data",
+        "Explicit congestion signal from the network",
+        "Receiver advertising a zero window size",
+        "Timer expiration before acknowledgment is received"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can delayed acknowledgments interfere with TCP\u2019s fast retransmit mechanism?",
+      "options": [
+        "They reduce the maximum segment size",
+        "They prevent duplicate ACKs from being generated quickly",
+        "They inflate RTT measurements and reset the timer too often",
+        "They disable receiver-side congestion detection",
+        "They increase the window size prematurely"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following is a primary goal of TCP congestion control?",
+      "options": [
+        "Provide guaranteed bandwidth reservations across hops",
+        "Eliminate the need for flow control between sender and receiver",
+        "Achieve fair resource allocation while preventing network collapse",
+        "Maximize the use of application-level buffering",
+        "Ensure deterministic round-trip times for all packets"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What role does the congestion window (CWND) play in TCP congestion control?",
+      "options": [
+        "It indicates the number of segments retransmitted after loss",
+        "It limits the volume of in-flight data based on network feedback",
+        "It guarantees constant throughput under congestion",
+        "It stores the timeout values for each segment",
+        "It defines the number of connections a receiver can accept"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which best describes the AIMD behavior in TCP congestion control?",
+      "options": [
+        "Window doubles each RTT and resets to zero upon loss",
+        "Window increases linearly and halves upon detecting congestion",
+        "Window size remains constant in the absence of congestion",
+        "Window grows by 1 per RTT, shrinks by 1 upon congestion",
+        "Window decreases logarithmically and grows exponentially"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What characterizes TCP\u2019s slow start phase?",
+      "options": [
+        "Using a fixed congestion window to probe bandwidth",
+        "Linear growth of CWND regardless of network conditions",
+        "Entering congestion avoidance immediately after connection setup",
+        "Halving the CWND with every acknowledgment",
+        "Exponential growth of CWND until threshold or loss is detected"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes TCP Reno\u2019s response to packet loss from TCP Tahoe?",
+      "options": [
+        "Reno waits for application-layer feedback to adjust CWND",
+        "Reno performs immediate retransmission after the first duplicate ACK",
+        "Reno disables congestion control in favor of flow control",
+        "Reno enters fast recovery instead of restarting with slow start",
+        "Reno avoids retransmission entirely after timeout"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the purpose of the fast recovery phase in TCP Reno?",
+      "options": [
+        "To trigger a three-way handshake from the sender",
+        "To reset both sender and receiver buffers upon congestion",
+        "To reduce the receiver\u2019s advertised window after loss",
+        "To avoid re-entering slow start by inflating the congestion window",
+        "To immediately drop the connection after a timeout"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does TCP NewReno improve over TCP Reno in handling multiple packet losses?",
+      "options": [
+        "By retransmitting one packet per RTT regardless of ACKs",
+        "By disabling duplicate ACK interpretation",
+        "By resetting CWND to zero after every loss",
+        "By skipping congestion avoidance phase after retransmission",
+        "By remaining in fast recovery until all lost packets from a window are acknowledged"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which strategy does TCP Vegas primarily use to detect and avoid congestion?",
+      "options": [
+        "Explicit notifications from routers",
+        "Randomized backoff intervals",
+        "Round-trip time monitoring",
+        "Increasing CWND by a fixed amount each RTT",
+        "Duplicate ACK counting"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What advantage does Explicit Congestion Notification (ECN) provide in TCP?",
+      "options": [
+        "It guarantees bandwidth allocation per flow",
+        "It reduces the retransmission timeout to near-zero",
+        "It eliminates the need for congestion windows",
+        "It disables slow start in high-latency environments",
+        "It allows routers to preemptively signal congestion without dropping packets"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What distinguishes TCP BBR from TCP CUBIC in congestion control?",
+      "options": [
+        "BBR requires ECN support in all routers",
+        "BBR estimates bottleneck bandwidth and RTT to pace sending",
+        "CUBIC targets constant delay regardless of network changes",
+        "CUBIC disables flow control to optimize throughput",
+        "BBR uses packet loss as the only congestion signal"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which scenario most clearly violates TCP\u2019s fairness goal?",
+      "options": [
+        "All flows experiencing periodic slow start phases",
+        "One flow throttling itself after loss while another continues to grow aggressively",
+        "Multiple flows using the same bottleneck link but getting equal throughput",
+        "Flows halving their CWND simultaneously upon congestion",
+        "Equal share of bandwidth in the presence of packet reordering"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What does it mean for a congestion control algorithm to be \"TCP-friendly\"?",
+      "options": [
+        "It maintains a throughput similar to a standard TCP flow under similar conditions",
+        "It ensures no flow ever enters congestion avoidance",
+        "It favors new connections over established ones",
+        "It enforces the same send rate regardless of network conditions",
+        "It disables slow start when RTT exceeds 100ms"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How can TCP congestion control interact poorly with DropTail queues?",
+      "options": [
+        "It causes early packet drops before the queue is full",
+        "It bypasses the need for retransmissions in large queues",
+        "It causes queues to remain empty most of the time",
+        "It reduces packet loss by pacing sender rate",
+        "It leads to synchronized loss among flows, worsening fairness"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary symptom of bufferbloat in TCP flows?",
+      "options": [
+        "Frequent RST segments during connection setup",
+        "Persistently high latency due to oversized queues",
+        "Increased packet loss and out-of-order delivery",
+        "Rapid convergence to fair bandwidth sharing",
+        "Server-side SYN flooding attacks"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which AQM strategy helps mitigate bufferbloat by early signaling of congestion?",
+      "options": [
+        "Random Early Detection (RED)",
+        "DropTail",
+        "Weighted Fair Queuing (WFQ)",
+        "Fixed Round-Robin Scheduling",
+        "Token Bucket Filtering"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does SYN cookie defense mitigate SYN flooding attacks?",
+      "options": [
+        "By rate-limiting all incoming TCP connections",
+        "By encoding the SYN state in the initial sequence number",
+        "By switching to UDP for handshake completion",
+        "By rejecting connections from unfamiliar IP ranges",
+        "By caching all SYN requests until the handshake completes"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which condition makes TCP reset attacks feasible on a connection?",
+      "options": [
+        "Predictable TCP sequence numbers",
+        "Lack of DNSSEC support",
+        "Delayed acknowledgments in high-latency paths",
+        "Use of port numbers above 49152",
+        "Missing ECN capability"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does standard TCP perform poorly in wireless networks?",
+      "options": [
+        "It lowers MSS to reduce header overhead",
+        "It interprets all losses as congestion, not corruption",
+        "It skips congestion avoidance in low-RTT paths",
+        "It disables retransmissions after detecting bit errors",
+        "It requires synchronized clocks for flow control"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following strategies is used by TCP Westwood to improve wireless performance?",
+      "options": [
+        "Ignoring duplicate ACKs to reduce retransmissions",
+        "Freezing CWND during handoffs to preserve bandwidth estimates",
+        "Sending each segment twice for redundancy",
+        "Estimating bandwidth from the rate of returned ACKs",
+        "Doubling RTT estimates to avoid timeouts"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "topic": "03 Ipv6",
+  "questions": [
+    {
+      "question": "Which of the following best explains why NAT alone could not fully solve the IPv4 address exhaustion problem?",
+      "options": [
+        "NAT consumes excessive bandwidth due to header expansion",
+        "NAT increases end-to-end delay in wireless networks",
+        "NAT requires a dedicated subnet for every device",
+        "NAT breaks transparency and hampers protocol innovation",
+        "NAT mandates IPv6-style 128-bit addresses internally"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following IPv6 features directly improves support for end-to-end connectivity compared to IPv4?",
+      "options": [
+        "Variable-length addressing",
+        "Multiple simultaneous link-local addresses",
+        "Per-hop source routing",
+        "Default tunneling via IPv4 NAT",
+        "Stateless address autoconfiguration"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a key design benefit of IPv6 address formatting for modern applications?",
+      "options": [
+        "It embeds transport-layer headers into IP addresses",
+        "It simplifies parsing by embedding TCP flags",
+        "It avoids the use of hexadecimal representation",
+        "It allows for hierarchical address delegation",
+        "It eliminates the need for DNS"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following would result in an invalid IPv6 compressed address representation?",
+      "options": [
+        "Using \"::\" more than once in a single address",
+        "Including leading zeros in a segment",
+        "Using \"::\" to compress a single contiguous block of zeros",
+        "Mixing decimal and hexadecimal notation in the same address",
+        "Omitting a non-zero segment using \"::\""
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best distinguishes anycast from multicast in IPv6?",
+      "options": [
+        "Anycast delivers packets to all nodes, multicast delivers to one",
+        "Anycast uses TCP only, multicast uses UDP",
+        "Anycast and multicast share the same address prefix",
+        "Anycast uses routing to the nearest member, multicast to all group members",
+        "Anycast requires tunnel encapsulation, multicast does not"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which mechanism allows an IPv6 host to configure its address without contacting a DHCP server?",
+      "options": [
+        "DNS-based prefix negotiation",
+        "Stateless address autoconfiguration based on MAC",
+        "Reverse DNS probing",
+        "Router advertisement tunneling",
+        "Hop-by-hop header compression"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What risk is introduced when IPv6 endpoints communicate through an IPv4-only network?",
+      "options": [
+        "Unpredictable MTU negotiation",
+        "Failure of end-to-end IPv6 connectivity",
+        "Inconsistent use of DNSSEC signatures",
+        "IPv6 address collisions",
+        "Loss of transport-layer header integrity"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best explains how IP tunneling facilitates IPv6 deployment?",
+      "options": [
+        "It enables Ethernet frames to be carried over IP",
+        "It compresses headers to reduce packet size across links",
+        "It eliminates the need for DNS during address resolution",
+        "It transforms TCP into a connectionless protocol",
+        "It allows IPv6 packets to traverse non-IPv6-capable networks"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary design motivation for using extension headers in IPv6?",
+      "options": [
+        "To include routing information in Ethernet headers",
+        "To allow IP fragmentation at intermediate routers",
+        "To remove the need for a transport-layer checksum",
+        "To enable compression of repetitive header fields",
+        "To simplify the fixed base header and modularize options"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why does IPv6 mandate support for a 1280-byte MTU, even if the link MTU is smaller?",
+      "options": [
+        "To avoid the need for congestion control",
+        "To simplify DNS query responses",
+        "To guarantee minimal packet size across the path",
+        "To reduce reliance on router-based address translation",
+        "To ensure compatibility with legacy IPv4 routers"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why is IPv6 fragmentation only allowed at the source rather than at intermediate routers?",
+      "options": [
+        "IPv6 prohibits fragmentation of any packets",
+        "Fragmentation is too computationally expensive for routers",
+        "Routers lack access to destination MAC addresses",
+        "IPv6 relies on TCP to handle all retransmissions",
+        "Source fragmentation reduces router complexity and enhances performance"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In a multi-hop wireless IPv6 path with 10% packet drop per hop, which risk arises from relying on fragmentation?",
+      "options": [
+        "Each router must reassemble packets before forwarding",
+        "Fragmentation triggers ICMP redirects on every hop",
+        "TCP resets all connections after loss",
+        "Only one fragment needs to be lost to make the full packet unrecoverable",
+        "Multiple copies of each fragment flood the network"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might link-layer acknowledgments be insufficient for ensuring delivery in IPv6?",
+      "options": [
+        "Acks are incompatible with multicast traffic",
+        "Link-layer acks only work on Ethernet, not wireless",
+        "End-to-end delivery depends on higher-layer recovery, not just hop-by-hop acks",
+        "IPv6 does not support retransmissions at all",
+        "IPv6 disables hop-by-hop header processing"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What weakened the urgency for IPv6 deployment despite the threat of IPv4 address exhaustion?",
+      "options": [
+        "NAT and address reuse enabled continued IPv4 scalability",
+        "ISPs were required to disable IPv4 routing",
+        "The IETF deprecated DNS root zone support for IPv4",
+        "IPv6 lacked support for high-speed hardware forwarding",
+        "IPv6 caused incompatibility with Ethernet devices"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the primary challenge addressed by the 6LoWPAN adaptation of IPv6?",
+      "options": [
+        "Assigning static IPs to devices in industrial plants",
+        "Routing over non-IP-capable physical media",
+        "Compressing IPv6 headers for small-MTU low-power links",
+        "Managing TCP congestion in high-speed datacenters",
+        "Preventing DNS leakage in sensor networks"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which 6LoWPAN header compression mode reduces an IPv6 address to zero bits?",
+      "options": [
+        "Dynamic prefix shifting",
+        "Stateless SAM/DAM = 00 mode",
+        "Stateless compression using 64-bit identifiers",
+        "Stateful CID-based address negotiation",
+        "Link-local address inference from MAC"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does IPv6 multicast improve efficiency compared to unicast replication?",
+      "options": [
+        "It reduces redundant packet transmissions over shared links",
+        "It uses IPv4 tunnels for backward compatibility",
+        "It guarantees reliable delivery to all recipients",
+        "It requires receiver-side NAT translation",
+        "It assigns separate MTUs per multicast group"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which factor contributes most to the limited deployment of inter-domain IP multicast?",
+      "options": [
+        "Complexity of maintaining multicast state in routers",
+        "IPv6's incompatibility with Ethernet frames",
+        "Cost of leasing multicast-capable IP prefixes",
+        "Requirement for symmetric TCP handshakes",
+        "Lack of DNSSEC validation for multicast groups"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the defining operational characteristic of anycast communication in IPv6?",
+      "options": [
+        "All receivers in the group send coordinated responses",
+        "Each packet is explicitly broadcast to the entire group",
+        "The destination is dynamically changed at application layer",
+        "Routing delivers packets to one topologically closest node",
+        "Packets are fragmented across all destinations"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is a primary drawback of supporting anycast at the IP layer?",
+      "options": [
+        "Incompatibility with encrypted HTTPS sessions",
+        "Anycast addresses require full packet reassembly at each hop",
+        "Routing tables must maintain multiple /32 entries for a single service",
+        "Excessive use of DNS queries to resolve routes",
+        "Explosion of /8 prefixes in BGP route tables"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does anycast help reduce the impact of distributed denial-of-service (DDoS) attacks?",
+      "options": [
+        "By blocking traffic at layer 2 switches",
+        "By throttling packets based on TTL expiration",
+        "By encrypting all incoming traffic",
+        "By spreading malicious traffic across multiple geographically dispersed nodes",
+        "By tunneling packets through private VPNs"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What advantage does IP-layer anycast offer for services deployed across continents?",
+      "options": [
+        "Reduces need for autonomous system (AS) numbers",
+        "Ensures deterministic routing paths for all packets",
+        "Eliminates the use of DNS for service discovery",
+        "Enables user requests to be served by the closest regional server",
+        "Guarantees delivery using TCP congestion control"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following best summarizes the role of IPv6 in modern networking?",
+      "options": [
+        "It replaces transport protocols like TCP and UDP",
+        "It fragments traffic at every intermediate router to improve performance",
+        "It eliminates the need for DNS or DHCP in most networks",
+        "It uses MAC-layer identifiers to generate encryption keys",
+        "It provides a scalable addressing and packet structure with improved support for mobility, security, and QoS"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which factor has most significantly delayed global IPv6 adoption?",
+      "options": [
+        "Hardware limitations in core routers",
+        "Lack of global DNS support for IPv6",
+        "Absence of a 64-bit addressing standard",
+        "Compatibility barriers with IPv4 and reliance on NAT",
+        "High latency of IPv6 packet forwarding"
+      ],
+      "correct_answers": [
+        3
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which transition approach allows IPv6 nodes to communicate across IPv4-only intermediate networks?",
+      "options": [
+        "Multipath routing with DNS failover",
+        "Hop-by-hop source-based rerouting",
+        "IP-in-IP tunneling over IPv4",
+        "IPv6 header compression via CIDR",
+        "Dual-stack NAT traversal"
+      ],
+      "correct_answers": [
+        2
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "What is the intended purpose of the IPv6 Flow Label field?",
+      "options": [
+        "To distinguish multicast from unicast traffic",
+        "To prioritize DNS resolution requests in the router queue",
+        "To identify the next-hop router along a path",
+        "To carry session state between transport endpoints",
+        "To classify packets belonging to the same flow for consistent forwarding"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "How does the IPv6 'Next Header' field support extensibility?",
+      "options": [
+        "It reserves bits in every header for proprietary encryption",
+        "It replaces checksum fields in upper layers",
+        "It bypasses the need for address resolution protocols",
+        "It allows nested transport-layer protocols without fragmentation",
+        "It enables a flexible chain of headers specifying routing and options"
+      ],
+      "correct_answers": [
+        4
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Why might a \"jumbogram\" be used in IPv6 networking?",
+      "options": [
+        "To allow for secure broadcast authentication",
+        "To support payloads exceeding 65,535 bytes",
+        "To transport legacy 802.3 Ethernet frames over IPv6",
+        "To carry DNSSEC zone transfers in a compressed format",
+        "To perform rapid handover during mobility events"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "In a typical unicast IPv6 address, what does the high-order prefix (e.g., /48 or /64) identify?",
+      "options": [
+        "The network to which the host is attached",
+        "The flow label for transport-layer mapping",
+        "The packet's hop limit",
+        "The transport protocol in use",
+        "The checksum of the interface identifier"
+      ],
+      "correct_answers": [
+        0
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    },
+    {
+      "question": "Which of the following conditions is necessary for stateless IPv6 address autoconfiguration to work?",
+      "options": [
+        "The client must manually set its interface ID",
+        "The router must send periodic router advertisements",
+        "The DNS server must be anycast-enabled",
+        "The host must run a local DHCP server",
+        "The link must support TCP header compression"
+      ],
+      "correct_answers": [
+        1
+      ],
+      "explanation": "",
+      "lesson_id": "",
+      "tags": [],
+      "flags": []
+    }
+  ]
+}
