@@ -1,0 +1,1420 @@
+{
+  "schema_version": 1,
+  "topic_id": "04_tcp",
+  "title": "End-to-End Communication and Congestion Control",
+  "preparation_status": "approved",
+  "source_commit": "436acd77efdf644d57b03b21c40365cc262b070d",
+  "source_lecture": "lectures/lecture_04_tcp-ip.md",
+  "source_quiz": "quizzes/quiz_04_tcp.json",
+  "source_scope": "The complete TCP Markdown guide is preserved across lessons and glossary, including archived supplementary content. Cross-topic coverage checks are limited to networking guides 01–06; algorithms are excluded.",
+  "coverage_counts": {
+    "tcp_lesson": 21,
+    "not_found_in_available_lectures": 7,
+    "partial_in_other_topic": 1
+  },
+  "flag_counts": {
+    "coverage_gap": 8,
+    "wording_issue": 6,
+    "supplementary_source": 3,
+    "cross_topic": 1
+  },
+  "lessons": [
+    {
+      "id": "tcp-01",
+      "order": 1,
+      "title": "Layering and end-to-end transport",
+      "path": "lessons/04_tcp/01_layering.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Distinguish logical transport communication from physical forwarding through routers.",
+        "Name the five Internet protocol layers."
+      ],
+      "source_sections": [
+        "1. Internet Protocol Stack and Transport Layer Services",
+        "1.1 Layering: Logical vs. Physical Communication"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-02",
+      "order": 2,
+      "title": "TCP and UDP services",
+      "path": "lessons/04_tcp/02_tcp_udp_services.md",
+      "prerequisite_ids": [
+        "tcp-01"
+      ],
+      "learning_goals": [
+        "Compare TCP reliability, connection setup, flow control, and congestion control with UDP.",
+        "Identify the timing and bandwidth guarantees neither service provides."
+      ],
+      "source_sections": [
+        "1.2 TCP vs. UDP Service Models"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q001"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-03",
+      "order": 3,
+      "title": "Ports, sockets, and demultiplexing",
+      "path": "lessons/04_tcp/03_demultiplexing.md",
+      "prerequisite_ids": [
+        "tcp-02"
+      ],
+      "learning_goals": [
+        "Explain how port numbers connect transport data to applications.",
+        "Compare UDP demultiplexing with TCP four-tuple connection identity."
+      ],
+      "source_sections": [
+        "1.3 Addressing, Multiplexing, and Demultiplexing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 4,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-04",
+      "order": 4,
+      "title": "Reliable transfer and stop-and-wait utilization",
+      "path": "lessons/04_tcp/04_stop_and_wait.md",
+      "prerequisite_ids": [
+        "tcp-02"
+      ],
+      "learning_goals": [
+        "Explain the idle time introduced by stop-and-wait.",
+        "Calculate utilization from packet size, transmission rate, and RTT."
+      ],
+      "source_sections": [
+        "2. Principles of Reliable Data Transfer and Pipelining",
+        "2.1 Stop-and-Wait and Bandwidth Utilization"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-05",
+      "order": 5,
+      "title": "Pipelining and sliding windows",
+      "path": "lessons/04_tcp/05_pipelining.md",
+      "prerequisite_ids": [
+        "tcp-04"
+      ],
+      "learning_goals": [
+        "Explain why a sender benefits from multiple unacknowledged packets.",
+        "Calculate the utilization improvement from a three-packet pipeline."
+      ],
+      "source_sections": [
+        "2.2 Pipelined Protocols and Sliding Windows"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-06",
+      "order": 6,
+      "title": "TCP byte numbers and the sender window",
+      "path": "lessons/04_tcp/06_byte_stream_window.md",
+      "prerequisite_ids": [
+        "tcp-05"
+      ],
+      "learning_goals": [
+        "Identify acknowledged, outstanding, sendable, and unavailable byte ranges.",
+        "Explain how a new cumulative ACK advances the sender window."
+      ],
+      "source_sections": [
+        "2.3 TCP Byte-Stream Sliding Window"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q007"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-07",
+      "order": 7,
+      "title": "RTT estimation and retransmission timeouts",
+      "path": "lessons/04_tcp/07_rtt_and_timeouts.md",
+      "prerequisite_ids": [
+        "tcp-06"
+      ],
+      "learning_goals": [
+        "Use the RTT and deviation EWMAs to explain an adaptive timeout.",
+        "Interpret sequence and ACK numbers in the worked packet trace."
+      ],
+      "source_sections": [
+        "2.4 Round-Trip Time Estimation and Timeout Calculation"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q002",
+        "tcp-q005",
+        "tcp-q008"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-08",
+      "order": 8,
+      "title": "Flow control and the receive window",
+      "path": "lessons/04_tcp/08_flow_control.md",
+      "prerequisite_ids": [
+        "tcp-06"
+      ],
+      "learning_goals": [
+        "Distinguish receive-buffer capacity from free advertised space.",
+        "Explain how the advertised receive window limits outstanding data."
+      ],
+      "source_sections": [
+        "2.5 TCP Flow Control"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q006"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-09",
+      "order": 9,
+      "title": "Congestion, goodput, and fairness",
+      "path": "lessons/04_tcp/09_congestion_goals.md",
+      "prerequisite_ids": [
+        "tcp-05"
+      ],
+      "learning_goals": [
+        "Explain how overload causes loss, queueing, and wasted retransmissions.",
+        "Identify efficient utilization and fair sharing as congestion-control goals."
+      ],
+      "source_sections": [
+        "3. Principles of Congestion Control and Classical TCP",
+        "3.1 Causes, Consequences, and Goals of Congestion Control"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q011"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-10",
+      "order": 10,
+      "title": "End-to-end feedback and CWND",
+      "path": "lessons/04_tcp/10_congestion_feedback.md",
+      "prerequisite_ids": [
+        "tcp-08",
+        "tcp-09"
+      ],
+      "learning_goals": [
+        "Explain the sender congestion window as a response to network feedback.",
+        "Relate approximate throughput to window size and RTT."
+      ],
+      "source_sections": [
+        "3.2 End-to-End Feedback and the AIMD Control Law"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "tcp-q012"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-11",
+      "order": 11,
+      "title": "Why AIMD approaches a fair share",
+      "path": "lessons/04_tcp/11_aimd_fairness.md",
+      "prerequisite_ids": [
+        "tcp-10"
+      ],
+      "learning_goals": [
+        "Compare additive and multiplicative window updates.",
+        "Explain AIMD convergence in the two-user bottleneck model."
+      ],
+      "source_sections": [
+        "Why AIMD? Comparing Window Update Schemes",
+        "Geometric Convergence of Two Users Sharing One Bottleneck Link"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q013",
+        "tcp-q021"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-12",
+      "order": 12,
+      "title": "Slow start, congestion avoidance, and Tahoe",
+      "path": "lessons/04_tcp/12_slow_start_tahoe.md",
+      "prerequisite_ids": [
+        "tcp-10",
+        "tcp-11"
+      ],
+      "learning_goals": [
+        "Distinguish exponential slow start from linear congestion avoidance.",
+        "Trace Tahoe window and threshold changes after loss."
+      ],
+      "source_sections": [
+        "3.3 TCP Slow Start and Congestion Avoidance (TCP Tahoe)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q014"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-13",
+      "order": 13,
+      "title": "Fast retransmit and duplicate ACKs",
+      "path": "lessons/04_tcp/13_fast_retransmit.md",
+      "prerequisite_ids": [
+        "tcp-06",
+        "tcp-07",
+        "tcp-12"
+      ],
+      "learning_goals": [
+        "Explain why a gap produces repeated cumulative ACK numbers.",
+        "Apply the three-duplicate-ACK fast-retransmit rule and its reordering rationale."
+      ],
+      "source_sections": [
+        "3.4 Fast Retransmit and Fast Recovery (TCP Reno)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q009"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-14",
+      "order": 14,
+      "title": "Reno fast recovery and out-of-order buffering",
+      "path": "lessons/04_tcp/14_reno_fast_recovery.md",
+      "prerequisite_ids": [
+        "tcp-12",
+        "tcp-13"
+      ],
+      "learning_goals": [
+        "Trace Reno threshold, inflation, and deflation after three duplicate ACKs.",
+        "Contrast fast recovery with timeout slow start and explain the role of buffered data."
+      ],
+      "source_sections": [
+        "Fast Recovery (TCP Reno)",
+        "Summary of Differences: Fast Retransmit vs. Fast Recovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 4,
+      "question_ids": [
+        "tcp-q015",
+        "tcp-q016"
+      ],
+      "external_question_ids": [
+        "routing-q049"
+      ]
+    },
+    {
+      "id": "tcp-15",
+      "order": 15,
+      "title": "NewReno, SACK, Vegas, and Westwood †",
+      "path": "lessons/04_tcp/15_classical_variants.md",
+      "prerequisite_ids": [
+        "tcp-14"
+      ],
+      "learning_goals": [
+        "Compare recovery with cumulative ACKs, NewReno, SACK, and FACK.",
+        "Identify RTT feedback in Vegas and ACK-rate bandwidth estimation in Westwood."
+      ],
+      "source_sections": [
+        "3.5 Classical TCP Variants and Early Evolution †",
+        "Comparing Tahoe, Reno, NewReno, SACK, and Westwood †"
+      ],
+      "source_classification": "supplementary_archived_slides",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q017",
+        "tcp-q018",
+        "tcp-q029"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-16",
+      "order": 16,
+      "title": "Classical TCP history, 1974–1996 †",
+      "path": "lessons/04_tcp/16_tcp_history.md",
+      "prerequisite_ids": [
+        "tcp-15"
+      ],
+      "learning_goals": [
+        "Place the major classical TCP changes in their source historical sequence.",
+        "Connect congestion collapse with the later recovery and control mechanisms."
+      ],
+      "source_sections": [
+        "Historical Timeline of Classical TCP Evolution (1974–1996) †"
+      ],
+      "source_classification": "supplementary_archived_slides",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-17",
+      "order": 17,
+      "title": "Modern transport evolution and CUBIC",
+      "path": "lessons/04_tcp/17_cubic.md",
+      "prerequisite_ids": [
+        "tcp-12",
+        "tcp-14"
+      ],
+      "learning_goals": [
+        "Identify the six developments motivating modern transport control.",
+        "Explain CUBIC window growth around the previous maximum and time K."
+      ],
+      "source_sections": [
+        "4. Modern Transport Evolution: Beyond Loss-Based Control",
+        "TCP CUBIC"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-18",
+      "order": 18,
+      "title": "Bufferbloat, CoDel, and FQ-CoDel",
+      "path": "lessons/04_tcp/18_bufferbloat_aqm.md",
+      "prerequisite_ids": [
+        "tcp-10",
+        "tcp-17"
+      ],
+      "learning_goals": [
+        "Explain why deep queues can preserve throughput while harming latency.",
+        "Distinguish CoDel delay-based queue management from FQ-CoDel per-flow isolation."
+      ],
+      "source_sections": [
+        "4.1 Bufferbloat and Active Queue Management (CoDel & FQ-CoDel)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q024"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-19",
+      "order": 19,
+      "title": "BBR path models and fairness caveats",
+      "path": "lessons/04_tcp/19_bbr.md",
+      "prerequisite_ids": [
+        "tcp-17",
+        "tcp-18"
+      ],
+      "learning_goals": [
+        "Contrast bottleneck-bandwidth and propagation-delay modeling with loss-based growth.",
+        "Retain the source-dated standardization and empirical fairness qualifications."
+      ],
+      "source_sections": [
+        "4.2 Model-Based Congestion Control: BBR and BBRv3"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "tcp-q020"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-20",
+      "order": 20,
+      "title": "Explicit Congestion Notification",
+      "path": "lessons/04_tcp/20_ecn.md",
+      "prerequisite_ids": [
+        "tcp-10",
+        "tcp-18"
+      ],
+      "learning_goals": [
+        "Trace ECN-capable transmission, CE marking, ECE feedback, and CWR response.",
+        "Explain how congestion can be signaled without dropping the marked packet."
+      ],
+      "source_sections": [
+        "4.3 Explicit Congestion Notification (ECN) and L4S"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q019"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-21",
+      "order": 21,
+      "title": "L4S queues, feedback, and deployment claims",
+      "path": "lessons/04_tcp/21_l4s.md",
+      "prerequisite_ids": [
+        "tcp-20"
+      ],
+      "learning_goals": [
+        "Explain the ECT(1) distinction and dual-queue architecture.",
+        "Preserve the bounded source-reported latency gains and measurement context."
+      ],
+      "source_sections": [
+        "L4S: Low Latency, Low Loss, Scalable Throughput",
+        "Real-World Deployment and Empirical Performance of L4S"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-22",
+      "order": 22,
+      "title": "QUIC and userspace deployment",
+      "path": "lessons/04_tcp/22_quic.md",
+      "prerequisite_ids": [
+        "tcp-02",
+        "tcp-17"
+      ],
+      "learning_goals": [
+        "Explain how userspace transport changes the pace of deployment.",
+        "Distinguish implementation fragmentation from packet fragmentation."
+      ],
+      "source_sections": [
+        "4.4 Userspace Transport: QUIC"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-23",
+      "order": 23,
+      "title": "Wireless loss and other congestion-control limits",
+      "path": "lessons/04_tcp/23_failure_modes.md",
+      "prerequisite_ids": [
+        "tcp-07",
+        "tcp-18",
+        "tcp-19"
+      ],
+      "learning_goals": [
+        "Explain why non-congestion loss confuses a loss-based sender.",
+        "Describe adverse equilibria, route changes, and the limits of stability."
+      ],
+      "source_sections": [
+        "4.5 Fundamental Failure Modes of TCP Congestion Control"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "tcp-q028"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-24",
+      "order": 24,
+      "title": "Interactive study resources",
+      "path": "lessons/04_tcp/24_study_resources.md",
+      "prerequisite_ids": [
+        "tcp-07",
+        "tcp-14"
+      ],
+      "learning_goals": [
+        "Find the retained practice resources for sequences, RTT, retransmissions, and windows."
+      ],
+      "source_sections": [
+        "5. Study Resources and Review Questions",
+        "5.1 Interactive Animations and Exercises"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "tcp-25",
+      "order": 25,
+      "title": "Archived review prompts and throughput example †",
+      "path": "lessons/04_tcp/25_review_prompts.md",
+      "prerequisite_ids": [
+        "tcp-06",
+        "tcp-08",
+        "tcp-14"
+      ],
+      "learning_goals": [
+        "Use the archived prompts as self-tests without mistaking questions for explanations.",
+        "Calculate receive-window-limited throughput and its dependence on RTT."
+      ],
+      "source_sections": [
+        "5.2 Review Questions †"
+      ],
+      "source_classification": "supplementary_archived_slides",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "tcp-q001",
+      "source_index": 0,
+      "question_sha256": "d0c5e100aa38a463f7ee3a3a059e82f5e3bf58dbe1a594fcf3de26b2bb035950",
+      "lesson_id": "tcp-02",
+      "related_lesson_ids": [
+        "tcp-03"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "1.2 TCP vs. UDP Service Models",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The TCP/UDP comparison explicitly distinguishes handshaking and reliable byte-stream service; ports and error checking are not unique to TCP.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-03"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q002",
+      "source_index": 1,
+      "question_sha256": "3c7ae81fa559fd49b50b9baf8d0a369ff25caa2dd91ae3f936c0efea1aed8ca2",
+      "lesson_id": "tcp-07",
+      "related_lesson_ids": [
+        "tcp-06"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.4 Round-Trip Time Estimation and Timeout Calculation",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The packet trace starts a segment at byte 1, carries 1448 bytes, and receives ACK 1449. Its labelled explanation makes the first-data-byte meaning explicit, rather than identifying a message or counting packets.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-06"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q003",
+      "source_index": 2,
+      "question_sha256": "aa1d8fccd812b57637265988be36b542474906b084524084937432513426ea52",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "5.2 Review Questions †",
+          "support": "unanswered_prompt"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Reason 2: Allowing Old Duplicate Segments (\"Wandering Duplicates\") to Expire in the Network",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The finite 32-bit space appears only in an unanswered archived review prompt; byte-window teaching does not explain modulo comparisons or safe wraparound. Socket TIME_WAIT concerns old connection incarnations, not this missing explanation.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-06",
+      "review_note": "A 32-bit field is finite and still wraps. Its width alone does not prevent ambiguity; sequence arithmetic and old-duplicate constraints are missing from the teaching and from the keyed explanation.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc9293.html#section-3.4"
+    },
+    {
+      "question_id": "tcp-q004",
+      "source_index": 3,
+      "question_sha256": "fab9c0af13274ac22ffed08691f022109939836db1cfff3376d718aa1a92dcb3",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.4 Round-Trip Time Estimation and Timeout Calculation",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Historical Timeline of Classical TCP Evolution (1974–1996) †",
+          "support": "name_only"
+        }
+      ],
+      "rationale": "RTT/RTO teaching explains unnecessary retransmissions in general, but not the delayed-ACK mechanism or its tradeoff. The archived 1990 timeline only names delayed ACKs.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-07"
+    },
+    {
+      "question_id": "tcp-q005",
+      "source_index": 4,
+      "question_sha256": "458635424de588964fc553993f22a4dd2a4a4fa811a5fb188b844fe8257cf532",
+      "lesson_id": "tcp-07",
+      "related_lesson_ids": [],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.4 Round-Trip Time Estimation and Timeout Calculation",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The RTT EWMA assigns exponentially decaying influence to earlier samples, preserving recent observations for the timeout calculation.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q006",
+      "source_index": 5,
+      "question_sha256": "79b061dd6d8e9e99a2d58318e02fccc8f9ca9fd5386782f8ac6a24ce080ea0b0",
+      "lesson_id": "tcp-08",
+      "related_lesson_ids": [
+        "tcp-10"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.5 TCP Flow Control",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The free receive-buffer space is advertised as RcvWindow and constrains unacknowledged data; this is receiver protection rather than network congestion feedback.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-10"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q007",
+      "source_index": 6,
+      "question_sha256": "d7f8a43302935ad874f2d26e69342717f02299066ef2379f4dca6655f6632676",
+      "lesson_id": "tcp-06",
+      "related_lesson_ids": [
+        "tcp-13"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.3 TCP Byte-Stream Sliding Window",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The four byte regions explain advancing the left edge on new cumulative acknowledgments. The question needs qualification because duplicate ACKs do not advance it.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-13"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged.",
+      "review_note": "Qualify the stem as the sender receiving a new cumulative ACK. Duplicate ACKs repeat the acknowledgment edge rather than sliding it forward.",
+      "review_reference": "lectures/lecture_04_tcp-ip.md#34-fast-retransmit-and-fast-recovery-tcp-reno"
+    },
+    {
+      "question_id": "tcp-q008",
+      "source_index": 7,
+      "question_sha256": "22312e26b9676c7e7383149ad33a70ed46706614008bdd741240d0575136afae",
+      "lesson_id": "tcp-07",
+      "related_lesson_ids": [
+        "tcp-13"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.4 Round-Trip Time Estimation and Timeout Calculation",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source explicitly contrasts too-short timeouts causing unnecessary retransmissions with too-long timeouts delaying loss recovery.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-13"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q009",
+      "source_index": 8,
+      "question_sha256": "fcb8bd28bcbb9dae792157f45446742a580b89b947a007fc56938e9f4c142337",
+      "lesson_id": "tcp-13",
+      "related_lesson_ids": [
+        "tcp-14"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Fast Retransmit",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The sequence trace and rule specify three duplicate ACKs and immediate retransmission before RTO expiry.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-14"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q010",
+      "source_index": 9,
+      "question_sha256": "0d900e2875aa329cd4cde451408a3e2e0e33943c2a1950fdbf3cc5ba5da3373c",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.4 Fast Retransmit and Fast Recovery (TCP Reno)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Fast retransmit and immediate duplicate ACKs are explained, but there is no delayed-ACK policy or explanation supporting the keyed delay of duplicate ACKs.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-13",
+      "review_note": "The key assumes delayed generation of duplicate ACKs. Standard guidance calls for immediate ACKs for out-of-order data, so a nonstandard ACK policy or other explicit context is needed.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc5681.html#section-4.2"
+    },
+    {
+      "question_id": "tcp-q011",
+      "source_index": 10,
+      "question_sha256": "d5476840346ef3c16d930414c88202086fec59eb39d617680a37e6dea5372e8d",
+      "lesson_id": "tcp-09",
+      "related_lesson_ids": [
+        "tcp-11"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.1 Causes, Consequences, and Goals of Congestion Control",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The congestion goals include fair bottleneck sharing and preventing collapse while retaining useful throughput.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-11"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q012",
+      "source_index": 11,
+      "question_sha256": "f4707f7a8e78ca7e64e09b5e0cba18899c4114c734191102721bb44c6c9d08b7",
+      "lesson_id": "tcp-10",
+      "related_lesson_ids": [
+        "tcp-08"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.2 End-to-End Feedback and the AIMD Control Law",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "CWND is defined as the sender limit on unacknowledged traffic adjusted using inferred network feedback; the receive window is a distinct receiver constraint.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-08"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q013",
+      "source_index": 12,
+      "question_sha256": "558e24116760a6098092e8e6645acda4e194d2d2906c20c256fe348e386b844d",
+      "lesson_id": "tcp-11",
+      "related_lesson_ids": [
+        "tcp-10",
+        "tcp-12"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Why AIMD? Comparing Window Update Schemes",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The AIMD update rule increases one MSS per RTT and halves the window on a congestion indication in the classical model.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-10",
+        "tcp-12"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q014",
+      "source_index": 13,
+      "question_sha256": "0ec2ea863374f1d8aa84ceb9dcc07852a3631b859684c1a05c62c4acf39beb1f",
+      "lesson_id": "tcp-12",
+      "related_lesson_ids": [
+        "tcp-11"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.3 TCP Slow Start and Congestion Avoidance (TCP Tahoe)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Slow start doubles the congestion window each RTT until the threshold or a loss event, unlike linear congestion avoidance.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-11"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q015",
+      "source_index": 14,
+      "question_sha256": "2ba6078935fdb6d3f617e502a034e7e4d86099ed74594bf415525268ec8c7d1b",
+      "lesson_id": "tcp-14",
+      "related_lesson_ids": [
+        "tcp-12",
+        "tcp-13"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Fast Recovery (TCP Reno)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The Reno explanation itself contrasts fast recovery with Tahoe resetting CWND to one. The timeout path still enters slow start, so the unqualified comparison needs wording review.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-12",
+        "tcp-13"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged.",
+      "review_note": "Specify loss inferred from three duplicate ACKs. Reno also enters slow start after a retransmission timeout; the contrast with Tahoe is not true for every loss event.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc5681.html#section-3.1"
+    },
+    {
+      "question_id": "tcp-q016",
+      "source_index": 15,
+      "question_sha256": "e122ba95b4a5f4242f989f46e17bf0e830ee42021fbdd312168170d8fd634ab9",
+      "lesson_id": "tcp-14",
+      "related_lesson_ids": [
+        "tcp-13"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Fast Recovery (TCP Reno)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The four fast-recovery steps halve the threshold, inflate CWND for duplicate ACKs, then deflate on a new ACK without traversing slow start.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-13"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q017",
+      "source_index": 16,
+      "question_sha256": "48f273ad1b62f91a0d92320c7836450879b0231ce99aba53f367269ae0e2116e",
+      "lesson_id": "tcp-15",
+      "related_lesson_ids": [
+        "tcp-14"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Comparing Tahoe, Reno, NewReno, SACK, and Westwood †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The archived comparison explains NewReno recovering multiple lost segments from a window before exiting fast recovery, unlike Reno leaving on the first new ACK.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-14"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q018",
+      "source_index": 17,
+      "question_sha256": "c48993566fe0dc6fefb62637abf2f5402bc0370225f68a996269564d9386bbfa",
+      "lesson_id": "tcp-15",
+      "related_lesson_ids": [
+        "tcp-07"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Comparing Tahoe, Reno, NewReno, SACK, and Westwood †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The archived Vegas explanation monitors RTT relative to its minimum baseline to infer a growing queue before loss; a mere visible-slide name mention would not establish this coverage.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-07"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q019",
+      "source_index": 18,
+      "question_sha256": "8c08a70fe9c6273a4b969bcc8816a279bf6689e85e6793310be66c09c854c7b8",
+      "lesson_id": "tcp-20",
+      "related_lesson_ids": [
+        "tcp-18"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Classical ECN",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The ECN exchange shows router CE marking and TCP feedback before packet loss, without claiming per-flow bandwidth guarantees.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-18"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q020",
+      "source_index": 19,
+      "question_sha256": "beb8988d078d47d733c414a7ab0fe849e32ecade12229b754837c2cec3c3c9cb",
+      "lesson_id": "tcp-19",
+      "related_lesson_ids": [
+        "tcp-17"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "4.2 Model-Based Congestion Control: BBR and BBRv3",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The BBR lesson explicitly contrasts loss-based CUBIC with bottleneck delivery-rate and minimum-RTT modeling, BDP, and pacing. CUBIC curve details are optional for this keyed distinction.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-17"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q021",
+      "source_index": 20,
+      "question_sha256": "fefa60e4909423fbbf49bc72a8881f950f309e4f353817d6f3c6f2d4f3c303fb",
+      "lesson_id": "tcp-11",
+      "related_lesson_ids": [
+        "tcp-09",
+        "tcp-23"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Why AIMD? Comparing Window Update Schemes",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The equal-share trajectory requires competing flows to respond to overload. A flow that keeps growing while another halves its rate defeats that fairness mechanism.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-09",
+        "tcp-23"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q022",
+      "source_index": 21,
+      "question_sha256": "7853d28b59e437d1d959e07df582734f449935a64f21c6c7bf71406d09dbb6f3",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Why AIMD? Comparing Window Update Schemes",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "General AIMD fairness does not define TCP-friendliness as comparable throughput against a reference TCP flow. That term and comparison are not explained in the networking guides.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-11"
+    },
+    {
+      "question_id": "tcp-q023",
+      "source_index": 22,
+      "question_sha256": "f188596cb1b8c03b700c13ee418f08ba017fac3f8e6adfaaf7c70efb49e7f3e6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "4.1 Bufferbloat and Active Queue Management (CoDel & FQ-CoDel)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide teaches deep queues and CoDel/FQ-CoDel, but does not explain DropTail or synchronized congestion losses among flows. Bufferbloat alone does not supply that reasoning.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-18"
+    },
+    {
+      "question_id": "tcp-q024",
+      "source_index": 23,
+      "question_sha256": "d1b5f25497c7b210210d850dc299b3e3d776019d3f5bdb8330b09360e2b1bf75",
+      "lesson_id": "tcp-18",
+      "related_lesson_ids": [
+        "tcp-17"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "4.1 Bufferbloat and Active Queue Management (CoDel & FQ-CoDel)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The bufferbloat explanation preserves high utilization while packets wait persistently in oversized queues, harming latency.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-17"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    },
+    {
+      "question_id": "tcp-q025",
+      "source_index": 24,
+      "question_sha256": "288ba9d3c7876f161056ee7eaa0f52d06ffb69627221406a4a9746433fddd1b5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Active Queue Management (AQM): Managing the Queue Instead",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "CoDel and FQ-CoDel demonstrate early congestion signaling, but the keyed answer is RED. Its name, queue averaging, and probabilistic early signal are not taught in guides 01–06.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "candidate_lesson_id": "tcp-18"
+    },
+    {
+      "question_id": "tcp-q026",
+      "source_index": 25,
+      "question_sha256": "8d3b222c3efebf138fa19500f7bdaa9db1c93fdcebe271fa3cd0349f1e4c669f",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.1 The Three-Way Handshake and Kernel Listen Queues",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.3 Denial-of-Service Attacks (Partial Lines) and Per-Client State Machines",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The socket guide explains the handshake and incomplete/completed listen queues, but not SYN flooding or stateless SYN cookies encoding state in an ISN. Its partial-line denial-of-service example is a different attack.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key."
+    },
+    {
+      "question_id": "tcp-q027",
+      "source_index": 26,
+      "question_sha256": "5bbfad789c1d2c232aa399b578a44642665c19b0fbd6d8185bbbaa3b39e45a20",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "coverage_gap",
+        "cross_topic",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "partial_support"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "1.2 Client-Server Paradigm, Sockets, and Connection 4-Tuples",
+          "support": "partial_support"
+        }
+      ],
+      "rationale": "The socket guide defines RST connection aborts and four-tuples, but not forged resets, sequence acceptability, prediction, or challenge-ACK defenses. This supplies partial background only, with no suitable primary lesson.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording issue before assignment. Do not silently fill a gap or change the original key.",
+      "target_topic": "05_socket-api",
+      "review_note": "Predictability is a facilitating weakness, not a complete attack model. A forged reset must target the connection tuple and satisfy sequence validation; acceptance also depends on reset defenses.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc5961.html#section-3"
+    },
+    {
+      "question_id": "tcp-q028",
+      "source_index": 27,
+      "question_sha256": "bbad7ce3c5357d72e9bbd0220469eb5c9b993bffd8d4adf79bb00a4d89013bf2",
+      "lesson_id": "tcp-23",
+      "related_lesson_ids": [
+        "tcp-18",
+        "tcp-15"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "4.5 Fundamental Failure Modes of TCP Congestion Control",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The failure-mode explanation directly contrasts wireless corruption with congestion loss and describes unnecessary loss-based backoff. The stem should specify classical loss-based TCP.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-18",
+        "tcp-15"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged.",
+      "review_note": "Qualify standard TCP as the classical loss-based sender discussed by the source; the statement is too broad for every modern TCP controller or wireless path.",
+      "review_reference": "lectures/lecture_04_tcp-ip.md#45-fundamental-failure-modes-of-tcp-congestion-control"
+    },
+    {
+      "question_id": "tcp-q029",
+      "source_index": 28,
+      "question_sha256": "49e23f9beced91ae56f30d5c283269677812307e8f74dde4047cc300bd921fe2",
+      "lesson_id": "tcp-15",
+      "related_lesson_ids": [
+        "tcp-23"
+      ],
+      "coverage_status": "tcp_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Comparing Tahoe, Reno, NewReno, SACK, and Westwood †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The archived Westwood comparison explicitly estimates bandwidth from the arrival rate of returning ACKs and uses it to set CWND and ssthresh after loss.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "tcp-23"
+      ],
+      "next_action": "Use the primary lesson; optional links provide background. Confirm supplementary scope or wording before scored practice when flagged."
+    }
+  ],
+  "external_question_links": [
+    {
+      "question_id": "routing-q049",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 48,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "tcp-14"
+    }
+  ],
+  "created": "2026-10-22",
+  "question_identity": "Source indices are zero-based in source_quiz. Verify question_sha256 before matching after edits. External questions remain canonical in their original topic.",
+  "dependency_convention": "Mapped entries explicitly distinguish additional required_lesson_ids from optional_lesson_ids; their union is related_lesson_ids. Gap entries leave dependencies unresolved. Lesson prerequisites describe study order, not automatic per-question requirements."
+}

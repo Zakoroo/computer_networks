@@ -11,8 +11,8 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 | Lecture guides | 11 | `lectures/lecture_*.md` |
 | Quiz files | 15 | `quizzes/quiz_*.json` |
 | Quiz questions | 585 | Sum of each quiz's `questions` array |
-| Topics converted to lessons | 3 | Internet Routing, DNS, and IPv6 manifests |
-| Numbered lessons | 68 | Sum of prepared manifests' `lessons` arrays |
+| Topics converted to lessons | 4 | Internet Routing, DNS, IPv6, and TCP manifests |
+| Numbered lessons | 93 | Sum of prepared manifests' `lessons` arrays |
 
 ## Internet Routing
 
@@ -30,6 +30,8 @@ Source: [manifest.json](lessons/01_routing/manifest.json), checked against the r
 | Questions listing related lessons | 52 |
 | Cross-topic questions now linked to DNS lessons | 2 |
 | Cross-topic questions now linked to IPv6 lessons | 3 |
+| Cross-topic questions now linked to TCP lessons | 1 |
+| Actual primary lesson assignments | 66 |
 | External IPv6 questions using routing as primary lesson | 1 |
 | Related-lesson entries still awaiting dependency classification | 49 |
 
@@ -100,3 +102,32 @@ The partial-support and insufficient-coverage groups together produce nine cover
 | `cross_topic` | 3 |
 
 IPv6 Q004 requires lesson 05 in addition to lesson 03 to evaluate the mixed-notation option. Q012 uses routing's fragmentation lesson and additionally requires IPv6 lesson 17. Q024 uses IPv6 lesson 01 and additionally requires lesson 19. Unclassified gap dependencies are not treated as empty requirements. No native question depends on hidden-slide supplementary material; the guide reports no hidden slides.
+
+## TCP
+
+Source: [manifest.json](lessons/04_tcp/manifest.json), checked against quiz 04 and the lesson files. Native counts exclude the externally referenced Routing Q049.
+
+| Measure | Count |
+| --- | ---: |
+| Lessons | 25 |
+| Mermaid diagrams in numbered lessons, all retained from the source | 13 |
+| Native questions accounted for | 29 |
+| Native questions mapped to TCP lessons | 21 |
+| Partially supported in another networking topic | 1 |
+| Insufficient coverage in networking guides 01–06 | 7 |
+| Native questions without a primary lesson | 8 |
+| Native mapped questions with additional required lessons | 0 |
+| Native mapped questions with optional background | 20 |
+| Native gap entries with unresolved dependency classification | 8 |
+| Lessons without native TCP quiz assignments | 10 |
+| Supplementary archived lessons | 3 |
+| External routing questions linked to TCP lessons | 1 |
+
+| Flag | Native questions |
+| --- | ---: |
+| `coverage_gap` | 8 |
+| `wording_issue` | 6 |
+| `supplementary_source` | 3 |
+| `cross_topic` | 1 |
+
+Flags overlap coverage categories. Q017/Q018/Q029 use the archived variant comparison; their name mentions elsewhere are insufficient. Q027 has partial socket-guide background and remains unassigned. The primary lessons already teach the supported keyed distinctions, so optional study context is not labelled mandatory extra reading. Routing Q049's unmarked TCP buffering support does not require a supplementary-source flag and is counted only in its original quiz.

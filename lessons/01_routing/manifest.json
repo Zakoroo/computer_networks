@@ -1655,7 +1655,7 @@
       "question_id": "routing-q049",
       "source_index": 48,
       "question_sha256": "4ea9207a74ca6fba47b8c493881de017c8b7d41417ff0dd25179df3044784fb0",
-      "lesson_id": "",
+      "lesson_id": "tcp-14",
       "related_lesson_ids": [],
       "coverage_status": "covered_in_other_topic",
       "flags": [
@@ -1666,17 +1666,14 @@
           "path": "lectures/lecture_04_tcp-ip.md",
           "section": "3.4 Fast Retransmit and Fast Recovery (TCP Reno)",
           "support": "supports_answer"
-        },
-        {
-          "path": "lectures/lecture_04_tcp-ip.md",
-          "section": "5.2 Review Questions †",
-          "support": "supports_answer"
         }
       ],
-      "target_topic": "04_tcp-ip",
-      "rationale": "The unmarked Reno explanation explicitly describes out-of-order segments buffered at the receiver. The supplementary review question also poses this exact comparison; the answer is supported by the unmarked explanation.",
+      "target_topic": "04_tcp",
+      "rationale": "The unmarked Reno explanation describes out-of-order segments buffered at the receiver. TCP lesson 14 retains that mechanism and a labelled derived comparison with discarding them. The archived review prompt alone is not answer evidence.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use TCP lesson 14 for the buffering comparison; no additional lesson is required.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q050",

@@ -14,7 +14,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-02",
       "tags": [],
       "flags": []
     },
@@ -31,7 +31,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
     },
@@ -50,7 +50,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What is a tradeoff of using delayed ACKs in TCP?",
@@ -67,7 +70,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why does TCP use an Exponentially Weighted Moving Average (EWMA) for RTT estimation?",
@@ -82,7 +87,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
     },
@@ -99,7 +104,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-08",
       "tags": [],
       "flags": []
     },
@@ -116,9 +121,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-06",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is it important to set the retransmission timeout (RTO) carefully in TCP?",
@@ -133,7 +140,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
     },
@@ -150,7 +157,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-13",
       "tags": [],
       "flags": []
     },
@@ -169,7 +176,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Which of the following is a primary goal of TCP congestion control?",
@@ -184,7 +194,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-09",
       "tags": [],
       "flags": []
     },
@@ -201,7 +211,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-10",
       "tags": [],
       "flags": []
     },
@@ -218,7 +228,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-11",
       "tags": [],
       "flags": []
     },
@@ -235,7 +245,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-12",
       "tags": [],
       "flags": []
     },
@@ -252,9 +262,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is the purpose of the fast recovery phase in TCP Reno?",
@@ -269,7 +281,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-14",
       "tags": [],
       "flags": []
     },
@@ -286,9 +298,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-15",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "Which strategy does TCP Vegas primarily use to detect and avoid congestion?",
@@ -303,9 +317,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-15",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "What advantage does Explicit Congestion Notification (ECN) provide in TCP?",
@@ -320,7 +336,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-20",
       "tags": [],
       "flags": []
     },
@@ -337,7 +353,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-19",
       "tags": [],
       "flags": []
     },
@@ -354,7 +370,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-11",
       "tags": [],
       "flags": []
     },
@@ -373,7 +389,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How can TCP congestion control interact poorly with DropTail queues?",
@@ -390,7 +408,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is the primary symptom of bufferbloat in TCP flows?",
@@ -405,7 +425,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-18",
       "tags": [],
       "flags": []
     },
@@ -424,7 +444,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does SYN cookie defense mitigate SYN flooding attacks?",
@@ -441,7 +463,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Which condition makes TCP reset attacks feasible on a connection?",
@@ -458,7 +482,11 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "cross_topic",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does standard TCP perform poorly in wireless networks?",
@@ -473,9 +501,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-23",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which of the following strategies is used by TCP Westwood to improve wireless performance?",
@@ -490,9 +520,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "tcp-15",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     }
   ]
 }

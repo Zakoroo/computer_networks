@@ -17,6 +17,8 @@ IPv6 conversion follow-up: Q014 now has primary `ipv6-01` with required `routing
 
 DNS conversion follow-up: Q036 has primary `lesson_id: dns-18`; Q037 has primary `dns-08` and additional required `dns-18`. The table below retains the original source evidence; these questions and the three IPv6 assignments above no longer await lesson creation. The original audit checked the then-available guides; subsequent networking coverage work is limited to lectures 01–06 by user instruction.
 
+TCP conversion follow-up: Q049 now has primary `tcp-14`, based on the unmarked Reno buffering explanation, with explicit empty additional required/optional lists. Its canonical record stays here and the TCP manifest contains only an external reference. Q047 and Q048 remain gaps: an archived wraparound prompt is unanswered, and data reordering does not supply the requested reordered-ACK mitigation. Coverage categories and flags are unchanged.
+
 | Question | Target | Coverage | Evidence and remaining issue |
 | --- | --- | --- | --- |
 | Q011: Which of the following is a key tradeoff when choosing trie-based forwarding tables over TCAMs? | [06_sdn](../../lectures/lecture_06_sdn.md#glossary) | Partial only | SDN introduces TCAM matching and capacity, but does not compare tries with TCAM lookup speed or power. A mention of TCAM does not establish full coverage. |
@@ -92,6 +94,6 @@ These are proposed review findings. Some keyed options remain the best available
 
 ## Supplementary source dependencies
 
-Q018, Q019, Q041, Q057, Q089 require OSPF material marked † by the routing guide. General link-state and distance-vector lessons remain unmarked. TCP Q049 can be supported by the unmarked Reno explanation even though a similar review question also appears in a † subsection.
+Q018, Q019, Q041, Q057, Q089 require OSPF material marked † by the routing guide. General link-state and distance-vector lessons remain unmarked. Routing Q049 uses the unmarked Reno explanation in TCP lesson 14 even though a similar review question also appears in a † subsection.
 
 [Topic overview](README.md) · [Full evidence and assignments](manifest.json)

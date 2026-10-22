@@ -2,7 +2,7 @@
   "schema_version": 1,
   "topic_id": "02_dns",
   "title": "Domain Name System",
-  "preparation_status": "reviewed",
+  "preparation_status": "approved",
   "created": "2026-10-22",
   "source_commit": "657236d94510bebe598e374fd8a0dc106a3137f5",
   "source_lecture": "lectures/lecture_02_dns.md",

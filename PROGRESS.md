@@ -4,7 +4,7 @@
 
 Quick view of **networking lectures 01–06**. Algorithms (07 onward) are outside this work scope. Charts show the current files, not historical progress or a percentage of work completed.
 
-**3/6 topics have lessons · 68 lessons · 161/299 networking questions accounted for in manifests · 113 questions linked to actual lessons.**
+**4/6 topics have lessons · 93 lessons · 190/299 networking questions accounted for in manifests · 135 questions linked to actual lessons.**
 
 Whole repository inventory: 11 lecture guides, 15 quizzes, 585 questions (including algorithms).
 
@@ -16,17 +16,16 @@ Stages are explicit `preparation_status` metadata in each topic manifest: **Draf
 
 ```mermaid
 pie title Networking topic status
-    "Approved" : 2
-    "Reviewed" : 1
-    "Not started" : 3
+    "Approved" : 4
+    "Not started" : 2
 ```
 
 | Topic | Stage | Lessons | Details |
 | --- | --- | --- | --- |
 | 01. [Internet routing](lectures/lecture_01_internet_routing.md) | Approved | 23 | [Overview](lessons/01_routing/README.md) |
-| 02. [Domain Name System](lectures/lecture_02_dns.md) | Reviewed | 20 | [Overview](lessons/02_dns/README.md) |
+| 02. [Domain Name System](lectures/lecture_02_dns.md) | Approved | 20 | [Overview](lessons/02_dns/README.md) |
 | 03. [IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment](lectures/lecture_03_ipv6.md) | Approved | 25 | [Overview](lessons/03_ipv6/README.md) |
-| 04. [End-to-End Communication and Congestion Control](lectures/lecture_04_tcp-ip.md) | Not started | 0 | — |
+| 04. [End-to-End Communication and Congestion Control](lectures/lecture_04_tcp-ip.md) | Approved | 25 | [Overview](lessons/04_tcp/README.md) |
 | 05. [Socket API, Network Programming, and High-Performance I/O](lectures/lecture_05_socket-api.md) | Not started | 0 | — |
 | 06. [Software-Defined Networking (SDN) and OpenFlow](lectures/lecture_06_sdn.md) | Not started | 0 | — |
 
@@ -36,9 +35,10 @@ Coverage categories below are mutually exclusive and describe teaching support. 
 
 | Chart label | Source quiz | Own-topic lesson | Supported elsewhere | Partial elsewhere | Missing coverage | Total | Actual lesson links |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T01 | Internet routing | 60 | 6 | 5 | 29 | 100 | 65 |
+| T01 | Internet routing | 60 | 6 | 5 | 29 | 100 | 66 |
 | T02 | Domain Name System | 27 | 0 | 0 | 4 | 31 | 27 |
 | T03 | IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 20 | 1 | 2 | 7 | 30 | 21 |
+| T04 | End-to-End Communication and Congestion Control | 21 | 0 | 1 | 7 | 29 | 21 |
 
 ```mermaid
 pie title T01 question coverage
@@ -62,7 +62,14 @@ pie title T03 question coverage
     "Missing coverage" : 7
 ```
 
-**138 networking questions are not yet accounted for in topic manifests.** They are unassessed, not confirmed coverage gaps. External assignments are counted only in the source quiz: the routing questions linked to DNS are not counted again as DNS quiz questions.
+```mermaid
+pie title T04 question coverage
+    "Own-topic lesson" : 21
+    "Partial elsewhere" : 1
+    "Missing coverage" : 7
+```
+
+**109 networking questions are not yet accounted for in topic manifests.** They are unassessed, not confirmed coverage gaps. External assignments are counted only in the source quiz: the routing questions linked to DNS are not counted again as DNS quiz questions.
 
 ## Review backlog
 
@@ -72,8 +79,8 @@ Flags overlap. The bars count flags, not separate populations, and must not be a
 xychart-beta
     title "Review flags"
     x-axis ["G", "W", "D"]
-    y-axis "Questions" 0 --> 47
-    bar [47, 29, 2]
+    y-axis "Questions" 0 --> 55
+    bar [55, 35, 2]
 ```
 
 **Legend:** G = coverage gaps; W = wording issues; D = duplicate entries.
@@ -83,6 +90,7 @@ xychart-beta
 | Internet routing | 34 | 16 | 0 | 43 | [Review](lessons/01_routing/review.md) |
 | Domain Name System | 4 | 4 | 2 | 10 | [Review](lessons/02_dns/review.md) |
 | IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 9 | 9 | 0 | 14 | [Review](lessons/03_ipv6/review.md) |
+| End-to-End Communication and Congestion Control | 8 | 6 | 0 | 11 | [Review](lessons/04_tcp/review.md) |
 
 Cross-topic and supplementary-source flags describe context, not defects by themselves. These flags are excluded from the backlog chart. The distinct-question column above is a deduplicated review queue, not a count of failed questions or necessarily unaddressed fixes.
 
@@ -91,9 +99,9 @@ Cross-topic and supplementary-source flags describe context, not defects by them
 ```mermaid
 xychart-beta
     title "Lessons prepared by topic"
-    x-axis ["T01", "T02", "T03"]
+    x-axis ["T01", "T02", "T03", "T04"]
     y-axis "Lessons" 0 --> 25
-    bar [23, 20, 25]
+    bar [23, 20, 25, 25]
 ```
 
 **Legend and counts:**
@@ -103,6 +111,7 @@ xychart-beta
 | T01 | Internet routing | 23 | 5 |
 | T02 | Domain Name System | 20 | 7 |
 | T03 | IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 25 | 16 |
+| T04 | End-to-End Communication and Congestion Control | 25 | 10 |
 
 Lessons without native quiz questions are retained deliberately. Some support another quiz. Lesson counts describe content organization, not equal amounts of work or exam importance.
 

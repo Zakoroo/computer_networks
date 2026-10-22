@@ -46,6 +46,8 @@ See the [review queue](review.md) for evidence and qualifications, [manifest](ma
 
 ## Provenance and source qualifications
 
+Preparation status: **user-approved on 22 October 2026**.
+
 Source commit: `657236d94510bebe598e374fd8a0dc106a3137f5`. The input is the existing Markdown guide, not a fresh review of the original PowerPoint. Cross-topic lookups for this task stop at lecture 06 (SDN), the end of the networking part. Lectures 07 onward belong to algorithms and are excluded.
 
 No extension lessons were added to fill unsupported questions. Short additions naming the stub-resolver role, reasoning through TTL expiry, and qualifying CNAME lookup cost are explicitly labelled editorial clarification and cite standards. Existing technical clarifications remain part of the source text.

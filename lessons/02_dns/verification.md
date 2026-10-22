@@ -2,6 +2,8 @@
 
 Prepared on 22 October 2026 against commit `657236d` (full source identity in [manifest.json](manifest.json)). The working tree was clean at the start. The user reported that the preceding routing work had been committed and pushed and the recovery patch removed; Git confirmed that commit as HEAD and the patch was absent.
 
+The user approved the DNS topic lessons on 22 October 2026. The manifest records `approved`; the coverage gaps and question-review findings below remain documented.
+
 ## Preservation and structure
 
 - Twenty numbered Markdown lessons cover every teaching section of lecture 02. The source glossary, references, examples, command snippets, equations, and qualifications are retained. The original lecture file is unchanged.
