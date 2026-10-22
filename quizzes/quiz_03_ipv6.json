@@ -16,7 +16,11 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue",
+        "cross_topic"
+      ]
     },
     {
       "question": "Which of the following IPv6 features directly improves support for end-to-end connectivity compared to IPv4?",
@@ -31,9 +35,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-08",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is a key design benefit of IPv6 address formatting for modern applications?",
@@ -48,7 +54,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-04",
       "tags": [],
       "flags": []
     },
@@ -65,9 +71,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-03",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which of the following best distinguishes anycast from multicast in IPv6?",
@@ -82,7 +90,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-15",
       "tags": [],
       "flags": []
     },
@@ -99,9 +107,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-08",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What risk is introduced when IPv6 endpoints communicate through an IPv4-only network?",
@@ -116,7 +126,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
     },
@@ -133,7 +143,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
     },
@@ -150,7 +160,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
     },
@@ -169,7 +179,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is IPv6 fragmentation only allowed at the source rather than at intermediate routers?",
@@ -184,7 +197,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
     },
@@ -201,9 +214,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-03",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "Why might link-layer acknowledgments be insufficient for ensuring delivery in IPv6?",
@@ -220,7 +235,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "cross_topic"
+      ]
     },
     {
       "question": "What weakened the urgency for IPv6 deployment despite the threat of IPv4 address exhaustion?",
@@ -235,7 +253,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-01",
       "tags": [],
       "flags": []
     },
@@ -254,7 +272,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Which 6LoWPAN header compression mode reduces an IPv6 address to zero bits?",
@@ -271,7 +291,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does IPv6 multicast improve efficiency compared to unicast replication?",
@@ -286,7 +308,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-14",
       "tags": [],
       "flags": []
     },
@@ -303,7 +325,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-14",
       "tags": [],
       "flags": []
     },
@@ -320,7 +342,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-15",
       "tags": [],
       "flags": []
     },
@@ -339,7 +361,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "How does anycast help reduce the impact of distributed denial-of-service (DDoS) attacks?",
@@ -356,7 +381,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What advantage does IP-layer anycast offer for services deployed across continents?",
@@ -371,9 +398,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-15",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which of the following best summarizes the role of IPv6 in modern networking?",
@@ -390,7 +419,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Which factor has most significantly delayed global IPv6 adoption?",
@@ -405,7 +437,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-01",
       "tags": [],
       "flags": []
     },
@@ -422,7 +454,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
     },
@@ -439,7 +471,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-16",
       "tags": [],
       "flags": []
     },
@@ -456,7 +488,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
     },
@@ -475,7 +507,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "In a typical unicast IPv6 address, what does the high-order prefix (e.g., /48 or /64) identify?",
@@ -490,7 +524,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-03",
       "tags": [],
       "flags": []
     },
@@ -507,9 +541,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "ipv6-08",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     }
   ]
 }

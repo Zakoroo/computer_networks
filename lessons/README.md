@@ -2,7 +2,7 @@
 
 Each topic has a numbered directory containing short Markdown lessons, a topic overview, a glossary, a review queue, and a JSON manifest. Start with [01 — Internet routing](01_routing/README.md).
 
-Available topics: [01 — Internet routing](01_routing/README.md) · [02 — DNS](02_dns/README.md). Networking cross-topic coverage checks stop at lecture 06 (SDN); lectures 07 onward belong to algorithms.
+Available topics: [01 — Internet routing](01_routing/README.md) · [02 — DNS](02_dns/README.md) · [03 — IPv6](03_ipv6/README.md). Networking cross-topic coverage checks stop at lecture 06 (SDN); lectures 07 onward belong to algorithms.
 
 ## Content conventions
 
@@ -27,6 +27,8 @@ Before matching by source index after any edit, check `question_sha256`. Compute
 Coverage statuses are `routing_lesson` for this pilot, `covered_in_other_topic`, `partial_in_other_topic`, and `not_found_in_available_lectures`. Cross-topic targets use source-file/section references until their real lessons exist. Coverage and question validity are independent: a mapped question can still need wording review.
 
 DNS uses `dns_lesson` for its own mapped questions. Its question entries explicitly separate `required_lesson_ids` (additional lessons needed beyond the primary lesson) from `optional_lesson_ids` (background); `related_lesson_ids` is their union. Lesson-level prerequisites describe the study sequence and are not automatic per-question requirements. Most original routing entries still have only the older `related_lesson_ids` field: an absent `required_lesson_ids` field means unclassified, not that no additional lesson is needed.
+
+IPv6 uses `ipv6_lesson` for its own supported questions and the same explicit dependency fields for mapped entries. Its gap entries use `dependency_status: unresolved_coverage` and leave required/optional fields absent until the necessary teaching is known. An empty primary link must not be interpreted as proof of no required teaching.
 
 Questions stay canonical in their source topic's `question_links`, even when assigned to another topic's lesson. The destination topic lists `external_question_links` with source-quiz/index and canonical-manifest references; lesson entries list these separately as `external_question_ids`. Count native and external assignments separately. Once suitable lessons exist, populate the original quiz's `lesson_id` and canonical manifest together; retain the cross-topic coverage status and flag. Do not duplicate full canonical question records in another manifest.
 

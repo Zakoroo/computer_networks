@@ -85,6 +85,9 @@
       "question_ids": [
         "routing-q083",
         "routing-q100"
+      ],
+      "external_question_ids": [
+        "ipv6-q012"
       ]
     },
     {
@@ -843,7 +846,7 @@
       "question_id": "routing-q014",
       "source_index": 13,
       "question_sha256": "d5bf5247580f5d62e98e051cdf359f7647b6710ddefd62c8e8865a207f26aab4",
-      "lesson_id": "",
+      "lesson_id": "ipv6-01",
       "related_lesson_ids": [
         "routing-01"
       ],
@@ -871,7 +874,11 @@
       "target_topic": "03_ipv6",
       "rationale": "The NAT definition covers address/transport-identifier rewriting; combine it with routing lesson 01's end-to-end principle. This is a cross-topic synthesis, not absent course coverage.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use the linked IPv6 primary lesson and any additional required lessons; retain cross-topic classification.",
+      "required_lesson_ids": [
+        "routing-01"
+      ],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q015",
@@ -2471,8 +2478,10 @@
       "question_id": "routing-q085",
       "source_index": 84,
       "question_sha256": "8407c4b55d4c2ee6eaa44824e22a8cbacf44a644399b578d7a137f00a47605da",
-      "lesson_id": "",
-      "related_lesson_ids": [],
+      "lesson_id": "ipv6-19",
+      "related_lesson_ids": [
+        "ipv6-18"
+      ],
       "coverage_status": "covered_in_other_topic",
       "flags": [
         "cross_topic"
@@ -2497,13 +2506,17 @@
       "target_topic": "03_ipv6",
       "rationale": "IPv6 shows the added outer header, tunnel-as-virtual-link abstraction, and packet steering. Together these support encapsulation overhead and reduced visibility into the underlying path.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use the linked IPv6 primary lesson and any additional required lessons; retain cross-topic classification.",
+      "required_lesson_ids": [
+        "ipv6-18"
+      ],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q086",
       "source_index": 85,
       "question_sha256": "18bc7fab8651e6e6c19f02dee9d2b0d68c3e6c0b13370e72c7f2d27e4f9059ec",
-      "lesson_id": "",
+      "lesson_id": "ipv6-15",
       "related_lesson_ids": [],
       "coverage_status": "covered_in_other_topic",
       "flags": [
@@ -2524,7 +2537,9 @@
       "target_topic": "03_ipv6",
       "rationale": "IPv6 explicitly explains that route changes can move packets between instances and that long-lived stateful services must handle this.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use the linked IPv6 primary lesson and any additional required lessons; retain cross-topic classification.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q087",
@@ -2847,6 +2862,15 @@
       "review_note": "IP itself does not retransmit lost fragments. Reassembly fails; a higher layer may retransmit data, potentially causing another complete IP datagram to be sent.",
       "needs_review": true,
       "next_action": "Review the question wording before scored practice."
+    }
+  ],
+  "external_question_links": [
+    {
+      "question_id": "ipv6-q012",
+      "source_quiz": "quizzes/quiz_03_ipv6.json",
+      "source_index": 11,
+      "canonical_manifest": "lessons/03_ipv6/manifest.json",
+      "lesson_id": "routing-03"
     }
   ]
 }

@@ -11,8 +11,8 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 | Lecture guides | 11 | `lectures/lecture_*.md` |
 | Quiz files | 15 | `quizzes/quiz_*.json` |
 | Quiz questions | 585 | Sum of each quiz's `questions` array |
-| Topics converted to lessons | 2 | Internet Routing and DNS manifests |
-| Numbered lessons | 43 | Sum of both manifests' `lessons` arrays |
+| Topics converted to lessons | 3 | Internet Routing, DNS, and IPv6 manifests |
+| Numbered lessons | 68 | Sum of prepared manifests' `lessons` arrays |
 
 ## Internet Routing
 
@@ -27,9 +27,11 @@ Source: [manifest.json](lessons/01_routing/manifest.json), checked against the r
 | Supported in another topic | 6 |
 | Partially supported in another topic | 5 |
 | Insufficient coverage in available guides | 29 |
-| Questions listing related lessons | 51 |
+| Questions listing related lessons | 52 |
 | Cross-topic questions now linked to DNS lessons | 2 |
-| Related-lesson entries still awaiting dependency classification | 50 |
+| Cross-topic questions now linked to IPv6 lessons | 3 |
+| External IPv6 questions using routing as primary lesson | 1 |
+| Related-lesson entries still awaiting dependency classification | 49 |
 
 Flag categories overlap; do not sum them as separate question populations.
 
@@ -68,3 +70,33 @@ Flag categories overlap with coverage/mapping counts. Duplicate entries are reta
 | `duplicate_question` | 2 |
 
 Compute dependency counts from nonempty `required_lesson_ids` and `optional_lesson_ids` arrays. External questions remain counted in their source topic, with canonical assignments referenced through `external_question_links`. The two routing links do not add questions to the repository total or change routing coverage categories.
+
+## IPv6
+
+Source: [manifest.json](lessons/03_ipv6/manifest.json), checked against quiz 03 and the lesson files. Native counts exclude the three referenced routing questions.
+
+| Measure | Count |
+| --- | ---: |
+| Lessons | 25 |
+| Mermaid diagrams in numbered lessons | 13 |
+| Native questions accounted for | 30 |
+| Native questions mapped to IPv6 lessons | 20 |
+| Native questions supported by a routing primary lesson | 1 |
+| Partially supported in another networking topic | 2 |
+| Insufficient coverage in networking guides 01–06 | 7 |
+| Native questions without a primary lesson | 9 |
+| Native mapped questions with additional required lessons | 3 |
+| Native mapped questions with optional background | 19 |
+| Native gap entries with unresolved dependency classification | 9 |
+| Lessons without native IPv6 quiz assignments | 16 |
+| External routing questions now linked to IPv6 lessons | 3 |
+
+The partial-support and insufficient-coverage groups together produce nine coverage-gap flags. Wording flags overlap those groups; they must not be added to obtain a distinct question total. Cross-topic links remain canonical in their source quiz and are counted once.
+
+| Flag | Native questions |
+| --- | ---: |
+| `coverage_gap` | 9 |
+| `wording_issue` | 9 |
+| `cross_topic` | 3 |
+
+IPv6 Q004 requires lesson 05 in addition to lesson 03 to evaluate the mixed-notation option. Q012 uses routing's fragmentation lesson and additionally requires IPv6 lesson 17. Q024 uses IPv6 lesson 01 and additionally requires lesson 19. Unclassified gap dependencies are not treated as empty requirements. No native question depends on hidden-slide supplementary material; the guide reports no hidden slides.

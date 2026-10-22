@@ -13,7 +13,9 @@ This is a review queue, not a replacement answer key. Original question wording,
 
 ## Cross-topic assignments
 
-DNS conversion follow-up: Q036 now has primary `lesson_id: dns-18`; Q037 has primary `dns-08` and additional required `dns-18`. Their canonical manifest records and quiz links have been updated. The table below retains the original source evidence; these two questions no longer await lesson creation. The original audit checked the then-available guides; subsequent networking coverage work is limited to lectures 01–06 by user instruction.
+IPv6 conversion follow-up: Q014 now has primary `ipv6-01` with required `routing-01`; Q085 has primary `ipv6-19` with required `ipv6-18`; Q086 has primary `ipv6-15` with no additional required lesson. Q013 stays unmapped because inbound-NAT behavior is not explained. Their original coverage categories and flags are unchanged. IPv6 Q012 is separately referenced as external practice in routing lesson 03, with required IPv6 lesson 17; it remains canonical in the IPv6 manifest.
+
+DNS conversion follow-up: Q036 has primary `lesson_id: dns-18`; Q037 has primary `dns-08` and additional required `dns-18`. The table below retains the original source evidence; these questions and the three IPv6 assignments above no longer await lesson creation. The original audit checked the then-available guides; subsequent networking coverage work is limited to lectures 01–06 by user instruction.
 
 | Question | Target | Coverage | Evidence and remaining issue |
 | --- | --- | --- | --- |

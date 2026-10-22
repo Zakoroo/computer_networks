@@ -54,6 +54,8 @@ A lost fragment prevents reassembly of the complete original datagram. IP itself
 
 Assigned questions: Q083, Q100.
 
+External practice: IPv6 Q012. It additionally requires [IPv6 lesson 17](../03_ipv6/17_fragmentation_and_extensions.md) to distinguish IPv6 source-only fragmentation from IPv4 router fragmentation. This lesson supplies the general all-fragments reassembly/loss reasoning; Q012 asks a qualitative risk, not a probability calculation from its 10% figure.
+
 See the [question review](review.md) before using flagged questions for scored practice. The IDs refer to the original routing quiz; full assignments are in [manifest.json](manifest.json).
 
 ## Source

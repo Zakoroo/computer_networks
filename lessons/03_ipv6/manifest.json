@@ -1,0 +1,1512 @@
+{
+  "schema_version": 1,
+  "topic_id": "03_ipv6",
+  "title": "IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment",
+  "preparation_status": "approved",
+  "source_commit": "ee91644287a55400038acf5c4ce63ad051c2a522",
+  "source_lecture": "lectures/lecture_03_ipv6.md",
+  "source_quiz": "quizzes/quiz_03_ipv6.json",
+  "source_scope": "The full IPv6 Markdown guide is preserved. Cross-topic coverage searches are limited to networking lecture guides 01–06; algorithms lectures are excluded.",
+  "coverage_counts": {
+    "partial_in_other_topic": 2,
+    "ipv6_lesson": 20,
+    "not_found_in_available_lectures": 7,
+    "covered_in_other_topic": 1
+  },
+  "flag_counts": {
+    "coverage_gap": 9,
+    "wording_issue": 9,
+    "cross_topic": 3
+  },
+  "lessons": [
+    {
+      "id": "ipv6-01",
+      "order": 1,
+      "title": "Why IPv6 exists",
+      "path": "lessons/03_ipv6/01_motivation.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Explain IPv4 scarcity and why CIDR/NAT delayed migration.",
+        "Distinguish address sharing from a larger hierarchical address space."
+      ],
+      "source_sections": [
+        "1. Why IPv6 exists"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "ipv6-q014",
+        "ipv6-q024"
+      ],
+      "external_question_ids": [
+        "routing-q014"
+      ]
+    },
+    {
+      "id": "ipv6-02",
+      "order": 2,
+      "title": "Regional allocation and depletion",
+      "path": "lessons/03_ipv6/02_regional_allocation.md",
+      "prerequisite_ids": [
+        "ipv6-01"
+      ],
+      "learning_goals": [
+        "Identify the RIR allocation hierarchy and depletion milestones.",
+        "Interpret consumption models without confusing projections, restrictions, and measurements."
+      ],
+      "source_sections": [
+        "1. Why IPv6 exists"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-03",
+      "order": 3,
+      "title": "IPv6 notation, compression, and prefixes",
+      "path": "lessons/03_ipv6/03_notation_and_prefixes.md",
+      "prerequisite_ids": [
+        "ipv6-01"
+      ],
+      "learning_goals": [
+        "Expand and compress IPv6 addresses without changing their value.",
+        "Interpret prefix lengths and distinguish valid syntax from canonical form."
+      ],
+      "source_sections": [
+        "2. Writing and reading IPv6 addresses"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q004",
+        "ipv6-q029"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-04",
+      "order": 4,
+      "title": "Delivery types and global unicast structure",
+      "path": "lessons/03_ipv6/04_address_types.md",
+      "prerequisite_ids": [
+        "ipv6-03"
+      ],
+      "learning_goals": [
+        "Distinguish unicast, multicast, anycast, and the absence of broadcast.",
+        "Read the global-prefix, subnet, and interface-ID fields."
+      ],
+      "source_sections": [
+        "3. Address types and scope"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q003"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-05",
+      "order": 5,
+      "title": "Local scope, special addresses, and embedded IPv4",
+      "path": "lessons/03_ipv6/05_local_and_embedded_addresses.md",
+      "prerequisite_ids": [
+        "ipv6-04"
+      ],
+      "learning_goals": [
+        "Explain link-local scope, zone indices, ULAs, and special addresses.",
+        "Distinguish mapped, compatible, 6to4, and NAT64 address forms."
+      ],
+      "source_sections": [
+        "3. Address types and scope"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-06",
+      "order": 6,
+      "title": "Subnetting a site allocation",
+      "path": "lessons/03_ipv6/06_subnetting.md",
+      "prerequisite_ids": [
+        "ipv6-03",
+        "ipv6-04"
+      ],
+      "learning_goals": [
+        "Calculate the number of /64 LANs in an allocation.",
+        "Assign subnet IDs and interpret the five-link worked topology."
+      ],
+      "source_sections": [
+        "4. Subnetting a site allocation"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-07",
+      "order": 7,
+      "title": "Static router and host configuration",
+      "path": "lessons/03_ipv6/07_static_configuration.md",
+      "prerequisite_ids": [
+        "ipv6-05",
+        "ipv6-06"
+      ],
+      "learning_goals": [
+        "Separate interface addressing from forwarding configuration.",
+        "Choose a reachable gateway and explain the stability of link-local next hops."
+      ],
+      "source_sections": [
+        "5. Static configuration"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-08",
+      "order": 8,
+      "title": "Router advertisements, SLAAC, and DHCPv6",
+      "path": "lessons/03_ipv6/08_slaac_and_dhcpv6.md",
+      "prerequisite_ids": [
+        "ipv6-04",
+        "ipv6-05"
+      ],
+      "learning_goals": [
+        "Compare SLAAC, stateless DHCPv6, and stateful DHCPv6.",
+        "Distinguish autonomous prefix configuration from router and DNS discovery."
+      ],
+      "source_sections": [
+        "6. Dynamic addressing and interface identifiers"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "ipv6-q002",
+        "ipv6-q006",
+        "ipv6-q030"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-09",
+      "order": 9,
+      "title": "Deriving modified EUI-64 identifiers",
+      "path": "lessons/03_ipv6/09_eui64.md",
+      "prerequisite_ids": [
+        "ipv6-08"
+      ],
+      "learning_goals": [
+        "Insert ff:fe and invert the U/L bit in a MAC-derived IID.",
+        "Check the source examples and distinguish interface-specific assignments."
+      ],
+      "source_sections": [
+        "6. Dynamic addressing and interface identifiers"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-10",
+      "order": 10,
+      "title": "Stable and temporary interface identifiers",
+      "path": "lessons/03_ipv6/10_privacy_identifiers.md",
+      "prerequisite_ids": [
+        "ipv6-08",
+        "ipv6-09"
+      ],
+      "learning_goals": [
+        "Explain MAC-based tracking and alternative IID lifetimes.",
+        "Avoid inferring a configuration mechanism from matching suffixes alone."
+      ],
+      "source_sections": [
+        "6. Dynamic addressing and interface identifiers"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-11",
+      "order": 11,
+      "title": "ICMPv6 and router discovery",
+      "path": "lessons/03_ipv6/11_router_discovery.md",
+      "prerequisite_ids": [
+        "ipv6-05",
+        "ipv6-08"
+      ],
+      "learning_goals": [
+        "Identify RS, RA, NS, and NA as message types.",
+        "Explain solicited versus periodic RAs, source scope, and router lifetime."
+      ],
+      "source_sections": [
+        "7. ICMPv6 and Neighbor Discovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-12",
+      "order": 12,
+      "title": "Solicited-node multicast and address resolution",
+      "path": "lessons/03_ipv6/12_neighbor_resolution.md",
+      "prerequisite_ids": [
+        "ipv6-05",
+        "ipv6-11"
+      ],
+      "learning_goals": [
+        "Derive a solicited-node group and Ethernet destination from the target address.",
+        "Trace NS/NA and distinguish the multicast destination from the unicast target."
+      ],
+      "source_sections": [
+        "7. ICMPv6 and Neighbor Discovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-13",
+      "order": 13,
+      "title": "Duplicate detection and ICMPv6 filtering",
+      "path": "lessons/03_ipv6/13_dad_and_filtering.md",
+      "prerequisite_ids": [
+        "ipv6-12"
+      ],
+      "learning_goals": [
+        "Trace DAD and explain what silence can and cannot establish.",
+        "Explain why blocking all ICMPv6 breaks essential control functions."
+      ],
+      "source_sections": [
+        "7. ICMPv6 and Neighbor Discovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-14",
+      "order": 14,
+      "title": "Multicast replication, membership, and scope",
+      "path": "lessons/03_ipv6/14_multicast.md",
+      "prerequisite_ids": [
+        "ipv6-04",
+        "ipv6-12"
+      ],
+      "learning_goals": [
+        "Explain branch replication and multicast forwarding state.",
+        "Distinguish MLD/IGMP listener information from multicast routing."
+      ],
+      "source_sections": [
+        "8. Multicast delivery and membership"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q017",
+        "ipv6-q018"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-15",
+      "order": 15,
+      "title": "Anycast, DNS selection, and service continuity",
+      "path": "lessons/03_ipv6/15_anycast.md",
+      "prerequisite_ids": [
+        "ipv6-04",
+        "ipv6-14"
+      ],
+      "learning_goals": [
+        "Contrast route-selected instances with multicast and DNS-based address selection.",
+        "Explain root service replication and stateful-session risks during route changes."
+      ],
+      "source_sections": [
+        "9. Anycast and routing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "ipv6-q005",
+        "ipv6-q019",
+        "ipv6-q022"
+      ],
+      "external_question_ids": [
+        "routing-q086"
+      ]
+    },
+    {
+      "id": "ipv6-16",
+      "order": 16,
+      "title": "Reading the fixed IPv6 base header",
+      "path": "lessons/03_ipv6/16_base_header.md",
+      "prerequisite_ids": [
+        "ipv6-03"
+      ],
+      "learning_goals": [
+        "Interpret Flow Label, Payload Length, Next Header, and Hop Limit.",
+        "Calculate the 40-byte layout without confusing payload and packet lengths."
+      ],
+      "source_sections": [
+        "10. The IPv6 header and extensibility"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q026"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-17",
+      "order": 17,
+      "title": "Source fragmentation and modular extension headers",
+      "path": "lessons/03_ipv6/17_fragmentation_and_extensions.md",
+      "prerequisite_ids": [
+        "ipv6-16"
+      ],
+      "learning_goals": [
+        "Explain why IPv6 routers do not fragment and the source can use an extension.",
+        "Trace header chaining and distinguish optional IPsec from automatic protection."
+      ],
+      "source_sections": [
+        "10. The IPv6 header and extensibility"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q009",
+        "ipv6-q011",
+        "ipv6-q027"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-18",
+      "order": 18,
+      "title": "Extension-header deployment and SRv6",
+      "path": "lessons/03_ipv6/18_extension_deployment_and_srv6.md",
+      "prerequisite_ids": [
+        "ipv6-17"
+      ],
+      "learning_goals": [
+        "Distinguish a standardized extension from usability on a deployed path.",
+        "Explain segment steering in a controlled operator domain."
+      ],
+      "source_sections": [
+        "10. The IPv6 header and extensibility"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-19",
+      "order": 19,
+      "title": "Coexistence, encapsulation, and historical 6to4",
+      "path": "lessons/03_ipv6/19_tunnelling.md",
+      "prerequisite_ids": [
+        "ipv6-05",
+        "ipv6-17"
+      ],
+      "learning_goals": [
+        "Contrast dual stack, tunnelling, and translation.",
+        "Trace IPv6 inside IPv4 and derive a historical 6to4 prefix."
+      ],
+      "source_sections": [
+        "11. Coexistence and transition mechanisms"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "ipv6-q007",
+        "ipv6-q008",
+        "ipv6-q025"
+      ],
+      "external_question_ids": [
+        "routing-q085"
+      ]
+    },
+    {
+      "id": "ipv6-20",
+      "order": 20,
+      "title": "NAT64, DNS64, and 464XLAT",
+      "path": "lessons/03_ipv6/20_nat64_and_464xlat.md",
+      "prerequisite_ids": [
+        "ipv6-19"
+      ],
+      "learning_goals": [
+        "Trace IPv4 application traffic through CLAT and PLAT.",
+        "Distinguish translation, DNS synthesis, and stateful versus stateless components."
+      ],
+      "source_sections": [
+        "11. Coexistence and transition mechanisms"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-21",
+      "order": 21,
+      "title": "Dual-stack, IPv6-mostly, and IPv6-only access",
+      "path": "lessons/03_ipv6/21_operating_models.md",
+      "prerequisite_ids": [
+        "ipv6-19",
+        "ipv6-20"
+      ],
+      "learning_goals": [
+        "Compare native access models and their compatibility needs.",
+        "Explain IPv6-Only Preferred signalling without assuming every remote service is IPv6."
+      ],
+      "source_sections": [
+        "11. Coexistence and transition mechanisms"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-22",
+      "order": 22,
+      "title": "Interpreting IPv6 adoption measurements",
+      "path": "lessons/03_ipv6/22_adoption_measurements.md",
+      "prerequisite_ids": [
+        "ipv6-01"
+      ],
+      "learning_goals": [
+        "Identify measurement population, method, and observation period.",
+        "Separate dated proportions from current traffic volumes and formal uncertainty."
+      ],
+      "source_sections": [
+        "12. Deployment evidence and failure modes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-23",
+      "order": 23,
+      "title": "Testing economic explanations for deployment",
+      "path": "lessons/03_ipv6/23_deployment_economics.md",
+      "prerequisite_ids": [
+        "ipv6-01",
+        "ipv6-22"
+      ],
+      "learning_goals": [
+        "Compare address prices and device costs without conflating denominators.",
+        "Assess proposed adoption drivers without inferring causality from correlation."
+      ],
+      "source_sections": [
+        "12. Deployment evidence and failure modes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-24",
+      "order": 24,
+      "title": "Happy Eyeballs and hidden path failures",
+      "path": "lessons/03_ipv6/24_fallback_and_failures.md",
+      "prerequisite_ids": [
+        "ipv6-20",
+        "ipv6-21"
+      ],
+      "learning_goals": [
+        "Explain how successful fallback can hide a broken address family.",
+        "Distinguish per-family monitoring from aggregate reachability and lost translation state."
+      ],
+      "source_sections": [
+        "12. Deployment evidence and failure modes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "ipv6-25",
+      "order": 25,
+      "title": "Worked checks and practical revision",
+      "path": "lessons/03_ipv6/25_worked_revision.md",
+      "prerequisite_ids": [
+        "ipv6-06",
+        "ipv6-07",
+        "ipv6-09",
+        "ipv6-10",
+        "ipv6-13",
+        "ipv6-15",
+        "ipv6-18",
+        "ipv6-21",
+        "ipv6-24"
+      ],
+      "learning_goals": [
+        "Connect notation, subnetting, IIDs, ND, and header calculations.",
+        "Inspect configurations while distinguishing observations from assumptions."
+      ],
+      "source_sections": [
+        "13. Worked checks and revision questions"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "ipv6-q001",
+      "source_index": 0,
+      "question_sha256": "f303d186bee9bce831a196b243050b354270c57d387f9a583b517ebc6769fe80",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "coverage_gap",
+        "wording_issue",
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Address exhaustion and temporary relief",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Glossary",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Internet design principles",
+          "support": "partial_only"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-01",
+      "rationale": "NAT address sharing and address/transport rewriting are described, and routing teaches the end-to-end principle. The guides do not explain the claimed obstruction of protocol innovation or make the keyed tradeoff a complete answer to exhaustion.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "target_topic": "01_routing",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently.",
+      "review_note": "The stem asks why NAT cannot fully solve address exhaustion, but the key gives transparency/innovation costs rather than the finite-space limit. That protocol-innovation claim also needs teaching not supplied by these guides."
+    },
+    {
+      "question_id": "ipv6-q002",
+      "source_index": 1,
+      "question_sha256": "ac68e8b10dc8e44d8a6d8ff556c0ded3aea88d4fb350adbc1ebf32cbc10f6495",
+      "lesson_id": "ipv6-08",
+      "related_lesson_ids": [
+        "ipv6-01"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "6. Dynamic addressing and interface identifiers",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": true,
+      "rationale": "The configuration-method comparison teaches SLAAC and its actual dependencies. The wording review explains why that mechanism alone does not answer the stated end-to-end-connectivity claim.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-01"
+      ],
+      "next_action": "Review the wording before scored practice; the original key is unchanged.",
+      "review_note": "SLAAC automates address formation; it does not establish end-to-end reachability or remove NAT by itself. None of the options clearly names the intended global-addressing benefit. Review the stem/key relationship.",
+      "review_reference": "lectures/lecture_03_ipv6.md#6-dynamic-addressing-and-interface-identifiers"
+    },
+    {
+      "question_id": "ipv6-q003",
+      "source_index": 2,
+      "question_sha256": "426d15112c195e65eb06c3d43f02782e3e62be5dcfec6dd973c9d4c57f7cd866",
+      "lesson_id": "ipv6-04",
+      "related_lesson_ids": [
+        "ipv6-03",
+        "ipv6-06"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "3. Address types and scope",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The global-unicast layout separates provider routing prefix, site subnet ID, and interface ID, explaining hierarchical delegation.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-03",
+        "ipv6-06"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q004",
+      "source_index": 3,
+      "question_sha256": "7a099aa45ebaafd4ccbc96cad5c2d9791466712e9723526b6a7e71757025fb97",
+      "lesson_id": "ipv6-03",
+      "related_lesson_ids": [
+        "ipv6-05"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "2. Writing and reading IPv6 addresses",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": true,
+      "rationale": "The notation lesson restricts :: to one zero run and preserves nonzero values; it also distinguishes valid syntax from canonical notation. Additional required lesson 05 provides the mixed IPv4/IPv6 notation example needed to assess that option rather than reject all mixed spellings.",
+      "required_lesson_ids": [
+        "ipv6-05"
+      ],
+      "optional_lesson_ids": [],
+      "next_action": "Review the wording before scored practice; the original key is unchanged.",
+      "review_note": "The stem does not distinguish invalid syntax from changing the intended address: repeated :: is invalid syntax, while omitting a nonzero group is not a faithful compression even if the result parses.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.2"
+    },
+    {
+      "question_id": "ipv6-q005",
+      "source_index": 4,
+      "question_sha256": "25b4eebd99474ee6378aa1eca02a934bfb263f36a254e6597e72e6e2de2e3cf2",
+      "lesson_id": "ipv6-15",
+      "related_lesson_ids": [
+        "ipv6-04",
+        "ipv6-14"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The anycast lesson explicitly contrasts reaching one route-selected member with multicast delivery to the group.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-04",
+        "ipv6-14"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q006",
+      "source_index": 5,
+      "question_sha256": "66c6e9edbd0c3f3eed1e35d2d385ad20a0dd1753811e60b00267fdbb0158e3a2",
+      "lesson_id": "ipv6-08",
+      "related_lesson_ids": [
+        "ipv6-09",
+        "ipv6-10"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "6. Dynamic addressing and interface identifiers",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": true,
+      "rationale": "The SLAAC method forms an address from an advertised prefix and local IID without a DHCP address server. MAC derivation is optional, as the wording review notes.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-09",
+        "ipv6-10"
+      ],
+      "next_action": "Review the wording before scored practice; the original key is unchanged.",
+      "review_note": "MAC-based modified EUI-64 is one IID method, not a requirement of SLAAC. The key should identify SLAAC without implying that all SLAAC addresses derive from a MAC.",
+      "review_reference": "lectures/lecture_03_ipv6.md#stable-and-temporary-identifiers"
+    },
+    {
+      "question_id": "ipv6-q007",
+      "source_index": 6,
+      "question_sha256": "2e348f82200c47d8ae770be5ded158307547e7a39fb4cde6bfea1cebca9804ad",
+      "lesson_id": "ipv6-19",
+      "related_lesson_ids": [
+        "ipv6-20"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "11. Coexistence and transition mechanisms",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The coexistence lesson explains why IPv6 cannot simply cross a native IPv4-only segment and illustrates the transition mechanism that makes it possible.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-20"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q008",
+      "source_index": 7,
+      "question_sha256": "66f0cc7c83b201c11ca16d78f6c1536854e962f4a84a265a036cdaaec8e4cc8d",
+      "lesson_id": "ipv6-19",
+      "related_lesson_ids": [
+        "ipv6-21"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "11. Coexistence and transition mechanisms",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The tunnel lesson nests an intact IPv6 packet inside IPv4 for transit, then removes the outer header at the far endpoint.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-21"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q009",
+      "source_index": 8,
+      "question_sha256": "ac38f5cfd42c224f463ccaea3cf0244f6ffbeedc5f647e7dd5fba3ae9b936932",
+      "lesson_id": "ipv6-17",
+      "related_lesson_ids": [
+        "ipv6-16",
+        "ipv6-18"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The extension-header explanation connects a fixed simple base layout with linked optional functions.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-16",
+        "ipv6-18"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q010",
+      "source_index": 9,
+      "question_sha256": "371eb8e24493c18a2f80aac663cb72747b10125dd7995be2bfca9de88f299d71",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Simplification and optional functions",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-17",
+      "rationale": "The guide teaches source fragmentation and ICMPv6 feedback, but not the 1280-byte minimum link MTU or lower-layer adaptation for smaller frames.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently.",
+      "review_note": "The 1280-byte rule is a minimum IPv6 link-MTU capability, not a minimum packet length. Smaller lower-layer frames require adaptation below IPv6; the keyed phrase conflates these ideas.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc8200.html#section-5"
+    },
+    {
+      "question_id": "ipv6-q011",
+      "source_index": 10,
+      "question_sha256": "2dcfdef87460c1f71fbee9ecfe044ef18c5ace374436f7bc595e7c22d8a3234b",
+      "lesson_id": "ipv6-17",
+      "related_lesson_ids": [
+        "ipv6-16",
+        "routing-03"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The source-fragmentation lesson removes inline fragmentation fields and work from forwarding routers, while permitting a source Fragment header.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-16",
+        "routing-03"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q012",
+      "source_index": 11,
+      "question_sha256": "7ef7481769af0ae50c137ff0a586a32291592bf3e2fc3d8b57ec4522f8e0fe5c",
+      "lesson_id": "routing-03",
+      "related_lesson_ids": [
+        "ipv6-17"
+      ],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Fragmentation and path MTU",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Simplification and optional functions",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "Routing lesson 03 explains why all fragments are needed for reassembly and that IP does not recover a missing fragment. Required IPv6 lesson 17 establishes the IPv6 source-only fragmentation model. The stem asks a qualitative risk, not a numerical loss calculation.",
+      "required_lesson_ids": [
+        "ipv6-17"
+      ],
+      "optional_lesson_ids": [],
+      "target_topic": "01_routing",
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q013",
+      "source_index": 12,
+      "question_sha256": "f1b602bc85ff96a320adb42cb9b2cd85d8d790eae879eaf49014e274a30a1cd6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "coverage_gap",
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Encapsulation and service model",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "1.1 Layering: Logical vs. Physical Communication",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2. Principles of Reliable Data Transfer and Pipelining",
+          "support": "partial_only"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-17",
+      "rationale": "Routing teaches best-effort IP and endpoint recovery; TCP explains reliable transport and ACKs. Neither explains the scope and limitations of hop-by-hop link ACKs sufficiently for this comparison.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "target_topic": "04_tcp-ip",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently."
+    },
+    {
+      "question_id": "ipv6-q014",
+      "source_index": 13,
+      "question_sha256": "672f63d84f23517a34dde2ea12da2f344c1a466707a96ad2f9927b8bfd9cf9db",
+      "lesson_id": "ipv6-01",
+      "related_lesson_ids": [
+        "ipv6-02",
+        "ipv6-23"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "1. Why IPv6 exists",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The motivation lesson explicitly explains that NAT sharing and CIDR bought time and reduced pressure to replace IPv4.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-02",
+        "ipv6-23"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q015",
+      "source_index": 14,
+      "question_sha256": "e1eb413ba380d1e9769a11d7cbc0ca8ed5e0d9d67074f6beabc4382ab889890a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-17",
+      "rationale": "No explanation of 6LoWPAN low-power-link adaptation or IPv6 header compression was found. General IPv6 extension headers are not that mechanism.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently."
+    },
+    {
+      "question_id": "ipv6-q016",
+      "source_index": 15,
+      "question_sha256": "ddbcdfa030ea141ac0d51c13b9d045934ca7467770f502897a001dbd652ed42d",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Modified EUI-64",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-09",
+      "rationale": "Modified EUI-64 explains an IID derived from a MAC, but not 6LoWPAN SAM/DAM modes, address elision, or inference from link-layer context.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently."
+    },
+    {
+      "question_id": "ipv6-q017",
+      "source_index": 16,
+      "question_sha256": "50d14541702d9886325a878b7174e32f016f043683375bfa7c2723b0b664afe5",
+      "lesson_id": "ipv6-14",
+      "related_lesson_ids": [
+        "ipv6-04"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "8. Multicast delivery and membership",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The multicast diagram carries one copy along shared upstream links and replicates at branches rather than at the sender for every receiver.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-04"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q018",
+      "source_index": 17,
+      "question_sha256": "86fd2f40eb24a8bb13d1043143105d4fc5c8c17a5ebb5ea736baa602db2a3312",
+      "lesson_id": "ipv6-14",
+      "related_lesson_ids": [
+        "ipv6-15"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "8. Multicast delivery and membership",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The multicast lesson explains forwarding state in routers and the coordination required across independent operators.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-15"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q019",
+      "source_index": 18,
+      "question_sha256": "9b6a15ece98af78a67169e10f35d837be4fb1bb8b5b349b5b728927a92f97ace",
+      "lesson_id": "ipv6-15",
+      "related_lesson_ids": [
+        "ipv6-04"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The anycast lesson explains one shared address, route-selected instances, and the meaning of nearest in routing terms.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-04"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q020",
+      "source_index": 19,
+      "question_sha256": "5e757bc80f50f892199d4fe8cc042216bafe928c7fa640ed357eb0de364230c9",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-15",
+      "rationale": "Anycast operation and ordinary route selection are taught, but not the route-scaling tradeoff asked here. The keyed /32 requirement additionally needs correction rather than extra teaching of that false rule.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently.",
+      "review_note": "Anycast does not universally require multiple /32 routes per service. IPv6 host routes use /128; route-scale costs depend on allocation, aggregation, and deployment. The key conflates these matters.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.6"
+    },
+    {
+      "question_id": "ipv6-q021",
+      "source_index": 20,
+      "question_sha256": "a5dfb571a32f8889db2123608417527d8705eaf21101831b5cd5149765f553ff",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "11. Anycast and failure recovery",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "2.4 Motivating Case Study 1: Inter-Domain Routing (BGP Limitations)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-15",
+      "rationale": "DNS teaches replica/query-load distribution and SDN discusses upstream attack filtering, but neither explains anycast distribution of DDoS traffic or its capacity limits.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently."
+    },
+    {
+      "question_id": "ipv6-q022",
+      "source_index": 21,
+      "question_sha256": "85de8fc669df3cd31ec62dbbbb1a2660497a4768930a656ddbe472d11fe945d6",
+      "lesson_id": "ipv6-15",
+      "related_lesson_ids": [
+        "dns-18"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": true,
+      "rationale": "The anycast service examples explain location-dependent routing to a replica. The wording review preserves the distinction between route preference and geographical proximity.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-18"
+      ],
+      "next_action": "Review the wording before scored practice; the original key is unchanged.",
+      "review_note": "Nearest means preferred by routing policy and metrics, not necessarily the geographically closest regional server. The keyed option needs that qualification.",
+      "review_reference": "lectures/lecture_03_ipv6.md#9-anycast-and-routing"
+    },
+    {
+      "question_id": "ipv6-q023",
+      "source_index": 22,
+      "question_sha256": "e77f8d2bcc663940c2971d046b6abe4dfff49892c7d9cb66a828ec104ff5357e",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "1. Why IPv6 exists",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Simplification and optional functions",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "NAT64, DNS64, and 464XLAT",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-16",
+      "rationale": "Address scalability and header/security mechanisms have support, but the compound keyed summary includes mobility support not taught in the networking guides. Mobile carrier translation is not an explanation of IP mobility.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently.",
+      "review_note": "The key bundles scalability, mobility, security, and QoS. The guide does not teach mobility support; it also explicitly rejects automatic IPv6 security. Header mechanisms are not universal service guarantees.",
+      "review_reference": "lectures/lecture_03_ipv6.md#simplification-and-optional-functions"
+    },
+    {
+      "question_id": "ipv6-q024",
+      "source_index": 23,
+      "question_sha256": "24d0143e85ff28041efda5c612f2906ded7950bf3232d8b5e60c04424200d597",
+      "lesson_id": "ipv6-01",
+      "related_lesson_ids": [
+        "ipv6-19",
+        "ipv6-23"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "1. Why IPv6 exists",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The motivation lesson teaches NAT delaying migration; required lesson 19 supplies IPv4/IPv6 compatibility and transition mechanisms. The explanation supports the qualitative tradeoff, not a measured ranking of all adoption causes.",
+      "required_lesson_ids": [
+        "ipv6-19"
+      ],
+      "optional_lesson_ids": [
+        "ipv6-23"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q025",
+      "source_index": 24,
+      "question_sha256": "9cbca84e1cdceda0ee7a6bf96434d7f731e2081e97719633ecb5b10d24f946be",
+      "lesson_id": "ipv6-19",
+      "related_lesson_ids": [
+        "ipv6-05"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "11. Coexistence and transition mechanisms",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The coexistence lesson explicitly illustrates IPv6-over-IPv4 tunnelling between two IPv6 sites.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-05"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q026",
+      "source_index": 25,
+      "question_sha256": "e8d5a78c956009ba50c5efa19090ee0b64c78bfcf52388bc6b6ba19090edd6a4",
+      "lesson_id": "ipv6-16",
+      "related_lesson_ids": [
+        "ipv6-17"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The base-header field explanation defines Flow Label as identifying packets in one flow for suitable handling; it does not promise an invariant physical route.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-17"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q027",
+      "source_index": 26,
+      "question_sha256": "d35e94db8e14300b292d53d6721809da71ffe74a719531c49d9e3ef2c7f121c8",
+      "lesson_id": "ipv6-17",
+      "related_lesson_ids": [
+        "ipv6-16",
+        "ipv6-18"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The extension diagram and explanation show each Next Header identifying the following extension or upper-layer protocol.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-16",
+        "ipv6-18"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q028",
+      "source_index": 27,
+      "question_sha256": "b6795c48508dcd4abfa05f62056fc432878b453b51d1db35352090787747a4ae",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "10. The IPv6 header and extensibility",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "needs_review": true,
+      "candidate_lesson_id": "ipv6-16",
+      "rationale": "The source mentions jumbograms only as a special case outside its basic format. It does not define the greater-than-65535-byte payload use or the required extension mechanism.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "dependency_status": "unresolved_coverage",
+      "next_action": "Review missing teaching and any wording issue; do not assign a lesson or fill a gap silently."
+    },
+    {
+      "question_id": "ipv6-q029",
+      "source_index": 28,
+      "question_sha256": "18e0d68351bcaf69a4009cafc0879457f4f116f52f0a950a7ceb560c97562db9",
+      "lesson_id": "ipv6-03",
+      "related_lesson_ids": [
+        "ipv6-04",
+        "ipv6-06"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "2. Writing and reading IPv6 addresses",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": false,
+      "rationale": "The notation lesson defines /p as the leading network-prefix bits and separates the ordinary /64 prefix from its IID.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-04",
+        "ipv6-06"
+      ],
+      "next_action": "Use the primary lesson plus any additional required lessons; optional links are background."
+    },
+    {
+      "question_id": "ipv6-q030",
+      "source_index": 29,
+      "question_sha256": "d1af6a1a55a2043ce8d408e037b1c1fbf3ee9c04a2e330d1578edbb69e939619",
+      "lesson_id": "ipv6-08",
+      "related_lesson_ids": [
+        "ipv6-10",
+        "ipv6-11"
+      ],
+      "coverage_status": "ipv6_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "6. Dynamic addressing and interface identifiers",
+          "support": "supports_answer"
+        }
+      ],
+      "needs_review": true,
+      "rationale": "The configuration lesson includes both solicited and periodic RAs, the autonomous-prefix flag, and non-RA link-local creation; the wording review corrects the overly narrow condition.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "ipv6-10",
+        "ipv6-11"
+      ],
+      "next_action": "Review the wording before scored practice; the original key is unchanged.",
+      "review_note": "Periodic unsolicited RAs are not the only way to learn a SLAAC prefix: solicited RAs also work. Initial link-local autoconfiguration needs no RA, and a GUA needs suitable autonomous prefix information.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc4862.html#section-5.5.1"
+    }
+  ],
+  "external_question_links": [
+    {
+      "question_id": "routing-q014",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 13,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "ipv6-01"
+    },
+    {
+      "question_id": "routing-q085",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 84,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "ipv6-19"
+    },
+    {
+      "question_id": "routing-q086",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 85,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "ipv6-15"
+    }
+  ],
+  "created": "2026-10-22",
+  "question_identity": "Source indices are zero-based in source_quiz. Verify question_sha256 before matching after edits. Questions remain canonical in their source topic even when another topic provides the primary lesson.",
+  "dependency_convention": "Mapped questions explicitly distinguish additional required_lesson_ids from optional_lesson_ids; their union is related_lesson_ids. Coverage-gap entries leave dependencies unresolved rather than asserting that no additional teaching is needed."
+}

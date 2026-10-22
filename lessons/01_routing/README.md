@@ -37,13 +37,15 @@ This topic restructures the existing [lecture guide](../../lectures/lecture_01_i
 All 100 source questions are accounted for, without moving or deleting any:
 
 - **60** linked to a routing lesson.
-- **6** supported in another topic: Q036 and Q037 are now linked to DNS lessons; the other four await suitable lessons.
+- **6** supported in another topic: Q036/Q037 link to DNS, Q014/Q085/Q086 now link to IPv6, and Q049 awaits a suitable TCP lesson.
 - **5** partly addressed in another topic; the missing reasoning still needs review.
 - **29** not sufficiently explained in the available lecture guides.
 
 A question being in quiz 01 does not establish that it belongs to routing. Cross-topic findings point to exact sections of other lectures. Mentioning a term, or finding the same unanswered review question, does not establish answer coverage. Questions awaiting a suitable lesson keep an empty `lesson_id`; no future lesson IDs have been invented.
 
 DNS conversion follow-up: Q036 uses [DNS lesson 18](../02_dns/18_anycast_and_resilience.md). Q037 uses [DNS lesson 08](../02_dns/08_replication_and_caching.md) and requires lesson 18 as additional reading. These two assignments explicitly distinguish required and optional support; older related-lesson entries still await that classification. The original routing review's coverage counts and source scope are historical; new networking lookups are limited to lectures 01–06.
+
+IPv6 conversion follow-up: Q014 uses [IPv6 lesson 01](../03_ipv6/01_motivation.md) and requires routing lesson 01. Q085 uses [IPv6 lesson 19](../03_ipv6/19_tunnelling.md) and requires IPv6 lesson 18. Q086 uses [IPv6 lesson 15](../03_ipv6/15_anycast.md). Q013 remains a partial-support gap. Separately, IPv6 Q012 is now external practice in routing lesson 03 and requires IPv6 lesson 17; it remains counted in the IPv6 quiz, not among routing's 100 questions.
 
 Use [review.md](review.md) for the review queue, [manifest.json](manifest.json) for IDs and evidence, and the [glossary](glossary.md) for terminology. `wording_issue` questions retain their original keys but should be reviewed before scored practice. Tags remain available for manual editing while studying.
 
