@@ -2,6 +2,7 @@
   "schema_version": 1,
   "topic_id": "01_routing",
   "title": "Internet routing",
+  "preparation_status": "approved",
   "created": "2026-10-22",
   "source_commit": "192e7eac3ea9889afb259a0199e0a0638e1aee29",
   "source_lecture": "lectures/lecture_01_internet_routing.md",
@@ -1335,13 +1336,18 @@
       "question_id": "routing-q036",
       "source_index": 35,
       "question_sha256": "7e3ec86e941a421e0de1f8a91a5d6abe1628280c6784b502a6023fe1a9f6066a",
-      "lesson_id": "",
+      "lesson_id": "dns-18",
       "related_lesson_ids": [],
       "coverage_status": "covered_in_other_topic",
       "flags": [
         "cross_topic"
       ],
       "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "11. Anycast and failure recovery",
+          "support": "supports_answer"
+        },
         {
           "path": "lectures/lecture_03_ipv6.md",
           "section": "9. Anycast and routing",
@@ -1351,24 +1357,23 @@
           "path": "lectures/lecture_03_ipv6.md",
           "section": "Root servers and operational consequences",
           "support": "supports_answer"
-        },
-        {
-          "path": "lectures/lecture_02_dns.md",
-          "section": "11. Anycast and failure recovery",
-          "support": "supports_answer"
         }
       ],
-      "target_topic": "03_ipv6",
-      "rationale": "IPv6 explains one shared service address, route-selected instances, and DNS root use. DNS lecture 02 also explains the same mechanism.",
+      "target_topic": "02_dns",
+      "rationale": "DNS lesson 18 explains route-selected root service replicas and the same service address; IPv6 also supports the mechanism.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use the linked DNS lesson and any required supporting lessons; preserve the cross-topic classification.",
+      "required_lesson_ids": [],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q037",
       "source_index": 36,
       "question_sha256": "d651a99a42b2bb9b51f380437311de4f482b44da8285df2f6ca7ad41f993d90c",
-      "lesson_id": "",
-      "related_lesson_ids": [],
+      "lesson_id": "dns-08",
+      "related_lesson_ids": [
+        "dns-18"
+      ],
       "coverage_status": "covered_in_other_topic",
       "flags": [
         "cross_topic"
@@ -1386,9 +1391,13 @@
         }
       ],
       "target_topic": "02_dns",
-      "rationale": "DNS explains replica refresh delays and route-selected anycast instances. Their combination supports potentially different answers during a replica-update interval; inconsistency is not inherent to anycast.",
+      "rationale": "DNS lesson 08 explains replica-update delays; required DNS lesson 18 explains route-selected replicas. Together they support differing answers during an update interval, not inherent inconsistency in anycast.",
       "needs_review": false,
-      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+      "next_action": "Use the linked DNS lesson and any required supporting lessons; preserve the cross-topic classification.",
+      "required_lesson_ids": [
+        "dns-18"
+      ],
+      "optional_lesson_ids": []
     },
     {
       "question_id": "routing-q038",

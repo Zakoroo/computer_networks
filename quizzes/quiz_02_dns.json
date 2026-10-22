@@ -14,9 +14,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-01",
       "tags": [],
-      "flags": []
+      "flags": [
+        "duplicate_question"
+      ]
     },
     {
       "question": "Which of the following best explains why the Domain Name System (DNS) is necessary in modern networking?",
@@ -31,9 +33,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-01",
       "tags": [],
-      "flags": []
+      "flags": [
+        "duplicate_question"
+      ]
     },
     {
       "question": "What was a major limitation of the hosts.txt approach that motivated the development of DNS?",
@@ -48,7 +52,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-02",
       "tags": [],
       "flags": []
     },
@@ -65,7 +69,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-02",
       "tags": [],
       "flags": []
     },
@@ -82,7 +86,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-03",
       "tags": [],
       "flags": []
     },
@@ -99,7 +103,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-06",
       "tags": [],
       "flags": []
     },
@@ -116,7 +120,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-04",
       "tags": [],
       "flags": []
     },
@@ -133,7 +137,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-05",
       "tags": [],
       "flags": []
     },
@@ -150,7 +154,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-06",
       "tags": [],
       "flags": []
     },
@@ -167,7 +171,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-07",
       "tags": [],
       "flags": []
     },
@@ -184,7 +188,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-08",
       "tags": [],
       "flags": []
     },
@@ -201,9 +205,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-09",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which DNS server type typically provides the location of a TLD server when resolving a domain name?",
@@ -218,7 +224,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-03",
       "tags": [],
       "flags": []
     },
@@ -228,16 +234,18 @@
         "The domain is permanently blacklisted by the resolver",
         "The resolver retries using TCP instead of UDP",
         "The resolver generates a REFUSED status for future queries",
-        "The result is cached for the TTL specified in the SOA\u2019s minimum field",
+        "The result is cached for the TTL specified in the SOA’s minimum field",
         "The response is forwarded to a higher-level authoritative server"
       ],
       "correct_answers": [
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-08",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "If a zone includes a wildcard record *.example.com, what happens when a query for unknown.example.com is made?",
@@ -254,7 +262,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does DNS implement basic load balancing using A records?",
@@ -263,13 +273,13 @@
         "By assigning each user to a unique resolver",
         "By issuing TCP resets to distribute query load",
         "By delegating each query to a random authoritative server",
-        "By hashing the client\u2019s IP to select a response path"
+        "By hashing the client’s IP to select a response path"
       ],
       "correct_answers": [
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-12",
       "tags": [],
       "flags": []
     },
@@ -286,7 +296,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-08",
       "tags": [],
       "flags": []
     },
@@ -303,7 +313,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-03",
       "tags": [],
       "flags": []
     },
@@ -320,9 +330,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-13",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What problem is DNSSEC primarily designed to solve?",
@@ -337,7 +349,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-14",
       "tags": [],
       "flags": []
     },
@@ -354,7 +366,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-14",
       "tags": [],
       "flags": []
     },
@@ -373,7 +385,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What does a recursive resolver do when a cached DNS entry's TTL has expired?",
@@ -388,7 +402,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-08",
       "tags": [],
       "flags": []
     },
@@ -405,7 +419,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-05",
       "tags": [],
       "flags": []
     },
@@ -422,7 +436,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-05",
       "tags": [],
       "flags": []
     },
@@ -441,7 +455,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is a key benefit of using DNS over HTTPS (DoH) or DNS over TLS (DoT)?",
@@ -456,7 +472,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-16",
       "tags": [],
       "flags": []
     },
@@ -473,9 +489,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-16",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is the function of a stub resolver in DNS resolution?",
@@ -490,7 +508,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-03",
       "tags": [],
       "flags": []
     },
@@ -509,7 +527,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is the function of the DNS root zone in the overall hierarchy?",
@@ -524,7 +544,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "dns-03",
       "tags": [],
       "flags": []
     }

@@ -37,11 +37,13 @@ This topic restructures the existing [lecture guide](../../lectures/lecture_01_i
 All 100 source questions are accounted for, without moving or deleting any:
 
 - **60** linked to a routing lesson.
-- **6** supported in another topic; waiting for that topic's lessons.
+- **6** supported in another topic: Q036 and Q037 are now linked to DNS lessons; the other four await suitable lessons.
 - **5** partly addressed in another topic; the missing reasoning still needs review.
 - **29** not sufficiently explained in the available lecture guides.
 
 A question being in quiz 01 does not establish that it belongs to routing. Cross-topic findings point to exact sections of other lectures. Mentioning a term, or finding the same unanswered review question, does not establish answer coverage. Questions awaiting a suitable lesson keep an empty `lesson_id`; no future lesson IDs have been invented.
+
+DNS conversion follow-up: Q036 uses [DNS lesson 18](../02_dns/18_anycast_and_resilience.md). Q037 uses [DNS lesson 08](../02_dns/08_replication_and_caching.md) and requires lesson 18 as additional reading. These two assignments explicitly distinguish required and optional support; older related-lesson entries still await that classification. The original routing review's coverage counts and source scope are historical; new networking lookups are limited to lectures 01–06.
 
 Use [review.md](review.md) for the review queue, [manifest.json](manifest.json) for IDs and evidence, and the [glossary](glossary.md) for terminology. `wording_issue` questions retain their original keys but should be reviewed before scored practice. Tags remain available for manual editing while studying.
 

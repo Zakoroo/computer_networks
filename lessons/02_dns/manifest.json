@@ -1,0 +1,1354 @@
+{
+  "schema_version": 1,
+  "topic_id": "02_dns",
+  "title": "Domain Name System",
+  "preparation_status": "reviewed",
+  "created": "2026-10-22",
+  "source_commit": "657236d94510bebe598e374fd8a0dc106a3137f5",
+  "source_lecture": "lectures/lecture_02_dns.md",
+  "source_quiz": "quizzes/quiz_02_dns.json",
+  "source_scope": "DNS guide preserved in full. Cross-topic coverage checks are limited to networking lecture guides 01–06; lectures 07 onward are algorithms and were excluded by user instruction.",
+  "question_identity": "question_id is stable within its source topic; source_index is zero-based in source_quiz. Verify question_sha256 before matching after edits. External questions remain canonical in their own topic manifest.",
+  "dependency_convention": "required_lesson_ids excludes the primary lesson and lists additional lessons needed for the answer. optional_lesson_ids lists background only. related_lesson_ids is their union. Empty required_lesson_ids means no additional lesson is required for the supported answer concept; wording flags remain independent.",
+  "coverage_counts": {
+    "dns_lesson": 27,
+    "not_found_in_available_lectures": 4
+  },
+  "flag_counts": {
+    "duplicate_question": 2,
+    "wording_issue": 4,
+    "coverage_gap": 4
+  },
+  "lessons": [
+    {
+      "id": "dns-01",
+      "order": 1,
+      "title": "Names, URLs, and the purpose of DNS",
+      "path": "lessons/02_dns/01_names_and_urls.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Identify the hostname DNS resolves within a URL.",
+        "Explain name resolution as a library service that can consult DNS or local sources."
+      ],
+      "source_sections": [
+        "1. Names, URLs, and the purpose of DNS"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q001",
+        "dns-q002"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-02",
+      "order": 2,
+      "title": "Why distributed naming and caching scale",
+      "path": "lessons/02_dns/02_scalable_naming.md",
+      "prerequisite_ids": [
+        "dns-01"
+      ],
+      "learning_goals": [
+        "Explain why a shared hosts file scales poorly.",
+        "Relate read-heavy data and loose consistency to aggressive caching."
+      ],
+      "source_sections": [
+        "1. Names, URLs, and the purpose of DNS"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q003",
+        "dns-q004"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-03",
+      "order": 3,
+      "title": "Zones, delegation, and recursive resolution",
+      "path": "lessons/02_dns/03_hierarchy_and_resolution.md",
+      "prerequisite_ids": [
+        "dns-01",
+        "dns-02"
+      ],
+      "learning_goals": [
+        "Distinguish a domain from an administrative zone.",
+        "Trace stub-to-recursive queries and iterative referrals from root to authority."
+      ],
+      "source_sections": [
+        "2. Hierarchy, delegation, and resolution"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "dns-q005",
+        "dns-q013",
+        "dns-q018",
+        "dns-q029",
+        "dns-q031"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-04",
+      "order": 4,
+      "title": "Bootstrapping, glue, and delegation inspection",
+      "path": "lessons/02_dns/04_root_hints_and_glue.md",
+      "prerequisite_ids": [
+        "dns-03"
+      ],
+      "learning_goals": [
+        "Explain root hints and the circular dependency solved by glue.",
+        "Classify nameservers as inside or outside a delegated zone and inspect referrals."
+      ],
+      "source_sections": [
+        "3. Bootstrapping and glue"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "dns-q007"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-05",
+      "order": 5,
+      "title": "DNS transport and message sections",
+      "path": "lessons/02_dns/05_transport_and_sections.md",
+      "prerequisite_ids": [
+        "dns-03"
+      ],
+      "learning_goals": [
+        "Explain UDP, TCP framing, EDNS, and truncation fallback.",
+        "Identify Question, Answer, Authority, and Additional sections."
+      ],
+      "source_sections": [
+        "4. DNS messages and binary encoding"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q008",
+        "dns-q024",
+        "dns-q025"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-06",
+      "order": 6,
+      "title": "DNS headers and resource records",
+      "path": "lessons/02_dns/06_headers_and_records.md",
+      "prerequisite_ids": [
+        "dns-05"
+      ],
+      "learning_goals": [
+        "Interpret RD, RA, AA, TC, and the section counts.",
+        "Read resource-record fields and distinguish RR TTL from message flags."
+      ],
+      "source_sections": [
+        "4. DNS messages and binary encoding"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "dns-q006",
+        "dns-q009"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-07",
+      "order": 7,
+      "title": "Labels, name encoding, and compression",
+      "path": "lessons/02_dns/07_names_and_compression.md",
+      "prerequisite_ids": [
+        "dns-06"
+      ],
+      "learning_goals": [
+        "Interpret label lengths and the root terminator.",
+        "Decode the 14-bit offset in a two-byte compression pointer."
+      ],
+      "source_sections": [
+        "4. DNS messages and binary encoding"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q010"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-08",
+      "order": 8,
+      "title": "Replication, SOA, and cache lifetimes",
+      "path": "lessons/02_dns/08_replication_and_caching.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-06"
+      ],
+      "learning_goals": [
+        "Distinguish secondary refresh from positive and negative caching.",
+        "Explain TTL trade-offs and compute a negative lifetime from SOA timing."
+      ],
+      "source_sections": [
+        "5. Replication, SOA, and caching"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q011",
+        "dns-q014",
+        "dns-q017",
+        "dns-q023"
+      ],
+      "external_question_ids": [
+        "routing-q037"
+      ]
+    },
+    {
+      "id": "dns-09",
+      "order": 9,
+      "title": "CNAME chains and alias restrictions",
+      "path": "lessons/02_dns/09_aliases_and_cname.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-06"
+      ],
+      "learning_goals": [
+        "Follow aliases to provider-managed addresses.",
+        "Distinguish indirection from delegation and retain supplementary CNAME/MX restrictions."
+      ],
+      "source_sections": [
+        "6. Aliases, mail, reverse lookup, and services"
+      ],
+      "source_classification": "mixed",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q012"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-10",
+      "order": 10,
+      "title": "Mail exchange and reverse DNS",
+      "path": "lessons/02_dns/10_mail_and_reverse.md",
+      "prerequisite_ids": [
+        "dns-06",
+        "dns-09"
+      ],
+      "learning_goals": [
+        "Use MX priorities to choose mail servers.",
+        "Construct reverse names and explain why PTR does not return every alias."
+      ],
+      "source_sections": [
+        "6. Aliases, mail, reverse lookup, and services"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-11",
+      "order": 11,
+      "title": "Service discovery, TXT, and SPF",
+      "path": "lessons/02_dns/11_srv_txt_and_spf.md",
+      "prerequisite_ids": [
+        "dns-06",
+        "dns-10"
+      ],
+      "learning_goals": [
+        "Interpret SRV priority, weight, port, and target.",
+        "Explain TXT extensibility and distinguish SPF softfail from neutral."
+      ],
+      "source_sections": [
+        "6. Aliases, mail, reverse lookup, and services"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-12",
+      "order": 12,
+      "title": "Round-robin DNS and address selection",
+      "path": "lessons/02_dns/12_load_balancing.md",
+      "prerequisite_ids": [
+        "dns-06",
+        "dns-09"
+      ],
+      "learning_goals": [
+        "Explain how ordered address RRsets distribute client choices.",
+        "Distinguish address rotation, health checking, and IP anycast."
+      ],
+      "source_sections": [
+        "7. DNS load balancing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q016"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-13",
+      "order": 13,
+      "title": "Forgery and cache poisoning",
+      "path": "lessons/02_dns/13_forgery_and_cache_poisoning.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-06",
+        "dns-08"
+      ],
+      "learning_goals": [
+        "Explain how a forged accepted reply can poison a shared cache.",
+        "Describe repeated fresh-name attempts and the benefit and limits of source-port randomization."
+      ],
+      "source_sections": [
+        "8. Forgery, cache poisoning, and DNSSEC"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q019"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-14",
+      "order": 14,
+      "title": "DNSSEC data authentication and deployment",
+      "path": "lessons/02_dns/14_dnssec.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-06",
+        "dns-13"
+      ],
+      "learning_goals": [
+        "Trace trust from an anchor through DS, DNSKEY, and RRSIG.",
+        "Separate signing, validation, confidentiality, and deployment measurements."
+      ],
+      "source_sections": [
+        "8. Forgery, cache poisoning, and DNSSEC"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "dns-q020",
+        "dns-q021"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-15",
+      "order": 15,
+      "title": "Root trust anchors and key rollover",
+      "path": "lessons/02_dns/15_trust_anchor_rollover.md",
+      "prerequisite_ids": [
+        "dns-14"
+      ],
+      "learning_goals": [
+        "Explain RFC 5011 hold-down, overlap, and revocation.",
+        "Distinguish a valid local update protocol from evidence of global readiness."
+      ],
+      "source_sections": [
+        "9. Root trust anchors and key rollover"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-16",
+      "order": 16,
+      "title": "Encrypted DNS and resolver trust",
+      "path": "lessons/02_dns/16_encrypted_dns.md",
+      "prerequisite_ids": [
+        "dns-05",
+        "dns-14"
+      ],
+      "learning_goals": [
+        "Compare DoT, DoH, and DoQ with DNSSEC.",
+        "Identify what on-path observers and the receiving resolver can still learn."
+      ],
+      "source_sections": [
+        "10. Query privacy"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "dns-q027",
+        "dns-q028"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-17",
+      "order": 17,
+      "title": "QNAME minimisation and Oblivious DoH",
+      "path": "lessons/02_dns/17_query_disclosure.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-16"
+      ],
+      "learning_goals": [
+        "Explain how minimisation reduces disclosures to authoritative servers.",
+        "Trace which information an Oblivious DoH relay and target receive."
+      ],
+      "source_sections": [
+        "10. Query privacy"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-18",
+      "order": 18,
+      "title": "Anycast DNS and routing-based recovery",
+      "path": "lessons/02_dns/18_anycast_and_resilience.md",
+      "prerequisite_ids": [
+        "dns-03",
+        "dns-12"
+      ],
+      "learning_goals": [
+        "Distinguish root identities from their physical instances.",
+        "Explain route-selected replicas and the detection and convergence needed after failure."
+      ],
+      "source_sections": [
+        "11. Anycast and failure recovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": [
+        "routing-q036"
+      ]
+    },
+    {
+      "id": "dns-19",
+      "order": 19,
+      "title": "Stale delegation, expired signatures, and poisoned caches",
+      "path": "lessons/02_dns/19_persistent_failures.md",
+      "prerequisite_ids": [
+        "dns-04",
+        "dns-08",
+        "dns-13",
+        "dns-14",
+        "dns-18"
+      ],
+      "learning_goals": [
+        "Distinguish three persistent DNS failure modes.",
+        "Separate local detection from the authority or information needed for repair."
+      ],
+      "source_sections": [
+        "11. Anycast and failure recovery"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "dns-20",
+      "order": 20,
+      "title": "DNS investigation and revision",
+      "path": "lessons/02_dns/20_practical_investigation.md",
+      "prerequisite_ids": [
+        "dns-04",
+        "dns-07",
+        "dns-08",
+        "dns-09",
+        "dns-10",
+        "dns-11",
+        "dns-14",
+        "dns-15",
+        "dns-17",
+        "dns-19"
+      ],
+      "learning_goals": [
+        "Use nslookup and dig to distinguish answers, referrals, and validation evidence.",
+        "Apply the lecture revision checklist across naming, caching, trust, and privacy."
+      ],
+      "source_sections": [
+        "12. Practical investigation and revision"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "dns-q001",
+      "source_index": 0,
+      "question_sha256": "7338f2071da1684215839eeb05d86aa25c09805f24cecacfbefd07164ce0711d",
+      "lesson_id": "dns-01",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "duplicate_question"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The first lesson explains that DNS maps symbolic names to IP addresses and other typed values.",
+      "duplicate_group": "dns-purpose-001",
+      "needs_review": true,
+      "next_action": "Keep both source entries; decide later whether to deduplicate scored practice."
+    },
+    {
+      "question_id": "dns-q002",
+      "source_index": 1,
+      "question_sha256": "bf1fbdcc265ad491dc5ad295ae50db32d53f5300b90599b612d0d527800e1b48",
+      "lesson_id": "dns-01",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "duplicate_question"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The first lesson teaches the same name-to-address role as Q001; this duplicate has reordered options.",
+      "duplicate_group": "dns-purpose-001",
+      "needs_review": true,
+      "next_action": "Keep both source entries; decide later whether to deduplicate scored practice."
+    },
+    {
+      "question_id": "dns-q003",
+      "source_index": 2,
+      "question_sha256": "2d126a81c02b8e29084501d24d04935929e39e11889bfb48cc482efe429f99f9",
+      "lesson_id": "dns-02",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The shared-file history identifies centralized updates, growth, and distribution delay as scaling problems.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q004",
+      "source_index": 3,
+      "question_sha256": "3fd221f060388bf24ab5f56fa9ba0f4f3f41c8b2e192b81c302f8d7094ac68dc",
+      "lesson_id": "dns-02",
+      "related_lesson_ids": [
+        "dns-08"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-08"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The design lesson connects read-heavy records, tolerable propagation delays, and loose consistency to caching.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q005",
+      "source_index": 4,
+      "question_sha256": "27d10180c25c98e894def51076e26ed7c99375a3d43768f146741a7285c0ae23",
+      "lesson_id": "dns-03",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "2. Hierarchy, delegation, and resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resolution lesson distinguishes a recursive request for a final result from iterative referrals.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q006",
+      "source_index": 5,
+      "question_sha256": "6bc7e56a7fc9c1ec28cabdd884162fec4c016b93cb7d26c316cb51d579f8380a",
+      "lesson_id": "dns-06",
+      "related_lesson_ids": [
+        "dns-08"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-08"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resource-record explanation defines TTL as cache lifetime in seconds.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q007",
+      "source_index": 6,
+      "question_sha256": "1809d5b5ec79b72aaee9c8c4559dfd4d68c79d2264dac161b80dffec32d4fd0b",
+      "lesson_id": "dns-04",
+      "related_lesson_ids": [
+        "dns-03",
+        "dns-05"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-03",
+        "dns-05"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "3. Bootstrapping and glue",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The glue lesson works through an in-zone nameserver circular dependency and parent-supplied addresses.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q008",
+      "source_index": 7,
+      "question_sha256": "14c996386adb9d27ef56faf00741147ff7b974f64ba5615602f11730fa348e9d",
+      "lesson_id": "dns-05",
+      "related_lesson_ids": [
+        "dns-04"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-04"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The message-section explanation explicitly places glue and other useful records in Additional; the glue lesson is optional background.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q009",
+      "source_index": 8,
+      "question_sha256": "796044f8b21b917f85d345eb98f3de8339fa8df2e83b445fb4db0f87ae0a561c",
+      "lesson_id": "dns-06",
+      "related_lesson_ids": [
+        "dns-03"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-03"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The header explanation defines RD as recursion requested by the client and contrasts it with RA.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q010",
+      "source_index": 9,
+      "question_sha256": "abd191ee4f9b7084c1b75a4532b0e6d16b8ee1a1456758d30b2bd76d9f6cb454",
+      "lesson_id": "dns-07",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The compression lesson identifies top bits 11 as a two-byte pointer marker and explains its offset.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q011",
+      "source_index": 10,
+      "question_sha256": "7d1629d122429b0ac506467f34508d5ddb22cf63a38842d75a1421a8e6cae118",
+      "lesson_id": "dns-08",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "5. Replication, SOA, and caching",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The SOA lesson distinguishes refresh, retry, expire, serial, and cache timing.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q012",
+      "source_index": 11,
+      "question_sha256": "ccdc8b78eba530319302ea2118cc35c4fcf9bd2fb55ccbe5ba84d3050e34a201",
+      "lesson_id": "dns-09",
+      "related_lesson_ids": [
+        "dns-12"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-12"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "6. Aliases, mail, reverse lookup, and services",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The alias lesson teaches target following and supplies a combined CNAME/address response example; its clarification explains the key's overstatement.",
+      "review_note": "A CNAME requires following a target name, but not necessarily another network query: the target address may be in the same answer or cache. The keyed option overstates the extra lookup.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc1034.html#section-3.6.2",
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q013",
+      "source_index": 12,
+      "question_sha256": "7aa348269cc6227ef8043399661517b3908c8a9ec6f5355addde3db8abeb5982",
+      "lesson_id": "dns-03",
+      "related_lesson_ids": [
+        "dns-04"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-04"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "2. Hierarchy, delegation, and resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resolution walk shows a root referral to TLD servers.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q014",
+      "source_index": 13,
+      "question_sha256": "04b639cec5eb8d46abc680c3cf4908bf3bd39bd00d1bc00832ea5a52c00de2ee",
+      "lesson_id": "dns-08",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "5. Replication, SOA, and caching",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The negative-caching explanation gives the lesser-of-two-TTL rule, which is more precise than the keyed option.",
+      "review_note": "NXDOMAIN denotes nonexistence. Its negative-cache lifetime is limited by the lesser of SOA.MINIMUM and the SOA RR TTL, not SOA.MINIMUM alone; the keyed option omits that condition.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc2308.html#section-5",
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q015",
+      "source_index": 14,
+      "question_sha256": "250509bc2369ae58a60863ed214c18b352aa622f8d07b3bca44624e28f8b09d6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "candidate_lesson_id": "dns-06",
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Wildcard synthesis and its applicability rules are not taught in lectures 01–06. SDN wildcard packet matches and socket wildcard addresses are different mechanisms.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q016",
+      "source_index": 15,
+      "question_sha256": "2d5b3dacbdd94746679ca6d1d4816236566e721aedc30615a6a24ce947b39d33",
+      "lesson_id": "dns-12",
+      "related_lesson_ids": [
+        "dns-09"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-09"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "7. DNS load balancing",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The load-balancing lesson explains multiple A/AAAA records, rotation, client ordering, and limits on equal distribution.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q017",
+      "source_index": 16,
+      "question_sha256": "c4d8dc5fb9704b9bf754a1c53f04c482a3de4de6ce91e29e4d54a62a44bffc10",
+      "lesson_id": "dns-08",
+      "related_lesson_ids": [
+        "dns-02",
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-02",
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "5. Replication, SOA, and caching",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The cache-lifetime explanation connects avoiding repeat lookups with delayed visibility of changes.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q018",
+      "source_index": 17,
+      "question_sha256": "89b23aa18c49851b54dc86bef06df3e1299ca7ef47bc4aa7ecb2772ddf6912a9",
+      "lesson_id": "dns-03",
+      "related_lesson_ids": [
+        "dns-04"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-04"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "2. Hierarchy, delegation, and resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The hierarchy lesson explains that parent NS records identify child authoritative servers and delegation boundaries.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q019",
+      "source_index": 18,
+      "question_sha256": "48a98a5051d17908444e0a32b2c6c907107a5bc49129fb3ea1b251be71c1bd24",
+      "lesson_id": "dns-13",
+      "related_lesson_ids": [
+        "dns-06",
+        "dns-08"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06",
+        "dns-08"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "8. Forgery, cache poisoning, and DNSSEC",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The forgery lesson explains response matching and the guessable ID/port space; the answer needs its stated qualification.",
+      "review_note": "Predicting the transaction ID can help forge a reply, but the resolver also checks addresses, ports, and the question. ID prediction alone is not sufficient.",
+      "review_reference": "https://www.rfc-editor.org/rfc/rfc5452.html#section-9.1",
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q020",
+      "source_index": 19,
+      "question_sha256": "2a145153fc6b25dbf006d2ccb08f7db3042ba4a3cc865f9a5ff00b358d04ebdc",
+      "lesson_id": "dns-14",
+      "related_lesson_ids": [
+        "dns-13",
+        "dns-16"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-13",
+        "dns-16"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "8. Forgery, cache poisoning, and DNSSEC",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The DNSSEC lesson explicitly distinguishes data authenticity/integrity from encryption and availability.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q021",
+      "source_index": 20,
+      "question_sha256": "b14a97a9f248669419dcccd4762ad47dd856c6cfa747b1aa8bfbfff15c84b2a1",
+      "lesson_id": "dns-14",
+      "related_lesson_ids": [
+        "dns-03",
+        "dns-04"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-03",
+        "dns-04"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "8. Forgery, cache poisoning, and DNSSEC",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The chain-of-trust lesson places the digest identifying a child key in a parent DS record.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q022",
+      "source_index": 21,
+      "question_sha256": "a5458eaa5416515f955d2a12ee1ebcdfc394b19d06f9d322899246c43d153776",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "candidate_lesson_id": "dns-09",
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "6. Aliases, mail, reverse lookup, and services",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide distinguishes CNAME indirection from HTTP redirection and parses URL hosts, but does not teach HTTP redirection responses or their effect on the displayed URL. Lectures 01–06 do not complete that comparison.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q023",
+      "source_index": 22,
+      "question_sha256": "00510dd6752e0d31750cf7ea4e189c1fb20f04863f013bd27ef9ede6d62b0715",
+      "lesson_id": "dns-08",
+      "related_lesson_ids": [
+        "dns-03",
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-03",
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "5. Replication, SOA, and caching",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The cache lesson clarifies ordinary TTL expiry, fresh lookup on demand, and the use of still-cached referrals.",
+      "editorial_clarification": true,
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q024",
+      "source_index": 23,
+      "question_sha256": "160f2d6cff5cdefb8d488884036bafd472de897893ee5a6a9bd4024af8fbe525",
+      "lesson_id": "dns-05",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The transport lesson explains avoiding a connection setup for a simple UDP exchange.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q025",
+      "source_index": 24,
+      "question_sha256": "e72e81b30016c60e4ab3562b8b9ab280ed028649831ba9ce1acb738871f2a244",
+      "lesson_id": "dns-05",
+      "related_lesson_ids": [
+        "dns-06"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-06"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "4. DNS messages and binary encoding",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The transport lesson links a truncated response and TC to TCP retry.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q026",
+      "source_index": 25,
+      "question_sha256": "bc0a7690fe82180d6a7be3c0109eb1d5c9cca5cb81bc9d794aca73ff853d6285",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "candidate_lesson_id": "dns-13",
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "8. Forgery, cache poisoning, and DNSSEC",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The security section teaches answer forgery and cache poisoning, not small-query/large-response amplification, open resolvers, or reflection. No explanation of DNS amplification was found in lectures 01–06.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q027",
+      "source_index": 26,
+      "question_sha256": "9060a08d5d613949b5b122744d210aa7b66a919bcba8e7fb4e8e9700782da22c",
+      "lesson_id": "dns-16",
+      "related_lesson_ids": [
+        "dns-14"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-14"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "10. Query privacy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The encrypted-DNS lesson explains on-path confidentiality and the limits of the protected path.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q028",
+      "source_index": 27,
+      "question_sha256": "89f1f8f08971e5237426f25f2df379545bbeb0524b92d6ea44b91c5e633d3907",
+      "lesson_id": "dns-16",
+      "related_lesson_ids": [
+        "dns-17"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-17"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "10. Query privacy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resolver-trust discussion explains that the receiving resolver still sees names; provider consent claims require review.",
+      "review_note": "The receiving resolver can observe and potentially log queries, but whether it profiles users or lacks consent is a provider-policy claim, not a required property of public DNS.",
+      "review_reference": "lectures/lecture_02_dns.md#who-still-sees-the-query",
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q029",
+      "source_index": 28,
+      "question_sha256": "5a6328bfdaae6ef1f14b7887cc8d837a3948323591fdfcdaea06c5018e5ff077",
+      "lesson_id": "dns-03",
+      "related_lesson_ids": [
+        "dns-01"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-01"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "2. Hierarchy, delegation, and resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resolution lesson's client-to-recursive flow and labelled stub-resolver clarification teach this exact role.",
+      "editorial_clarification": true,
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    },
+    {
+      "question_id": "dns-q030",
+      "source_index": 29,
+      "question_sha256": "5fa2ed0078112a7d20ade7e2cd6b6b122eeef177073aec3a8c8ea2df93201c55",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "candidate_lesson_id": "dns-08",
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "1. Names, URLs, and the purpose of DNS",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "DHCP configuration and leasing",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The DNS guide discusses changing addresses, and routing teaches DHCP address allocation and resolver settings, but neither explains DHCP-triggered DNS record updates. Lectures 01–06 do not teach DDNS integration.",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "needs_review": true,
+      "next_action": "Review the gap or wording before scored practice; do not change the original key automatically."
+    },
+    {
+      "question_id": "dns-q031",
+      "source_index": 30,
+      "question_sha256": "3cdecdbd5596c2e0637e522e71a18e8c4072c5d56e3bdf2e9f05252fd0f80ef1",
+      "lesson_id": "dns-03",
+      "related_lesson_ids": [
+        "dns-04",
+        "dns-18"
+      ],
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "dns-04",
+        "dns-18"
+      ],
+      "coverage_status": "dns_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "2. Hierarchy, delegation, and resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The hierarchy walk explicitly shows root referrals to the relevant TLD, rather than a flat global address database.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; optional links are background, not completion requirements."
+    }
+  ],
+  "external_question_links": [
+    {
+      "question_id": "routing-q036",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 35,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "dns-18"
+    },
+    {
+      "question_id": "routing-q037",
+      "source_quiz": "quizzes/quiz_01_routing.json",
+      "source_index": 36,
+      "canonical_manifest": "lessons/01_routing/manifest.json",
+      "lesson_id": "dns-08"
+    }
+  ]
+}

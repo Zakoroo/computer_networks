@@ -13,6 +13,8 @@ This is a review queue, not a replacement answer key. Original question wording,
 
 ## Cross-topic assignments
 
+DNS conversion follow-up: Q036 now has primary `lesson_id: dns-18`; Q037 has primary `dns-08` and additional required `dns-18`. Their canonical manifest records and quiz links have been updated. The table below retains the original source evidence; these two questions no longer await lesson creation. The original audit checked the then-available guides; subsequent networking coverage work is limited to lectures 01–06 by user instruction.
+
 | Question | Target | Coverage | Evidence and remaining issue |
 | --- | --- | --- | --- |
 | Q011: Which of the following is a key tradeoff when choosing trie-based forwarding tables over TCAMs? | [06_sdn](../../lectures/lecture_06_sdn.md#glossary) | Partial only | SDN introduces TCAM matching and capacity, but does not compare tries with TCAM lookup speed or power. A mention of TCAM does not establish full coverage. |
