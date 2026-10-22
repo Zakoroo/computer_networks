@@ -14,7 +14,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-01",
       "tags": [],
       "flags": []
     },
@@ -31,7 +31,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-02",
       "tags": [],
       "flags": []
     },
@@ -48,7 +48,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-04",
       "tags": [],
       "flags": []
     },
@@ -65,7 +65,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-07",
       "tags": [],
       "flags": []
     },
@@ -84,7 +84,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Which of the following correctly describes the benefit of Classless Inter-Domain Routing (CIDR)?",
@@ -99,7 +101,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-08",
       "tags": [],
       "flags": []
     },
@@ -116,7 +118,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-12",
       "tags": [],
       "flags": []
     },
@@ -133,12 +135,12 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-11",
       "tags": [],
       "flags": []
     },
     {
-      "question": "In Dijkstra\u2019s algorithm, what determines the next node to be added to the set of incorporated nodes?",
+      "question": "In Dijkstra’s algorithm, what determines the next node to be added to the set of incorporated nodes?",
       "options": [
         "The node with the largest number of incoming edges",
         "The node with the longest sequence number in LSPs",
@@ -150,7 +152,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-10",
       "tags": [],
       "flags": []
     },
@@ -167,7 +169,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-08",
       "tags": [],
       "flags": []
     },
@@ -186,7 +188,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does the choice of switching technique affect end-to-end delay in high-speed routers?",
@@ -203,7 +208,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Which of the following is a tradeoff introduced by Network Address Translation (NAT) in IPv4 networks?",
@@ -220,7 +228,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is Network Address Translation (NAT) said to violate the end-to-end principle?",
@@ -237,7 +248,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "Why is fast convergence especially critical in intra-domain (intra-AS) routing protocols?",
@@ -252,9 +265,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-22",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How does the count-to-infinity problem arise in distance vector routing?",
@@ -269,7 +284,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-12",
       "tags": [],
       "flags": []
     },
@@ -286,9 +301,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-10",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How does OSPF ensure all routers in an area compute consistent shortest paths?",
@@ -303,9 +320,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "What is the primary scalability benefit of organizing OSPF into areas?",
@@ -320,9 +339,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "Why does inter-domain routing prioritize policy over optimality?",
@@ -337,7 +358,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -354,7 +375,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -371,7 +392,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-16",
       "tags": [],
       "flags": []
     },
@@ -388,9 +409,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-17",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How can an autonomous system (AS) prevent certain prefixes from being advertised to specific neighbors?",
@@ -405,7 +428,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -422,9 +445,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What routing anomaly can occur if an AS violates the valley-free routing principle?",
@@ -439,7 +464,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -456,7 +481,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -475,7 +500,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why does iBGP require a full mesh or route reflectors to function correctly?",
@@ -492,7 +519,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is a tradeoff introduced by using route reflectors in iBGP to reduce full mesh requirements?",
@@ -509,7 +538,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is BGP particularly vulnerable to prefix hijacking attacks?",
@@ -524,7 +555,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-19",
       "tags": [],
       "flags": []
     },
@@ -541,7 +572,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-20",
       "tags": [],
       "flags": []
     },
@@ -558,7 +589,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-07",
       "tags": [],
       "flags": []
     },
@@ -575,7 +606,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-05",
       "tags": [],
       "flags": []
     },
@@ -594,7 +625,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is IP anycast particularly suitable for services like DNS root servers?",
@@ -611,7 +644,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "What is a challenge introduced by using IP anycast for DNS service deployment?",
@@ -628,7 +663,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "Which BGP mechanism allows a multihomed AS to influence incoming traffic from different providers?",
@@ -643,7 +680,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-22",
       "tags": [],
       "flags": []
     },
@@ -660,7 +697,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-22",
       "tags": [],
       "flags": []
     },
@@ -677,7 +714,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-07",
       "tags": [],
       "flags": []
     },
@@ -694,9 +731,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "Which key distinction separates distance-vector from link-state routing algorithms?",
@@ -711,7 +750,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-11",
       "tags": [],
       "flags": []
     },
@@ -728,7 +767,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-19",
       "tags": [],
       "flags": []
     },
@@ -745,7 +784,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -762,7 +801,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -779,7 +818,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -798,7 +837,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ]
     },
     {
       "question": "Under what conditions does TCP unnecessarily retransmit data, and how can this be mitigated?",
@@ -815,7 +857,11 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic",
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What are the consequences of accepting only in-order TCP segments, and how does it differ from standard TCP behavior?",
@@ -832,7 +878,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "What could happen if the TTL field in the IP header is misconfigured or not decremented correctly?",
@@ -847,9 +895,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-02",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How can ECN help reduce packet loss in IP networks, and what is a key limitation?",
@@ -864,7 +914,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-02",
       "tags": [],
       "flags": []
     },
@@ -872,7 +922,7 @@
       "question": "What role does the fragment offset field play in IP reassembly, and how can overlapping fragments be exploited?",
       "options": [
         "It limits packet size based on hop count",
-        "It identifies the destination host\u2019s MTU for upstream routing",
+        "It identifies the destination host’s MTU for upstream routing",
         "It enables simultaneous transmission of TCP and UDP in a single datagram",
         "It specifies whether packets should be routed via core routers",
         "It determines where each fragment fits in the original packet, which can be manipulated to overwrite valid data"
@@ -883,7 +933,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why might allowing all ICMP message types through a firewall pose security or stability risks?",
@@ -900,7 +952,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How can ICMP Redirect messages introduce security or stability issues in a network?",
@@ -917,7 +971,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What happens when a NAT device using port overloading exhausts its available port space?",
@@ -934,7 +990,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Which technique enables two peers behind NATs to establish direct connectivity, and what is a key limitation?",
@@ -951,7 +1010,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What function do OSPF Area Border Routers (ABRs) serve in a hierarchical network?",
@@ -966,9 +1028,12 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source",
+        "wording_issue"
+      ]
     },
     {
       "question": "What can happen if the BGP NEXT_HOP attribute is misconfigured?",
@@ -983,7 +1048,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-16",
       "tags": [],
       "flags": []
     },
@@ -994,15 +1059,17 @@
         "MED adjusts TTL for routes, whereas LOCAL_PREF affects ECMP balancing",
         "MED always overrides LOCAL_PREF when received from external ASes",
         "LOCAL_PREF is used within an AS, MED is used across AS boundaries",
-        "Conflicts arise because both override BGP\u2019s loop detection rule"
+        "Conflicts arise because both override BGP’s loop detection rule"
       ],
       "correct_answers": [
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-17",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What advantage does the BGP Community attribute provide, and what is one associated risk?",
@@ -1019,7 +1086,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does the prefix length in CIDR notation impact both routing decisions and address allocation?",
@@ -1034,7 +1103,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-08",
       "tags": [],
       "flags": []
     },
@@ -1053,7 +1122,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How can export prefix filtering help an AS defend against accidental route leaks?",
@@ -1068,7 +1139,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1085,7 +1156,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-04",
       "tags": [],
       "flags": []
     },
@@ -1102,7 +1173,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-07",
       "tags": [],
       "flags": []
     },
@@ -1121,7 +1192,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why does a shared bus architecture limit throughput in high-speed routers?",
@@ -1138,7 +1211,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is a major challenge in using crossbar switch fabric in routers?",
@@ -1155,7 +1230,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How do multistage interconnection networks like Clos improve router scalability?",
@@ -1172,7 +1249,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is TCAM commonly used for longest prefix match (LPM) in IP forwarding, and what is a key limitation?",
@@ -1189,7 +1268,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ]
     },
     {
       "question": "What causes persistent route oscillation in BGP and how can it be mitigated?",
@@ -1204,7 +1286,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-22",
       "tags": [],
       "flags": []
     },
@@ -1221,7 +1303,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1238,7 +1320,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1257,7 +1339,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does OSPF support fast reroute when a primary link fails?",
@@ -1274,7 +1358,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does iBGP require a full mesh of sessions in a simple deployment?",
@@ -1291,7 +1378,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How can differences in successive traceroute outputs suggest path instability?",
@@ -1308,7 +1397,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is it recommended to establish iBGP sessions using loopback addresses?",
@@ -1325,7 +1416,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does the hierarchical ISP structure shape interdomain route propagation?",
@@ -1340,7 +1433,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1357,7 +1450,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1376,7 +1469,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is diagnosing control-plane failures in interdomain routing inherently difficult?",
@@ -1391,7 +1486,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -1408,7 +1503,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-03",
       "tags": [],
       "flags": []
     },
@@ -1427,7 +1522,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What is a key tradeoff in using tunneling and overlay routing?",
@@ -1444,7 +1542,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "What is a challenge associated with using anycast for load balancing?",
@@ -1461,7 +1561,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "cross_topic"
+      ]
     },
     {
       "question": "Which routing technique allows an AS to influence how incoming traffic enters its network in a multihomed setup?",
@@ -1478,7 +1580,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does BGP typically detect an upstream link failure in a multihomed AS?",
@@ -1493,7 +1597,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-16",
       "tags": [],
       "flags": []
     },
@@ -1510,9 +1614,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
-      "flags": []
+      "flags": [
+        "supplementary_source"
+      ]
     },
     {
       "question": "What challenge can arise when routers obtain IP configuration dynamically in large networks?",
@@ -1529,7 +1635,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What happens when TTL expiry ICMP messages are dropped during a persistent forwarding loop?",
@@ -1544,9 +1652,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-12",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is end-to-end debugging across multiple ASes inherently difficult?",
@@ -1561,12 +1671,12 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
     {
-      "question": "How does subnetting influence a host\u2019s decision to use ARP or routing?",
+      "question": "How does subnetting influence a host’s decision to use ARP or routing?",
       "options": [
         "Subnet masks disable ICMP processing for remote hosts",
         "All destinations outside the default gateway are forwarded using DNS resolution",
@@ -1578,7 +1688,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-04",
       "tags": [],
       "flags": []
     },
@@ -1595,7 +1705,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-18",
       "tags": [],
       "flags": []
     },
@@ -1614,7 +1724,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is a tradeoff of using distributed route computation in interdomain routing?",
@@ -1631,7 +1743,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What risk arises from excessive growth of routing table entries in core routers?",
@@ -1648,7 +1763,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What is the main tradeoff in tuning a routing protocol for high responsiveness?",
@@ -1663,7 +1780,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-22",
       "tags": [],
       "flags": []
     },
@@ -1680,7 +1797,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-15",
       "tags": [],
       "flags": []
     },
@@ -1697,9 +1814,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "routing-03",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     }
   ]
 }

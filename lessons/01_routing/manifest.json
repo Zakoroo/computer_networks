@@ -1,0 +1,2843 @@
+{
+  "schema_version": 1,
+  "topic_id": "01_routing",
+  "title": "Internet routing",
+  "created": "2026-10-22",
+  "source_commit": "192e7eac3ea9889afb259a0199e0a0638e1aee29",
+  "source_lecture": "lectures/lecture_01_internet_routing.md",
+  "source_quiz": "quizzes/quiz_01_routing.json",
+  "source_scope": "All 11 Markdown lecture guides present at source_commit; original PowerPoint slide visibility and exam scope were not independently rechecked.",
+  "question_identity": "question_id is stable within this manifest; source_index is zero-based and question_sha256 fingerprints question text plus ordered options. Verify the fingerprint before applying an index after a source edit.",
+  "coverage_counts": {
+    "routing_lesson": 60,
+    "not_found_in_available_lectures": 29,
+    "partial_in_other_topic": 5,
+    "covered_in_other_topic": 6
+  },
+  "flag_counts": {
+    "coverage_gap": 34,
+    "cross_topic": 11,
+    "wording_issue": 16,
+    "supplementary_source": 5
+  },
+  "lessons": [
+    {
+      "id": "routing-01",
+      "order": 1,
+      "title": "IP and Internet architecture",
+      "path": "lessons/01_routing/01_internet_architecture.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Explain the common IP layer and encapsulation.",
+        "Distinguish best-effort delivery from guarantees provided at endpoints."
+      ],
+      "source_sections": [
+        "Internet architecture and encapsulation",
+        "Internet design principles"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q001"
+      ]
+    },
+    {
+      "id": "routing-02",
+      "order": 2,
+      "title": "Reading an IPv4 header",
+      "path": "lessons/01_routing/02_ipv4_header.md",
+      "prerequisite_ids": [
+        "routing-01"
+      ],
+      "learning_goals": [
+        "Identify the roles of TTL, Protocol, checksum, and fragmentation fields.",
+        "Interpret header length and the scope of the header checksum."
+      ],
+      "source_sections": [
+        "IPv4 header and fields"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q002",
+        "routing-q050",
+        "routing-q051"
+      ]
+    },
+    {
+      "id": "routing-03",
+      "order": 3,
+      "title": "Fragmentation and path MTU",
+      "path": "lessons/01_routing/03_fragmentation_and_pmtu.md",
+      "prerequisite_ids": [
+        "routing-02"
+      ],
+      "learning_goals": [
+        "Calculate fragment offsets and explain destination reassembly.",
+        "Explain why losing one fragment wastes work and why PMTUD needs feedback."
+      ],
+      "source_sections": [
+        "Fragmentation and path MTU"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q083",
+        "routing-q100"
+      ]
+    },
+    {
+      "id": "routing-04",
+      "order": 4,
+      "title": "IPv4 addresses, prefixes, and ARP",
+      "path": "lessons/01_routing/04_addressing_and_arp.md",
+      "prerequisite_ids": [
+        "routing-01"
+      ],
+      "learning_goals": [
+        "Distinguish an IP destination from the MAC address of the local next hop.",
+        "Explain an ARP cache miss for an on-link or off-link destination."
+      ],
+      "source_sections": [
+        "IPv4 addressing, CIDR, and ARP"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q003",
+        "routing-q064",
+        "routing-q093"
+      ]
+    },
+    {
+      "id": "routing-05",
+      "order": 5,
+      "title": "ICMP, ping, and traceroute",
+      "path": "lessons/01_routing/05_icmp_and_diagnostics.md",
+      "prerequisite_ids": [
+        "routing-02"
+      ],
+      "learning_goals": [
+        "Explain ICMP errors and the TTL mechanism used by traceroute.",
+        "Distinguish a missing diagnostic reply from failed packet forwarding."
+      ],
+      "source_sections": [
+        "ICMP and network diagnostics"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q034"
+      ]
+    },
+    {
+      "id": "routing-06",
+      "order": 6,
+      "title": "Getting configuration with DHCP",
+      "path": "lessons/01_routing/06_dhcp.md",
+      "prerequisite_ids": [
+        "routing-04"
+      ],
+      "learning_goals": [
+        "Follow the Discover, Offer, Request, Acknowledge exchange.",
+        "Explain leases, renewal, rebinding, pools, and reservations."
+      ],
+      "source_sections": [
+        "DHCP configuration and leasing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": []
+    },
+    {
+      "id": "routing-07",
+      "order": 7,
+      "title": "Routing, forwarding, and switching models",
+      "path": "lessons/01_routing/07_forwarding_and_switching.md",
+      "prerequisite_ids": [
+        "routing-01",
+        "routing-04"
+      ],
+      "learning_goals": [
+        "Separate control-plane route computation from data-plane forwarding.",
+        "Compare datagrams, virtual circuits, and source routing."
+      ],
+      "source_sections": [
+        "Forwarding and switching models"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q004",
+        "routing-q033",
+        "routing-q040",
+        "routing-q065"
+      ]
+    },
+    {
+      "id": "routing-08",
+      "order": 8,
+      "title": "CIDR, aggregation, and longest-prefix matching",
+      "path": "lessons/01_routing/08_cidr_and_aggregation.md",
+      "prerequisite_ids": [
+        "routing-04",
+        "routing-07"
+      ],
+      "learning_goals": [
+        "Explain subnetting and aggregation using variable-length prefixes.",
+        "Choose the most specific matching route, including a default route."
+      ],
+      "source_sections": [
+        "Address aggregation and Internet structure"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q006",
+        "routing-q010",
+        "routing-q061"
+      ]
+    },
+    {
+      "id": "routing-09",
+      "order": 9,
+      "title": "Autonomous systems and routing domains",
+      "path": "lessons/01_routing/09_autonomous_systems.md",
+      "prerequisite_ids": [
+        "routing-07",
+        "routing-08"
+      ],
+      "learning_goals": [
+        "Distinguish stub, multihomed, and transit ASes.",
+        "Separate intra-AS routing, eBGP, and iBGP."
+      ],
+      "source_sections": [
+        "Autonomous systems and routing fundamentals"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": []
+    },
+    {
+      "id": "routing-10",
+      "order": 10,
+      "title": "Link-state routing and shortest paths",
+      "path": "lessons/01_routing/10_link_state.md",
+      "prerequisite_ids": [
+        "routing-09"
+      ],
+      "learning_goals": [
+        "Explain how flooding produces a topology database.",
+        "Execute the selection and relaxation steps of Dijkstra's algorithm."
+      ],
+      "source_sections": [
+        "Link-state routing and shortest paths"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q009",
+        "routing-q017"
+      ]
+    },
+    {
+      "id": "routing-11",
+      "order": 11,
+      "title": "Distance-vector routing and Bellman–Ford",
+      "path": "lessons/01_routing/11_distance_vector.md",
+      "prerequisite_ids": [
+        "routing-09",
+        "routing-10"
+      ],
+      "learning_goals": [
+        "Calculate a route from neighbors' advertised distances.",
+        "Compare local distance estimates with a link-state topology map."
+      ],
+      "source_sections": [
+        "Distance-vector routing and Bellman–Ford"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q008",
+        "routing-q042"
+      ]
+    },
+    {
+      "id": "routing-12",
+      "order": 12,
+      "title": "Routing loops and poison reverse",
+      "path": "lessons/01_routing/12_routing_loops.md",
+      "prerequisite_ids": [
+        "routing-02",
+        "routing-11"
+      ],
+      "learning_goals": [
+        "Explain count-to-infinity after a route failure.",
+        "Distinguish loop prevention, loop mitigation, and TTL expiry."
+      ],
+      "source_sections": [
+        "Routing loops, split horizon, and poison reverse"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q007",
+        "routing-q016",
+        "routing-q091"
+      ]
+    },
+    {
+      "id": "routing-13",
+      "order": 13,
+      "title": "RIP and RIPv2",
+      "path": "lessons/01_routing/13_rip.md",
+      "prerequisite_ids": [
+        "routing-11",
+        "routing-12"
+      ],
+      "learning_goals": [
+        "Interpret RIP's hop-count metric and bounded infinity.",
+        "Identify fields in an RIPv2 route entry."
+      ],
+      "source_sections": [
+        "RIP and RIPv2 — supplementary †"
+      ],
+      "source_classification": "hidden_slide_supplementary",
+      "estimated_reading_minutes": 2,
+      "question_ids": []
+    },
+    {
+      "id": "routing-14",
+      "order": 14,
+      "title": "OSPF areas and protocol operation",
+      "path": "lessons/01_routing/14_ospf.md",
+      "prerequisite_ids": [
+        "routing-10"
+      ],
+      "learning_goals": [
+        "Explain the backbone, local areas, and area border routers.",
+        "Follow database synchronization using the five OSPF packet types."
+      ],
+      "source_sections": [
+        "OSPF areas, packets, and operation — supplementary †"
+      ],
+      "source_classification": "hidden_slide_supplementary",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q018",
+        "routing-q019",
+        "routing-q041",
+        "routing-q057"
+      ]
+    },
+    {
+      "id": "routing-15",
+      "order": 15,
+      "title": "Why BGP uses paths and policy",
+      "path": "lessons/01_routing/15_bgp_path_vector.md",
+      "prerequisite_ids": [
+        "routing-09",
+        "routing-10",
+        "routing-11"
+      ],
+      "learning_goals": [
+        "Explain why Internet routing crosses independent policy boundaries.",
+        "Use an AS path to understand advertisements and AS-level loop detection."
+      ],
+      "source_sections": [
+        "Inter-domain routing and the role of BGP"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q020",
+        "routing-q021",
+        "routing-q045",
+        "routing-q046",
+        "routing-q082",
+        "routing-q089",
+        "routing-q092",
+        "routing-q099"
+      ]
+    },
+    {
+      "id": "routing-16",
+      "order": 16,
+      "title": "BGP messages, routing state, and next hops",
+      "path": "lessons/01_routing/16_bgp_messages_and_state.md",
+      "prerequisite_ids": [
+        "routing-15"
+      ],
+      "learning_goals": [
+        "Trace an advertisement through BGP's conceptual routing state.",
+        "Explain UPDATE messages, sessions, and next-hop reachability."
+      ],
+      "source_sections": [
+        "BGP state, updates, and advertisements"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q022",
+        "routing-q058",
+        "routing-q088"
+      ]
+    },
+    {
+      "id": "routing-17",
+      "order": 17,
+      "title": "BGP route selection and internal sessions",
+      "path": "lessons/01_routing/17_bgp_route_selection.md",
+      "prerequisite_ids": [
+        "routing-16"
+      ],
+      "learning_goals": [
+        "Compare weight, LOCAL_PREF, AS_PATH, MED, and IGP cost.",
+        "Distinguish a BGP preference decision from shortest-path forwarding."
+      ],
+      "source_sections": [
+        "BGP route selection and sessions"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q023",
+        "routing-q059"
+      ]
+    },
+    {
+      "id": "routing-18",
+      "order": 18,
+      "title": "Business relationships and export policy",
+      "path": "lessons/01_routing/18_bgp_export_policy.md",
+      "prerequisite_ids": [
+        "routing-17"
+      ],
+      "learning_goals": [
+        "Apply customer, provider, and peer export rules.",
+        "Explain how commercial policy can determine reachability."
+      ],
+      "source_sections": [
+        "AS business relationships and export policy"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q024",
+        "routing-q025",
+        "routing-q026",
+        "routing-q027",
+        "routing-q044",
+        "routing-q063",
+        "routing-q072",
+        "routing-q073",
+        "routing-q079",
+        "routing-q080",
+        "routing-q094"
+      ]
+    },
+    {
+      "id": "routing-19",
+      "order": 19,
+      "title": "BGP hijacks and route leaks",
+      "path": "lessons/01_routing/19_bgp_hijacks_and_leaks.md",
+      "prerequisite_ids": [
+        "routing-08",
+        "routing-18"
+      ],
+      "learning_goals": [
+        "Distinguish unauthorized origination from an inappropriate route export.",
+        "Explain how a more-specific unauthorized prefix can attract traffic."
+      ],
+      "source_sections": [
+        "BGP hijacks and route leaks"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q031",
+        "routing-q043"
+      ]
+    },
+    {
+      "id": "routing-20",
+      "order": 20,
+      "title": "RPKI and route origin validation",
+      "path": "lessons/01_routing/20_rpki.md",
+      "prerequisite_ids": [
+        "routing-19"
+      ],
+      "learning_goals": [
+        "Classify origins as Valid, Invalid, or NotFound using a ROA.",
+        "Explain why a valid origin does not authenticate the whole AS path."
+      ],
+      "source_sections": [
+        "RPKI, ROAs, and origin validation"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "routing-q032"
+      ]
+    },
+    {
+      "id": "routing-21",
+      "order": 21,
+      "title": "ASPA and partial deployment",
+      "path": "lessons/01_routing/21_aspa.md",
+      "prerequisite_ids": [
+        "routing-18",
+        "routing-20"
+      ],
+      "learning_goals": [
+        "Contrast provider authorization with origin authorization.",
+        "Distinguish specification, availability, and deployment."
+      ],
+      "source_sections": [
+        "ASPA and partial deployment"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": []
+    },
+    {
+      "id": "routing-22",
+      "order": 22,
+      "title": "Convergence, failures, and stability",
+      "path": "lessons/01_routing/22_convergence.md",
+      "prerequisite_ids": [
+        "routing-12",
+        "routing-17",
+        "routing-18"
+      ],
+      "learning_goals": [
+        "Explain how updates and independent policies affect convergence.",
+        "Distinguish a responsive route choice from a stable route choice."
+      ],
+      "source_sections": [
+        "Convergence, stability, and failures"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "routing-q015",
+        "routing-q038",
+        "routing-q039",
+        "routing-q071",
+        "routing-q098"
+      ]
+    },
+    {
+      "id": "routing-23",
+      "order": 23,
+      "title": "BGP wedgies: stable but unwanted routes",
+      "path": "lessons/01_routing/23_bgp_wedgies.md",
+      "prerequisite_ids": [
+        "routing-22"
+      ],
+      "learning_goals": [
+        "Distinguish oscillation from multiple stable routing outcomes.",
+        "Explain why topology alone is insufficient to reproduce the supplied wedgie."
+      ],
+      "source_sections": [
+        "BGP wedgies and persistent states"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "routing-q001",
+      "source_index": 0,
+      "question_sha256": "464c6092ca3c02688286fd5ffbe6617d1db49146377dedef468db3ba3c2eb38f",
+      "lesson_id": "routing-01",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Internet architecture and encapsulation",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Internet design principles",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q002",
+      "source_index": 1,
+      "question_sha256": "9d0515ead55a4ebf606dc77108e7d2124937ca425a75dd5b1838eb6b900306a5",
+      "lesson_id": "routing-02",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 header and fields",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q003",
+      "source_index": 2,
+      "question_sha256": "810a67bc9fc7889bf6fc17a4b000f84304b2b44154976049c81ba4b6a0000683",
+      "lesson_id": "routing-04",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 addressing, CIDR, and ARP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q004",
+      "source_index": 3,
+      "question_sha256": "c5ecdc9d4161829ec8cf7897a2fc36ca75ff4685cc59ce0c70ca7a5cc340d60d",
+      "lesson_id": "routing-07",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q005",
+      "source_index": 4,
+      "question_sha256": "d2ad452354faee62a125049f8530821e989d08ae200b86683967d084be9494a5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "Router switching fabrics, port-count scaling, and crossbar throughput are not explained in the available guides.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q006",
+      "source_index": 5,
+      "question_sha256": "6f2d22b5350730efb8da2fc987e5abd17eb3435c1fc70e5ae11fc4c60a6d9691",
+      "lesson_id": "routing-08",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q007",
+      "source_index": 6,
+      "question_sha256": "029e5f388ca7885fc5bacc5dbae0d23ef5acf0742ef2d8d64597012280f931f8",
+      "lesson_id": "routing-12",
+      "related_lesson_ids": [
+        "routing-11"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Routing loops, split horizon, and poison reverse",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q008",
+      "source_index": 7,
+      "question_sha256": "27d8484b3e7fdffc6d64b98c0241d4eb3741d119fdb02d1b2575e41de54cc6d4",
+      "lesson_id": "routing-11",
+      "related_lesson_ids": [
+        "routing-10"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Distance-vector routing and Bellman–Ford",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q009",
+      "source_index": 8,
+      "question_sha256": "990e99caa571b4cbb1e160de03e195d80eb516cc423745c8cffea5f3ca477305",
+      "lesson_id": "routing-10",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Link-state routing and shortest paths",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q010",
+      "source_index": 9,
+      "question_sha256": "11f629bf2616fa228462d87603b03a9c01ea9f2e0e48a00bc6ab454d9e3e218b",
+      "lesson_id": "routing-08",
+      "related_lesson_ids": [
+        "routing-07"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q011",
+      "source_index": 10,
+      "question_sha256": "61a7e84c848fe5efa529972a9b9e65e5bab4570b27c511e36bac1953e587f21e",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Glossary",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "2.2 Comparison of Operational Timescales, Tasks, and Locations",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.2 Why SDN Happened When It Did: Technical and Economic Drivers",
+          "support": "partial_only"
+        }
+      ],
+      "target_topic": "06_sdn",
+      "rationale": "SDN introduces TCAM matching and capacity, but does not compare tries with TCAM lookup speed or power. A mention of TCAM does not establish full coverage.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q012",
+      "source_index": 11,
+      "question_sha256": "7b036d7f2a090c6a8530c68819b833270936af6664d66ae7b085852c73fe74c0",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "The switching-model lesson compares datagrams and virtual circuits, not crossbar contention, buffering, or load-dependent delay.",
+      "review_note": "Crossbar delay depends on workload, scheduling, and buffering. Architecture alone does not guarantee lower end-to-end delay.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q013",
+      "source_index": 12,
+      "question_sha256": "75c31c471f4ccbf5cce23f7d41b150b015810f2183da0c3ea9f2d1271c3c4c24",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Glossary",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Address exhaustion and temporary relief",
+          "support": "partial_only"
+        }
+      ],
+      "target_topic": "03_ipv6",
+      "rationale": "IPv6 explains address sharing and defines NAT, but does not explain inbound mappings or the inbound-connectivity limitation asked here.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q014",
+      "source_index": 13,
+      "question_sha256": "d5bf5247580f5d62e98e051cdf359f7647b6710ddefd62c8e8865a207f26aab4",
+      "lesson_id": "",
+      "related_lesson_ids": [
+        "routing-01"
+      ],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Glossary",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Address exhaustion and temporary relief",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Internet design principles",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "03_ipv6",
+      "rationale": "The NAT definition covers address/transport-identifier rewriting; combine it with routing lesson 01's end-to-end principle. This is a cross-topic synthesis, not absent course coverage.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q015",
+      "source_index": 14,
+      "question_sha256": "e8afe622e254dfb28bd9a8382b39a90b6a2d3421411bc1a45cb0f365a9985a72",
+      "lesson_id": "routing-22",
+      "related_lesson_ids": [
+        "routing-09",
+        "routing-17"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "Fast local recovery is useful, but an intra-AS failure can affect BGP next-hop reachability and can require BGP updates. \"Without notifying BGP\" is too absolute.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q016",
+      "source_index": 15,
+      "question_sha256": "e621b3eeb36479b099b129b9bb0a94bec76104a0f4b794976d551a065f26cb49",
+      "lesson_id": "routing-12",
+      "related_lesson_ids": [
+        "routing-11"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Routing loops, split horizon, and poison reverse",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q017",
+      "source_index": 16,
+      "question_sha256": "e2ea17a944092f015e5aa6c9c81c73469c56dabfa1e1acd6c128fe7542ec0824",
+      "lesson_id": "routing-10",
+      "related_lesson_ids": [
+        "routing-11",
+        "routing-12",
+        "routing-22"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Link-state routing and shortest paths",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "Frequent failures alone do not guarantee that every link-state implementation outperforms every distance-vector implementation; topology and timers matter.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q018",
+      "source_index": 17,
+      "question_sha256": "fa4228479d8ae4c4a72c49a8a6d3f182c1cad75bba37fe27f26a528cb81f027d",
+      "lesson_id": "routing-14",
+      "related_lesson_ids": [
+        "routing-10"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q019",
+      "source_index": 18,
+      "question_sha256": "4a57dc0a07e8d038332529ee4bd9dac06cea1a8171a6390de7a0471ec15110a8",
+      "lesson_id": "routing-14",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q020",
+      "source_index": 19,
+      "question_sha256": "16b26b630b13c443be5a27aa4155a88f4f0babbaf6b6fb78cefcd4b9d5300be2",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-09",
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q021",
+      "source_index": 20,
+      "question_sha256": "b3f81019532c82546c161fad286a13f6e91a047b3ca23395902ef6a5fad9b742",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q022",
+      "source_index": 21,
+      "question_sha256": "22ababe46599abfa5282cd9d7da5b043c9c4f86eeb835a7f5b7d1ca629bc818c",
+      "lesson_id": "routing-16",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP state, updates, and advertisements",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q023",
+      "source_index": 22,
+      "question_sha256": "032e071648e66ced041e612a383c3ef5446b448b8777567da1c9a4cc08841515",
+      "lesson_id": "routing-17",
+      "related_lesson_ids": [
+        "routing-16"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "The stem asks about LOCAL_PREF and AS_PATH, but the keyed option explains only LOCAL_PREF. It omits AS_PATH and their ordering.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q024",
+      "source_index": 23,
+      "question_sha256": "da2914ed082a614ad3741b2cdf209c0b2f8a5da932cf186ec8f0b1251d260c56",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q025",
+      "source_index": 24,
+      "question_sha256": "43ae91143498dee120da70a03e43818686919553e754cdee3af261ccbacc0632",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-09"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "Peers normally carry traffic to one another's customers. The restriction is on unpaid third-party transit, not all traffic for one another.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q026",
+      "source_index": 25,
+      "question_sha256": "71fd1a7316068c1f3f74cec8429ed3ecc3c9226d6a4690ce58011490a6d64cda",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q027",
+      "source_index": 26,
+      "question_sha256": "e9611ee5861a89a7a9c3fac15fff4d2f1e0ea8fc30f29c0ba819798b69094d14",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q028",
+      "source_index": 27,
+      "question_sha256": "4733afffe5db45faf092632f5e59eb8149ff397b9dbaa38eed29d11e3f996472",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-22",
+      "rationale": "The routing guide discusses convergence but does not teach the path-exploration sequence of stale BGP alternatives.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q029",
+      "source_index": 28,
+      "question_sha256": "e54454f3c4a49047e11a39d5eb94d96213fede587b0997d93a611c8005cff634",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-17",
+      "rationale": "The guide mentions route reflectors, but does not explain the ordinary iBGP re-advertisement restriction or why a full mesh is needed.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q030",
+      "source_index": 29,
+      "question_sha256": "f09fbf97f30814190ccadcbcf286234678a0fe5b60230e37cf49276cc8dbaaa6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-17",
+      "rationale": "The guide mentions route reflectors for scale, but not path hiding or the associated suboptimal-path trade-off.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q031",
+      "source_index": 30,
+      "question_sha256": "ad0383f9f32fbd9f2ac4619e952b597f0514e8f9d5c82df0aee06899fee36c46",
+      "lesson_id": "routing-19",
+      "related_lesson_ids": [
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP hijacks and route leaks",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q032",
+      "source_index": 31,
+      "question_sha256": "3ba8fdc5ea2aed318a97f2705191ea3f91d2dedb832f1d919d55f3d529be4d14",
+      "lesson_id": "routing-20",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "RPKI, ROAs, and origin validation",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q033",
+      "source_index": 32,
+      "question_sha256": "abe68938ab826ee285c35277f7199ef4a03ce522006a90697a65c0e2fa7110be",
+      "lesson_id": "routing-07",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q034",
+      "source_index": 33,
+      "question_sha256": "2dc911b383f9f9918201d10a4c09939527662c375f5b09bf4c8951b5f46846aa",
+      "lesson_id": "routing-05",
+      "related_lesson_ids": [
+        "routing-22"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "ICMP and network diagnostics",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q035",
+      "source_index": 34,
+      "question_sha256": "48a5deb3de5d9e83471531fd52ee61f767f580e4098b51427d7f2a14944938f4",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "No available guide explains ECMP flow hashing or collisions that create unequal load.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q036",
+      "source_index": 35,
+      "question_sha256": "7e3ec86e941a421e0de1f8a91a5d6abe1628280c6784b502a6023fe1a9f6066a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Root servers and operational consequences",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "11. Anycast and failure recovery",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "03_ipv6",
+      "rationale": "IPv6 explains one shared service address, route-selected instances, and DNS root use. DNS lecture 02 also explains the same mechanism.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q037",
+      "source_index": 36,
+      "question_sha256": "d651a99a42b2bb9b51f380437311de4f482b44da8285df2f6ca7ad41f993d90c",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "5. Replication, SOA, and caching",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_02_dns.md",
+          "section": "11. Anycast and failure recovery",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "02_dns",
+      "rationale": "DNS explains replica refresh delays and route-selected anycast instances. Their combination supports potentially different answers during a replica-update interval; inconsistency is not inherent to anycast.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q038",
+      "source_index": 37,
+      "question_sha256": "658a91605282fef5b9cf9b015d2dec15b2113b689368002a0503470c2d042d62",
+      "lesson_id": "routing-22",
+      "related_lesson_ids": [
+        "routing-17"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q039",
+      "source_index": 38,
+      "question_sha256": "2c8bb8e659c4a38ce09beae8a094b0a29665b637d1c3dfc684aabbdd62c9c7c3",
+      "lesson_id": "routing-22",
+      "related_lesson_ids": [
+        "routing-15"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q040",
+      "source_index": 39,
+      "question_sha256": "9cfbc4f73b4454f41515cf778ca3ca2a0d25535f58869099a7d235ec84030567",
+      "lesson_id": "routing-07",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q041",
+      "source_index": 40,
+      "question_sha256": "289787181d1226cabd1dc4bc54c21e7b189b3801c84245e27007109e77e50db4",
+      "lesson_id": "routing-14",
+      "related_lesson_ids": [
+        "routing-08",
+        "routing-09"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q042",
+      "source_index": 41,
+      "question_sha256": "b9a836945449d0c9442ff61972c6fc2a54d4e9f2e2c5a9a402cae132bc812696",
+      "lesson_id": "routing-11",
+      "related_lesson_ids": [
+        "routing-10"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Distance-vector routing and Bellman–Ford",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q043",
+      "source_index": 42,
+      "question_sha256": "44689d1a24d1038c03302e018c8d2a3e2732018ff3c7f3a44afa5b51e010fda1",
+      "lesson_id": "routing-19",
+      "related_lesson_ids": [
+        "routing-15",
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP hijacks and route leaks",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q044",
+      "source_index": 43,
+      "question_sha256": "62ea2b7377f778ec59b82678be69f54205695612cbd894efecd0a97394c30991",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q045",
+      "source_index": 44,
+      "question_sha256": "3d7041105ad0701b095b9d6a0ed6a29fe5c4f1f2fc1bae5c9d7dee6980975496",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-09",
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q046",
+      "source_index": 45,
+      "question_sha256": "54251226a4d668b38afcadb8718e673c0a47ab11073833a79c3da1abbd45b4d0",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q047",
+      "source_index": 46,
+      "question_sha256": "6f9ba4465d3102a736b4a86a34a1324e058e9724f981f6c086fdc4be40925254",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "2.3 TCP Byte-Stream Sliding Window",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "5.2 Review Questions †",
+          "support": "partial_only"
+        }
+      ],
+      "target_topic": "04_tcp-ip",
+      "rationale": "The TCP lecture explicitly asks the wraparound question in supplementary review material but does not explain modulo sequence-number comparisons. Finding the same question is not finding its answer.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q048",
+      "source_index": 47,
+      "question_sha256": "d2b92c8e8cd338f48ca7d36f7893cf58e2b2195e22dde0b06d8475f98282da0a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "cross_topic",
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.4 Fast Retransmit and Fast Recovery (TCP Reno)",
+          "support": "partial_only"
+        }
+      ],
+      "target_topic": "04_tcp-ip",
+      "rationale": "TCP explains duplicate ACKs caused by out-of-order data and the duplicate-ACK threshold. The quiz instead says acknowledgments are reordered and asks for a mitigation that no option supplies; that wording needs review.",
+      "review_note": "The explanation in the TCP lecture concerns reordering of data segments. The keyed option names reordered ACKs, and no option answers the requested mitigation.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q049",
+      "source_index": 48,
+      "question_sha256": "4ea9207a74ca6fba47b8c493881de017c8b7d41417ff0dd25179df3044784fb0",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "3.4 Fast Retransmit and Fast Recovery (TCP Reno)",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "5.2 Review Questions †",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "04_tcp-ip",
+      "rationale": "The unmarked Reno explanation explicitly describes out-of-order segments buffered at the receiver. The supplementary review question also poses this exact comparison; the answer is supported by the unmarked explanation.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q050",
+      "source_index": 49,
+      "question_sha256": "4638d545c64bd05f97850d6ee28ca548e8cce9a2853613dc75a289ec0d3f5503",
+      "lesson_id": "routing-02",
+      "related_lesson_ids": [
+        "routing-12"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 header and fields",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "A too-small or too-large initial TTL differs from a router failing to decrement TTL. Indefinite circulation requires broken decrement behavior, not merely a high legal initial TTL.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q051",
+      "source_index": 50,
+      "question_sha256": "a192730fffbc23aea4469c32525719e1dc811aa6ac8a4ee644f01e864779d471",
+      "lesson_id": "routing-02",
+      "related_lesson_ids": [
+        "routing-01"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 header and fields",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q052",
+      "source_index": 51,
+      "question_sha256": "2666a9145196dcb57e9ad4b7768ff934701af2684d23807f6e363be8a7166495",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Fragmentation and path MTU",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-03",
+      "rationale": "Fragment offsets are taught, but overlapping-fragment security attacks are not.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q053",
+      "source_index": 52,
+      "question_sha256": "ba8b683934e35279156bb6d3b57bc6398e6fa7a4ea7525a7fb57f5d32683cf4e",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "ICMP and network diagnostics",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-05",
+      "rationale": "ICMP diagnostics and filtering are taught, but topology disclosure and ICMP denial-of-service mechanisms are not.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q054",
+      "source_index": 53,
+      "question_sha256": "f6513382d2310812eb1d4162442390b86ffc15902fea40c07f244e13ff997086",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "ICMP and network diagnostics",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-05",
+      "rationale": "Redirect is named as a better-next-hop message, but malicious Redirect acceptance and routing-table manipulation are not explained.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q055",
+      "source_index": 54,
+      "question_sha256": "03d518ac851b8d56b0ab5b965b83626854eb4e930db212a1e028a404f87152e9",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 addressing, CIDR, and ARP",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-04",
+      "rationale": "IPv6 mentions NAT address sharing, but none of the available guides explains port-overloading exhaustion or collision handling.",
+      "review_note": "The key combines refusal of new connections with potentially unsafe port reuse. Clarify the assumed NAT mapping and exhaustion behavior instead of treating collisions as a required outcome.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q056",
+      "source_index": 55,
+      "question_sha256": "bee67f73b55602953881c8eb5579055d5bc26f78fa8e3280e5cb156a29b973e4",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 addressing, CIDR, and ARP",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-04",
+      "rationale": "NAT is mentioned in IPv6, but STUN, hole punching, and mapping-dependent traversal limitations are not explained.",
+      "review_note": "STUN discovers a mapped address and supports connectivity checks; it is a component of a traversal solution, not a guarantee of direct connectivity. The blanket symmetric-NAT wording needs qualification.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc8489.html#section-1"
+      ],
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q057",
+      "source_index": 56,
+      "question_sha256": "b4169dcce3cf1d4911685818c507e289351b91ecdf6338c59d1553ce5bd07463",
+      "lesson_id": "routing-14",
+      "related_lesson_ids": [
+        "routing-10"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "supplementary_source",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "ABRs originate inter-area summary reachability and bound area topology scope. \"Aggregate LSAs\" is a loose description; arbitrary received LSAs are not simply merged and forwarded.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc2328.html#section-3"
+      ],
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q058",
+      "source_index": 57,
+      "question_sha256": "989cea9c04b1362b0a2d5eb5dc8da2c90e2a8f99183b1a249935863573c4a0c6",
+      "lesson_id": "routing-16",
+      "related_lesson_ids": [
+        "routing-17"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP state, updates, and advertisements",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q059",
+      "source_index": 58,
+      "question_sha256": "be3d191da079f006cae2ebaa5fa64aa77eda97f4120ff54aa101e03726f843e7",
+      "lesson_id": "routing-17",
+      "related_lesson_ids": [
+        "routing-16"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "The keyed option omits the requested conflict. MED can be learned over eBGP and compared inside the receiving AS; LOCAL_PREF normally outranks it.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc4271.html#section-5.1.4",
+        "https://www.rfc-editor.org/rfc/rfc4271.html#section-5.1.5"
+      ],
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q060",
+      "source_index": 59,
+      "question_sha256": "6203ca061830889023db608b137f0bb5df276ea954a21e4d15db49d1fa70e5fa",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP state, updates, and advertisements",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-16",
+      "rationale": "Communities are named as policy attributes, but the guide does not explain community propagation or unintended-policy risks.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q061",
+      "source_index": 60,
+      "question_sha256": "a213f34b53be691c8ffdb0793a5dada9a85f3927de67ff458bbad94e92c8fbe4",
+      "lesson_id": "routing-08",
+      "related_lesson_ids": [
+        "routing-04"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q062",
+      "source_index": 61,
+      "question_sha256": "ddf6fd99b0c79a895e1359167dbb6d69e1f20a4e2767c1f2bf57ae51595cfdc6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-08",
+      "rationale": "Aggregation and longest-prefix matching are taught, but routing holes and safe handling of unreachable subprefixes are not explained.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q063",
+      "source_index": 62,
+      "question_sha256": "bee372358f7f41679ef0c2fcf0fdec14d1fe23bf681841b89ac7243654f26fc6",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q064",
+      "source_index": 63,
+      "question_sha256": "3448c7e5c1ef8f1b73ff5c3fe4b02dcb98d47dbab7edff9642e1991abb9f331c",
+      "lesson_id": "routing-04",
+      "related_lesson_ids": [
+        "routing-08"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 addressing, CIDR, and ARP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q065",
+      "source_index": 64,
+      "question_sha256": "4a3b9293d6f7364472ddbc4d6ec46ec287e121fca48cbe1b6f93cf21b7e5183e",
+      "lesson_id": "routing-07",
+      "related_lesson_ids": [
+        "routing-16"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc3222.html#section-5.3"
+      ],
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q066",
+      "source_index": 65,
+      "question_sha256": "51e9f5826b68b90f15a3053e3414f11df92e02ab00628c7dfa70e79b25a6e1f9",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "No available guide explains input-buffer head-of-line blocking. Transport stream head-of-line blocking is a different mechanism.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q067",
+      "source_index": 66,
+      "question_sha256": "e88439196566db3d5babe68032b0c6b0c4e4695560039073e685137ffdbd5b9f",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "No available guide explains shared-bus router fabrics or their serialized internal data path.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q068",
+      "source_index": 67,
+      "question_sha256": "352fed7f0e1f6d5b12239c2a0e26ae267f126f422e78f10df64a35fb06ab529e",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "No available guide explains crossbar scheduling or simultaneous output-port conflicts.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q069",
+      "source_index": 68,
+      "question_sha256": "030f0490f74452844310488f73a89466a82b76fd3ed4d405b317b569542cf542",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "No available guide explains multistage Clos fabrics or their internal path parallelism.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q070",
+      "source_index": 69,
+      "question_sha256": "d906200f5241004464043e18eca873ea7c506c0b62a34bb6f3743b3bb8177ad5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "cross_topic",
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Glossary",
+          "support": "partial_only"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.2 Why SDN Happened When It Did: Technical and Economic Drivers",
+          "support": "partial_only"
+        }
+      ],
+      "target_topic": "06_sdn",
+      "rationale": "SDN covers ternary matching and finite table capacity, but does not explain longest-prefix TCAM implementation or its power cost.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q071",
+      "source_index": 70,
+      "question_sha256": "1d09af752aaeb761cf79da68388d9509c5a6c0ec6bf474a3de24cab59cab722e",
+      "lesson_id": "routing-22",
+      "related_lesson_ids": [
+        "routing-17",
+        "routing-23"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q072",
+      "source_index": 71,
+      "question_sha256": "ad65b5ec3924a7d1477975168066b2446c34b78d16692572b1a6ba21de924b15",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-09"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q073",
+      "source_index": 72,
+      "question_sha256": "6050fae0ad21b658308afc208b0192599395308a0051bfeface7d524e6a36752",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q074",
+      "source_index": 73,
+      "question_sha256": "6e7e17c1266f279e05611aa8f4387232e7d00d3f5a74e695b3b1231a8eebcacf",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-22",
+      "rationale": "The available guides discuss route changes and stability but do not explain route-flap damping or its suppression penalties.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q075",
+      "source_index": 74,
+      "question_sha256": "9fa2f4c14615da786c775b0d1eb341fe0bc49c15ee7e6d9580782aab3401e9dc",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-14",
+      "rationale": "The OSPF section covers ordinary shortest-path recomputation, not optional fast-reroute mechanisms or loop-free alternates.",
+      "review_note": "Loop-free alternates are an optional IP fast-reroute mechanism usable with OSPF, not a universal basic OSPF guarantee. Suitable alternate coverage depends on topology; full path disjointness is not always required.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc5286.html"
+      ],
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q076",
+      "source_index": 75,
+      "question_sha256": "a0b539a85637d483a881d1b5ae094efeaf3db5bf47095e09293f23acc7f38161",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-17",
+      "rationale": "The iBGP dissemination purpose is taught, but the non-reflection rule that motivates full-mesh sessions is not explained.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q077",
+      "source_index": 76,
+      "question_sha256": "5b500832e603514354dbe6f485778252e798326c587ef284cd65be07126461c2",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "ICMP and network diagnostics",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-05",
+      "rationale": "Traceroute and missing replies are explained, but load-balanced probe paths versus route flapping are not distinguished.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q078",
+      "source_index": 77,
+      "question_sha256": "9e09e60c7d4c33a0828671daca9e3dfd34d81c2176ec83c502e79f608d40f592",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP route selection and sessions",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-17",
+      "rationale": "The routing guide does not explain loopback-address iBGP sessions and IGP reachability after a physical interface fails.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q079",
+      "source_index": 78,
+      "question_sha256": "0b86a4c7a28e47498fe83aedc8f898be8f6a15a2d4595cffc5e23ac1742318af",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-09"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q080",
+      "source_index": 79,
+      "question_sha256": "01bdc249c74e606f71e208d3f98fef69a1b91c6bb9fee93171db166cfc654218",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-09"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q081",
+      "source_index": 80,
+      "question_sha256": "1cab371fd457704c41105cb4bef8f3ba23976f1466d0413daa1c8d2fad08310a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Forwarding and switching models",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-07",
+      "rationale": "The available guides do not compare edge-router interface diversity with core-router forwarding design goals.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q082",
+      "source_index": 81,
+      "question_sha256": "a893ad9928840f072400916e03952690969a5c8d1b1fc6587ba3465f067fc39c",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q083",
+      "source_index": 82,
+      "question_sha256": "eace0faf5548056a17386d7eb5ac8425bc9b5c142e9fa188304e43e4610d4577",
+      "lesson_id": "routing-03",
+      "related_lesson_ids": [
+        "routing-05"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Fragmentation and path MTU",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q084",
+      "source_index": 83,
+      "question_sha256": "f57a6ac126e7c05d0aa257469b7bcbd298ae795fa5ac42c3d264d9f3b4efdf4e",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "ICMP and network diagnostics",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-05",
+      "rationale": "ICMP rate limiting is mentioned as a cause of missing replies, but its resource-protection rationale is not taught.",
+      "review_note": "ICMP rate limiting protects bandwidth and router processing resources more generally. Reflection-based attacks are one example, not the complete rationale.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc1812.html#section-4.3.2.8"
+      ],
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q085",
+      "source_index": 84,
+      "question_sha256": "8407c4b55d4c2ee6eaa44824e22a8cbacf44a644399b578d7a137f00a47605da",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "11. Coexistence and transition mechanisms",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Tunnelling and the historical 6to4 example",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "SRv6 in a controlled domain",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "03_ipv6",
+      "rationale": "IPv6 shows the added outer header, tunnel-as-virtual-link abstraction, and packet steering. Together these support encapsulation overhead and reduced visibility into the underlying path.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q086",
+      "source_index": 85,
+      "question_sha256": "18bc7fab8651e6e6c19f02dee9d2b0d68c3e6c0b13370e72c7f2d27e4f9059ec",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "covered_in_other_topic",
+      "flags": [
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "9. Anycast and routing",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_03_ipv6.md",
+          "section": "Root servers and operational consequences",
+          "support": "supports_answer"
+        }
+      ],
+      "target_topic": "03_ipv6",
+      "rationale": "IPv6 explicitly explains that route changes can move packets between instances and that long-lived stateful services must handle this.",
+      "needs_review": false,
+      "next_action": "Attach to the target topic when its lessons exist; do not invent a lesson ID."
+    },
+    {
+      "question_id": "routing-q087",
+      "source_index": 86,
+      "question_sha256": "5ccc55ae6b3f881561bd6f227577c7996587b4c4ca7e80bdb9994f3f8f188d9d",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-18",
+      "rationale": "The guide describes specific prefixes and multihoming separately, but not selective upstream advertisements for inbound traffic engineering.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q088",
+      "source_index": 87,
+      "question_sha256": "208dc129cb09e2b2eeee1add5c191fa23c5385e97f015e12c0fa7d7dcca10f8d",
+      "lesson_id": "routing-16",
+      "related_lesson_ids": [
+        "routing-22"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "BGP state, updates, and advertisements",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc4271.html#section-6.5"
+      ],
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q089",
+      "source_index": 88,
+      "question_sha256": "4aa93dc27c4ae2e5a1ce43a463e85a94688a6941055e1f50698e44d1f02f5e48",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-10",
+        "routing-14"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "supplementary_source"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "OSPF areas, packets, and operation — supplementary †",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q090",
+      "source_index": 89,
+      "question_sha256": "97fe531850eef6c2326dbbb7539441ccdc286cb72582eaf0254e317a1b4028f4",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "DHCP configuration and leasing",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-06",
+      "rationale": "The guide permits multiple DHCP servers but does not explain coordination of their allocation pools or overlapping assignments.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q091",
+      "source_index": 90,
+      "question_sha256": "3737409ae4b72c28522161030fbc7fc0c2fc15883763428dfd3be1ac6076b2ab",
+      "lesson_id": "routing-12",
+      "related_lesson_ids": [
+        "routing-02",
+        "routing-05"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Routing loops, split horizon, and poison reverse",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "Dropping an ICMP Time Exceeded reply hides feedback; it does not stop TTL decrement or the discard of that expired packet. Inconsistent tables can keep looping newly arriving traffic.",
+      "verification_references": [
+        "https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1"
+      ],
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    },
+    {
+      "question_id": "routing-q092",
+      "source_index": 91,
+      "question_sha256": "d9a03e349696570863263322a145f786d1793fc67fb39c3f27f88bd95d742a31",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-18"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q093",
+      "source_index": 92,
+      "question_sha256": "c30c12d43910d95995eda513fd3b82f9b8848f028830431fe09124f1d64f2f6f",
+      "lesson_id": "routing-04",
+      "related_lesson_ids": [
+        "routing-06"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "IPv4 addressing, CIDR, and ARP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q094",
+      "source_index": 93,
+      "question_sha256": "d946d8992ee11a28b949e9a7640cc84f612bc086b98f689b3f54719c06298371",
+      "lesson_id": "routing-18",
+      "related_lesson_ids": [
+        "routing-19"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q095",
+      "source_index": 94,
+      "question_sha256": "a5c38667149c9c9e237eeffd120603cb90869514bf07a91925af7ddaf18caae8",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "AS business relationships and export policy",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-18",
+      "rationale": "Peering points are mentioned, but IXP shared interconnection and the latency/transit-cost benefits are not explained.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q096",
+      "source_index": 95,
+      "question_sha256": "9e20b852447a33d5f367934a2af44a79c336e65d3b5922a2def347881fe880a8",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-15",
+      "rationale": "Decentralized policies and limited global control are taught, but the claimed fault-isolation benefit is not established.",
+      "review_note": "\"Fault isolation\" is ambiguous: independent domains can limit control authority, but erroneous advertisements can still spread across domains. The claimed trade-off needs a stated fault model.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q097",
+      "source_index": 96,
+      "question_sha256": "4aac05a88f2d0b6dcb59dd131398a8e61b74dc46373cbe8f4a248da812d35a83",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Address aggregation and Internet structure",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "candidate_lesson_id": "routing-08",
+      "rationale": "Aggregation addresses route scale, but the guides do not explain RIB/FIB resource exhaustion or implementation-dependent forwarding on lookup failure.",
+      "needs_review": true,
+      "next_action": "Review the candidate topic and missing explanation; add a labelled extension only after review."
+    },
+    {
+      "question_id": "routing-q098",
+      "source_index": 97,
+      "question_sha256": "df34a4cd25305a8056d0738758dfdda9a1e23547a0c4d89c0979a95774c378e5",
+      "lesson_id": "routing-22",
+      "related_lesson_ids": [
+        "routing-17"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Convergence, stability, and failures",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q099",
+      "source_index": 98,
+      "question_sha256": "ea6f1aafd364697c2d9c1cc7d764db021c59e7fbd95c02df6bb51e96e6703c4e",
+      "lesson_id": "routing-15",
+      "related_lesson_ids": [
+        "routing-16"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Inter-domain routing and the role of BGP",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "needs_review": false,
+      "next_action": "Use the assigned lesson; retain supplementary classification where present."
+    },
+    {
+      "question_id": "routing-q100",
+      "source_index": 99,
+      "question_sha256": "820b14540a129f109e3194aa1fd88598b0a223ad70647b782f6d117c6758f5e9",
+      "lesson_id": "routing-03",
+      "related_lesson_ids": [
+        "routing-02"
+      ],
+      "coverage_status": "routing_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_01_internet_routing.md",
+          "section": "Fragmentation and path MTU",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The lesson teaches the concepts required by this question; see its learning goals and listed source sections.",
+      "review_note": "IP itself does not retransmit lost fragments. Reassembly fails; a higher layer may retransmit data, potentially causing another complete IP datagram to be sent.",
+      "needs_review": true,
+      "next_action": "Review the question wording before scored practice."
+    }
+  ]
+}
