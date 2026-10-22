@@ -14,9 +14,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-01",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is the primary flexibility gained by separating bind() and connect() in the socket API?",
@@ -31,7 +33,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-14",
       "tags": [],
       "flags": []
     },
@@ -48,9 +50,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-14",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Under what condition can accept() return a valid connected socket even if the client has already closed the connection?",
@@ -65,7 +69,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-16",
       "tags": [],
       "flags": []
     },
@@ -82,7 +86,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
     },
@@ -101,7 +105,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is the TIME_WAIT state enforced specifically on the active closer in TCP?",
@@ -116,7 +122,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-23",
       "tags": [],
       "flags": []
     },
@@ -133,7 +139,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-22",
       "tags": [],
       "flags": []
     },
@@ -152,7 +158,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is zeroing out the sockaddr_in structure before use necessary in the daytime client?",
@@ -167,9 +176,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-07",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What error occurs if a TCP server attempts to bind to a port that is already in use, and how can this be resolved?",
@@ -186,7 +197,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "In what case might listen() appear to succeed even if bind() was misconfigured, and why is this dangerous?",
@@ -203,7 +217,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What is the main problem if an echo server handles multiple clients in a single blocking loop without multiplexing?",
@@ -218,7 +235,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-35",
       "tags": [],
       "flags": []
     },
@@ -235,7 +252,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-06",
       "tags": [],
       "flags": []
     },
@@ -252,9 +269,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-06",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What key advantage does getaddrinfo provide over gethostbyname when writing dual-stack (IPv4/IPv6) applications?",
@@ -269,7 +288,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-10",
       "tags": [],
       "flags": []
     },
@@ -288,7 +307,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does inet_pton sometimes succeed with malformed dotted-decimal strings like 300.1.1.1?",
@@ -303,9 +325,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-08",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does the socket API require passing a sockaddr pointer instead of a sockaddr_in pointer to functions like bind()?",
@@ -320,7 +344,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-07",
       "tags": [],
       "flags": []
     },
@@ -337,7 +361,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-23",
       "tags": [],
       "flags": []
     },
@@ -354,7 +378,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-35",
       "tags": [],
       "flags": []
     },
@@ -373,7 +397,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why must a TCP server install a SIGCHLD handler when using fork() concurrency?",
@@ -390,7 +416,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Under what condition might the readn function block indefinitely?",
@@ -405,7 +434,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-25",
       "tags": [],
       "flags": []
     },
@@ -422,7 +451,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-26",
       "tags": [],
       "flags": []
     },
@@ -439,9 +468,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-27",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why must the fd_set passed to select() be reinitialized before each call?",
@@ -456,9 +487,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What subtle bug occurs if an application fails to reinitialize fd_set before select()?",
@@ -473,9 +506,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How does select() address the problem of blocked reads in multi-client servers?",
@@ -490,7 +525,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
     },
@@ -507,7 +542,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-38",
       "tags": [],
       "flags": []
     },
@@ -524,9 +559,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-25",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is proper EOF handling essential in a robust echo client?",
@@ -541,7 +578,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
     },
@@ -560,7 +597,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is TCP keepalive not enabled by default in most systems?",
@@ -577,7 +617,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why can blindly enabling non-blocking mode on a socket lead to busy-waiting or CPU starvation?",
@@ -592,7 +634,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-30",
       "tags": [],
       "flags": []
     },
@@ -609,7 +651,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-13",
       "tags": [],
       "flags": []
     },
@@ -626,9 +668,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why can a file descriptor marked writable by select() still fail on the next write()?",
@@ -643,9 +687,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What scalability limitation is imposed by FD_SETSIZE in select()?",
@@ -660,9 +706,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-37",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is mixing stdin with sockets in select() sometimes tricky across systems?",
@@ -679,7 +727,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What problem occurs if a socket is closed without being removed from all fd_sets before the next select()?",
@@ -696,7 +747,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why must EINTR be handled explicitly when select() is interrupted by a signal?",
@@ -711,7 +765,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
     },
@@ -728,7 +782,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
     },
@@ -745,9 +799,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "How does enabling SO_LINGER with a zero timeout affect TCP close() behavior?",
@@ -764,7 +820,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why can disabling Nagle\u2019s algorithm with TCP_NODELAY improve responsiveness but reduce throughput?",
@@ -781,7 +839,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "cross_topic"
+      ]
     },
     {
       "question": "What tradeoff results from aggressively lowering TCP keepalive idle timeout?",
@@ -798,7 +859,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does poll() improve over select() in environments with many descriptors?",
@@ -815,7 +878,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is poll() considered more scalable than select() for large descriptor sets?",
@@ -832,7 +897,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why can closing sockets in TIME_WAIT state while using poll() lead to missed events?",
@@ -849,7 +916,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What does a poll() return value of zero indicate, and what risk does misinterpretation pose?",
@@ -866,7 +936,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is it dangerous for an application to ignore POLLERR and POLLHUP flags in poll()?",
@@ -883,7 +956,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why is it critical to update the pollfd array after closing a socket?",
@@ -900,7 +975,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What concurrency challenge arises when using poll() to multiplex both stdin and socket input?",
@@ -915,9 +993,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-32",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does array-based tracking of clients in a poll-based server complicate dynamic client management?",
@@ -934,7 +1014,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What semantic change occurs if SO_LINGER is set with a nonzero timeout during close()?",
@@ -951,7 +1034,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why can SO_LINGER introduce delays during close() in a concurrent TCP server?",
@@ -968,7 +1053,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "How does epoll edge-triggered (ET) mode differ from level-triggered (LT) mode?",
@@ -985,7 +1072,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "Why must epoll edge-triggered servers read in a loop until EAGAIN after a readiness event?",
@@ -1002,7 +1091,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "What failure arises if an epoll edge-triggered server does not loop on write() until EAGAIN?",
@@ -1019,7 +1111,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is calling epoll_ctl with EPOLL_CTL_DEL after closing a socket essential?",
@@ -1036,7 +1131,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "How can epoll report a writable socket even if the peer has already closed it?",
@@ -1051,7 +1149,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
     },
@@ -1070,7 +1168,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why can level-triggered epoll cause repeated wakeups for the same socket?",
@@ -1087,7 +1188,9 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap"
+      ]
     },
     {
       "question": "What risk arises if a high-traffic epoll server does not drain its accept() queue quickly?",
@@ -1102,7 +1205,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-20",
       "tags": [],
       "flags": []
     },
@@ -1119,7 +1222,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
     },
@@ -1138,7 +1241,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why does reading zero bytes from a TCP socket indicate connection closure?",
@@ -1153,9 +1259,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-21",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What subtle bug can occur if a server removes a socket from epoll only after the peer has closed it?",
@@ -1172,7 +1280,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "How does shutdown() differ from close() in handling half-duplex TCP shutdowns?",
@@ -1187,7 +1298,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-34",
       "tags": [],
       "flags": []
     },
@@ -1204,7 +1315,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
     },
@@ -1221,9 +1332,11 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-24",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What bug can occur if EOF on stdin is not handled correctly in an echo client multiplexing stdin and sockets?",
@@ -1238,9 +1351,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-34",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is it unsafe to reuse closed socket descriptors in long-running epoll servers without cleanup?",
@@ -1257,7 +1372,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is synchronous user interaction harder to implement over epoll than raw socket I/O?",
@@ -1272,9 +1390,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-30",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What timing bug can occur when one peer calls shutdown(SHUT_WR) before the other is ready to read?",
@@ -1289,9 +1409,11 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-34",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why must an echo server flush pending writes before teardown?",
@@ -1306,9 +1428,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is explicit write-buffer cleanup logic important during server shutdown?",
@@ -1323,7 +1447,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
     },
@@ -1342,7 +1466,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Why is consistent teardown logic across all socket states essential in long-running servers?",
@@ -1357,7 +1484,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
     }

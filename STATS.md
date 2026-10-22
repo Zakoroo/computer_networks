@@ -11,8 +11,8 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 | Lecture guides | 11 | `lectures/lecture_*.md` |
 | Quiz files | 15 | `quizzes/quiz_*.json` |
 | Quiz questions | 585 | Sum of each quiz's `questions` array |
-| Topics converted to lessons | 4 | Internet Routing, DNS, IPv6, and TCP manifests |
-| Numbered lessons | 93 | Sum of prepared manifests' `lessons` arrays |
+| Topics converted to lessons | 5 | Internet Routing, DNS, IPv6, TCP, and Socket API manifests |
+| Numbered lessons | 135 | Sum of prepared manifests' `lessons` arrays |
 
 ## Internet Routing
 
@@ -131,3 +131,33 @@ Source: [manifest.json](lessons/04_tcp/manifest.json), checked against quiz 04 a
 | `cross_topic` | 1 |
 
 Flags overlap coverage categories. Q017/Q018/Q029 use the archived variant comparison; their name mentions elsewhere are insufficient. Q027 has partial socket-guide background and remains unassigned. The primary lessons already teach the supported keyed distinctions, so optional study context is not labelled mandatory extra reading. Routing Q049's unmarked TCP buffering support does not require a supplementary-source flag and is counted only in its original quiz.
+
+## Socket API
+
+Source: [manifest.json](lessons/05_socket_api/manifest.json), checked against quiz 05 and the lesson files. User-approved on 22 October 2026. No external question assignments were added.
+
+| Measure | Count |
+| --- | ---: |
+| Lessons | 42 |
+| Mermaid diagrams in numbered lessons, all based on the source | 11 |
+| Source Mermaid blocks unchanged | 5 |
+| Source diagrams with label/layout repairs | 6 |
+| C code blocks retained exactly | 26 |
+| Native questions accounted for | 80 |
+| Native questions with socket API primary lessons | 47 |
+| Partially supported in another networking topic | 1 |
+| Insufficient coverage in networking guides 01–06 | 32 |
+| Native questions without a primary lesson | 33 |
+| Native mapped questions with additional required lessons | 12 |
+| Native mapped questions with optional background | 46 |
+| Native gap entries with unresolved dependency classification | 33 |
+| Lessons without native socket API quiz assignments | 18 |
+| External questions newly assigned to this topic | 0 |
+
+| Flag | Native questions |
+| --- | ---: |
+| `coverage_gap` | 33 |
+| `wording_issue` | 40 |
+| `cross_topic` | 1 |
+
+Flags overlap; mapped questions with defective keys are not ready for scored practice. Shared readiness, bounded queues, and partial-write reasoning can be taught without an API-specific tutorial, while pollfd flags, epoll trigger/registration rules, and socket-option details remain gaps where required. Q046 has only partial background in TCP's archived Nagle timeline. No mapped native question depends on hidden-slide supplementary material; the guide reports no hidden substantive slides. All question text, options, keys, explanations, and manual tags are preserved.

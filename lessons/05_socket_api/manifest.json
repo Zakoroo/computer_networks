@@ -1,0 +1,3569 @@
+{
+  "schema_version": 1,
+  "topic_id": "05_socket_api",
+  "title": "Socket API, network programming, and high-performance I/O",
+  "preparation_status": "approved",
+  "source_commit": "ea7f3e7b4abb21c801882124b7f6aef08ff00f7e",
+  "source_lecture": "lectures/lecture_05_socket-api.md",
+  "source_quiz": "quizzes/quiz_05_socket_api.json",
+  "source_scope": "The full socket API guide, examples, diagrams, glossary, references, and source qualifications are retained. Question coverage searches are limited to networking lecture guides 01–06. The guide reports no hidden substantive slides; no new exam-scope classification was inferred.",
+  "coverage_counts": {
+    "socket_api_lesson": 47,
+    "not_found_in_available_lectures": 32,
+    "partial_in_other_topic": 1
+  },
+  "flag_counts": {
+    "wording_issue": 40,
+    "coverage_gap": 33,
+    "cross_topic": 1
+  },
+  "lessons": [
+    {
+      "id": "socket-api-01",
+      "order": 1,
+      "title": "The socket boundary and protocol stack",
+      "path": "lessons/05_socket_api/01_socket_boundary.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Locate the socket API between application processes and the transport stack.",
+        "Distinguish logical peer communication from the physical data path."
+      ],
+      "source_sections": [
+        "1. Introduction to the Client-Server Model and the Socket Interface"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q001"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-02",
+      "order": 2,
+      "title": "Clients, servers, and socket pairs",
+      "path": "lessons/05_socket_api/02_clients_and_socket_pairs.md",
+      "prerequisite_ids": [
+        "socket-api-01"
+      ],
+      "learning_goals": [
+        "Explain sockets as an API, a system call, and a descriptor.",
+        "Identify the four endpoint values defining a TCP connection."
+      ],
+      "source_sections": [
+        "1.2 Client-Server Paradigm, Sockets, and Connection 4-Tuples"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-03",
+      "order": 3,
+      "title": "Services and port allocation",
+      "path": "lessons/05_socket_api/03_services_and_ports.md",
+      "prerequisite_ids": [
+        "socket-api-02"
+      ],
+      "learning_goals": [
+        "Distinguish service ports, IANA ranges, and OS allocation rules.",
+        "Explain port zero and the source historical examples."
+      ],
+      "source_sections": [
+        "1.3 Port Number Ranges, Services, and Concurrent Demultiplexing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-04",
+      "order": 4,
+      "title": "Concurrent connections on one server port",
+      "path": "lessons/05_socket_api/04_concurrent_demultiplexing.md",
+      "prerequisite_ids": [
+        "socket-api-02",
+        "socket-api-03"
+      ],
+      "learning_goals": [
+        "Explain wildcard listening and connected socket identities.",
+        "Distinguish clients sharing a local server port using the complete four-tuple."
+      ],
+      "source_sections": [
+        "Concurrent Servers, Multihomed Hosts, and 4-Tuple Demultiplexing"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-05",
+      "order": 5,
+      "title": "BSD networking history",
+      "path": "lessons/05_socket_api/05_bsd_history.md",
+      "prerequisite_ids": [
+        "socket-api-01"
+      ],
+      "learning_goals": [
+        "Trace the historical BSD networking releases and TCP improvements.",
+        "Explain why the redistributable networking releases mattered."
+      ],
+      "source_sections": [
+        "1.4 History of BSD Networking Releases"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-06",
+      "order": 6,
+      "title": "Host and network byte order",
+      "path": "lessons/05_socket_api/06_byte_order.md",
+      "prerequisite_ids": [
+        "socket-api-02"
+      ],
+      "learning_goals": [
+        "Read a multibyte value in big- and little-endian storage.",
+        "Choose the host/network conversion for ports and IPv4 addresses."
+      ],
+      "source_sections": [
+        "2. Byte Ordering, Socket Address Structures, and Address Conversion"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q014",
+        "socket-api-q015"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-07",
+      "order": 7,
+      "title": "Socket address structures and storage",
+      "path": "lessons/05_socket_api/07_address_structures.md",
+      "prerequisite_ids": [
+        "socket-api-06"
+      ],
+      "learning_goals": [
+        "Distinguish IPv4 fields, generic address pointers, and protocol-independent storage.",
+        "Retain platform layout and zero-initialization qualifications."
+      ],
+      "source_sections": [
+        "2.2 Socket Address Structures (`sockaddr`, `sockaddr_in`, `sockaddr_storage`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q010",
+        "socket-api-q019"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-08",
+      "order": 8,
+      "title": "IP presentation and numeric conversion",
+      "path": "lessons/05_socket_api/08_address_conversion.md",
+      "prerequisite_ids": [
+        "socket-api-07"
+      ],
+      "learning_goals": [
+        "Choose modern IPv4/IPv6 conversion functions.",
+        "Interpret their success, invalid-input, and error returns."
+      ],
+      "source_sections": [
+        "2.3 IP Address Conversion (`inet_pton`, `inet_ntop`, `sock_ntop`) and DNS Resolution"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q018"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-09",
+      "order": 9,
+      "title": "Formatting a complete socket address",
+      "path": "lessons/05_socket_api/09_socket_formatting.md",
+      "prerequisite_ids": [
+        "socket-api-08"
+      ],
+      "learning_goals": [
+        "Explain why formatting an address and port requires family information.",
+        "Identify the static-storage and missing-IPv6 limitations of the source wrapper."
+      ],
+      "source_sections": [
+        "Wrapper for Address-Family-Independent Formatting (`sock_ntop`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-10",
+      "order": 10,
+      "title": "Protocol-independent name resolution",
+      "path": "lessons/05_socket_api/10_name_resolution.md",
+      "prerequisite_ids": [
+        "socket-api-07",
+        "socket-api-08"
+      ],
+      "learning_goals": [
+        "Compare getaddrinfo/getnameinfo with legacy host interfaces.",
+        "Explain trying an ordered list of resolved address candidates."
+      ],
+      "source_sections": [
+        "Domain Name System (DNS) Resolution"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q016"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-11",
+      "order": 11,
+      "title": "A blocking TCP client-server session",
+      "path": "lessons/05_socket_api/11_session_overview.md",
+      "prerequisite_ids": [
+        "socket-api-02"
+      ],
+      "learning_goals": [
+        "Trace setup, requests, replies, and close across client and server.",
+        "Distinguish kernel handshakes from application accept timing."
+      ],
+      "source_sections": [
+        "3. Elementary TCP Sockets and the Daytime Client/Server"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-12",
+      "order": 12,
+      "title": "Creating an endpoint with socket()",
+      "path": "lessons/05_socket_api/12_socket_call.md",
+      "prerequisite_ids": [
+        "socket-api-07",
+        "socket-api-11"
+      ],
+      "learning_goals": [
+        "Select an address family, socket type, and protocol.",
+        "Explain initial TCP state and socket-creation failure categories."
+      ],
+      "source_sections": [
+        "3.2 Detailed Specification of Core Socket System Calls"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-13",
+      "order": 13,
+      "title": "Active open with connect()",
+      "path": "lessons/05_socket_api/13_connect_call.md",
+      "prerequisite_ids": [
+        "socket-api-11",
+        "socket-api-12"
+      ],
+      "learning_goals": [
+        "Explain automatic local endpoint selection and the blocking handshake.",
+        "Distinguish timeout, refusal, soft errors, and pending nonblocking connects."
+      ],
+      "source_sections": [
+        "2. `connect()` — Initiating an Active Open (Client)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q036"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-14",
+      "order": 14,
+      "title": "Choosing a local address with bind()",
+      "path": "lessons/05_socket_api/14_bind_call.md",
+      "prerequisite_ids": [
+        "socket-api-03",
+        "socket-api-07",
+        "socket-api-12"
+      ],
+      "learning_goals": [
+        "Explain local IP/port choices and wildcard binding.",
+        "Recognize binding errors and the scope of a specific local address."
+      ],
+      "source_sections": [
+        "3. `bind()` — Assigning a Local Protocol Address"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q002",
+        "socket-api-q003"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-15",
+      "order": 15,
+      "title": "Passive open and listen backlog",
+      "path": "lessons/05_socket_api/15_listen_call.md",
+      "prerequisite_ids": [
+        "socket-api-14"
+      ],
+      "learning_goals": [
+        "Explain the passive LISTEN state and queued connections.",
+        "Retain the source backlog wrapper and historical configuration example."
+      ],
+      "source_sections": [
+        "4. `listen()` — Converting to a Passive Listening Socket"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-16",
+      "order": 16,
+      "title": "Accepting connected descriptors",
+      "path": "lessons/05_socket_api/16_accept_call.md",
+      "prerequisite_ids": [
+        "socket-api-15"
+      ],
+      "learning_goals": [
+        "Separate listening descriptors from accepted connected descriptors.",
+        "Explain value-result address lengths and accept failure cases."
+      ],
+      "source_sections": [
+        "5. `accept()` — Dequeuing a Completed Connection"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q004"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-17",
+      "order": 17,
+      "title": "Closing descriptors and socket references",
+      "path": "lessons/05_socket_api/17_close_call.md",
+      "prerequisite_ids": [
+        "socket-api-16"
+      ],
+      "learning_goals": [
+        "Distinguish releasing a descriptor from closing the underlying socket.",
+        "Explain queued kernel data and ordinary FIN initiation on the last close."
+      ],
+      "source_sections": [
+        "6. `close()` — Closing a Socket"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-18",
+      "order": 18,
+      "title": "Error wrappers and the Daytime client",
+      "path": "lessons/05_socket_api/18_wrappers_and_daytime_client.md",
+      "prerequisite_ids": [
+        "socket-api-08",
+        "socket-api-13"
+      ],
+      "learning_goals": [
+        "Recognize the course wrapper and constant assumptions.",
+        "Trace the Daytime client initialization, read loop, and EOF handling."
+      ],
+      "source_sections": [
+        "3.3 Walkthrough: Daytime Client and Iterative Daytime Server"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-19",
+      "order": 19,
+      "title": "An iterative Daytime server",
+      "path": "lessons/05_socket_api/19_daytime_server.md",
+      "prerequisite_ids": [
+        "socket-api-15",
+        "socket-api-16",
+        "socket-api-17",
+        "socket-api-18"
+      ],
+      "learning_goals": [
+        "Trace accepting a client, writing a time response, and closing it.",
+        "Explain the sequential service behavior and kernel queueing."
+      ],
+      "source_sections": [
+        "Simple Iterative TCP Daytime Server (Port 13)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-20",
+      "order": 20,
+      "title": "Three-way handshake and listen queues",
+      "path": "lessons/05_socket_api/20_handshake_and_queues.md",
+      "prerequisite_ids": [
+        "socket-api-13",
+        "socket-api-15",
+        "socket-api-16"
+      ],
+      "learning_goals": [
+        "Trace SYN/SYN+ACK/ACK and the endpoint states.",
+        "Distinguish incomplete and completed queues and historical/Linux backlog meanings."
+      ],
+      "source_sections": [
+        "4. TCP Connection Establishment, Termination, and State Transitions"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q065"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-21",
+      "order": 21,
+      "title": "Orderly teardown and half-close",
+      "path": "lessons/05_socket_api/21_orderly_teardown.md",
+      "prerequisite_ids": [
+        "socket-api-17",
+        "socket-api-20"
+      ],
+      "learning_goals": [
+        "Trace the ordinary FIN/ACK teardown and half-closed interval.",
+        "Explain EOF after buffered data and retain combined/simultaneous-close caveats."
+      ],
+      "source_sections": [
+        "4.2 Four-Way Connection Termination and Half-Close"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q068"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-22",
+      "order": 22,
+      "title": "TCP states and simultaneous open or close",
+      "path": "lessons/05_socket_api/22_tcp_states.md",
+      "prerequisite_ids": [
+        "socket-api-20",
+        "socket-api-21"
+      ],
+      "learning_goals": [
+        "Follow ordinary setup and teardown states.",
+        "Trace the simultaneous-open and simultaneous-close paths."
+      ],
+      "source_sections": [
+        "4.3 TCP State Transitions and Packet Trace"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q008"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-23",
+      "order": 23,
+      "title": "Why TIME_WAIT lasts twice MSL",
+      "path": "lessons/05_socket_api/23_time_wait.md",
+      "prerequisite_ids": [
+        "socket-api-21",
+        "socket-api-22"
+      ],
+      "learning_goals": [
+        "Explain retransmitting the last ACK and expiring old duplicates.",
+        "Distinguish a connection incarnation, segment-lifetime assumptions, and implementation-specific reuse."
+      ],
+      "source_sections": [
+        "4.4 The `TIME_WAIT` State and the $2\\text{MSL}$ Timeout"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q007",
+        "socket-api-q020"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-24",
+      "order": 24,
+      "title": "Byte streams, framing, and short counts",
+      "path": "lessons/05_socket_api/24_stream_framing.md",
+      "prerequisite_ids": [
+        "socket-api-11",
+        "socket-api-21"
+      ],
+      "learning_goals": [
+        "Explain why writes, packets, reads, and messages need not align.",
+        "Compare EOF, delimiter, and length-prefix framing."
+      ],
+      "source_sections": [
+        "5. Byte-Stream Framing, Short Counts, and Robust I/O Wrappers"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q005",
+        "socket-api-q032",
+        "socket-api-q071",
+        "socket-api-q072"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-25",
+      "order": 25,
+      "title": "Reading a requested byte count",
+      "path": "lessons/05_socket_api/25_readn.md",
+      "prerequisite_ids": [
+        "socket-api-24"
+      ],
+      "learning_goals": [
+        "Trace readn progress, interrupted reads, EOF, and errors.",
+        "Explain why waiting for a requested count can block."
+      ],
+      "source_sections": [
+        "5.2 Implementing `readn`, `writen`, and Buffered `readline`"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q024",
+        "socket-api-q031"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-26",
+      "order": 26,
+      "title": "Writing a complete local byte count",
+      "path": "lessons/05_socket_api/26_writen.md",
+      "prerequisite_ids": [
+        "socket-api-24",
+        "socket-api-25"
+      ],
+      "learning_goals": [
+        "Trace partial-write progress and EINTR retry.",
+        "Distinguish locally accepted bytes from remote application consumption."
+      ],
+      "source_sections": [
+        "2. `writen()` — Write Exactly $n$ Bytes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "socket-api-q025"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-27",
+      "order": 27,
+      "title": "Buffered line reading and readiness",
+      "path": "lessons/05_socket_api/27_buffered_readline.md",
+      "prerequisite_ids": [
+        "socket-api-24",
+        "socket-api-25"
+      ],
+      "learning_goals": [
+        "Explain per-byte parsing with block prefetch and exposed buffered state.",
+        "Identify hidden buffering, static shared state, and per-connection requirements."
+      ],
+      "source_sections": [
+        "3. `readline()` — Buffering and Readiness"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q026"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-28",
+      "order": 28,
+      "title": "The baseline echo server",
+      "path": "lessons/05_socket_api/28_baseline_echo_server.md",
+      "prerequisite_ids": [
+        "socket-api-16",
+        "socket-api-18",
+        "socket-api-19",
+        "socket-api-26"
+      ],
+      "learning_goals": [
+        "Trace the accept/read/echo/close loop and EINTR handling.",
+        "Identify the iterative server behavior."
+      ],
+      "source_sections": [
+        "5.3 The Baseline TCP Echo Server and Client (`str_echo` and `str_cli`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-29",
+      "order": 29,
+      "title": "The baseline echo client and its blocking flaw",
+      "path": "lessons/05_socket_api/29_baseline_echo_client.md",
+      "prerequisite_ids": [
+        "socket-api-18",
+        "socket-api-27",
+        "socket-api-28"
+      ],
+      "learning_goals": [
+        "Trace the line-oriented client exchange.",
+        "Explain delayed detection of peer closure while blocked on stdin."
+      ],
+      "source_sections": [
+        "Baseline Echo Client (`main` and `str_cli`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-30",
+      "order": 30,
+      "title": "Blocking, nonblocking, and multiplexed I/O",
+      "path": "lessons/05_socket_api/30_io_models.md",
+      "prerequisite_ids": [
+        "socket-api-29"
+      ],
+      "learning_goals": [
+        "Separate waiting for input from transferring it to user space.",
+        "Compare polling, readiness multiplexing, and asynchronous completion."
+      ],
+      "source_sections": [
+        "6. I/O Models, I/O Multiplexing (`select`), and Batch Input"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q035",
+        "socket-api-q075"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-31",
+      "order": 31,
+      "title": "select sets, bounds, timeouts, and readiness",
+      "path": "lessons/05_socket_api/31_select_readiness.md",
+      "prerequisite_ids": [
+        "socket-api-30"
+      ],
+      "learning_goals": [
+        "Rebuild value-result descriptor sets and timeouts correctly.",
+        "Explain descriptor-number bounds and readiness for data, EOF, errors, and urgent input."
+      ],
+      "source_sections": [
+        "6.2 The `select()` System Call and Descriptor Readiness Conditions"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 4,
+      "question_ids": [
+        "socket-api-q027",
+        "socket-api-q028",
+        "socket-api-q029",
+        "socket-api-q037",
+        "socket-api-q038",
+        "socket-api-q042",
+        "socket-api-q062"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-32",
+      "order": 32,
+      "title": "A client waiting on stdin and its socket",
+      "path": "lessons/05_socket_api/32_select_client.md",
+      "prerequisite_ids": [
+        "socket-api-27",
+        "socket-api-29",
+        "socket-api-31"
+      ],
+      "learning_goals": [
+        "Trace independent readiness checks for the two input descriptors.",
+        "Retain the intermediate client limitations."
+      ],
+      "source_sections": [
+        "6.3 Revisiting `str_cli` with `select()`, Batch Input Pipelining, and `shutdown()`"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "socket-api-q054"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-33",
+      "order": 33,
+      "title": "Batch pipelining and premature termination",
+      "path": "lessons/05_socket_api/33_batch_pipelining.md",
+      "prerequisite_ids": [
+        "socket-api-32"
+      ],
+      "learning_goals": [
+        "Calculate the source stop-and-wait echo time.",
+        "Explain how premature exit truncates outstanding replies in batch mode."
+      ],
+      "source_sections": [
+        "Step 2: The Batch Input Problem and Stop-and-Wait vs. Full-Duplex Pipelining"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-34",
+      "order": 34,
+      "title": "shutdown and a half-close-aware client",
+      "path": "lessons/05_socket_api/34_shutdown_half_close.md",
+      "prerequisite_ids": [
+        "socket-api-17",
+        "socket-api-21",
+        "socket-api-33"
+      ],
+      "learning_goals": [
+        "Explain directional shutdown and reference-count independence.",
+        "Trace sending EOF while continuing to receive server replies."
+      ],
+      "source_sections": [
+        "Step 3: Fixing Batch Mode with `shutdown()` (TCP Half-Close) and Raw Buffer I/O"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [
+        "socket-api-q070",
+        "socket-api-q073",
+        "socket-api-q076"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-35",
+      "order": 35,
+      "title": "Processes, threads, and event-driven servers",
+      "path": "lessons/05_socket_api/35_server_concurrency.md",
+      "prerequisite_ids": [
+        "socket-api-28",
+        "socket-api-30"
+      ],
+      "learning_goals": [
+        "Compare address-space isolation and scheduling among the three mechanisms.",
+        "Explain why an idle client blocks an iterative server."
+      ],
+      "source_sections": [
+        "7. Server Architectures, Denial-of-Service Attacks, and Modern High-Speed I/O"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q013",
+        "socket-api-q021"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-36",
+      "order": 36,
+      "title": "A select-based concurrent echo server",
+      "path": "lessons/05_socket_api/36_select_server.md",
+      "prerequisite_ids": [
+        "socket-api-26",
+        "socket-api-31",
+        "socket-api-35"
+      ],
+      "learning_goals": [
+        "Trace master sets, ready sets, client slots, and maxfd.",
+        "Explain EOF cleanup, descriptor-value bounds, and remaining output-blocking limits."
+      ],
+      "source_sections": [
+        "7.2 Event-Driven Single-Process Server Using `select()`"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 4,
+      "question_ids": [
+        "socket-api-q043",
+        "socket-api-q044",
+        "socket-api-q066",
+        "socket-api-q077",
+        "socket-api-q078",
+        "socket-api-q080"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-37",
+      "order": 37,
+      "title": "Partial-line stalls and per-client state",
+      "path": "lessons/05_socket_api/37_partial_lines_and_state.md",
+      "prerequisite_ids": [
+        "socket-api-27",
+        "socket-api-31",
+        "socket-api-36"
+      ],
+      "learning_goals": [
+        "Explain descriptor exhaustion and a readiness-triggered partial-line stall.",
+        "Use bounded nonblocking progress and per-client state to avoid one-client waits."
+      ],
+      "source_sections": [
+        "7.3 Denial-of-Service Attacks (Partial Lines) and Per-Client State Machines"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "socket-api-q039"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-38",
+      "order": 38,
+      "title": "C10K and scalable readiness mechanisms",
+      "path": "lessons/05_socket_api/38_c10k.md",
+      "prerequisite_ids": [
+        "socket-api-31",
+        "socket-api-36"
+      ],
+      "learning_goals": [
+        "Explain select scanning and descriptor-set scaling limits.",
+        "Distinguish ready-work APIs from blanket constant-time promises."
+      ],
+      "source_sections": [
+        "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "socket-api-q030"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-39",
+      "order": 39,
+      "title": "C10M, io_uring, and kernel-bypass tradeoffs",
+      "path": "lessons/05_socket_api/39_c10m_and_bypass.md",
+      "prerequisite_ids": [
+        "socket-api-01",
+        "socket-api-30",
+        "socket-api-38"
+      ],
+      "learning_goals": [
+        "Compare kernel sockets, completion rings, early packet processing, and bypass.",
+        "Retain mode, driver, tuning, power, isolation, and empirical-comparison qualifications."
+      ],
+      "source_sections": [
+        "2. The C10M Problem: When the OS Kernel Becomes the Bottleneck"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 3,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-40",
+      "order": 40,
+      "title": "Messaging above the socket",
+      "path": "lessons/05_socket_api/40_messaging_middleware.md",
+      "prerequisite_ids": [
+        "socket-api-24",
+        "socket-api-39"
+      ],
+      "learning_goals": [
+        "Explain message framing, patterns, reconnects, and queueing above TCP.",
+        "Distinguish messaging convenience from visibility into connection state and failures."
+      ],
+      "source_sections": [
+        "3. Above the Socket: Message-Oriented Middleware (MOM)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-41",
+      "order": 41,
+      "title": "Testing and debugging network programs",
+      "path": "lessons/05_socket_api/41_debugging.md",
+      "prerequisite_ids": [
+        "socket-api-18",
+        "socket-api-22"
+      ],
+      "learning_goals": [
+        "Use the retained telnet/netstat and GDB teaching commands.",
+        "Distinguish source-level stepping, stack traces, expression evaluation, and memory inspection."
+      ],
+      "source_sections": [
+        "8. Debugging, Testing, Pitfalls, and Best Practices"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "socket-api-42",
+      "order": 42,
+      "title": "Socket programming pitfalls and practice",
+      "path": "lessons/05_socket_api/42_pitfalls_and_practice.md",
+      "prerequisite_ids": [
+        "socket-api-23",
+        "socket-api-34",
+        "socket-api-37",
+        "socket-api-38"
+      ],
+      "learning_goals": [
+        "Connect framing, buffering, concurrency, teardown, and byte-order mistakes to their source remedies.",
+        "Retain the limits of the teaching examples when reviewing code."
+      ],
+      "source_sections": [
+        "8.2 Summary of Pitfalls and Best Practices"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "socket-api-q001",
+      "source_index": 0,
+      "question_sha256": "59b33b1b7301fe211ef19747ed5b1416bd4e86f8f1d3b396e370984e340ab4e5",
+      "lesson_id": "socket-api-01",
+      "related_lesson_ids": [
+        "socket-api-12",
+        "socket-api-39"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "1. Introduction to the Client-Server Model and the Socket Interface",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3.2 Detailed Specification of Core Socket System Calls",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The source locates the API across the user/kernel boundary; the socket-call lesson separates ordinary endpoints from privileged raw sockets. Together they explain the boundary, but do not support the key claiming ordinary applications need device-driver privilege.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-12"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-39"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "The API can include user-space library code while system calls enter the kernel stack. This does not require ordinary applications to obtain driver privileges; no option cleanly states the boundary issue.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/socket.7.html"
+    },
+    {
+      "question_id": "socket-api-q002",
+      "source_index": 1,
+      "question_sha256": "bf0bd6b8d220cbf23e8573842b01fe05c87dd1de629783abcbc4039839bfcfd4",
+      "lesson_id": "socket-api-14",
+      "related_lesson_ids": [
+        "socket-api-13",
+        "socket-api-04"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3. `bind()` — Assigning a Local Protocol Address",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "Bind chooses the local IP/port; connect supplies the remote endpoint and can otherwise let the kernel choose the local endpoint. Both explanations are needed for the API-separation tradeoff.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "socket-api-13"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-04"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q003",
+      "source_index": 2,
+      "question_sha256": "f7643e14d8d63bd95f524a4ed02300ecb0d7e83cd9b525374c8de49adbacf7df",
+      "lesson_id": "socket-api-14",
+      "related_lesson_ids": [
+        "socket-api-04"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3. `bind()` — Assigning a Local Protocol Address",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Bind names a local IP and port and documents EADDRINUSE for conflicts. The answer needs an overlapping local endpoint, not merely equal numeric ports on different local addresses.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-04"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Specify overlapping local IP/port bindings in the same networking context. Equal port numbers on different local IPs do not alone establish a conflict.",
+      "review_reference": "lectures/lecture_05_socket-api.md#3-bind--assigning-a-local-protocol-address"
+    },
+    {
+      "question_id": "socket-api-q004",
+      "source_index": 3,
+      "question_sha256": "aeaebc156a455f33f90f5114290f5cd8f0e7743da7139750cd30dc1afd1c0f42",
+      "lesson_id": "socket-api-16",
+      "related_lesson_ids": [
+        "socket-api-20",
+        "socket-api-21",
+        "socket-api-17"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5. `accept()` — Dequeuing a Completed Connection",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4. TCP Connection Establishment, Termination, and State Transitions",
+          "support": "required_support"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.2 Four-Way Connection Termination and Half-Close",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "Accept dequeues a kernel-established connection; the handshake can finish before the application accepts it. Orderly FIN preserves queued data and EOF, so this case follows by combining queue and teardown teaching. RST aborts are separate.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "socket-api-20",
+        "socket-api-21"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-17"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q005",
+      "source_index": 4,
+      "question_sha256": "9cca69e4d484299fa41e2e087089ba452083a0e5d499c8ca8dd243a1e02066e0",
+      "lesson_id": "socket-api-24",
+      "related_lesson_ids": [
+        "socket-api-25",
+        "socket-api-27"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5. Byte-Stream Framing, Short Counts, and Robust I/O Wrappers",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source explicitly distinguishes a byte stream from record boundaries and explains short receives from currently available data, independently of write sizes and segment boundaries.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-25",
+        "socket-api-27"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q006",
+      "source_index": 5,
+      "question_sha256": "a37e9f99aef74164260f39f5b1d71d2d3d024b0f35b2b89dcb6cddca5ddbf0fe",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4. TCP Connection Establishment, Termination, and State Transitions",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.3 TCP State Transitions and Packet Trace",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide shows the third handshake ACK and SYN_RCVD waiting state but not the server SYN+ACK retransmission path after that ACK is lost.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-20"
+    },
+    {
+      "question_id": "socket-api-q007",
+      "source_index": 6,
+      "question_sha256": "fa6863687089690ff6a50f5d8c59bf72b89aa575ed9e4359c0b4a5be1795d8a9",
+      "lesson_id": "socket-api-23",
+      "related_lesson_ids": [
+        "socket-api-21"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.4 The `TIME_WAIT` State and the $2\\text{MSL}$ Timeout",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Both stated TIME_WAIT purposes are explained: re-ACK a retransmitted final FIN and let old duplicates expire under the MSL model.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-21"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q008",
+      "source_index": 7,
+      "question_sha256": "81898dcc3d1914f3ecbde410207d378b434ee6e58de40900e60eb97936a85b92",
+      "lesson_id": "socket-api-22",
+      "related_lesson_ids": [
+        "socket-api-23"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.3 TCP State Transitions and Packet Trace",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The state diagram explicitly follows simultaneous FINs through FIN_WAIT_1, CLOSING, and TIME_WAIT, with the combined FIN/ACK alternative retained.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-23"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q009",
+      "source_index": 8,
+      "question_sha256": "248df7437ec15053caa3b4de9b029869335e3af939c5a9f684d2498dc2af795b",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3. Elementary TCP Sockets and the Daytime Client/Server",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The connection setup sequence is taught, but send/recv before establishment and the ENOTCONN error contract are not explained.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-13",
+      "review_note": "An unconnected send need not universally fail with ENOTCONN; Linux documents EPIPE as an alternative. Specify the call and platform.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/send.2.html"
+    },
+    {
+      "question_id": "socket-api-q010",
+      "source_index": 9,
+      "question_sha256": "0d1c189df43f3c7838dee15ff34a302bd1047de87003e731072093cc47ea0e19",
+      "lesson_id": "socket-api-07",
+      "related_lesson_ids": [
+        "socket-api-18"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2.2 Socket Address Structures (`sockaddr`, `sockaddr_in`, `sockaddr_storage`)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The address-structure lesson identifies unused padding and calls zero-initialization a good portable convention. The client shows that convention; it does not establish the universal necessity asserted by the question.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-18"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Zeroing unused padding is a portable convention; properly initialized required fields are distinct from a universal need to zero the whole structure.",
+      "review_reference": "lectures/lecture_05_socket-api.md#22-socket-address-structures-sockaddr-sockaddr_in-sockaddr_storage"
+    },
+    {
+      "question_id": "socket-api-q011",
+      "source_index": 10,
+      "question_sha256": "5ddf3e379ace50416e2cdef0a85795baaed72ada630c19da07015c43198a399f",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3. `bind()` — Assigning a Local Protocol Address",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "8.2 Summary of Pitfalls and Best Practices",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "EADDRINUSE is taught and the summary recommends appropriate SO_REUSEADDR use, but no explanation gives the reuse conditions or when it cannot resolve a live-listener conflict.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-14",
+      "review_note": "SO_REUSEADDR does not resolve every active-listener conflict. Qualify the restart/rebind situation and platform.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/socket.7.html"
+    },
+    {
+      "question_id": "socket-api-q012",
+      "source_index": 11,
+      "question_sha256": "1561246c788deaa24fcffcec286922435c24a25d56e408a6e191db87e11667c5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "1.3 Port Number Ranges, Services, and Concurrent Demultiplexing",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4. `listen()` — Converting to a Passive Listening Socket",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source uses explicit bind before listen and explains port-zero allocation, but not listen's implicit binding when bind was omitted.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-15",
+      "review_note": "On systems with implicit listen binding, the OS selects an ephemeral port. It does not listen on actual port zero.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/listen.2.html"
+    },
+    {
+      "question_id": "socket-api-q013",
+      "source_index": 12,
+      "question_sha256": "92400dcec781dc6f838e06bfeab55712dac60cbe42aa57df564e4da4c8fde222",
+      "lesson_id": "socket-api-35",
+      "related_lesson_ids": [
+        "socket-api-36",
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7. Server Architectures, Denial-of-Service Attacks, and Modern High-Speed I/O",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The iterative-server lunch example directly shows one blocked client read preventing service to queued clients. The concurrency mechanisms explain the alternatives.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-36",
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q014",
+      "source_index": 13,
+      "question_sha256": "8612b639f574d5b6cf9e90ad3c53afb7958baa44adbe330e095f24c76fb7a4a8",
+      "lesson_id": "socket-api-06",
+      "related_lesson_ids": [
+        "socket-api-07"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. Byte Ordering, Socket Address Structures, and Address Conversion",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The two-byte 0x0102 example and conversion definitions explain reversed byte significance between host representations without claiming that the kernel misparses every packet.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-07"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q015",
+      "source_index": 14,
+      "question_sha256": "b90900a8831e33dc7138ffded61023c79fe8cd1a6620535585884487096b24f8",
+      "lesson_id": "socket-api-06",
+      "related_lesson_ids": [
+        "socket-api-07"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. Byte Ordering, Socket Address Structures, and Address Conversion",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source mandates canonical network order for relevant protocol fields. Shared native application-payload conventions can mask a problem, but homogeneous little-endian hosts do not remove network-order requirements.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-07"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "A homogeneous lab may mask native-payload assumptions, but little-endian hosts still need network order for the protocol fields discussed by the guide.",
+      "review_reference": "lectures/lecture_05_socket-api.md#2-byte-ordering-socket-address-structures-and-address-conversion"
+    },
+    {
+      "question_id": "socket-api-q016",
+      "source_index": 15,
+      "question_sha256": "5628e9ab9dd633a18eb759fe9870fa6789cdece631e66a907951f8df47d51805",
+      "lesson_id": "socket-api-10",
+      "related_lesson_ids": [
+        "socket-api-07"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Domain Name System (DNS) Resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The resolver explanation explicitly contrasts IPv4-only legacy interfaces with protocol-independent address lists serving IPv4 and IPv6. It is a capability, not a promise that every lookup returns both.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-07"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q017",
+      "source_index": 16,
+      "question_sha256": "176793f17755339ed740804aa362496fc4c15b5d069624a847620d47e566ec32",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Domain Name System (DNS) Resolution",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3.2 Detailed Specification of Core Socket System Calls",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Protocol-independent resolution is taught, but addrinfo hints/ai_family, IPv4-mapped acceptance, and IPV6_V6ONLY are not explained in guides 01–06.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-10",
+      "review_note": "Restricting resolver results to AF_INET6 does not alone guarantee an IPv6-only listener; IPv4-mapped acceptance and socket settings matter.",
+      "review_reference": "https://man7.org/linux/man-pages/man3/getaddrinfo.3.html",
+      "additional_review_references": [
+        "https://man7.org/linux/man-pages/man7/ipv6.7.html"
+      ]
+    },
+    {
+      "question_id": "socket-api-q018",
+      "source_index": 17,
+      "question_sha256": "507647f8ac72b1a7f5e93f2958f139b422eba836993c4fff9760e3b0a37103c7",
+      "lesson_id": "socket-api-08",
+      "related_lesson_ids": [
+        "socket-api-07"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2.3 IP Address Conversion (`inet_pton`, `inet_ntop`, `sock_ntop`) and DNS Resolution",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The conversion interface explicitly rejects invalid presentation input with return zero. The numeric-octet example in the quiz is a false premise confirmed by the supplementary API check; the key is not accepted as correct.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-07"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "The premise and key are false: inet_pton rejects 300.1.1.1; dotted-decimal octets must be within 0–255.",
+      "review_reference": "https://man7.org/linux/man-pages/man3/inet_pton.3.html"
+    },
+    {
+      "question_id": "socket-api-q019",
+      "source_index": 18,
+      "question_sha256": "c7c401aa04c3a090be3790afa105f3530ed7a67fc822cc51771832c0a640d3d7",
+      "lesson_id": "socket-api-07",
+      "related_lesson_ids": [
+        "socket-api-12"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2.2 Socket Address Structures (`sockaddr`, `sockaddr_in`, `sockaddr_storage`)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The generic sockaddr pointer exists to pass address structures for different families through one API. The source separately explains why larger generic storage uses sockaddr_storage.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-12"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q020",
+      "source_index": 19,
+      "question_sha256": "02a06360a20eb4d6b3ace18ca269255fbb807e33ee2fb215057f0e31a247500b",
+      "lesson_id": "socket-api-23",
+      "related_lesson_ids": [
+        "socket-api-21"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.4 The `TIME_WAIT` State and the $2\\text{MSL}$ Timeout",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The old-incarnation example explains delayed duplicates using the same four-tuple and the MSL wait that protects a new incarnation under the stated assumptions.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-21"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q021",
+      "source_index": 20,
+      "question_sha256": "c9f33efb75bfb2cd1d7df98742ba6ee2dcbc8f98eda1e309bce0ad88ba66359d",
+      "lesson_id": "socket-api-35",
+      "related_lesson_ids": [
+        "socket-api-36"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7. Server Architectures, Denial-of-Service Attacks, and Modern High-Speed I/O",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Processes have private address spaces while the event loop shares one control flow/address space. The labelled source-derived clarification makes the isolation/process-resource tradeoff explicit without a universal speed ranking.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-36"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q022",
+      "source_index": 21,
+      "question_sha256": "7fc5ad9134f5546bd6e89c9d9236a66925f325b035b9cc15bc1dd2c8a17b1503",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7. Server Architectures, Denial-of-Service Attacks, and Modern High-Speed I/O",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Forked processes and private address spaces are described, but child exit status, zombies, wait/waitpid, and reaping are absent from the networking guides.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-35"
+    },
+    {
+      "question_id": "socket-api-q023",
+      "source_index": 22,
+      "question_sha256": "539e54cac566bbd9267f0bc98750c7803ac8e171408fb7b59b28d0bcb8bf0156",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7. Server Architectures, Denial-of-Service Attacks, and Modern High-Speed I/O",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "No networking guide teaches SIGCHLD handlers or child-reaping alternatives. Descriptor close across fork is a different resource-lifetime issue.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-35",
+      "review_note": "A SIGCHLD handler is one reaping strategy, not mandatory for every fork-based server. Explicit waits and configured no-zombie behavior are alternatives.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/wait.2.html"
+    },
+    {
+      "question_id": "socket-api-q024",
+      "source_index": 23,
+      "question_sha256": "2509c73af800e45b0943f06977c8dbfcc673fada29df08933674469638a1e277",
+      "lesson_id": "socket-api-25",
+      "related_lesson_ids": [
+        "socket-api-24",
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5.2 Implementing `readn`, `writen`, and Buffered `readline`",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The readn loop waits until its requested count, EOF, or an error. A peer that sends too little and stays open can leave that blocking loop waiting indefinitely.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-24",
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q025",
+      "source_index": 24,
+      "question_sha256": "35c338ff062d2131f40fb46f466ca31168e1a00d18cc7dcd5ca1fdbcc9f55d0f",
+      "lesson_id": "socket-api-26",
+      "related_lesson_ids": [
+        "socket-api-25"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `writen()` — Write Exactly $n$ Bytes",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source writen implementation explicitly retries EINTR without discarding progress and loops over partial writes until all local bytes are accepted or an error occurs.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-25"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q026",
+      "source_index": 25,
+      "question_sha256": "de963d3999da8ffdc7071d6e405e8f269b9c7b15844e7b4227651a14bb3de69c",
+      "lesson_id": "socket-api-27",
+      "related_lesson_ids": [
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "3. `readline()` — Buffering and Readiness",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source contrasts inefficient one-byte syscalls with block prefetch and per-byte parsing from an internal buffer. The key captures delimiter detection but the claim that peeking is required is false.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Line readers need not peek one byte at a time. The source prefetches blocks, parses buffered bytes, and retains excess input.",
+      "review_reference": "lectures/lecture_05_socket-api.md#3-readline--buffering-and-readiness"
+    },
+    {
+      "question_id": "socket-api-q027",
+      "source_index": 26,
+      "question_sha256": "6b8c063cfd6c21d42333720a7c851832e37e061387e3e320b397ef9aa966fd17",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-36"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The value-result explanation states that select returns the ready subset, so interest must be rebuilt. It does not clear every descriptor indiscriminately as the key says.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-36"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Select returns the ready subset, rather than clearing every descriptor. Rebuild the interest sets.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/select.2.html"
+    },
+    {
+      "question_id": "socket-api-q028",
+      "source_index": 27,
+      "question_sha256": "4b344e2458c88d521fda8d12132441b1a805de6ee43dda689bce120ddbdf748e",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-36"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Reusing a result set can lose interest in descriptors previously not ready. Readiness is checked anew for watched descriptors rather than replaying old notifications; the keyed explanation names the wrong bug.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-36"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "The bug is lost interest in previously nonready descriptors, not cached reports of old readiness.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/select.2.html"
+    },
+    {
+      "question_id": "socket-api-q029",
+      "source_index": 28,
+      "question_sha256": "cdf9a398d8bfcc037a29c42a930a8995078e062c11f2c25d6327d02988dc4b08",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The readiness table explains checking which sockets can make read progress before reading. The optional partial-line lesson explains why this does not promise a complete application message.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q030",
+      "source_index": 29,
+      "question_sha256": "44e5ed2159f83d627a46c55dca79d8caca9f5757095bcd1597815f56df0d3686",
+      "lesson_id": "socket-api-38",
+      "related_lesson_ids": [
+        "socket-api-31",
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The C10K discussion explicitly describes repeated full-set scans and linear overhead, alongside the separate descriptor-set bound.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-31",
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q031",
+      "source_index": 30,
+      "question_sha256": "8db834ee8158c86b7a50d645c49e4b77e226c9e79763d1b967624e14f1ef3d15",
+      "lesson_id": "socket-api-25",
+      "related_lesson_ids": [
+        "socket-api-26",
+        "socket-api-31",
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5.2 Implementing `readn`, `writen`, and Buffered `readline`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `writen()` — Write Exactly $n$ Bytes",
+          "support": "required_support"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The compound question requires readn, writen, and readiness semantics. Readn may stop at EOF/error and readiness does not promise n bytes; writen completion means local acceptance. Those teachings refute the key's unconditional complete-transfer promise.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-26",
+        "socket-api-31"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Readiness promises neither a whole message nor unconditional completion by readn/writen; EOF and errors still matter.",
+      "review_reference": "lectures/lecture_05_socket-api.md#52-implementing-readn-writen-and-buffered-readline"
+    },
+    {
+      "question_id": "socket-api-q032",
+      "source_index": 31,
+      "question_sha256": "9b2fa9bce3aad0c63cdb4c50438fde8097d959e0810b971775f37404f2016c8a",
+      "lesson_id": "socket-api-24",
+      "related_lesson_ids": [
+        "socket-api-21",
+        "socket-api-34"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5. Byte-Stream Framing, Short Counts, and Robust I/O Wrappers",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The framing lesson explains the lack of intrinsic TCP message records and EOF signaled by read returning zero. That distinguishes receive-side EOF from an empty application record.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-21",
+        "socket-api-34"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q033",
+      "source_index": 32,
+      "question_sha256": "a0260082fe27bd4005a55973631e1c496574ecdcd47b7c0a01377055c814f232",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.4 The `TIME_WAIT` State and the $2\\text{MSL}$ Timeout",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "8.2 Summary of Pitfalls and Best Practices",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "TIME_WAIT explains duplicate expiry, and the summary names SO_REUSEADDR, but its listener-rebind semantics and interaction with retained connection protections are not taught.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-23",
+      "review_note": "Listener rebinding does not automatically remove connection-level TIME_WAIT protections or imply acceptance of stray duplicates.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/socket.7.html"
+    },
+    {
+      "question_id": "socket-api-q034",
+      "source_index": 33,
+      "question_sha256": "3c087fbbb81b137607fd7f1eea36f81e862bc8d38b753233539b3ea9d5e19ba3",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "TCP keepalive defaults, probes, failure detection, and their loss tradeoffs are not explained. BGP keepalive messages are a different protocol mechanism.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key."
+    },
+    {
+      "question_id": "socket-api-q035",
+      "source_index": 34,
+      "question_sha256": "af9ce84fa729ee8fd4394f622f2f1e17a07f1a0b4464cffcf451596b99c8e7a3",
+      "lesson_id": "socket-api-30",
+      "related_lesson_ids": [
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The nonblocking I/O sequence repeatedly returns EWOULDBLOCK before data exists; the polling loop demonstrates why retrying without waiting wastes CPU.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q036",
+      "source_index": 35,
+      "question_sha256": "332c53ad023c1548a9db6391ba7c822a07a2174361a38a2f88305f973a3fe676",
+      "lesson_id": "socket-api-13",
+      "related_lesson_ids": [
+        "socket-api-31"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The connect lesson explicitly distinguishes EINPROGRESS from failure and established success, and requires checking SO_ERROR after readiness.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-31"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q037",
+      "source_index": 36,
+      "question_sha256": "289f2f4aa4e26b4b64b5d262a80707f6544f95913b72f229844f8cbc7f44e2d7",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-32"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source describes independent read and write interest/result sets and allows one descriptor to be counted in both. Both must be inspected when both were requested; read-only clients need not request a write set.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-32"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Qualify this as a client requesting both read and write readiness. A read-only interest set is valid.",
+      "review_reference": "lectures/lecture_05_socket-api.md#62-the-select-system-call-and-descriptor-readiness-conditions"
+    },
+    {
+      "question_id": "socket-api-q038",
+      "source_index": 37,
+      "question_sha256": "7eaa691cb2545bb84ef20e3755060e8f8750c6695405023ffacbb3d057d29375",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-21",
+        "socket-api-26"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The readiness table explicitly includes immediate write errors and closed write halves as writable cases. Local space and readiness are not guarantees of successful delivery.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-21",
+        "socket-api-26"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Writability can also indicate an immediate error, so describing it solely as available buffer space is incomplete.",
+      "review_reference": "lectures/lecture_05_socket-api.md#62-the-select-system-call-and-descriptor-readiness-conditions"
+    },
+    {
+      "question_id": "socket-api-q039",
+      "source_index": 38,
+      "question_sha256": "fc8bb6b471a693ff89b3867e49c25d04594e434fac65871696cb44cef1c915b9",
+      "lesson_id": "socket-api-37",
+      "related_lesson_ids": [
+        "socket-api-31",
+        "socket-api-38"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.3 Denial-of-Service Attacks (Partial Lines) and Per-Client State Machines",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source explicitly states that FD_SETSIZE bounds descriptor values, with a 1020-client example only under specific occupied-descriptor assumptions. It is not a universal maximum number of sockets a process can open.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-31",
+        "socket-api-38"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "FD_SETSIZE bounds descriptor values representable in fd_set, not the process's total socket count.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/select.2.html"
+    },
+    {
+      "question_id": "socket-api-q040",
+      "source_index": 39,
+      "question_sha256": "2d49321ea23800c0e4bcc55ef285aaa34ef464b78951b72e4399d36dd4070b73",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.3 Revisiting `str_cli` with `select()`, Batch Input Pipelining, and `shutdown()`",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source deliberately teaches Unix fileno(stdin) plus sockets; it does not compare Windows socket handles, CRT descriptors, or selectable stdin types across platforms.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-32",
+      "review_note": "Name the platform and stdin object. Unix file descriptors and Windows socket handles have different API constraints.",
+      "review_reference": "https://learn.microsoft.com/en-us/windows/win32/api/winsock2/nf-winsock2-select"
+    },
+    {
+      "question_id": "socket-api-q041",
+      "source_index": 40,
+      "question_sha256": "8c564a0cfec3f611667b3136f097f1dc357cb453043f3859800e94ef6109aa89",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The server demonstrates close plus FD_CLR, but the exact select EBADF error rule and platform exceptions asked by the key are not explained.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-36",
+      "review_note": "EBADF is the specified invalid-descriptor error; Linux documents an exception for entries above its current highest open descriptor.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/select.2.html"
+    },
+    {
+      "question_id": "socket-api-q042",
+      "source_index": 41,
+      "question_sha256": "dc9fc151e197ffdf8c796c0811d851cb345e28829d742a56cfd2613151acadcc",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-25",
+        "socket-api-36"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5.2 Implementing `readn`, `writen`, and Buffered `readline`",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The select description permits signal interruption; the helper lesson supplies explicit EINTR retry/error handling. Returned readiness must not be treated as ordinary success after an interrupted call.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "socket-api-25"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-36"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q043",
+      "source_index": 42,
+      "question_sha256": "fad6820693270376bb00d79693354ff44fa569100580168e67bdf00d89bdfeb9",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-17"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "On read EOF, the server listing closes connfd, clears it from allset, and releases its client-array slot. All three steps are shown together.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-17"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q044",
+      "source_index": 43,
+      "question_sha256": "0617c3760a6231e738f1f898f7989d21cf1bc74740b2c3aa92f445d06ec4e271",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-31"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The server never reduces maxfd on close, yet clears the corresponding interest bit. Combined with select's nfds bound, this shows that an oversized bound is harmless except for scan cost; readiness cannot be reported beyond the bound.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-31"
+      ],
+      "optional_lesson_ids": [],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "A stale high maxfd only adds scan work when closed entries are cleared; descriptors beyond nfds are not inspected.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/select.2.html"
+    },
+    {
+      "question_id": "socket-api-q045",
+      "source_index": 44,
+      "question_sha256": "c5b13a8a06dcab6e202662b2a5de3fa171b67c790898e344a6aba9ac4de3dad3",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The close lesson mentions linger affecting blocking but does not define a zero-time SO_LINGER setting or abortive reset behavior.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-17"
+    },
+    {
+      "question_id": "socket-api-q046",
+      "source_index": 45,
+      "question_sha256": "5a11e7ddd338ea1539aeff3fb95e85142f754a8494b1469eeb52972f580435ce",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "partial_in_other_topic",
+      "flags": [
+        "coverage_gap",
+        "cross_topic"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_04_tcp-ip.md",
+          "section": "Historical Timeline of Classical TCP Evolution (1974–1996) †",
+          "support": "partial_background"
+        }
+      ],
+      "rationale": "The archived TCP timeline mentions Nagle reducing tinygram overhead, but neither it nor the socket guide explains TCP_NODELAY or its latency/packetization tradeoff.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "target_topic": "04_tcp",
+      "candidate_lesson_id": "tcp-16"
+    },
+    {
+      "question_id": "socket-api-q047",
+      "source_index": 46,
+      "question_sha256": "3f540884321a890ee05be2071edc7eaefb50445adbb56cdf792b9c3b58b643f5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `connect()` — Initiating an Active Open (Client)",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "No networking guide explains TCP keepalive idle timers or the detection-versus-probe-overhead tradeoff.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key."
+    },
+    {
+      "question_id": "socket-api-q048",
+      "source_index": 47,
+      "question_sha256": "1a5c2ce2956e475e2231724194369b51d639299de0bef997b2dfdff78ff016e4",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Poll is named alongside select, but the pollfd array interface and absence of the fd_set bitmap bound are not taught.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38"
+    },
+    {
+      "question_id": "socket-api-q049",
+      "source_index": 48,
+      "question_sha256": "8fc04f5c208c1a41597b7d14a1d9f0d985febf5dd60d57598d62d509b392a0cd",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source does not explain poll's dynamic descriptor array; general C10K scanning/ready-list discussion is insufficient to establish that comparison.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38"
+    },
+    {
+      "question_id": "socket-api-q050",
+      "source_index": 49,
+      "question_sha256": "4aa8fd6d8f1f3a074485fb702ea7b2a2672f8ac1fee0e6f238b69a2040865776",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.4 The `TIME_WAIT` State and the $2\\text{MSL}$ Timeout",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Poll event handling for closed/invalid descriptors and the distinction between released descriptors and retained TCP TIME_WAIT state are not explained together.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "review_note": "A released descriptor and TCP TIME_WAIT are different lifetimes; poll reports invalid entries rather than polled TIME_WAIT state.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/poll.2.html"
+    },
+    {
+      "question_id": "socket-api-q051",
+      "source_index": 50,
+      "question_sha256": "42bec7536738c4410780c68259c5156fe0ec874d4d590a60c7871f0ab36cdadb",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Select's zero-on-timeout return is taught, but poll's return contract is not. Its API cannot be inferred merely from another API having a similar return value.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "review_note": "The keyed option defines timeout but omits the risk the stem also requests.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/poll.2.html"
+    },
+    {
+      "question_id": "socket-api-q052",
+      "source_index": 51,
+      "question_sha256": "e213bc9791c3a78c5f2f473731bdb42cc591fff2b0050bb74396f8625495602a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "POLLERR and POLLHUP are not defined anywhere in guides 01–06; select's readable/writable/error cases do not identify poll's event flags.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key."
+    },
+    {
+      "question_id": "socket-api-q053",
+      "source_index": 52,
+      "question_sha256": "0a073bcf7680b7d1756aaa8a0d34c5cfdd63261f070bdc5218498161fa096150",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source clears a select master set after close, but it does not teach pollfd invalid entries, POLLNVAL, or descriptor-number reuse in a poll array.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "review_note": "An invalid open-number entry produces POLLNVAL, not ordinary spurious readiness; descriptor reuse is a separate case.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/poll.2.html"
+    },
+    {
+      "question_id": "socket-api-q054",
+      "source_index": 53,
+      "question_sha256": "76942289de34f3f2fa551b6fe334895223e1ed46387afafe8dcdf08a0684410c",
+      "lesson_id": "socket-api-32",
+      "related_lesson_ids": [
+        "socket-api-30",
+        "socket-api-27"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.3 Revisiting `str_cli` with `select()`, Batch Input Pipelining, and `shutdown()`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The client independently handles stdin and socket readiness; the I/O-model diagram explicitly groups select/poll as readiness multiplexing. This supports shared input-handling reasoning, not any unprovided pollfd detail. Readiness is not inherently a conflict.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-30"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-27"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Independent ready inputs require handling; they do not intrinsically conflict. State whether buffering or scheduling is the intended issue.",
+      "review_reference": "lectures/lecture_05_socket-api.md#63-revisiting-str_cli-with-select-batch-input-pipelining-and-shutdown"
+    },
+    {
+      "question_id": "socket-api-q055",
+      "source_index": 54,
+      "question_sha256": "46d26d8f0031e50de849407ed5af36debc515bc657eaf17725ae882b273730c9",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source's client[] bookkeeping is for select. It does not explain pollfd array deletion, negative-fd holes, or other poll client-tracking strategies.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "review_note": "Compacting the array is optional: negative-fd slots can be ignored.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/poll.2.html"
+    },
+    {
+      "question_id": "socket-api-q056",
+      "source_index": 55,
+      "question_sha256": "12875bf40cf0be9f1b1ca37b90002c587a5cc0c849890b3b1f06ed9a8c0a09c6",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide says linger can affect close blocking, but omits the enabled nonzero timeout conditions and completion/timeout semantics required by this question.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-17"
+    },
+    {
+      "question_id": "socket-api-q057",
+      "source_index": 56,
+      "question_sha256": "9097cc3a9d874b4ebbee188eb72d2a254c749c449a444d12d43978e7c7f50add",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide mentions possible linger blocking and queued kernel data but does not explain which linger setting waits, what completion means, or the timeout bound.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-17"
+    },
+    {
+      "question_id": "socket-api-q058",
+      "source_index": 57,
+      "question_sha256": "3422ee3f93ba40eb0043b3b568fca33668f8685746e91eeb5456b10de32f6456",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Epoll is introduced as scalable ready-work handling, but its edge-triggered and level-triggered modes are not defined.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38"
+    },
+    {
+      "question_id": "socket-api-q059",
+      "source_index": 58,
+      "question_sha256": "dd08b867d83064533ffc9e3c2f01cf669b947153f081d1247deabaad22e72eff",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.3 Denial-of-Service Attacks (Partial Lines) and Per-Client State Machines",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The nonblocking state-machine lesson teaches draining available bytes to EAGAIN, but not why edge triggering requires managing readiness this way.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-37",
+      "review_note": "Drain available progress before waiting; the key's single-event-until-empty description is too absolute.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/epoll.7.html"
+    },
+    {
+      "question_id": "socket-api-q060",
+      "source_index": 59,
+      "question_sha256": "228fbb2cf6e68b234f808680e3583cfbdd50023906b4b5353c2e60718a5526e5",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Output progress and EAGAIN are taught, but no guide explains edge-triggered write notifications or the stall caused by sleeping with pending progress.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-36",
+      "review_note": "Stopping early can stall pending output; bytes are lost only if application buffer management drops them.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/epoll.7.html"
+    },
+    {
+      "question_id": "socket-api-q061",
+      "source_index": 60,
+      "question_sha256": "4eeacfd0b12c98765e5fb862c0dd5243d4bce72dec9e8b6dcdc911d1a0525c70",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "No guide teaches epoll_ctl, EPOLL_CTL_DEL, open-file-description lifetime, or automatic registration removal on final close.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "DEL after close is not universally required; final close removes interest and deletion through an invalid fd can fail.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/epoll_ctl.2.html",
+      "additional_review_references": [
+        "https://man7.org/linux/man-pages/man7/epoll.7.html"
+      ]
+    },
+    {
+      "question_id": "socket-api-q062",
+      "source_index": 61,
+      "question_sha256": "13d2d991ee7c276ef31d1a646c72d2a8c37a6cd72f9abee958b181d192f3d56e",
+      "lesson_id": "socket-api-31",
+      "related_lesson_ids": [
+        "socket-api-21",
+        "socket-api-38"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.2 The `select()` System Call and Descriptor Readiness Conditions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The shared socket-readiness table distinguishes local write progress from remote delivery and includes pending errors. This answers the conceptual writability question without requiring epoll registration mechanics.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-21",
+        "socket-api-38"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q063",
+      "source_index": 62,
+      "question_sha256": "6958eb656e5dd5cfff62fdb19ab47a9bd99033ca999c3c118e54376404898543",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "No guide describes epoll registration identity, duplicate ADD errors, or registrations using duplicated descriptors.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "Adding the same fd twice fails with EEXIST; dup-created descriptors are a different case.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/epoll_ctl.2.html"
+    },
+    {
+      "question_id": "socket-api-q064",
+      "source_index": 63,
+      "question_sha256": "a81bc2e8ba9a94e8f811baeeefcec041499f5fd350a1f42f130d0720f6b8fc5a",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The high-level epoll introduction does not define level triggering or repeated notification while readiness persists.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38"
+    },
+    {
+      "question_id": "socket-api-q065",
+      "source_index": 64,
+      "question_sha256": "c2853e701b3a6490d018144f147730c31a64d4cbd449d5b5f889478ca50188e2",
+      "lesson_id": "socket-api-20",
+      "related_lesson_ids": [
+        "socket-api-16",
+        "socket-api-38"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4. TCP Connection Establishment, Termination, and State Transitions",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The bounded completed queue and accept-dequeue diagram explain why failing to accept leaves no room for more connections. The question asks that bounded-queue consequence, not an epoll-specific trigger rule.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-16",
+        "socket-api-38"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q066",
+      "source_index": 65,
+      "question_sha256": "abf0022daa2d5f98a415660259bfeb37c6eeeeea636545534c08f71a76d66689",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-26",
+        "socket-api-38"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "2. `writen()` — Write Exactly $n$ Bytes",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The nonblocking-output limitation explicitly calls for a pending output queue and partial-write/EAGAIN handling. Writen supplies the progress loop; together they teach retrying the remaining bytes until completion or EAGAIN without assuming epoll-specific APIs.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "socket-api-26"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-38"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q067",
+      "source_index": 66,
+      "question_sha256": "111d67ce422b23e6e41735dd5299cffa339bc583ac1bc38423c474fa510568d3",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6.3 Revisiting `str_cli` with `select()`, Batch Input Pipelining, and `shutdown()`",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guide does not teach epoll-supported file types, EPERM on regular-file registration, or how stdin's underlying object changes suitability.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "Regular files cannot be registered; stdin may instead be a terminal or pipe. “Reliably” obscures the supported-type rule.",
+      "review_reference": "https://man7.org/linux/man-pages/man2/epoll_ctl.2.html"
+    },
+    {
+      "question_id": "socket-api-q068",
+      "source_index": 67,
+      "question_sha256": "31a3dea565cc6a16bd42d4aef4ca184baa100eeb0ee0ba05b3a2b94c2804c856",
+      "lesson_id": "socket-api-21",
+      "related_lesson_ids": [
+        "socket-api-24",
+        "socket-api-34"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.2 Four-Way Connection Termination and Half-Close",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Orderly FIN makes EOF visible only after preceding buffered data is consumed. The source glossary specifies a nonzero read request and closure of the sending stream, which the question should retain.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-24",
+        "socket-api-34"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Require a nonzero read request and distinguish peer sending EOF from closure of both TCP directions.",
+      "review_reference": "lectures/lecture_05_socket-api.md#42-four-way-connection-termination-and-half-close"
+    },
+    {
+      "question_id": "socket-api-q069",
+      "source_index": 68,
+      "question_sha256": "a34d0c214b2d66e343393990ab4eb3e5862bd94215f7a780507e286fc24770e4",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "Peer hangup notification, local descriptor closure, repeated epoll events, and interest-list removal are not explained in the source.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "Distinguish peer hangup, local close, and outstanding references; detecting peer closure before cleanup is normal.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/epoll.7.html"
+    },
+    {
+      "question_id": "socket-api-q070",
+      "source_index": 69,
+      "question_sha256": "6085842356af8a3061715212d1f14f9428084a737ba190bd96a7e0ac8865b448",
+      "lesson_id": "socket-api-34",
+      "related_lesson_ids": [
+        "socket-api-17"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Step 3: Fixing Batch Mode with `shutdown()` (TCP Half-Close) and Raw Buffer I/O",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The source directly compares descriptor reference release with directional shutdown, including SHUT_WR preserving the receive direction.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-17"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q071",
+      "source_index": 70,
+      "question_sha256": "3b02afd1f83ba4799d884a1a94f604a1824cedcb3478d5dee86832d71158b66c",
+      "lesson_id": "socket-api-24",
+      "related_lesson_ids": [
+        "socket-api-27",
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5. Byte-Stream Framing, Short Counts, and Robust I/O Wrappers",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The no-record-boundary explanation and concrete short-read examples show that a receive may contain part of a line regardless of the sender's write size.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-27",
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q072",
+      "source_index": 71,
+      "question_sha256": "76b239333135ecd2726f9a2c631990b26d2c3d61a0feba5eb1ce92860a401398",
+      "lesson_id": "socket-api-24",
+      "related_lesson_ids": [
+        "socket-api-37"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5. Byte-Stream Framing, Short Counts, and Robust I/O Wrappers",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "Short-count and framing examples explain splitting logical data across successive application reads/buffers. The source explicitly prevents equating those chunks with TCP segment boundaries.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-37"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Application read chunks and record lengths drive parsing; they are not TCP segment boundaries. Fixed buffers with proper framing are valid.",
+      "review_reference": "lectures/lecture_05_socket-api.md#5-byte-stream-framing-short-counts-and-robust-io-wrappers"
+    },
+    {
+      "question_id": "socket-api-q073",
+      "source_index": 72,
+      "question_sha256": "0f859063aab3ee352f1debea3b236cd4de20eb43c304291ceabacd049ba356fd",
+      "lesson_id": "socket-api-34",
+      "related_lesson_ids": [
+        "socket-api-28",
+        "socket-api-33"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Step 3: Fixing Batch Mode with `shutdown()` (TCP Half-Close) and Raw Buffer I/O",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "5.3 The Baseline TCP Echo Server and Client (`str_echo` and `str_cli`)",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The half-close client signals sending EOF while continuing to read, and the echo server waits for read EOF to finish its input loop. Omitting that signal while keeping the connection open can leave the server waiting; premature client exit is a different source bug.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-28"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-33"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Specify retaining an open connection without signaling sending EOF. The source's early-exit bug instead truncates replies.",
+      "review_reference": "lectures/lecture_05_socket-api.md#step-3-fixing-batch-mode-with-shutdown-tcp-half-close-and-raw-buffer-io"
+    },
+    {
+      "question_id": "socket-api-q074",
+      "source_index": 73,
+      "question_sha256": "5c6a0b301a65739b0f3a729c29c71ac67437949b1df8ae995f4b78fc585de8e7",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The source does not teach epoll registration lifetime, duplicate references, cached event batches, or stale application event identity after descriptor reuse.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "Specify cached events or remaining duplicate references; a recycled number alone does not preserve interest after final close.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/epoll.7.html"
+    },
+    {
+      "question_id": "socket-api-q075",
+      "source_index": 74,
+      "question_sha256": "a45652aa529d9750e780841aadd19e07cde7b98216be1eca98ff373844f38f5d",
+      "lesson_id": "socket-api-30",
+      "related_lesson_ids": [
+        "socket-api-32",
+        "socket-api-38"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. I/O Models, I/O Multiplexing (`select`), and Batch Input",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The general multiplexing model explains coordinating user input and socket events. The premise is misleading: it is an application architecture issue shared by readiness APIs, not an intrinsic epoll requirement or a demonstrated epoll-versus-raw-socket difficulty.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-32",
+        "socket-api-38"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "This is a general event-loop design concern, not an epoll-specific requirement or an established comparison with raw socket I/O.",
+      "review_reference": "lectures/lecture_05_socket-api.md#6-io-models-io-multiplexing-select-and-batch-input"
+    },
+    {
+      "question_id": "socket-api-q076",
+      "source_index": 75,
+      "question_sha256": "ec569e0a0b4585f754bf77486f208c932d806f0168c9f6de9df5357875253b44",
+      "lesson_id": "socket-api-34",
+      "related_lesson_ids": [
+        "socket-api-21",
+        "socket-api-24"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "Step 3: Fixing Batch Mode with `shutdown()` (TCP Half-Close) and Raw Buffer I/O",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "4.2 Four-Way Connection Termination and Half-Close",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "Shutdown queues FIN after prior data; the teardown explanation exposes EOF after buffered data. Together they refute the keyed claim that a FIN arriving before the application reads inherently loses data.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-21"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-24"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "The key is false: orderly FIN follows queued data and buffered bytes precede EOF, even if the application reads later.",
+      "review_reference": "lectures/lecture_05_socket-api.md#step-3-fixing-batch-mode-with-shutdown-tcp-half-close-and-raw-buffer-io"
+    },
+    {
+      "question_id": "socket-api-q077",
+      "source_index": 76,
+      "question_sha256": "bab5539b0811fab843b159b147f5f2d97a3fda0ac474b92a6d6b614f3b6ef0b3",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-17",
+        "socket-api-26"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "The output-queue limitation explains partial application-held writes. The close lesson distinguishes those bytes from the kernel send buffer, which ordinary close attempts to transmit; the question must specify that boundary.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "socket-api-17"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-26"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice.",
+      "review_note": "Specify pending application buffers. Ordinary close attempts to transmit the kernel queue; incomplete responses are not TCP checksum-level corruption.",
+      "review_reference": "lectures/lecture_05_socket-api.md#72-event-driven-single-process-server-using-select"
+    },
+    {
+      "question_id": "socket-api-q078",
+      "source_index": 77,
+      "question_sha256": "636c6c64f5a9a92dcd49ffba0756f644b4538073ce05a9606d08d51984507c8b",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-17",
+        "socket-api-26"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "required_support"
+        }
+      ],
+      "rationale": "Per-client output queues retain unsent application data across partial writes. Descriptor close cannot transmit bytes never submitted to the kernel, so teardown must account for the remaining application queue.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "socket-api-17"
+      ],
+      "optional_lesson_ids": [
+        "socket-api-26"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    },
+    {
+      "question_id": "socket-api-q079",
+      "source_index": 78,
+      "question_sha256": "8fc1621dddb8817b2516ea5289236feabbdd07fcd7aa2b4fb8924f94612c2a87",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "6. `close()` — Closing a Socket",
+          "support": "related_but_insufficient"
+        },
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.4 Beyond `select()`: C10K (`epoll`/`kqueue`), C10M (`io_uring`, XDP, DPDK), and Messaging Middleware",
+          "support": "related_but_insufficient"
+        }
+      ],
+      "rationale": "The guides never compare pollfd cleanup with epoll interest-list teardown. General close/TIME_WAIT descriptions do not establish those API-specific rules.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "checked_lecture_scope": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "next_action": "Review the missing teaching and any wording defect before assignment. Do not silently add an extension or change the key.",
+      "candidate_lesson_id": "socket-api-38",
+      "review_note": "The key reverses lifecycle rules: poll does not ignore invalid entries, and final close removes epoll interest.",
+      "review_reference": "https://man7.org/linux/man-pages/man7/epoll.7.html"
+    },
+    {
+      "question_id": "socket-api-q080",
+      "source_index": 79,
+      "question_sha256": "8ffe5029e4453bc59325025e1ea5354ece916f2120803ebad07811419915e48c",
+      "lesson_id": "socket-api-36",
+      "related_lesson_ids": [
+        "socket-api-37",
+        "socket-api-42"
+      ],
+      "coverage_status": "socket_api_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_05_socket-api.md",
+          "section": "7.2 Event-Driven Single-Process Server Using `select()`",
+          "support": "supports_answer"
+        }
+      ],
+      "rationale": "The full server cleanup path coordinates descriptors, master interest sets, and client slots. The retained output-queue limitation extends the same consistency requirement to pending buffers.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "socket-api-37",
+        "socket-api-42"
+      ],
+      "next_action": "Read the primary lesson and any additional required lessons. Optional links are background; review flagged wording before scored practice."
+    }
+  ],
+  "external_question_links": [],
+  "created": "2026-10-22",
+  "question_identity": "Source indices are zero-based in source_quiz; verify question_sha256 before matching after edits. Questions remain canonical in their original topic.",
+  "dependency_convention": "Mapped questions explicitly separate additional required_lesson_ids from optional_lesson_ids; related_lesson_ids is their union. Gaps leave dependencies unresolved rather than asserting that no additional teaching is needed."
+}
