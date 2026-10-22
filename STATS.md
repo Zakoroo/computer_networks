@@ -11,8 +11,8 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 | Lecture guides | 11 | `lectures/lecture_*.md` |
 | Quiz files | 15 | `quizzes/quiz_*.json` |
 | Quiz questions | 585 | Sum of each quiz's `questions` array |
-| Topics converted to lessons | 5 | Internet Routing, DNS, IPv6, TCP, and Socket API manifests |
-| Numbered lessons | 135 | Sum of prepared manifests' `lessons` arrays |
+| Topics converted to lessons | 6 | Internet Routing, DNS, IPv6, TCP, Socket API, and SDN manifests |
+| Numbered lessons | 155 | Sum of prepared manifests' `lessons` arrays |
 
 ## Internet Routing
 
@@ -161,3 +161,30 @@ Source: [manifest.json](lessons/05_socket_api/manifest.json), checked against qu
 | `cross_topic` | 1 |
 
 Flags overlap; mapped questions with defective keys are not ready for scored practice. Shared readiness, bounded queues, and partial-write reasoning can be taught without an API-specific tutorial, while pollfd flags, epoll trigger/registration rules, and socket-option details remain gaps where required. Q046 has only partial background in TCP's archived Nagle timeline. No mapped native question depends on hidden-slide supplementary material; the guide reports no hidden substantive slides. All question text, options, keys, explanations, and manual tags are preserved.
+
+## SDN
+
+Source: [manifest.json](lessons/06_sdn/manifest.json), checked against quiz 06 and the lesson files. User-approved on 22 October 2026. No external question assignments were added.
+
+| Measure | Count |
+| --- | ---: |
+| Lessons | 20 |
+| Mermaid diagrams in numbered lessons, all based on the source | 5 |
+| Source Mermaid blocks unchanged | 1 |
+| Source diagrams with label repairs | 4 |
+| Native questions accounted for | 29 |
+| Native questions with SDN primary lessons | 28 |
+| Insufficient coverage in networking guides 01–06 | 1 |
+| Native questions without a primary lesson | 1 |
+| Native mapped questions with additional required lessons | 3 |
+| Native mapped questions with optional background | 26 |
+| Native gap entries with unresolved dependency classification | 1 |
+| Lessons without native SDN quiz assignments | 7 |
+| External questions newly assigned to this topic | 0 |
+
+| Flag | Native questions |
+| --- | ---: |
+| `coverage_gap` | 1 |
+| `wording_issue` | 5 |
+
+Flags overlap: Q027 has both a coverage gap and a wording issue, while Q007/Q015/Q021/Q028 are mapped with wording flags. Q014/Q015/Q025 require additional lessons. The guide does not teach switch failure modes after controller disconnection, so supplementary specification evidence does not turn Q027 into lecture coverage. Routing Q011/Q070 remain gaps despite related TCAM context. All source teaching, question text/options/keys/explanations, and manual tags are preserved; diagram label differences are documented in the topic verification report.

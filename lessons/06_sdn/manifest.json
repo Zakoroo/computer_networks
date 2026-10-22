@@ -1,0 +1,1233 @@
+{
+  "schema_version": 1,
+  "topic_id": "06_sdn",
+  "title": "Software-Defined Networking (SDN) and OpenFlow",
+  "preparation_status": "approved",
+  "source_commit": "8ba94d40bda81f7058f232b686b0afed14ff4b24",
+  "source_lecture": "lectures/lecture_06_sdn.md",
+  "source_quiz": "quizzes/quiz_06_sdn.json",
+  "source_scope": "The full SDN guide, five source diagrams, examples, glossary, references, revision questions, and source qualifications are retained. Networking question coverage searches stop at lectures 01–06. No hidden substantive slides are reported by the supplied guide; no new slide-scope judgment was inferred.",
+  "coverage_counts": {
+    "sdn_lesson": 28,
+    "not_found_in_available_lectures": 1
+  },
+  "flag_counts": {
+    "wording_issue": 5,
+    "coverage_gap": 1
+  },
+  "lessons": [
+    {
+      "id": "sdn-01",
+      "order": 1,
+      "title": "SDN separation, logical centralization, and interfaces",
+      "path": "lessons/06_sdn/01_definition_and_interfaces.md",
+      "prerequisite_ids": [],
+      "learning_goals": [
+        "Distinguish logical centralization from a single controller machine.",
+        "Locate northbound and southbound interfaces and distributed forwarding."
+      ],
+      "source_sections": [
+        "1.1 Core Definition and Architectural Shift"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q001",
+        "sdn-q002",
+        "sdn-q003"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-02",
+      "order": 2,
+      "title": "Historical adoption and production examples",
+      "path": "lessons/06_sdn/02_adoption.md",
+      "prerequisite_ids": [
+        "sdn-01"
+      ],
+      "learning_goals": [
+        "Describe B4, Nicira, and ONF as qualified historical examples."
+      ],
+      "source_sections": [
+        "1.2 Industry Adoption and Real-World Impact"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-03",
+      "order": 3,
+      "title": "Data, control, and management responsibilities",
+      "path": "lessons/06_sdn/03_networking_planes.md",
+      "prerequisite_ids": [
+        "sdn-01"
+      ],
+      "learning_goals": [
+        "Classify packet processing, route computation, and operational policy.",
+        "Explain indirect OSPF traffic engineering and indicative timescales."
+      ],
+      "source_sections": [
+        "2.1 Data, Control, and Management Planes",
+        "2.2 Comparison of Operational Timescales, Tasks, and Locations"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-04",
+      "order": 4,
+      "title": "Indirect control and uncoordinated updates",
+      "path": "lessons/06_sdn/04_traditional_control.md",
+      "prerequisite_ids": [
+        "sdn-03"
+      ],
+      "learning_goals": [
+        "Explain why adjusting metrics differs from installing an explicit path.",
+        "Identify transient failures caused by asynchronous updates and interacting mechanisms."
+      ],
+      "source_sections": [
+        "2.3 Why Traditional Networks Are Hard to Reason About and Evolve"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "sdn-q010"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-05",
+      "order": 5,
+      "title": "BGP policy limits and cooperating SDN domains",
+      "path": "lessons/06_sdn/05_bgp_policy_limits.md",
+      "prerequisite_ids": [
+        "sdn-04"
+      ],
+      "learning_goals": [
+        "Explain destination-based forwarding and the limits of BGP policy influence.",
+        "Describe what an SDN cluster can coordinate within participating ASes."
+      ],
+      "source_sections": [
+        "2.4 Motivating Case Study 1: Inter-Domain Routing (BGP Limitations)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-06",
+      "order": 6,
+      "title": "How a new route can bypass a packet filter",
+      "path": "lessons/06_sdn/06_routing_and_acls.md",
+      "prerequisite_ids": [
+        "sdn-04"
+      ],
+      "learning_goals": [
+        "Trace the R3 to R1 to R2 bypass and identify the skipped filter.",
+        "Retain the example's narrower policy scope and the need for safe rule placement."
+      ],
+      "source_sections": [
+        "2.5 Motivating Case Study 2: Distributed Access Control Failure"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q009"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-07",
+      "order": 7,
+      "title": "From integrated appliances to an open network stack",
+      "path": "lessons/06_sdn/07_open_network_stack.md",
+      "prerequisite_ids": [
+        "sdn-01"
+      ],
+      "learning_goals": [
+        "Explain how an exposed forwarding interface separates control from vendor hardware.",
+        "Identify the controller platform, network view, and compatible forwarding devices."
+      ],
+      "source_sections": [
+        "3.1 Vertically Integrated Appliances vs. Open Horizontal SDN Stack"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q016"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-08",
+      "order": 8,
+      "title": "The Network OS and control programs",
+      "path": "lessons/06_sdn/08_network_os.md",
+      "prerequisite_ids": [
+        "sdn-07"
+      ],
+      "learning_goals": [
+        "Distinguish network-state collection from forwarding directives.",
+        "Explain control-program inputs, outputs, and distributed-state limitations."
+      ],
+      "source_sections": [
+        "3.2 The Network OS (NOS) and Control Programs",
+        "The Network OS (NOS)",
+        "The Control Program"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q004",
+        "sdn-q008"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-09",
+      "order": 9,
+      "title": "A flexible, minimal, vendor-neutral forwarding abstraction",
+      "path": "lessons/06_sdn/09_forwarding_abstraction.md",
+      "prerequisite_ids": [
+        "sdn-07"
+      ],
+      "learning_goals": [
+        "Explain the ISA analogy and the abstraction's flexibility, minimality, and vendor neutrality."
+      ],
+      "source_sections": [
+        "3.3 Forwarding Abstraction and Network Virtualization",
+        "Purpose of the Forwarding Abstraction"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "sdn-q023"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-10",
+      "order": 10,
+      "title": "Virtual topologies and physical policy enforcement",
+      "path": "lessons/06_sdn/10_virtual_topologies.md",
+      "prerequisite_ids": [
+        "sdn-08",
+        "sdn-09"
+      ],
+      "learning_goals": [
+        "Trace a tenant policy through a virtual topology to physical enforcement rules.",
+        "Explain ingress placement, path coverage, and tenant isolation."
+      ],
+      "source_sections": [
+        "Translating Virtual Policies to Physical Rules"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q013",
+        "sdn-q019",
+        "sdn-q024",
+        "sdn-q025"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-11",
+      "order": 11,
+      "title": "Moving complexity into reusable platform software",
+      "path": "lessons/06_sdn/11_reusable_complexity.md",
+      "prerequisite_ids": [
+        "sdn-08",
+        "sdn-10"
+      ],
+      "learning_goals": [
+        "Explain how the NOS and hypervisor modularize rather than eliminate complexity."
+      ],
+      "source_sections": [
+        "Where the Complexity Goes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "sdn-q020"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-12",
+      "order": 12,
+      "title": "OpenFlow matches, actions, counters, and capabilities",
+      "path": "lessons/06_sdn/12_match_action_tables.md",
+      "prerequisite_ids": [
+        "sdn-09"
+      ],
+      "learning_goals": [
+        "Interpret match, action, and statistics fields with priority and hardware limits.",
+        "Recognize rewriting, forwarding to several ports, dropping, and controller delivery."
+      ],
+      "source_sections": [
+        "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q005",
+        "sdn-q007",
+        "sdn-q011",
+        "sdn-q012",
+        "sdn-q022"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-13",
+      "order": 13,
+      "title": "Configured table misses, Packet-IN, and buffering",
+      "path": "lessons/06_sdn/13_table_misses.md",
+      "prerequisite_ids": [
+        "sdn-12"
+      ],
+      "learning_goals": [
+        "State the miss-to-controller assumption and the default-drop alternative.",
+        "Explain the example topology, Packet-IN, buffer IDs, and no-buffer packets."
+      ],
+      "source_sections": [
+        "4.2 Step-by-Step Execution Example: TCP Handshake and HTTP over OpenFlow",
+        "Two Ways the Controller Can Respond to a Table Miss (`Packet-IN`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "sdn-q021"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-14",
+      "order": 14,
+      "title": "Packet-OUT, Flow-MOD, and rule lifetimes",
+      "path": "lessons/06_sdn/14_controller_responses.md",
+      "prerequisite_ids": [
+        "sdn-13"
+      ],
+      "learning_goals": [
+        "Distinguish a one-packet response from installing a forwarding entry.",
+        "Interpret idle and hard timeouts, priority, and buffered-packet release."
+      ],
+      "source_sections": [
+        "Two Ways the Controller Can Respond to a Table Miss (`Packet-IN`)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-15",
+      "order": 15,
+      "title": "A reactive TCP and HTTP exchange",
+      "path": "lessons/06_sdn/15_reactive_handshake.md",
+      "prerequisite_ids": [
+        "sdn-14"
+      ],
+      "learning_goals": [
+        "Trace separate forward and reverse rule installation.",
+        "Explain when subsequent traffic stays in the switch and when control may be needed again."
+      ],
+      "source_sections": [
+        "Complete End-to-End Sequence (Reactive `Flow-MOD` Mode)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-16",
+      "order": 16,
+      "title": "Out-of-band and in-band controller reachability",
+      "path": "lessons/06_sdn/16_control_paths.md",
+      "prerequisite_ids": [
+        "sdn-01",
+        "sdn-13"
+      ],
+      "learning_goals": [
+        "Compare shared data links with a separate management path.",
+        "Explain cost, fault domains, redundancy, and bootstrap requirements."
+      ],
+      "source_sections": [
+        "4.3 Out-of-Band vs. In-Band SDN Control Planes"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q006"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-17",
+      "order": 17,
+      "title": "The intellectual road to SDN",
+      "path": "lessons/06_sdn/17_history.md",
+      "prerequisite_ids": [
+        "sdn-07"
+      ],
+      "learning_goals": [
+        "Distinguish active networking, control/forwarding separation, and OpenFlow eras.",
+        "Name the decision, dissemination, discovery, and data planes of 4D."
+      ],
+      "source_sections": [
+        "5.1 The Road to SDN (1990s–2008)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-18",
+      "order": 18,
+      "title": "Merchant silicon, cloud demand, and virtualization",
+      "path": "lessons/06_sdn/18_adoption_drivers.md",
+      "prerequisite_ids": [
+        "sdn-10",
+        "sdn-17"
+      ],
+      "learning_goals": [
+        "Explain the four technical and economic drivers behind SDN adoption.",
+        "Explain why tenant network virtualization was a commercial killer application."
+      ],
+      "source_sections": [
+        "5.2 Why SDN Happened When It Did: Technical and Economic Drivers"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [
+        "sdn-q017",
+        "sdn-q018"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-19",
+      "order": 19,
+      "title": "Scale, reliability, latency, consistency, and interoperability",
+      "path": "lessons/06_sdn/19_systems_challenges.md",
+      "prerequisite_ids": [
+        "sdn-08",
+        "sdn-15",
+        "sdn-16"
+      ],
+      "learning_goals": [
+        "Identify controller load, response delay, failure, and security challenges.",
+        "Explain replica consistency and interoperability limits without assuming automatic guarantees."
+      ],
+      "source_sections": [
+        "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 1,
+      "question_ids": [
+        "sdn-q014",
+        "sdn-q015",
+        "sdn-q026",
+        "sdn-q028",
+        "sdn-q029"
+      ],
+      "external_question_ids": []
+    },
+    {
+      "id": "sdn-20",
+      "order": 20,
+      "title": "SDN and OpenFlow recap",
+      "path": "lessons/06_sdn/20_recap.md",
+      "prerequisite_ids": [
+        "sdn-19"
+      ],
+      "learning_goals": [
+        "Connect architecture, abstractions, policy placement, and reactive forwarding."
+      ],
+      "source_sections": [
+        "6. Summary and Key Takeaways"
+      ],
+      "source_classification": "lecture_guide",
+      "estimated_reading_minutes": 2,
+      "question_ids": [],
+      "external_question_ids": []
+    }
+  ],
+  "question_links": [
+    {
+      "question_id": "sdn-q001",
+      "source_index": 0,
+      "question_sha256": "e6d9a66c84cb4d80fd21fbd1bb1929e8f2a900529cef160f9a6853937463fc2a",
+      "lesson_id": "sdn-01",
+      "related_lesson_ids": [
+        "sdn-03",
+        "sdn-08"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "1.1 Core Definition and Architectural Shift"
+        }
+      ],
+      "rationale": "The two architectural properties separate control logic from forwarding across several switches; logical centralization can use physically distributed controller servers.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-03",
+        "sdn-08"
+      ]
+    },
+    {
+      "question_id": "sdn-q002",
+      "source_index": 1,
+      "question_sha256": "a1a56334cdeba166bf541d883fe6de4223e6db38e5724fca376a5081c2f72666",
+      "lesson_id": "sdn-01",
+      "related_lesson_ids": [
+        "sdn-07"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "1.1 Core Definition and Architectural Shift"
+        }
+      ],
+      "rationale": "The traditional per-router control processes are contrasted with a logically centralized controller platform, not with mandatory static rules or restrictions on Ethernet.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-07"
+      ]
+    },
+    {
+      "question_id": "sdn-q003",
+      "source_index": 2,
+      "question_sha256": "6d2ab31e24891c7d00cf2053e9474cc614d5890c4b857197078c95e928da8d01",
+      "lesson_id": "sdn-01",
+      "related_lesson_ids": [
+        "sdn-02",
+        "sdn-08",
+        "sdn-18"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "1.1 Core Definition and Architectural Shift"
+        }
+      ],
+      "rationale": "The global network map and northbound programs define traffic-engineering policy for multiple forwarding devices. This supports programmatic policy changes, not an atomic-update or universal compatibility guarantee.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-02",
+        "sdn-08",
+        "sdn-18"
+      ]
+    },
+    {
+      "question_id": "sdn-q004",
+      "source_index": 3,
+      "question_sha256": "3d91dee7d9c5423c0920d7d91a70e04916c8cdd8642601b033d045c8d1851c72",
+      "lesson_id": "sdn-08",
+      "related_lesson_ids": [
+        "sdn-01",
+        "sdn-19"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.2 The Network OS (NOS) and Control Programs"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Network OS (NOS)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Control Program"
+        }
+      ],
+      "rationale": "The NOS maintains a network-wide graph/database with defined consistency and freshness. This enables global decisions without guaranteeing a perfectly current view, automatic loop freedom, or failure immunity.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-01",
+        "sdn-19"
+      ]
+    },
+    {
+      "question_id": "sdn-q005",
+      "source_index": 4,
+      "question_sha256": "b624ea3a64406d5b7b63fbd348f142eb9ec409f607c4e0bd46049909dfc6a560",
+      "lesson_id": "sdn-12",
+      "related_lesson_ids": [
+        "sdn-09"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "Header matching selects a prioritized table entry and its actions; per-switch Dijkstra or random-port hashing is not the OpenFlow mechanism taught.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-09"
+      ]
+    },
+    {
+      "question_id": "sdn-q006",
+      "source_index": 5,
+      "question_sha256": "4923a15e05077900d1300eb94de75ae7babc45108f2ef6dea7f387f25fc4c40b",
+      "lesson_id": "sdn-16",
+      "related_lesson_ids": [
+        "sdn-01"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.3 Out-of-Band vs. In-Band SDN Control Planes"
+        }
+      ],
+      "rationale": "In-band controller messages share physical forwarding links with data; out-of-band uses a separate management path with deployment-dependent physical isolation.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-01"
+      ]
+    },
+    {
+      "question_id": "sdn-q007",
+      "source_index": 6,
+      "question_sha256": "7c5009e658b7a65314e7bd797888cd396aac51ca1a404b67d27dc5ac57f4f1f8",
+      "lesson_id": "sdn-12",
+      "related_lesson_ids": [
+        "sdn-09"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "Supported header fields and exact/wildcard matching give flexible match-action handling. The keyed arbitrary-fields phrase overstates the version- and hardware-dependent capability explicitly qualified in the guide.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-09"
+      ],
+      "review_note": "Replace arbitrary packet header fields with supported match fields and masks; the version and switch capabilities limit what can be matched.",
+      "review_reference": "https://opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.3.0.pdf#page=44"
+    },
+    {
+      "question_id": "sdn-q008",
+      "source_index": 7,
+      "question_sha256": "b3b3e2c71f8f64979c2466634e528c51ef5448a48a1174d2776dc535f854f5cf",
+      "lesson_id": "sdn-08",
+      "related_lesson_ids": [
+        "sdn-10",
+        "sdn-11"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.2 The Network OS (NOS) and Control Programs"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Network OS (NOS)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Control Program"
+        }
+      ],
+      "rationale": "The NOS collects distributed state into a global view; the hypervisor additionally presents virtual views. The benefit is a reusable abstraction, not a real-time or scalability guarantee.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-10",
+        "sdn-11"
+      ]
+    },
+    {
+      "question_id": "sdn-q009",
+      "source_index": 8,
+      "question_sha256": "8e71baf634aa6252d3a0f957580f397a8270d2bad036b41cabbad7561d16493d",
+      "lesson_id": "sdn-06",
+      "related_lesson_ids": [
+        "sdn-04",
+        "sdn-10"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "2.5 Motivating Case Study 2: Distributed Access Control Failure"
+        }
+      ],
+      "rationale": "The added backup path bypasses R5 while the old interface ACL stays in place. Correct SDN applications must update rule placement and order; SDN alone does not guarantee security.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-04",
+        "sdn-10"
+      ]
+    },
+    {
+      "question_id": "sdn-q010",
+      "source_index": 9,
+      "question_sha256": "d47f5e21e51c1fa72ef2209bcf3d12d0d6bc5eb1cefd65b9c0cb8aec6a6b9771",
+      "lesson_id": "sdn-04",
+      "related_lesson_ids": [
+        "sdn-03"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "2.3 Why Traditional Networks Are Hard to Reason About and Evolve"
+        }
+      ],
+      "rationale": "An operator changes link metrics to induce a distributed protocol to choose a path instead of directly programming that path; interacting protocols complicate the outcome.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-03"
+      ]
+    },
+    {
+      "question_id": "sdn-q011",
+      "source_index": 10,
+      "question_sha256": "a86ea3aeb6f777d1c17f33508a0efe8e361a7e135b9e8f8b7c0d911b60aeab8b",
+      "lesson_id": "sdn-12",
+      "related_lesson_ids": [
+        "sdn-09"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "The action associated with supported header-field matches controls packet handling. The primitive neither synchronizes controller replicas nor restricts matching to IPv4/TCP.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-09"
+      ]
+    },
+    {
+      "question_id": "sdn-q012",
+      "source_index": 11,
+      "question_sha256": "32427764b30cdb6dfceec626138d26f20a57cc566240b3e800e3cf98fdd93812",
+      "lesson_id": "sdn-12",
+      "related_lesson_ids": [],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "The source action example combines header replacement/push/pop with forwarding to ports 5 and 6, directly supporting rewriting plus multiple output ports.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": []
+    },
+    {
+      "question_id": "sdn-q013",
+      "source_index": 12,
+      "question_sha256": "2cf048fb520a23f1fedb29c9f623d4ad510119cc13d3036884e72f15bf18f67c",
+      "lesson_id": "sdn-10",
+      "related_lesson_ids": [
+        "sdn-18"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Translating Virtual Policies to Physical Rules"
+        }
+      ],
+      "rationale": "A hypervisor maps tenant virtual topologies and policies to physical enforcement rules while sharing infrastructure and preserving isolation.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-18"
+      ]
+    },
+    {
+      "question_id": "sdn-q014",
+      "source_index": 13,
+      "question_sha256": "9bf4113682bb36db0e946797cba2a1081c5039c069b937bee118cf2b66702a08",
+      "lesson_id": "sdn-19",
+      "related_lesson_ids": [
+        "sdn-08",
+        "sdn-01"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.2 The Network OS (NOS) and Control Programs"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Network OS (NOS)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "The Control Program"
+        }
+      ],
+      "rationale": "The consistency challenge requires compatible replica decisions as the control platform scales. Required lesson 08 explains distributed state synchronization and message passing; coordinating that state adds communication work, a direct synthesis of the two sections.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "sdn-08"
+      ],
+      "optional_lesson_ids": [
+        "sdn-01"
+      ]
+    },
+    {
+      "question_id": "sdn-q015",
+      "source_index": 14,
+      "question_sha256": "377651128451e1171abc1fd261a42fc6a32767d4b3b250dfcdb2a6e67ff3230f",
+      "lesson_id": "sdn-19",
+      "related_lesson_ids": [
+        "sdn-07",
+        "sdn-09"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.1 Vertically Integrated Appliances vs. Open Horizontal SDN Stack"
+        }
+      ],
+      "rationale": "Interoperability with legacy routers/BGP is an explicit challenge. Required lesson 07 explains the exposed forwarding-interface and compatible-device boundary; lack of that interface can require integration. The key overgeneralizes traditional equipment as universally lacking OpenFlow.",
+      "needs_review": true,
+      "required_lesson_ids": [
+        "sdn-07"
+      ],
+      "optional_lesson_ids": [
+        "sdn-09"
+      ],
+      "review_note": "Specify legacy devices without a compatible OpenFlow interface. Traditional equipment is not universally incapable of OpenFlow, and legacy/BGP interoperation is broader than protocol support alone."
+    },
+    {
+      "question_id": "sdn-q016",
+      "source_index": 15,
+      "question_sha256": "9b256a3a4acd00ac5ebfd95dfbd4452d26c909a136ed6cded01d36357bd9df7b",
+      "lesson_id": "sdn-07",
+      "related_lesson_ids": [
+        "sdn-17",
+        "sdn-09"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.1 Vertically Integrated Appliances vs. Open Horizontal SDN Stack"
+        }
+      ],
+      "rationale": "An open interface to packet forwarding is an explicit component enabling separation from vendor control software. The history provides context rather than required additional mechanism.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-17",
+        "sdn-09"
+      ]
+    },
+    {
+      "question_id": "sdn-q017",
+      "source_index": 16,
+      "question_sha256": "b72f55e7f6c846bc3d42dfd3ded157555cc82afe9f71e98dce9cf64a43bd7ca6",
+      "lesson_id": "sdn-18",
+      "related_lesson_ids": [
+        "sdn-02",
+        "sdn-07"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.2 Why SDN Happened When It Did: Technical and Economic Drivers"
+        }
+      ],
+      "rationale": "Cloud scale, fine-grained programmability, merchant silicon, cost pressure, and the pragmatic use of existing switch tables explain adoption without mandating encryption or CPU quotas.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-02",
+        "sdn-07"
+      ]
+    },
+    {
+      "question_id": "sdn-q018",
+      "source_index": 17,
+      "question_sha256": "31912b03dbaa316126d830ffe72f662ff9ba7db8bd1c374e3f71c2adcd621d6b",
+      "lesson_id": "sdn-18",
+      "related_lesson_ids": [
+        "sdn-10"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.2 Why SDN Happened When It Did: Technical and Economic Drivers"
+        }
+      ],
+      "rationale": "The source names network virtualization as the killer application: tenants define isolated topologies, address spaces, and policies on shared physical servers/switches.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-10"
+      ]
+    },
+    {
+      "question_id": "sdn-q019",
+      "source_index": 18,
+      "question_sha256": "da4cfa336ec0a7e77265aa17521b68757e8770f0bb48e8ecc4244ff8667f4be9",
+      "lesson_id": "sdn-10",
+      "related_lesson_ids": [
+        "sdn-08",
+        "sdn-12"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Translating Virtual Policies to Physical Rules"
+        }
+      ],
+      "rationale": "The hypervisor translates a single virtual policy and topology into concrete physical enforcement configurations rather than scheduling CPU or assigning MACs by priority.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-08",
+        "sdn-12"
+      ]
+    },
+    {
+      "question_id": "sdn-q020",
+      "source_index": 19,
+      "question_sha256": "5135c407353f4838a85c5d49fffbfe09b96ddd97c9a2e93fda074b560d42683e",
+      "lesson_id": "sdn-11",
+      "related_lesson_ids": [
+        "sdn-08",
+        "sdn-10"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Where the Complexity Goes"
+        }
+      ],
+      "rationale": "The compiler analogy explicitly moves distributed systems complexity into reusable NOS and hypervisor code, simplifying application-specific control logic.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-08",
+        "sdn-10"
+      ]
+    },
+    {
+      "question_id": "sdn-q021",
+      "source_index": 20,
+      "question_sha256": "6e523b2dc172398af9df4ffd7baf3440ff4c0a8de6832a1cb5a67d965049f541",
+      "lesson_id": "sdn-13",
+      "related_lesson_ids": [
+        "sdn-12",
+        "sdn-14"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.2 Step-by-Step Execution Example: TCP Handshake and HTTP over OpenFlow"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Two Ways the Controller Can Respond to a Table Miss (`Packet-IN`)"
+        }
+      ],
+      "rationale": "The example sends table misses to the controller only because a suitable miss rule is installed; the guide explicitly contrasts the OpenFlow 1.3 default drop when that rule is absent. The unconditional key needs that assumption.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-12",
+        "sdn-14"
+      ],
+      "review_note": "State the configured miss-to-controller rule and OpenFlow version. Without that rule, OpenFlow 1.3 defaults to dropping unmatched packets; the controller outcome is not unconditional.",
+      "review_reference": "https://opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.3.0.pdf#page=14"
+    },
+    {
+      "question_id": "sdn-q022",
+      "source_index": 21,
+      "question_sha256": "3bbbee01b986b3668b3a7067a1a65591f6d17749b1bd1bf6171c8a0d70082795",
+      "lesson_id": "sdn-12",
+      "related_lesson_ids": [],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "The source explicitly combines changing header fields with output to ports 5 and 6; the other options provide only one of modification and multi-output behavior.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": []
+    },
+    {
+      "question_id": "sdn-q023",
+      "source_index": 22,
+      "question_sha256": "f855f71ceee16ce163aecab6d27e0e5719ba8532b555609c55997689010db2a6",
+      "lesson_id": "sdn-09",
+      "related_lesson_ids": [
+        "sdn-07",
+        "sdn-12"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "3.3 Forwarding Abstraction and Network Virtualization"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Purpose of the Forwarding Abstraction"
+        }
+      ],
+      "rationale": "The ISA analogy and vendor-neutral forwarding interface let control programs specify forwarding state without binding to one hardware vendor, subject to advertised device capabilities.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-07",
+        "sdn-12"
+      ]
+    },
+    {
+      "question_id": "sdn-q024",
+      "source_index": 23,
+      "question_sha256": "1b2178cfab9270b21c121418144e24d3628ce138f33fa818623d27873ec44997",
+      "lesson_id": "sdn-10",
+      "related_lesson_ids": [
+        "sdn-18"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Translating Virtual Policies to Physical Rules"
+        }
+      ],
+      "rationale": "The abstract view exposes a tenant-defined logical switch/topology while the physical network is shared. It does not promise address obfuscation, symmetric TCP paths, or IPv4/IPv6 conversion.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-18"
+      ]
+    },
+    {
+      "question_id": "sdn-q025",
+      "source_index": 24,
+      "question_sha256": "a9ff2d08b5d57ca231cd127f56a735c50de95e81b1ed68d1c5b4d02e1d9178f5",
+      "lesson_id": "sdn-10",
+      "related_lesson_ids": [
+        "sdn-12",
+        "sdn-08"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Translating Virtual Policies to Physical Rules"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "4.1 The `<Match, Action>` Primitive and Switch Flow Tables"
+        }
+      ],
+      "rationale": "The hypervisor translates virtual tenant policy into physical enforcement rules. Required lesson 12 identifies the corresponding match-action flow-table entries; policy placement need not install an identical rule on every switch.",
+      "needs_review": false,
+      "required_lesson_ids": [
+        "sdn-12"
+      ],
+      "optional_lesson_ids": [
+        "sdn-08"
+      ]
+    },
+    {
+      "question_id": "sdn-q026",
+      "source_index": 25,
+      "question_sha256": "39a5e0149ea08a52d56c32127311ee74b9acd2eea57754c4f80ba1283995c2f3",
+      "lesson_id": "sdn-19",
+      "related_lesson_ids": [
+        "sdn-08",
+        "sdn-14"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        }
+      ],
+      "rationale": "Controller event load and flow-setup rate grow with thousands of switches and millions of flows, potentially bottlenecking centralized decision elements.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-08",
+        "sdn-14"
+      ]
+    },
+    {
+      "question_id": "sdn-q027",
+      "source_index": 26,
+      "question_sha256": "396e53a01977d315666943094aa104ee59f05f06a42e6d93262da0d14885fb5d",
+      "lesson_id": "",
+      "related_lesson_ids": [],
+      "coverage_status": "not_found_in_available_lectures",
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Two Ways the Controller Can Respond to a Table Miss (`Packet-IN`)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "Complete End-to-End Sequence (Reactive `Flow-MOD` Mode)"
+        },
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        }
+      ],
+      "rationale": "The guide discusses controller reliability and locally forwarding with still-valid rules, but does not specify switch behavior after controller disconnection. Networking guides 01–05 add no failure-mode treatment. The key needs a stated failure mode and rule-lifetime assumptions; related native material is insufficient to establish it.",
+      "needs_review": true,
+      "dependency_status": "unresolved_coverage",
+      "review_note": "State the switch failure mode and rule lifetimes. Fail-secure can continue valid forwarding entries until expiry; hybrid fail-standalone can use ordinary switching. Stale rules are a possible outcome, not a universal consequence.",
+      "review_reference": "https://opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.3.0.pdf#page=26"
+    },
+    {
+      "question_id": "sdn-q028",
+      "source_index": 27,
+      "question_sha256": "ece72aa49cf3e805fa58f2dac9771b18a496373b6d05b4ae63bbd3265a9280ca",
+      "lesson_id": "sdn-19",
+      "related_lesson_ids": [
+        "sdn-13",
+        "sdn-14",
+        "sdn-15"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [
+        "wording_issue"
+      ],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        }
+      ],
+      "rationale": "The response-time challenge explicitly names the remote Packet-IN to Flow-MOD round trip. Initial misses can incur this delay, whereas later matching packets stay local; per-packet is misleading if read as every packet in a flow.",
+      "needs_review": true,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-13",
+        "sdn-14",
+        "sdn-15"
+      ],
+      "review_note": "Use a controller round trip for an initial reactive table miss. Already installed matching rules forward later packets locally; controller intervention is not intrinsically per packet."
+    },
+    {
+      "question_id": "sdn-q029",
+      "source_index": 28,
+      "question_sha256": "05a822309e2f87af3d8df7d27272deb33c0f1210dc257e4966316e771ff658bb",
+      "lesson_id": "sdn-19",
+      "related_lesson_ids": [
+        "sdn-08"
+      ],
+      "coverage_status": "sdn_lesson",
+      "flags": [],
+      "evidence": [
+        {
+          "path": "lectures/lecture_06_sdn.md",
+          "section": "5.3 Practical and Algorithmic Challenges (4D / SDN)"
+        }
+      ],
+      "rationale": "The source asks which consistency and ownership rules keep physically distributed controller decisions and switch updates compatible, including during partitions.",
+      "needs_review": false,
+      "required_lesson_ids": [],
+      "optional_lesson_ids": [
+        "sdn-08"
+      ]
+    }
+  ],
+  "external_question_links": []
+}

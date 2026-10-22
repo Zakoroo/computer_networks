@@ -14,7 +14,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
     },
@@ -31,7 +31,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
     },
@@ -48,7 +48,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
     },
@@ -65,7 +65,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-08",
       "tags": [],
       "flags": []
     },
@@ -74,7 +74,7 @@
       "options": [
         "By relying on VLAN IDs to infer routing intent",
         "By hashing source and destination IPs to a random output port",
-        "By calculating shortest paths using Dijkstra\u2019s algorithm at each switch",
+        "By calculating shortest paths using Dijkstra’s algorithm at each switch",
         "By assigning each packet a per-hop path label",
         "By matching packet headers to flow table entries and executing actions"
       ],
@@ -82,7 +82,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
     },
@@ -99,7 +99,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-16",
       "tags": [],
       "flags": []
     },
@@ -116,9 +116,11 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-12",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is a primary benefit of introducing a Network OS and Hypervisor in SDN?",
@@ -133,7 +135,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-08",
       "tags": [],
       "flags": []
     },
@@ -150,7 +152,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-06",
       "tags": [],
       "flags": []
     },
@@ -167,7 +169,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-04",
       "tags": [],
       "flags": []
     },
@@ -184,7 +186,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
     },
@@ -201,7 +203,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
     },
@@ -218,7 +220,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
     },
@@ -235,7 +237,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-19",
       "tags": [],
       "flags": []
     },
@@ -252,9 +254,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-19",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which development most directly contributed to SDN's separation of control and data planes?",
@@ -269,7 +273,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-07",
       "tags": [],
       "flags": []
     },
@@ -286,7 +290,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-18",
       "tags": [],
       "flags": []
     },
@@ -303,7 +307,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-18",
       "tags": [],
       "flags": []
     },
@@ -320,7 +324,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
     },
@@ -337,7 +341,7 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-11",
       "tags": [],
       "flags": []
     },
@@ -354,9 +358,11 @@
         4
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-13",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "Which OpenFlow rule illustrates packet modification and multicast behavior?",
@@ -371,7 +377,7 @@
         3
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
     },
@@ -388,7 +394,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-09",
       "tags": [],
       "flags": []
     },
@@ -405,7 +411,7 @@
         1
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
     },
@@ -422,7 +428,7 @@
         0
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
     },
@@ -439,7 +445,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-19",
       "tags": [],
       "flags": []
     },
@@ -458,7 +464,10 @@
       "explanation": "",
       "lesson_id": "",
       "tags": [],
-      "flags": []
+      "flags": [
+        "coverage_gap",
+        "wording_issue"
+      ]
     },
     {
       "question": "Which factor contributes to increased latency in SDN decision-making?",
@@ -473,9 +482,11 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-19",
       "tags": [],
-      "flags": []
+      "flags": [
+        "wording_issue"
+      ]
     },
     {
       "question": "What is the key challenge in maintaining consistency across multiple SDN controllers?",
@@ -490,7 +501,7 @@
         2
       ],
       "explanation": "",
-      "lesson_id": "",
+      "lesson_id": "sdn-19",
       "tags": [],
       "flags": []
     }
