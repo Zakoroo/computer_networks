@@ -18,7 +18,10 @@ STAGES = {
     "approved": "Approved",
     "unclassified": "Unclassified",
 }
-REVIEW_FLAGS = ("coverage_gap", "wording_issue", "duplicate_question")
+REVIEW_LEGEND = (("G", "coverage_gap", "Coverage gaps"),
+                 ("W", "wording_issue", "Wording issues"),
+                 ("D", "duplicate_question", "Duplicate entries"))
+REVIEW_FLAGS = tuple(flag for _, flag, _ in REVIEW_LEGEND)
 
 
 def collect(root):
@@ -175,15 +178,15 @@ def render(data):
         "Coverage categories below are mutually exclusive and describe teaching support. "
         "**Mapped does not mean ready for scored practice.** Wording issues are tracked separately. "
         "Questions supported elsewhere may still await a real lesson link; partial elsewhere support still has a coverage gap.", "",
-        table(["Source quiz", "Own-topic lesson", "Supported elsewhere", "Partial elsewhere", "Missing coverage", "Total", "Actual lesson links"],
-              [[topic["title"], topic["coverage"]["own"], topic["coverage"]["elsewhere"],
+        table(["Chart label", "Source quiz", "Own-topic lesson", "Supported elsewhere", "Partial elsewhere", "Missing coverage", "Total", "Actual lesson links"],
+              [[f"T{topic['number']:02}", topic["title"], topic["coverage"]["own"], topic["coverage"]["elsewhere"],
                 topic["coverage"]["partial"], topic["coverage"]["gap"], topic["question_count"], topic["assigned"]]
                for topic in prepared]), "",
     ]
     for topic in prepared:
         if not topic["question_count"]:
             continue
-        lines += ["```mermaid", f"pie title {topic['title']} question coverage"]
+        lines += ["```mermaid", f"pie title T{topic['number']:02} question coverage"]
         for key, label in [("own", "Own-topic lesson"), ("elsewhere", "Supported elsewhere"),
                            ("partial", "Partial elsewhere"), ("gap", "Missing coverage")]:
             if topic["coverage"][key]:
@@ -196,8 +199,9 @@ def render(data):
         "## Review backlog", "",
         "Flags overlap. The bars count flags, not separate populations, and must not be added to estimate unresolved questions. "
         "Duplicate entries remain in their quizzes; no questions have been removed.", "",
-        bar_chart("Review flags across prepared networking topics", ["Coverage gaps", "Wording", "Duplicates"],
-                  [flags[flag] for flag in REVIEW_FLAGS], "Questions with flag"), "",
+        bar_chart("Review flags", [code for code, _, _ in REVIEW_LEGEND],
+                  [flags[flag] for _, flag, _ in REVIEW_LEGEND], "Questions"), "",
+        "**Legend:** " + "; ".join(f"{code} = {label.lower()}" for code, _, label in REVIEW_LEGEND) + ".", "",
         table(["Source quiz", "Coverage gaps", "Wording issues", "Duplicate entries", "Distinct questions with any of these flags", "Review queue"],
               [[topic["title"], *[topic["flags"][flag] for flag in REVIEW_FLAGS], topic["review_questions"],
                 f"[Review]({topic['review']})"] for topic in prepared]), "",
@@ -205,10 +209,11 @@ def render(data):
         "These flags are excluded from the backlog chart. The distinct-question column above is a deduplicated "
         "review queue, not a count of failed questions or necessarily unaddressed fixes.", "",
         "## Content prepared", "",
-        bar_chart("Lessons prepared by topic", [topic["title"] for topic in prepared],
+        bar_chart("Lessons prepared by topic", [f"T{topic['number']:02}" for topic in prepared],
                   [topic["lessons"] for topic in prepared], "Lessons"), "",
-        table(["Topic", "Lessons", "Without questions from own quiz"],
-              [[topic["title"], topic["lessons"], topic["without_native"]] for topic in prepared]), "",
+        "**Legend and counts:**", "",
+        table(["Chart label", "Topic", "Lessons", "Without questions from own quiz"],
+              [[f"T{topic['number']:02}", topic["title"], topic["lessons"], topic["without_native"]] for topic in prepared]), "",
         "Lessons without native quiz questions are retained deliberately. Some support another quiz. "
         "Lesson counts describe content organization, not equal amounts of work or exam importance.", "",
         "See [STATUS.md](STATUS.md) for open decisions and delivery state, [STATS.md](STATS.md) for detailed counts, "

@@ -17,6 +17,15 @@ python3 tools/validate_content.py --topic 02_dns
 
 Substitute the active topic ID. Output is concise by default; use `--json` for structured findings or `--verbose` for all errors. The validator reads other manifests to resolve cross-topic IDs, but does not require rereading their lessons.
 
+For targeted question lookups, run the read-only query tool rather than loading a whole quiz/manifest:
+
+```sh
+python3 tools/query_quizzes.py --topic 03_ipv6 --flag coverage_gap
+python3 tools/query_quizzes.py --lesson routing-03 --lesson-role primary --details
+```
+
+Default output is compact, limited to ten matches, and scoped to networking quizzes 01–06. Add `--json` for automation, `--count` for totals, or `--offset`/`--limit` for pagination. `--details` includes options and answer indices. Read [query criteria and identity rules](references/query-quizzes.md) only when more filters or cross-topic/dependency behavior matter. Queries do not establish coverage or edit tags/assignments.
+
 ## New topic
 
 Only prepare the topic the user requested. Read its source guide and quiz; choose lesson boundaries based on coherent teaching units, not just question count. Use [templates](templates/) or, for an isolated draft:
@@ -37,6 +46,14 @@ Draft placeholders and unassessed coverage must be resolved before promotion to 
 - Separate additional `required_lesson_ids` from `optional_lesson_ids`; their union is `related_lesson_ids`. An absent required field in older records means unclassified. Do not infer dependencies or empty requirements automatically.
 - Label editorial clarifications and supplementary additions. Inherit † scope, retain dated claims and caveats, and use Mermaid only. Do not silently add material to erase a gap or rewrite an ambiguous key.
 - If a new lesson resolves an existing cross-topic assignment, update its original quiz and canonical manifest, the destination's external references, and Practice/overview/review notes together. Count the question once, in its source quiz.
+
+## Diagram readability
+
+- When labels risk crowding or clipping, put short, distinct labels in the diagram and explain their full meanings in an adjacent legend or table. Prefer stable codes such as `T01`, `T02`, and `T03` for numbered topics; do not silently truncate names or create ambiguous abbreviations.
+- Keep chart titles, axis captions, node text, and edge labels concise. Move supporting prose outside the diagram. Generate labels and their legend from the same data so reordering or new topics cannot detach meanings from values.
+- Preserve the full terminology, values, units, and relationships in the legend/table. Short labels are a layout aid, not permission to remove teaching content. Do not rely on color alone to identify categories.
+- Inspect rendered diagrams at the intended preview width when a renderer is available; check overlap, clipping, legends, arrows, and contrast. Valid Mermaid text and short labels do not prove a readable render. If rendering was unavailable, state that limitation.
+- For inherited lecture diagrams, retain original source files and review semantic preservation when changing labels/layout. The validator checks exact source blocks; document any resulting preservation-check failure rather than claiming it passed.
 
 ## Finish
 

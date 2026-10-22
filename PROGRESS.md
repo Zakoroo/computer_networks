@@ -34,14 +34,14 @@ pie title Networking topic status
 
 Coverage categories below are mutually exclusive and describe teaching support. **Mapped does not mean ready for scored practice.** Wording issues are tracked separately. Questions supported elsewhere may still await a real lesson link; partial elsewhere support still has a coverage gap.
 
-| Source quiz | Own-topic lesson | Supported elsewhere | Partial elsewhere | Missing coverage | Total | Actual lesson links |
-| --- | --- | --- | --- | --- | --- | --- |
-| Internet routing | 60 | 6 | 5 | 29 | 100 | 65 |
-| Domain Name System | 27 | 0 | 0 | 4 | 31 | 27 |
-| IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 20 | 1 | 2 | 7 | 30 | 21 |
+| Chart label | Source quiz | Own-topic lesson | Supported elsewhere | Partial elsewhere | Missing coverage | Total | Actual lesson links |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| T01 | Internet routing | 60 | 6 | 5 | 29 | 100 | 65 |
+| T02 | Domain Name System | 27 | 0 | 0 | 4 | 31 | 27 |
+| T03 | IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 20 | 1 | 2 | 7 | 30 | 21 |
 
 ```mermaid
-pie title Internet routing question coverage
+pie title T01 question coverage
     "Own-topic lesson" : 60
     "Supported elsewhere" : 6
     "Partial elsewhere" : 5
@@ -49,13 +49,13 @@ pie title Internet routing question coverage
 ```
 
 ```mermaid
-pie title Domain Name System question coverage
+pie title T02 question coverage
     "Own-topic lesson" : 27
     "Missing coverage" : 4
 ```
 
 ```mermaid
-pie title IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment question coverage
+pie title T03 question coverage
     "Own-topic lesson" : 20
     "Supported elsewhere" : 1
     "Partial elsewhere" : 2
@@ -70,11 +70,13 @@ Flags overlap. The bars count flags, not separate populations, and must not be a
 
 ```mermaid
 xychart-beta
-    title "Review flags across prepared networking topics"
-    x-axis ["Coverage gaps", "Wording", "Duplicates"]
-    y-axis "Questions with flag" 0 --> 47
+    title "Review flags"
+    x-axis ["G", "W", "D"]
+    y-axis "Questions" 0 --> 47
     bar [47, 29, 2]
 ```
+
+**Legend:** G = coverage gaps; W = wording issues; D = duplicate entries.
 
 | Source quiz | Coverage gaps | Wording issues | Duplicate entries | Distinct questions with any of these flags | Review queue |
 | --- | --- | --- | --- | --- | --- |
@@ -89,16 +91,18 @@ Cross-topic and supplementary-source flags describe context, not defects by them
 ```mermaid
 xychart-beta
     title "Lessons prepared by topic"
-    x-axis ["Internet routing", "Domain Name System", "IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment"]
+    x-axis ["T01", "T02", "T03"]
     y-axis "Lessons" 0 --> 25
     bar [23, 20, 25]
 ```
 
-| Topic | Lessons | Without questions from own quiz |
-| --- | --- | --- |
-| Internet routing | 23 | 5 |
-| Domain Name System | 20 | 7 |
-| IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 25 | 16 |
+**Legend and counts:**
+
+| Chart label | Topic | Lessons | Without questions from own quiz |
+| --- | --- | --- | --- |
+| T01 | Internet routing | 23 | 5 |
+| T02 | Domain Name System | 20 | 7 |
+| T03 | IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment | 25 | 16 |
 
 Lessons without native quiz questions are retained deliberately. Some support another quiz. Lesson counts describe content organization, not equal amounts of work or exam importance.
 

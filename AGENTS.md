@@ -15,6 +15,7 @@ Treat status documents as snapshots; verify the actual files. Skills here are re
 
 - `lectures/`: source guides; `quizzes/quiz_*.json`: curated questions; `lessons/<topic>/`: derived lessons, manifests, and review evidence. Preserve source teaching even without questions. Keep original lecture files unchanged when splitting content.
 - `tools/`: executable helpers with concise output and `--help`. `skills/prepare-lecture/`: workflow, plan reference, and templates.
+- For question lookups, use `python3 tools/query_quizzes.py` with focused criteria instead of dumping whole quizzes. It defaults to networking scope; see the skill for query options and cross-topic identity rules.
 - Networking coverage searches stop at lecture 06 (SDN). Lectures 07 onward are algorithms; broaden scope only when the user requests it.
 - `quiz_extraction/` and `other/` are gitignored local resources. Do not silently force-add them. Rerunning extraction over curated quizzes would erase tags, explanations, and assignments.
 - Preserve question wording, ordered options, answer keys, explanations, and manual tags unless the task requests a correction. Structural validation cannot decide whether teaching supports an answer.
