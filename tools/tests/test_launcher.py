@@ -1,8 +1,12 @@
 """Launcher asset, lifecycle, and frozen-browser integration checks."""
 
 import importlib.util
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import ExitStack
+from http.client import HTTPResponse
 import os
 from pathlib import Path
+import socket
 import sys
 import tempfile
 import unittest
@@ -54,6 +58,26 @@ class LauncherTests(unittest.TestCase):
         self.assertFalse(server.thread.is_alive())
         replacement = launcher.StudyServer(self.directory, port=port)
         replacement.close()
+
+    def test_pending_asset_connections_survive_a_module_load_burst(self):
+        server = launcher.StudyServer(self.directory, port=0)
+        self.addCleanup(server.close)
+        with ExitStack() as clients:
+            # Queue a browser-sized burst before the accept loop can run.
+            # A small backlog rejects/times out connections even on loopback.
+            connections = [clients.enter_context(socket.create_connection(server.http.server_address, timeout=2))
+                           for _ in range(24)]
+            server.start()
+
+            def fetch_asset(client):
+                client.sendall(b'GET /app.js HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n')
+                with HTTPResponse(client) as response:
+                    response.begin()
+                    return response.status, response.headers['Content-Type'], response.read()
+
+            with ThreadPoolExecutor(max_workers=len(connections)) as pool:
+                self.assertEqual(list(pool.map(fetch_asset, connections)),
+                                 [(200, 'text/javascript', b'export {};')] * len(connections))
 
     @unittest.skipIf(sys.platform == 'win32', 'Windows uses SetDllDirectoryW; covered by native candidate checks')
     def test_external_browser_environment_is_restored_even_after_failure(self):

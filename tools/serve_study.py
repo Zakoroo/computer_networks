@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import socket
 import sys
 import threading
 import webbrowser
@@ -59,6 +60,9 @@ class StudyHandler(SimpleHTTPRequestHandler):
 class LocalHTTPServer(ThreadingHTTPServer):
     # Winsock's SO_REUSEADDR can admit two listeners on the same origin.
     allow_reuse_address = sys.platform != 'win32'
+    # Mermaid loads many modules in parallel; the inherited backlog of five
+    # can refuse connections on Windows before the accept loop catches up.
+    request_queue_size = socket.SOMAXCONN
 
 
 class StudyServer:
