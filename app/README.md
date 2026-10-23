@@ -56,6 +56,8 @@ npx playwright install chromium
 npm run test:browser
 ```
 
+`npm test` runs `npm run content` through its `pretest` hook before Vitest. It works without a previous app build and refreshes stale generated content. Running Vitest directly bypasses that hook; use `npm test` for the normal checks.
+
 Browser installation is only needed for testing. An existing compatible Chromium can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/absolute/path/to/chrome`. Browser tests use the production build and start/reuse the fixed local preview; close a study session before running tests against its port. Tests use isolated browser profiles, not your study data.
 
 From the root, `python3 -m unittest discover -s tools/tests` checks the content tools and catalogue preservation. Verification evidence and limits are in [verification.md](verification.md). Application checks do not replace semantic content review or erase the existing strict diagram-source findings in the content validator.

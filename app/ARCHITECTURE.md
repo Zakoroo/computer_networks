@@ -62,6 +62,8 @@ The visual palette uses dark green navigation, light reading surfaces, and restr
 
 `npm run content` writes `public/content/catalogue.json` and source Markdown downloads under `public/content/source/`. `npm run build` first regenerates content, checks TypeScript, then builds `dist/`; Vite includes the generated public files. `npm run dev` regenerates content at startup; subsequent source-course edits require another content build. Both generated directories are ignored by Git.
 
+The model and storage tests load the generated catalogue during module import. `npm test` regenerates it through the `pretest` hook before starting Vitest, so a clean checkout or stale generated content does not require a preceding production build. Keep this prerequisite in the test command rather than relying on another CI step or an earlier local build.
+
 The builder:
 
 1. Uses `load_questions(scope="networking")` to join canonical quiz entries with manifests and verify fingerprints, assignments, flags, and lesson references.

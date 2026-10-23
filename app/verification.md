@@ -66,3 +66,13 @@ Local packaging used Ubuntu 24.04.4 under WSL2, glibc 2.39, Python 3.12.14 from 
 - The release-content check prints the same four documented source-format errors and the warning for 49 legacy dependency entries, and rejects a changed finding set. The strict validator is not an overall pass. Canonical lectures/quizzes/lessons remain unchanged; generated progress is fresh. Documentation links/anchors and whitespace are checked separately.
 
 The GitHub workflows have been statically validated, not executed in GitHub in this task. Windows, both Mac architectures, Ubuntu 22.04 desktop, Fedora Workstation 44, Arch Linux, and EndeavourOS remain unverified. The user identified EndeavourOS on another computer as the derivative to prioritize. Xvfb/native diagnostics do not establish actual default-browser opening, desktop file-manager launch, platform trust behavior, or disconnected desktop use. Those checks, Windows signing, Mac Developer ID/notarization, and public publication remain pending. No commit, push, tag, draft release, public release, or GitHub workflow dispatch was performed here. Content counts, lesson approvals, and explanation approvals are unchanged.
+
+## Clean-checkout test prerequisite
+
+After packaging was committed as `60b1770`, the user reported GitHub CI failing before either Vitest suite could collect tests: `public/content/catalogue.json` was absent. The file is generated and ignored, and the workflow runs tests before the production build. Earlier local tests passed because generated content already existed.
+
+Added `pretest: npm run content` to [package.json](package.json), so the normal test command generates fresh canonical content before Vitest. The workflow step name now makes that prerequisite visible; generated files remain ignored.
+
+Verification used an isolated snapshot of tracked files from `60b1770`, with no generated catalogue or production build. The committed test command reproduced the missing-file failure. With the modified package script, both suites and all **15 tests pass**, followed by a successful production build. A second test run replaced an intentionally stale catalogue with the expected generated content and passed all 15 tests again. Installed `node_modules` were reused; generated app files were not copied from the working checkout. This checks clean source/output handling, not a fresh dependency installation.
+
+Workflow lint, documentation links, progress freshness, and whitespace checks pass. No UI, launcher, packaging format, or canonical content changed, so browser and native-package suites were not rerun for this fix. A GitHub rerun and native-platform results remain pending; this local verification does not establish their outcome.

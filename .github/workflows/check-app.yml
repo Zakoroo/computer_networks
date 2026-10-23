@@ -33,7 +33,8 @@ jobs:
           python tools/check_release_content.py
           python tools/generate_progress.py --check
           git diff --check
-      - run: npm test
+      - name: Test app with freshly generated course content
+        run: npm test
         working-directory: app
       - run: npm run build
         working-directory: app
