@@ -20,7 +20,7 @@ The launcher opens **http://127.0.0.1:4173/** in your browser. Keep the terminal
 
 Alternatively, run `npm run start` from `app/` to serve the existing build at the same address. For development, `npm run dev` regenerates the content and starts Vite there. Stop the other server first: the port is fixed and never silently changes. Changes to course Markdown/JSON require `npm run content` during development or `npm run build` for the production app.
 
-Use the same browser profile and **127.0.0.1:4173** address on later launches. Using `localhost`, another port, a private browsing window, or a different browser creates a separate storage location. Use **Backup & restore** to download your personal data regularly and move it between profiles. This first version is run from the checkout; a packaged downloadable release is still future work.
+Use the same browser profile and **127.0.0.1:4173** address on later launches. Using `localhost`, another port, a private browsing window, or a different browser creates a separate storage location. Use **Backup & restore** to download your personal data regularly and move it between profiles. This first version is run from the checkout; a packaged downloadable release is still future work. [DEPLOYMENT_PLAN.md](../DEPLOYMENT_PLAN.md) describes the proposed Windows, macOS, and Linux packages, GitHub Actions testing, and release process.
 
 ## What works
 
