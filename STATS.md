@@ -14,6 +14,22 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 | Topics converted to lessons | 6 | Internet Routing, DNS, IPv6, TCP, Socket API, and SDN manifests |
 | Numbered lessons | 155 | Sum of prepared manifests' `lessons` arrays |
 
+## Networking answer explanations
+
+Measured from the six networking manifests and their canonical quizzes on 22 October 2026. Explanations are authored and checked, awaiting user approval (`explanation_status: reviewed`). The user will review them through the graphical interface once built; that review does not block development. Application coding has not started. Wording findings overlap the linked-question population and do not all indicate incorrect keys.
+
+| Topic | Linked questions | Linked questions with explanations | Linked questions with wording flags |
+| --- | ---: | ---: | ---: |
+| Internet Routing | 66 | 66 | 9 |
+| DNS | 27 | 27 | 4 |
+| IPv6 | 21 | 21 | 5 |
+| TCP | 21 | 21 | 3 |
+| Socket API | 47 | 47 | 20 |
+| SDN | 28 | 28 | 4 |
+| **Total** | **210** | **210** | **45** |
+
+All 210 linked networking questions now have sourced explanations, including the 45 with wording findings. The 89 unlinked questions retain empty explanations and existing gaps. Original keys, wording, options, tags, mappings, and flags are unchanged. Existing lesson-conversion approvals remain independent of the new explanation review. Explanation quality requires checking the actual teaching, not just a nonempty field. See the [explanation standards](APP_PLAN.md#content-prerequisite-answer-explanations).
+
 ## Internet Routing
 
 Source: [manifest.json](lessons/01_routing/manifest.json), checked against the routing quiz and lesson files.
@@ -160,7 +176,7 @@ Source: [manifest.json](lessons/05_socket_api/manifest.json), checked against qu
 | `wording_issue` | 40 |
 | `cross_topic` | 1 |
 
-Flags overlap; mapped questions with defective keys are not ready for scored practice. Shared readiness, bounded queues, and partial-write reasoning can be taught without an API-specific tutorial, while pollfd flags, epoll trigger/registration rules, and socket-option details remain gaps where required. Q046 has only partial background in TCP's archived Nagle timeline. No mapped native question depends on hidden-slide supplementary material; the guide reports no hidden substantive slides. All question text, options, keys, explanations, and manual tags are preserved.
+Flags overlap; mapped questions with defective keys are not ready for scored practice. Shared readiness, bounded queues, and partial-write reasoning can be taught without an API-specific tutorial, while pollfd flags, epoll trigger/registration rules, and socket-option details remain gaps where required. Q046 has only partial background in TCP's archived Nagle timeline. No mapped native question depends on hidden-slide supplementary material; the guide reports no hidden substantive slides. Question text, options, keys, and manual tags are preserved; sourced explanations are now authored for the 47 linked questions.
 
 ## SDN
 
@@ -187,4 +203,4 @@ Source: [manifest.json](lessons/06_sdn/manifest.json), checked against quiz 06 a
 | `coverage_gap` | 1 |
 | `wording_issue` | 5 |
 
-Flags overlap: Q027 has both a coverage gap and a wording issue, while Q007/Q015/Q021/Q028 are mapped with wording flags. Q014/Q015/Q025 require additional lessons. The guide does not teach switch failure modes after controller disconnection, so supplementary specification evidence does not turn Q027 into lecture coverage. Routing Q011/Q070 remain gaps despite related TCAM context. All source teaching, question text/options/keys/explanations, and manual tags are preserved; diagram label differences are documented in the topic verification report.
+Flags overlap: Q027 has both a coverage gap and a wording issue, while Q007/Q015/Q021/Q028 are mapped with wording flags. Q014/Q015/Q025 require additional lessons. The guide does not teach switch failure modes after controller disconnection, so supplementary specification evidence does not turn Q027 into lecture coverage. Routing Q011/Q070 remain gaps despite related TCAM context. Source teaching, question text/options/keys, and manual tags are preserved; sourced explanations are now authored for the 28 linked questions. Diagram label differences are documented in the topic verification report.

@@ -3,6 +3,7 @@
   "topic_id": "06_sdn",
   "title": "Software-Defined Networking (SDN) and OpenFlow",
   "preparation_status": "approved",
+  "explanation_status": "reviewed",
   "source_commit": "8ba94d40bda81f7058f232b686b0afed14ff4b24",
   "source_lecture": "lectures/lecture_06_sdn.md",
   "source_quiz": "quizzes/quiz_06_sdn.json",

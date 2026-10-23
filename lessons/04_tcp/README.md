@@ -53,3 +53,11 @@ Source title: **End-to-End Communication and Congestion Control (EDA387/DIT660)*
 Original lecture files are unchanged. Source diagrams appear directly as the lesson figures in their original form, including the horizontal byte-window diagram and Reno state diagram. All teaching is retained. Mermaid was not rendered in this environment. Long labels in inherited figures still need a visual preview before publication.
 
 Dated BBR/L4S deployment, standardization, historical, and empirical claims remain source-reported assertions with their original dates and caveats; they were not freshly authenticated. The ASPA comparison in particular is not a new adoption measurement. Supplementary slide visibility and exam scope have not been independently checked. Coverage searches stop at lecture 06; algorithms were excluded. No application, commit, or push is part of this conversion.
+
+## Answer explanations
+
+On 22 October 2026, all **21 linked questions** in [the canonical quiz](../../quizzes/quiz_04_tcp.json) received authored explanations grounded in their actual primary/supporting lessons. The **3 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **8 unlinked questions** remain outside the pass and retain empty explanations.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent. Supplementary-source dependencies retain a visible † notice.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).

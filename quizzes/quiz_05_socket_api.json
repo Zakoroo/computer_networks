@@ -13,7 +13,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** With the TCP/IP stack in the kernel, a user process needs a controlled system-call interface to request its services. Library-facing API code can still run in user space; it does not follow that ordinary applications need privileged access to device drivers. The preserved key therefore misstates the boundary issue, and none of the options cleanly describes it. User-space APIs and a user-space protocol stack are different architectural choices.\n\nSee [The socket boundary and protocol stack](../lessons/05_socket_api/01_socket_boundary.md); [Creating an endpoint with socket()](../lessons/05_socket_api/12_socket_call.md).",
       "lesson_id": "socket-api-01",
       "tags": [],
       "flags": [
@@ -32,7 +32,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "bind() chooses a local protocol address, while connect() names the remote endpoint and starts connection establishment. Keeping them separate lets an application choose a source interface address or local port before connecting. If it does not bind explicitly, the kernel can choose suitable local values automatically. This flexibility does not guarantee port uniqueness or eliminate TIME_WAIT.\n\nSee [Choosing a local address with bind()](../lessons/05_socket_api/14_bind_call.md); [Active open with connect()](../lessons/05_socket_api/13_connect_call.md).",
       "lesson_id": "socket-api-14",
       "tags": [],
       "flags": []
@@ -44,12 +44,12 @@
         "The first bind() silently overrides the second without error",
         "Both bind() calls succeed, but only one process can call listen()",
         "The kernel alternates connections randomly between the processes",
-        "Connections are merged across both processes\u2019 accept() queues"
+        "Connections are merged across both processes’ accept() queues"
       ],
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** A later bind normally fails with EADDRINUSE when it conflicts with an existing local address/port binding under the applicable socket rules. The stem needs to specify overlapping bindings in the same networking context: the same numeric port on distinct local IP addresses is not by itself proof of a conflict. The first binding is not silently replaced or merged with the second.\n\nSee [Choosing a local address with bind()](../lessons/05_socket_api/14_bind_call.md).",
       "lesson_id": "socket-api-14",
       "tags": [],
       "flags": [
@@ -68,7 +68,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "The kernel completes a handshake and queues the connection independently of when the server application calls accept(). The client can then close orderly before the server dequeues it, and accept() can still return the connected descriptor. The server may read already-buffered data and then receive EOF. An aborted connection involving RST is a different case and can cause an accept error.\n\nSee [Accepting connected descriptors](../lessons/05_socket_api/16_accept_call.md); [Three-way handshake and listen queues](../lessons/05_socket_api/20_handshake_and_queues.md); [Orderly teardown and half-close](../lessons/05_socket_api/21_orderly_teardown.md).",
       "lesson_id": "socket-api-16",
       "tags": [],
       "flags": []
@@ -80,18 +80,18 @@
         "TCP delivers a byte stream, so recv() may return only what is currently buffered",
         "recv() splits returns strictly along TCP segment boundaries",
         "recv() always waits until a complete application message has arrived",
-        "The receiver\u2019s advertised window limits each recv() call\u2019s length"
+        "The receiver’s advertised window limits each recv() call’s length"
       ],
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "TCP preserves the order of stream bytes, not the boundaries of the sender's write calls. A receive can return fewer bytes than requested because only that amount is currently available, even when the sender supplied a larger block. The application must accumulate data according to its framing protocol. A short successful read is not inherently an error or evidence of IP fragmentation.\n\nSee [Byte streams, framing, and short counts](../lessons/05_socket_api/24_stream_framing.md).",
       "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
     },
     {
-      "question": "What happens if the client\u2019s final ACK in the three-way handshake is lost?",
+      "question": "What happens if the client’s final ACK in the three-way handshake is lost?",
       "options": [
         "The server assumes the connection succeeded and moves to ESTABLISHED immediately",
         "Both endpoints fall back to LISTEN and wait for a new connection attempt",
@@ -121,7 +121,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "In the ordinary close sequence, the active closer sends the final ACK and keeps TIME_WAIT state. If the peer retransmits its FIN because that ACK was lost, the active closer can acknowledge it again. Waiting also lets old duplicate segments expire before the same connection identity is reused under the lifetime assumptions. Simultaneous close can put both endpoints into TIME_WAIT, so active closer describes the usual case.\n\nSee [Why TIME_WAIT lasts twice MSL](../lessons/05_socket_api/23_time_wait.md).",
       "lesson_id": "socket-api-23",
       "tags": [],
       "flags": []
@@ -130,7 +130,7 @@
       "question": "What happens when both endpoints of a TCP connection issue close() at the same time?",
       "options": [
         "The connection resets immediately with RST from both sides",
-        "Both endpoints block indefinitely waiting for each other\u2019s FIN",
+        "Both endpoints block indefinitely waiting for each other’s FIN",
         "One side skips TIME_WAIT entirely because FIN segments cross in flight",
         "Both sides transition through FIN_WAIT_1, may enter CLOSING, and then TIME_WAIT",
         "One side stays in ESTABLISHED while the other closes normally"
@@ -138,7 +138,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "With simultaneous close, both applications begin closing while their connections are established, so their FINs can cross. Each endpoint enters FIN_WAIT_1 and may pass through CLOSING before its FIN is acknowledged and it reaches TIME_WAIT. TCP supports this orderly case; it does not require an immediate reset or guarantee that one endpoint skips TIME_WAIT.\n\nSee [TCP states and simultaneous open or close](../lessons/05_socket_api/22_tcp_states.md).",
       "lesson_id": "socket-api-22",
       "tags": [],
       "flags": []
@@ -175,7 +175,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Zero-initializing sockaddr_in is a useful portable convention before setting its required fields, and it gives unused padding a known value. However, the preserved key overstates padding as a universal cause of connection errors. The essential setup is a correct family, address, port, and applicable platform layout; zeroing does not substitute for those assignments or force IPv6, UDP, or ephemeral-port behavior.\n\nSee [Socket address structures and storage](../lessons/05_socket_api/07_address_structures.md).",
       "lesson_id": "socket-api-07",
       "tags": [],
       "flags": [
@@ -188,7 +188,7 @@
         "bind() fails with EPIPE, resolved by calling shutdown before bind",
         "bind() fails with ECONNRESET, resolved by closing all existing sockets",
         "bind() fails with ENOTCONN, resolved by retrying after a delay",
-        "bind() fails silently, resolved by restarting the kernel\u2019s TCP stack",
+        "bind() fails silently, resolved by restarting the kernel’s TCP stack",
         "bind() fails with EADDRINUSE, resolved by using SO_REUSEADDR"
       ],
       "correct_answers": [
@@ -234,7 +234,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "In one shared blocking loop, a read from an idle client can stop the process before it services other ready clients. If that client neither sends the expected input nor closes, the others can wait indefinitely. Multiplexing or independent execution contexts let the server make progress elsewhere. The problem is scheduling a blocking operation, not necessarily corruption or a TCP reset.\n\nSee [Processes, threads, and event-driven servers](../lessons/05_socket_api/35_server_concurrency.md).",
       "lesson_id": "socket-api-35",
       "tags": [],
       "flags": []
@@ -251,7 +251,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "The same multi-byte value has different byte layouts on little-endian and big-endian hosts. Exchanging an unspecified native layout can therefore make the receiver interpret a different value. Network-order fields use a common big-endian representation, with htons/htonl and ntohs/ntohl converting as appropriate. For example, bytes for 0x0102 must not be read with their significance reversed; this does not inherently truncate a payload.\n\nSee [Host and network byte order](../lessons/05_socket_api/06_byte_order.md).",
       "lesson_id": "socket-api-06",
       "tags": [],
       "flags": []
@@ -268,7 +268,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Two applications using the same private native payload layout can mask an endianness assumption in a homogeneous lab, then disagree on a different architecture. But network-order socket fields such as ports require the prescribed representation even on an entirely little-endian LAN. The preserved key must distinguish custom payload encoding from those protocol/API fields; a homogeneous lab is not a general exemption from htons/ntohs.\n\nSee [Host and network byte order](../lessons/05_socket_api/06_byte_order.md).",
       "lesson_id": "socket-api-06",
       "tags": [],
       "flags": [
@@ -287,7 +287,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "getaddrinfo() supplies address candidates through a common addrinfo-based interface that can handle IPv4 and IPv6, allowing one connection-attempt loop to use either family. The returned candidates depend on hints, configuration, and available naming data; both families are not guaranteed for every name. The benefit is protocol-independent handling, not automatic success, mandatory IPv6 preference, or universal cross-process DNS caching.\n\nSee [Protocol-independent name resolution](../lessons/05_socket_api/10_name_resolution.md).",
       "lesson_id": "socket-api-10",
       "tags": [],
       "flags": []
@@ -324,7 +324,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** The premise and preserved key are false. For AF_INET, inet_pton requires valid dotted-decimal octets in the range 0–255, so 300.1.1.1 is rejected rather than wrapped or deferred until connect(). The documented invalid-presentation return is 0; 1 indicates successful conversion. None of the listed explanations correctly describes the supposed success on this input.\n\nSee [IP presentation and numeric conversion](../lessons/05_socket_api/08_address_conversion.md).",
       "lesson_id": "socket-api-08",
       "tags": [],
       "flags": [
@@ -343,7 +343,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A generic sockaddr pointer lets bind(), connect(), and similar interfaces accept addresses from different protocol families through a common API. The family-specific object, such as sockaddr_in, carries the actual IPv4 fields, and the length tells the call how much address data is supplied. The cast does not convert byte order or guarantee that the allocated object is large enough.\n\nSee [Socket address structures and storage](../lessons/05_socket_api/07_address_structures.md).",
       "lesson_id": "socket-api-07",
       "tags": [],
       "flags": []
@@ -360,7 +360,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "TIME_WAIT delays reuse of a connection identity so delayed segments from an old incarnation can expire instead of being accepted as data for a new one. It also retains the state needed to answer a retransmitted final FIN. The duplicate-protection argument depends on the protocol's segment-lifetime and safe-reuse assumptions; actual reuse rules and timers vary. It is unrelated to flushing ARP caches.\n\nSee [Why TIME_WAIT lasts twice MSL](../lessons/05_socket_api/23_time_wait.md).",
       "lesson_id": "socket-api-23",
       "tags": [],
       "flags": []
@@ -377,7 +377,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "fork() gives a client handler a separate process address space, which isolates ordinary application memory from other handlers. Creating and scheduling processes adds resources and overhead compared with manually interleaving clients in one select-based event loop. That event loop requires explicit per-client state and must avoid blocking all clients. Neither design is guaranteed to be faster for every workload.\n\nSee [Processes, threads, and event-driven servers](../lessons/05_socket_api/35_server_concurrency.md).",
       "lesson_id": "socket-api-35",
       "tags": [],
       "flags": []
@@ -407,7 +407,7 @@
         "To ensure terminated child processes are reaped and do not accumulate",
         "To synchronize TCP sequence numbers across child processes",
         "To prevent kernel buffer exhaustion from unhandled signals",
-        "To allow children to inherit the parent\u2019s listen queue safely",
+        "To allow children to inherit the parent’s listen queue safely",
         "To avoid orphaning sockets after children terminate"
       ],
       "correct_answers": [
@@ -426,14 +426,14 @@
       "options": [
         "When the sender uses TCP_NODELAY to transmit fragmented data",
         "When the sender closes the socket before sending EOF",
-        "When the receiver\u2019s buffer size is smaller than the requested n",
+        "When the receiver’s buffer size is smaller than the requested n",
         "When the receiver mistakenly calls writen instead of readn",
         "When the peer sends fewer than n bytes without closing the connection"
       ],
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "On a blocking descriptor, readn keeps requesting the remaining bytes until it obtains n, reaches EOF, or encounters an unrecoverable error. If a peer sends fewer than n bytes and leaves its sending direction open indefinitely, the next read can wait forever. A successful readiness event for some initial bytes would not guarantee that the whole requested count is available.\n\nSee [Reading a requested byte count](../lessons/05_socket_api/25_readn.md).",
       "lesson_id": "socket-api-25",
       "tags": [],
       "flags": []
@@ -450,7 +450,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "The helper tracks how many bytes remain, advances the buffer pointer after a partial write, and retries when an interrupted call reports EINTR without progress. That avoids treating a signal interruption as completion or losing the unsent remainder. This teaching helper assumes blocking I/O. Successfully writing n bytes means local kernel acceptance, not proof that the peer application has consumed them.\n\nSee [Writing a complete local byte count](../lessons/05_socket_api/26_writen.md).",
       "lesson_id": "socket-api-26",
       "tags": [],
       "flags": []
@@ -458,7 +458,7 @@
     {
       "question": "Why does the readline function require peeking at each byte instead of reading large blocks directly?",
       "options": [
-        "To maintain TCP\u2019s urgent data semantics across sockets",
+        "To maintain TCP’s urgent data semantics across sockets",
         "To detect newline termination without consuming extra bytes",
         "To synchronize reads with TCP segment boundaries",
         "To guarantee that read() never returns partial lines",
@@ -467,7 +467,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** A line reader must find the delimiter and preserve bytes belonging to later records, but it need not peek at the socket one byte at a time. The source reads blocks into an application buffer and then parcels out bytes while retaining leftovers. The preserved premise is therefore too restrictive. In an event loop, that buffered state must be visible per connection so prefetched input is not overlooked.\n\nSee [Buffered line reading and readiness](../lessons/05_socket_api/27_buffered_readline.md).",
       "lesson_id": "socket-api-27",
       "tags": [],
       "flags": [
@@ -486,7 +486,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** select() modifies each interest set into the subset currently ready; it does not clear every descriptor as the preserved key claims. The application must rebuild the next call's interests, commonly by copying a maintained master set. Otherwise, descriptors that were not ready in the previous call can disappear from the monitored set even though they still need future service.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": [
@@ -505,7 +505,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Reusing select()'s returned set without restoring the full interests can stop monitoring descriptors that were previously not ready. The preserved key is wrong to describe this as cached reports of past readiness: a new call checks current conditions for the descriptors still included. Maintain a master interest set and create a fresh working copy for each wait.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": [
@@ -524,7 +524,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "select() lets a process wait for useful I/O conditions across several descriptors before choosing which operation to attempt. It can therefore avoid blocking immediately on an idle client while another is ready. Readability can also mean EOF or error, and some available bytes need not constitute a whole message. The application must still perform the read and handle its actual result.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
@@ -541,7 +541,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "select() repeatedly passes and scans descriptor-set representations, including work over a descriptor-number range rather than just delivering the active clients. That creates linear scanning overhead as the monitored range grows, in addition to fd_set's representable-descriptor limit. The O(n) description is a scaling model, not an exact cost for every implementation or workload. Readiness APIs with retained interests can avoid repeated full-set scans.\n\nSee [C10K and scalable readiness mechanisms](../lessons/05_socket_api/38_c10k.md).",
       "lesson_id": "socket-api-38",
       "tags": [],
       "flags": []
@@ -553,12 +553,12 @@
         "Because readn prevents TCP retransmissions from being triggered",
         "Because readn/writen ensure complete transfers once sockets are marked ready",
         "Because select forces sockets into non-blocking mode by default",
-        "Because writen bypasses the kernel\u2019s socket buffer limits"
+        "Because writen bypasses the kernel’s socket buffer limits"
       ],
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Review note:** readn/writen help manage short counts and interruptions, but readiness does not promise enough bytes for an entire readn request or room for a complete writen. A wrapper may still block, stop at EOF, or fail. The preserved key's complete-transfer guarantee is false. A shared event loop needs bounded nonblocking progress and per-connection state rather than assuming readiness makes blocking helpers unconditional.\n\nSee [Reading a requested byte count](../lessons/05_socket_api/25_readn.md); [Writing a complete local byte count](../lessons/05_socket_api/26_writen.md); [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-25",
       "tags": [],
       "flags": [
@@ -577,7 +577,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "For a nonzero read request, a successful return of zero after buffered input is exhausted indicates EOF on the incoming TCP stream. TCP has no application message boundaries, so this is not an empty record that should be processed like another echo response. A robust client terminates or advances its protocol appropriately instead of repeatedly treating EOF as useful data.\n\nSee [Byte streams, framing, and short counts](../lessons/05_socket_api/24_stream_framing.md).",
       "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
@@ -587,7 +587,7 @@
       "options": [
         "It eliminates TIME_WAIT entirely, risking packet misdelivery",
         "It allows rebinding to a port in TIME_WAIT but risks accepting stray duplicates",
-        "It disables the server\u2019s ability to listen on privileged ports",
+        "It disables the server’s ability to listen on privileged ports",
         "It improves backlog queue capacity at the expense of security",
         "It forces kernel to close all sockets bound to that port prematurely"
       ],
@@ -633,7 +633,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Nonblocking mode makes an operation return when it cannot currently progress, commonly with EAGAIN/EWOULDBLOCK. If the program immediately retries in a tight loop while the condition is unchanged, it can consume CPU without doing useful work. Multiplexing lets it wait for readiness or service another connection instead. Changing the mode alone does not supply an event-loop scheduling policy.\n\nSee [Blocking, nonblocking, and multiplexed I/O](../lessons/05_socket_api/30_io_models.md).",
       "lesson_id": "socket-api-30",
       "tags": [],
       "flags": []
@@ -650,7 +650,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "EINPROGRESS on a nonblocking connect means establishment is still pending, not that the TCP connection has succeeded. The application waits for the relevant readiness and inspects SO_ERROR to learn the outcome before treating the socket as connected. Confusing this pending result with success can make later I/O appear to fail unexpectedly. The descriptor's existence alone is not proof that the handshake finished.\n\nSee [Active open with connect()](../lessons/05_socket_api/13_connect_call.md).",
       "lesson_id": "socket-api-13",
       "tags": [],
       "flags": []
@@ -667,7 +667,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** If the client requested both read and write interests, it should inspect both returned sets because a socket can satisfy both conditions in one call. A read-only client is valid, so checking both is not an unconditional requirement for every select-based client. Write interest should also reflect actual output work rather than assuming every writable event demands a new write.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": [
@@ -686,7 +686,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Writable means an operation can proceed without waiting, not that it must succeed. Local send-buffer space can produce writability, but a pending error or closed sending side can also make the next write fail promptly. State may change between the readiness check and the operation. The preserved key is too narrow in describing readiness solely as available buffer space; always check write's result.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": [
@@ -705,7 +705,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** FD_SETSIZE bounds which descriptor numbers the fd_set representation can hold, not the process's absolute total number of sockets. A descriptor outside that range cannot safely be added just because few clients are active. Conversely, other process resources also affect how many sockets can exist. The preserved key conflates a select representation bound with a universal concurrency limit.\n\nSee [Partial-line stalls and per-client state](../lessons/05_socket_api/37_partial_lines_and_state.md).",
       "lesson_id": "socket-api-37",
       "tags": [],
       "flags": [
@@ -756,7 +756,7 @@
       "question": "Why must EINTR be handled explicitly when select() is interrupted by a signal?",
       "options": [
         "Because select() permanently disables signals after EINTR",
-        "Because EINTR resets the kernel\u2019s connection backlog",
+        "Because EINTR resets the kernel’s connection backlog",
         "Because EINTR implies that sockets have been closed by the kernel",
         "Because select() ignores all descriptors after an interrupt",
         "Because otherwise signals may cause infinite loops or missed events"
@@ -764,7 +764,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "An interrupted select can return an error with EINTR instead of a usable readiness result. The program must recognize that outcome and decide whether to process the signal or rebuild its wait state and retry. Treating the error as ordinary readiness or reusing stale state can lose progress or spin. This resembles the explicit interruption handling in readn, but select does not automatically perform the application's recovery policy.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md); [Reading a requested byte count](../lessons/05_socket_api/25_readn.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
@@ -781,7 +781,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "When a client has finished and its descriptor is no longer needed, close it and remove it from the master interest set and client bookkeeping. Releasing only one of those resources can leave a leaked socket or a stale watched descriptor. The returned select working set is separate from the master set, so cleanup must update the state used to construct future waits.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
@@ -798,7 +798,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** select(nfds, ...) does not inspect descriptors numbered nfds or higher, so the preserved claim about reporting invalid descriptors beyond maxfd is false. If closed entries are cleared, leaving maxfd conservatively high adds scan work rather than inventing readiness. A bound that is too low can miss a new high descriptor. Correct descriptor reuse requires consistent interest-set and client-state bookkeeping.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md); [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": [
@@ -825,12 +825,12 @@
       ]
     },
     {
-      "question": "Why can disabling Nagle\u2019s algorithm with TCP_NODELAY improve responsiveness but reduce throughput?",
+      "question": "Why can disabling Nagle’s algorithm with TCP_NODELAY improve responsiveness but reduce throughput?",
       "options": [
         "Because the kernel disables delayed ACKs when Nagle is off",
         "Because small writes are sent immediately, increasing packet overhead",
         "Because TCP_NODELAY disables congestion control in favor of speed",
-        "Because Nagle\u2019s algorithm is required for IPv6 but optional for IPv4",
+        "Because Nagle’s algorithm is required for IPv6 but optional for IPv4",
         "Because disabling Nagle forces every write() to wait for an ACK"
       ],
       "correct_answers": [
@@ -992,7 +992,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Standard input and the socket are independent sources that can both become ready. A multiplexed client must service the ready inputs and track their buffering and EOF states, but the two readiness conditions do not intrinsically conflict. The source demonstrates this general issue with select, not poll-specific event flags or priority rules. The preserved key needs to identify the intended scheduling or buffering problem.\n\nSee [A client waiting on stdin and its socket](../lessons/05_socket_api/32_select_client.md); [Blocking, nonblocking, and multiplexed I/O](../lessons/05_socket_api/30_io_models.md).",
       "lesson_id": "socket-api-32",
       "tags": [],
       "flags": [
@@ -1041,7 +1041,7 @@
     {
       "question": "Why can SO_LINGER introduce delays during close() in a concurrent TCP server?",
       "options": [
-        "Because SO_LINGER disables TCP\u2019s sliding window mechanism",
+        "Because SO_LINGER disables TCP’s sliding window mechanism",
         "Because close() may block until unsent data is acknowledged",
         "Because close() automatically enters TIME_WAIT twice with linger set",
         "Because FIN packets must be retransmitted multiple times",
@@ -1102,7 +1102,7 @@
         "The server may block in epoll_wait forever on writable events",
         "The socket descriptor is demoted to level-triggered behavior",
         "The kernel closes the socket automatically after a short write",
-        "TCP disables Nagle\u2019s algorithm permanently for that socket",
+        "TCP disables Nagle’s algorithm permanently for that socket",
         "The application may lose unsent data due to incomplete buffer flushes"
       ],
       "correct_answers": [
@@ -1121,7 +1121,7 @@
       "options": [
         "To automatically convert edge-triggered mode back to level-triggered",
         "To reset TCP sequence numbers for new connections",
-        "To flush the kernel\u2019s send buffer explicitly",
+        "To flush the kernel’s send buffer explicitly",
         "To prevent epoll from reporting readiness on a stale descriptor",
         "To guarantee that the descriptor enters TIME_WAIT immediately"
       ],
@@ -1148,7 +1148,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "Writability describes what a local write can do now; it is not a guarantee that the remote application remains healthy or will consume the bytes. Local buffering and delayed knowledge of peer state matter, and an immediately reportable error can also satisfy readiness. The application must inspect the write result. This is shared socket-readiness reasoning, not a tutorial on epoll registration or trigger modes.\n\nSee [select sets, bounds, timeouts, and readiness](../lessons/05_socket_api/31_select_readiness.md).",
       "lesson_id": "socket-api-31",
       "tags": [],
       "flags": []
@@ -1204,7 +1204,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "The completed-connection queue has a finite limit. If new handshakes arrive faster than the application accepts queued connections, the queue can fill and new connection attempts can be delayed, rejected, or dropped according to the implementation and configuration. Promptly draining it reduces this overload risk. This does not imply that existing connections must reset or that epoll permanently stops reporting readiness.\n\nSee [Three-way handshake and listen queues](../lessons/05_socket_api/20_handshake_and_queues.md).",
       "lesson_id": "socket-api-20",
       "tags": [],
       "flags": []
@@ -1221,7 +1221,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "After a partial write, advance the application buffer by the accepted byte count and retain the unsent remainder. On a nonblocking socket, continue while progress is possible, stopping when the data is exhausted, an error occurs, or EAGAIN indicates a need to wait. Preserve pending output for a later opportunity. The blocking writen helper illustrates progress accounting but is not itself a complete nonblocking event loop.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md); [Writing a complete local byte count](../lessons/05_socket_api/26_writen.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
@@ -1258,7 +1258,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Review note:** With a nonzero requested count, a successful read returning zero after earlier received bytes are drained means EOF: the peer has ended its sending stream. It does not necessarily mean both TCP directions have closed, because the local endpoint may still send a reply. A read requesting zero bytes is a separate case and cannot establish peer closure from its return alone.\n\nSee [Orderly teardown and half-close](../lessons/05_socket_api/21_orderly_teardown.md).",
       "lesson_id": "socket-api-21",
       "tags": [],
       "flags": [
@@ -1297,7 +1297,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "shutdown(SHUT_WR) ends further sending and places FIN after already-queued data while allowing reads to continue. That supports a client that has finished input but still expects replies. close() releases this descriptor and its access to both directions; other references can keep the underlying socket alive. shutdown acts on the socket's direction even when duplicate descriptors remain, so it is not simply another spelling of close().\n\nSee [shutdown and a half-close-aware client](../lessons/05_socket_api/34_shutdown_half_close.md).",
       "lesson_id": "socket-api-34",
       "tags": [],
       "flags": []
@@ -1314,7 +1314,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "TCP supplies ordered stream bytes without preserving application write boundaries. A line can therefore span several receive calls, or one call can return bytes spanning more than one record. The client must buffer and parse according to a delimiter or other framing rule. Fragments here means application-visible chunks, not a requirement for IP fragmentation or alignment to TCP segment boundaries.\n\nSee [Byte streams, framing, and short counts](../lessons/05_socket_api/24_stream_framing.md).",
       "lesson_id": "socket-api-24",
       "tags": [],
       "flags": []
@@ -1331,7 +1331,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Fixed-size receive buffers are valid, but variable-length application records may span several reads or buffers. Parsing must retain partial records and separate complete ones. The stem misleadingly ties this to TCP segment sizes: recv() results are not guaranteed to align with segments or messages. Correct framing and accumulation solve the problem without requiring one buffer to match each segment.\n\nSee [Byte streams, framing, and short counts](../lessons/05_socket_api/24_stream_framing.md).",
       "lesson_id": "socket-api-24",
       "tags": [],
       "flags": [
@@ -1350,7 +1350,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** If the client reaches stdin EOF yet leaves its sending stream open, the echo server may continue waiting for more bytes. The client should signal sending EOF with a write half-close and continue receiving the remaining replies. The source also shows a different bug: exiting immediately at stdin EOF can truncate replies. The preserved key needs the first situation specified instead of treating every EOF mistake alike.\n\nSee [shutdown and a half-close-aware client](../lessons/05_socket_api/34_shutdown_half_close.md); [The baseline echo server](../lessons/05_socket_api/28_baseline_echo_server.md).",
       "lesson_id": "socket-api-34",
       "tags": [],
       "flags": [
@@ -1389,7 +1389,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** A client handling keyboard input and network events needs explicit state and scheduling so waiting on one source does not stall the other. That is a general multiplexed event-loop concern, illustrated in the source's I/O models. It is not a special epoll requirement, and the stem does not establish a precise comparison with raw socket I/O. Epoll does not inherently disable terminal modes or impose one input descriptor.\n\nSee [Blocking, nonblocking, and multiplexed I/O](../lessons/05_socket_api/30_io_models.md).",
       "lesson_id": "socket-api-30",
       "tags": [],
       "flags": [
@@ -1408,7 +1408,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** The preserved premise and key are false for ordinary orderly TCP half-close. shutdown(SHUT_WR) places FIN after queued data, and the receiving application reads preceding buffered bytes before observing EOF. Merely being unready to read when FIN arrives does not discard that data. Applications can still mishandle framing, buffers, or early exit, but those are distinct from the claimed FIN-timing data-loss mechanism.\n\nSee [shutdown and a half-close-aware client](../lessons/05_socket_api/34_shutdown_half_close.md); [Orderly teardown and half-close](../lessons/05_socket_api/21_orderly_teardown.md).",
       "lesson_id": "socket-api-34",
       "tags": [],
       "flags": [
@@ -1427,7 +1427,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Bytes still in an application output queue have not necessarily reached the kernel, so abandoning that queue can leave an incomplete response. Bytes already accepted into the kernel send queue are different: ordinary final close attempts to transmit them before orderly teardown. The preserved key should describe application-buffer loss or truncation, not automatic TCP-level corruption or a rule that every close discards queued network data.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md); [Closing descriptors and socket references](../lessons/05_socket_api/17_close_call.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": [
@@ -1446,7 +1446,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A partial send can leave part of the response only in the application's output buffer. Shutdown logic must decide how to finish transmitting or explicitly abandon that remainder, rather than losing track of it while releasing the connection. Kernel-queued bytes and application-queued bytes have different lifetimes. This bookkeeping does not shorten TIME_WAIT or make local write success a guarantee of remote consumption.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md); [Closing descriptors and socket references](../lessons/05_socket_api/17_close_call.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []
@@ -1483,7 +1483,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "A long-running server must consistently release descriptors, remove interest-set entries, and clear or finish each client's application buffers and state. If teardown paths update only some of that bookkeeping, resources can leak or later readiness can be associated with stale client state. Different connection states can need different actions, but all paths must leave coherent records; the kernel does not maintain that application state automatically.\n\nSee [A select-based concurrent echo server](../lessons/05_socket_api/36_select_server.md).",
       "lesson_id": "socket-api-36",
       "tags": [],
       "flags": []

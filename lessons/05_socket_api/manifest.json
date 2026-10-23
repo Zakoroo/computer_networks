@@ -3,6 +3,7 @@
   "topic_id": "05_socket_api",
   "title": "Socket API, network programming, and high-performance I/O",
   "preparation_status": "approved",
+  "explanation_status": "reviewed",
   "source_commit": "ea7f3e7b4abb21c801882124b7f6aef08ff00f7e",
   "source_lecture": "lectures/lecture_05_socket-api.md",
   "source_quiz": "quizzes/quiz_05_socket_api.json",

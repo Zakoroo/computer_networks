@@ -64,3 +64,11 @@ This revision preserves the supplied guide's scope and † classifications. It c
 - [RFC 4271 — BGP-4](https://www.rfc-editor.org/rfc/rfc4271): route advertisements and path attributes.
 - [RFC 792 — ICMP](https://www.rfc-editor.org/rfc/rfc792): error and diagnostic messages.
 - [RFC 4264 — BGP Wedgies](https://www.rfc-editor.org/rfc/rfc4264): persistent policy-driven states.
+
+## Answer explanations
+
+On 22 October 2026, all **66 linked questions** in [the canonical quiz](../../quizzes/quiz_01_routing.json) received authored explanations grounded in their actual primary/supporting lessons. The **9 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **34 unlinked questions** remain outside the pass and retain empty explanations.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent. Supplementary-source dependencies retain a visible † notice.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).

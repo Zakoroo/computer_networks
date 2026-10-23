@@ -39,3 +39,13 @@ After the label/layout repairs, the strict validator reports two preservation fi
 Mermaid CLI and a local browser renderer were unavailable, so no rendered diagram readability or browser-anchor check is claimed. Historical BSD examples, every resource link, original slide visibility, the supplied course suffix, and empirical claims were not independently authenticated. Supplementary maintained API documentation was consulted for selected review findings; it was not counted as lecture teaching. No answer-key correction, application work, commit, or push was performed.
 
 [Topic overview](README.md) · [Review queue](review.md)
+
+## Answer-explanation pass, 22 October 2026
+
+Against committed baseline `078b66f`, authored explanations for all 47 currently linked native questions in `quizzes/quiz_05_socket_api.json`. Reviewed each against its actual mapped teaching, ordered options, key, and relevant review notes. Cross-topic support uses the destination lessons; the canonical question remains here. The 20 linked wording findings are addressed explicitly, including any preserved key that conflicts with the source. The 33 unlinked questions keep their empty explanations and coverage gaps. No new coverage was claimed.
+
+A separate comparison verified that **only explanation fields changed in the quiz**: question text, option order, correct-answer indices, manual tags, lesson assignments, flags, and all other fields are identical to HEAD. Fingerprints remain valid. Every explanation links to its primary lesson and every explicitly required supporting lesson; all local targets were checked. No lecture teaching, numbered lesson, diagram, or dependency classification was changed.
+
+The saved validator without `--baseline` retains only the four previously documented Socket API/SDN diagram-preservation findings across the repository, plus the existing 49 legacy dependency warnings. With `--baseline HEAD`, it additionally reports a content difference for each of the six intentionally edited quizzes because explanations are protected content. Those generic messages do **not** indicate that keys changed: the stricter comparison allowing only explanation edits verified their preservation. This is not an overall strict-baseline validation pass. No validator behavior was weakened.
+
+`explanation_status` is now **reviewed**, awaiting the user's approval of the new text. `preparation_status` retains approval of the unchanged lesson conversion. The explanation pass does not classify missing legacy dependencies as empty or resolve existing wording flags by itself. No application code, answer-key corrections, new figures, commit, or push was produced.

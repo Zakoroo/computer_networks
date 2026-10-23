@@ -42,7 +42,7 @@ No DNS-quiz question needs another topic's lesson to answer the supported concep
 
 Two previously reviewed routing questions now have real DNS links: Routing Q036 uses lesson 18; Routing Q037 uses lesson 08 **and requires lesson 18**. The latter combines replica-update timing with route-selected instances; differing responses during an update interval are not an inherent property of anycast. The canonical records remain in the routing manifest; this topic records external references and lists them in Practice sections.
 
-See the [review queue](review.md) for evidence and qualifications, [manifest](manifest.json) for machine-readable links, and [verification](verification.md) for checks and limits. A mapping does not endorse an imprecise answer key. Question text, option order, correct-answer indices, explanations, and manual tags are unchanged.
+See the [review queue](review.md) for evidence and qualifications, [manifest](manifest.json) for machine-readable links, and [verification](verification.md) for checks and limits. A mapping does not endorse an imprecise answer key. Question text, option order, correct-answer indices, and manual tags are unchanged; the later answer-explanation pass is recorded below.
 
 ## Provenance and source qualifications
 
@@ -62,3 +62,11 @@ The following metadata and cautions are retained verbatim from the guide. In par
 DNS examples below preserve the lecture's names, addresses, and observations as illustrative snapshots, not promises about current deployments. Explicit **Technical clarification** notes distinguish corrections or necessary standards context from the lecture's simplified model.
 
 [All topics](../README.md)
+
+## Answer explanations
+
+On 22 October 2026, all **27 linked questions** in [the canonical quiz](../../quizzes/quiz_02_dns.json) received authored explanations grounded in their actual primary/supporting lessons. The **4 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **4 unlinked questions** remain outside the pass and retain empty explanations.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).

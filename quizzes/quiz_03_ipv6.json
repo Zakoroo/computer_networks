@@ -34,7 +34,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Review note:** SLAAC automates address formation from an advertised prefix and a locally generated interface identifier. That is useful configuration support, but it does not itself establish a working route to another endpoint or guarantee transparent end-to-end connectivity. The stem's claimed benefit is therefore not clearly answered by the preserved key. Address configuration, address scope, routing, and translation are separate issues.\n\nSee [Router advertisements, SLAAC, and DHCPv6](../lessons/03_ipv6/08_slaac_and_dhcpv6.md).",
       "lesson_id": "ipv6-08",
       "tags": [],
       "flags": [
@@ -53,7 +53,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "IPv6 prefixes can be allocated hierarchically: a provider delegates a routing prefix, an organization divides it into subnet prefixes, and interface identifiers distinguish interfaces on a link. This lets administrative delegation follow the address structure. Examples such as /48 sites and /64 LANs illustrate the model rather than mandatory sizes for every deployment. It does not remove the need for DNS.\n\nSee [Delivery types and global unicast structure](../lessons/03_ipv6/04_address_types.md).",
       "lesson_id": "ipv6-04",
       "tags": [],
       "flags": []
@@ -70,7 +70,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Two occurrences of :: make the number of zero hextets to insert at each gap ambiguous, so that representation is invalid syntax. Leading zeros are legal, and a dotted-decimal IPv4 tail can legitimately mix notation. Omitting a nonzero hextet is also not a faithful compression of the original address, even if the resulting string parses. Thus the stem must distinguish syntactic validity from preserving an intended address.\n\nSee [IPv6 notation, compression, and prefixes](../lessons/03_ipv6/03_notation_and_prefixes.md); [Local scope, special addresses, and embedded IPv4](../lessons/03_ipv6/05_local_and_embedded_addresses.md).",
       "lesson_id": "ipv6-03",
       "tags": [],
       "flags": [
@@ -89,7 +89,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "IP anycast assigns the same destination address to several instances and lets routing select one reachable member. Multicast distributes traffic to the members reached through the group's forwarding tree. Anycast's nearest means preferred by routing policy and metrics, not necessarily lowest geographic distance. The distinction is one selected recipient versus group distribution, not TCP versus UDP.\n\nSee [Anycast, DNS selection, and service continuity](../lessons/03_ipv6/15_anycast.md); [Multicast replication, membership, and scope](../lessons/03_ipv6/14_multicast.md).",
       "lesson_id": "ipv6-15",
       "tags": [],
       "flags": []
@@ -106,7 +106,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** SLAAC lets a host form an address from suitable advertised prefix information and its own interface identifier without an address-lease server. The keyed phrase based on MAC is too restrictive: modified EUI-64 is one IID method, while privacy-oriented identifiers provide alternatives. Router configuration is still involved, so absence of a DHCP server does not mean the host needs no network information.\n\nSee [Router advertisements, SLAAC, and DHCPv6](../lessons/03_ipv6/08_slaac_and_dhcpv6.md).",
       "lesson_id": "ipv6-08",
       "tags": [],
       "flags": [
@@ -125,7 +125,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "An IPv4-only intermediate network cannot directly forward an ordinary native IPv6 packet as IPv6. Without a suitable transition arrangement or a native IPv6 path, the endpoints can therefore lose connectivity despite both supporting IPv6. A configured tunnel can carry the IPv6 packet as an IPv4 payload across that portion of the path. The incompatibility does not inherently imply DNSSEC failure or address collision.\n\nSee [Coexistence, encapsulation, and historical 6to4](../lessons/03_ipv6/19_tunnelling.md).",
       "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
@@ -142,7 +142,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "An IPv6-over-IPv4 tunnel places the complete IPv6 packet inside an outer IPv4 packet. Intermediate IPv4 routers forward using the outer header; the remote tunnel endpoint removes it and continues IPv6 forwarding. This bridges an IPv4-only part of the path without requiring those intermediate routers to understand the inner IPv6 packet. Encapsulation adds overhead rather than compressing the packet.\n\nSee [Coexistence, encapsulation, and historical 6to4](../lessons/03_ipv6/19_tunnelling.md).",
       "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
@@ -159,7 +159,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "IPv6 keeps its common base header fixed at 40 bytes and places optional functions in extension headers. Each header identifies what follows, so options can be modular without enlarging or redesigning the base format for every feature. This simplifies common processing while retaining extensibility. It does not authorize intermediate-router fragmentation or eliminate error detection at other layers.\n\nSee [Source fragmentation and modular extension headers](../lessons/03_ipv6/17_fragmentation_and_extensions.md); [Reading the fixed IPv6 base header](../lessons/03_ipv6/16_base_header.md).",
       "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
@@ -196,7 +196,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Moving fragmentation to the source removes the need for intermediate IPv6 routers to split oversized packets and construct fragments while forwarding. A router can instead report the size problem, allowing the source to adapt or fragment appropriately. This keeps the forwarding path simpler; it does not prohibit source fragmentation or make TCP the recovery mechanism for every IPv6 application.\n\nSee [Source fragmentation and modular extension headers](../lessons/03_ipv6/17_fragmentation_and_extensions.md).",
       "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
@@ -213,7 +213,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "The destination needs every fragment to reconstruct the original datagram. Losing any one fragment prevents successful IP reassembly, so transmitting many fragments exposes one datagram to several opportunities for loss and can waste work on the fragments that arrive. IPv6 fragmentation occurs at the source, not at each intermediate router. Higher-layer recovery may still retransmit data; the question asks this qualitative risk, not a numerical calculation from the 10% figure.\n\nSee [Fragmentation and path MTU](../lessons/01_routing/03_fragmentation_and_pmtu.md); [Source fragmentation and modular extension headers](../lessons/03_ipv6/17_fragmentation_and_extensions.md).",
       "lesson_id": "routing-03",
       "tags": [],
       "flags": [
@@ -252,7 +252,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "CIDR improved allocation and aggregation, while NAT let multiple internal hosts share scarce public IPv4 addresses. Those mechanisms reduced immediate pressure to replace IPv4, even though they did not enlarge its 32-bit address space. IPv6 therefore had to coexist with a still-useful installed IPv4 network rather than being adopted solely because exhaustion had been predicted.\n\nSee [Why IPv6 exists](../lessons/03_ipv6/01_motivation.md).",
       "lesson_id": "ipv6-01",
       "tags": [],
       "flags": []
@@ -307,7 +307,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "With unicast replication, identical traffic for several receivers can traverse a shared upstream link several times. Multicast carries one copy on a shared distribution-tree segment and replicates it where receiver paths diverge. This saves source and shared-link work at the cost of router forwarding state and coordinated support. It does not, by itself, guarantee reliable delivery to every recipient.\n\nSee [Multicast replication, membership, and scope](../lessons/03_ipv6/14_multicast.md).",
       "lesson_id": "ipv6-14",
       "tags": [],
       "flags": []
@@ -324,7 +324,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "Multicast shifts replication into the network, where routers must maintain group-related forwarding state and establish suitable distribution paths. Extending that operation across independently managed networks requires coordinated support and adds operational complexity. These state and deployment demands help explain limited inter-domain availability. The lecture does not attribute it to IPv6 being incompatible with Ethernet or to a TCP-handshake requirement.\n\nSee [Multicast replication, membership, and scope](../lessons/03_ipv6/14_multicast.md).",
       "lesson_id": "ipv6-14",
       "tags": [],
       "flags": []
@@ -341,7 +341,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "Several anycast instances advertise reachability for the same destination address. Ordinary IP route selection directs a packet toward one preferred reachable instance, so the sender does not explicitly broadcast it to every member. Topologically closest is shorthand for the result of policy and routing metrics, not a guarantee of geographical closeness or a fixed instance for every future packet.\n\nSee [Anycast, DNS selection, and service continuity](../lessons/03_ipv6/15_anycast.md).",
       "lesson_id": "ipv6-15",
       "tags": [],
       "flags": []
@@ -397,7 +397,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Advertising one service address from multiple sites lets routing direct a user toward a preferred regional instance without requiring a separate site-specific destination address. The keyed word closest needs qualification: policy and metrics can select a site that is not geographically closest or lowest-latency. Anycast does not guarantee deterministic paths, state synchronization, or automatic reliable delivery.\n\nSee [Anycast, DNS selection, and service continuity](../lessons/03_ipv6/15_anycast.md).",
       "lesson_id": "ipv6-15",
       "tags": [],
       "flags": [
@@ -436,7 +436,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "NAT and improved address reuse kept IPv4 useful, reducing the immediate incentive to replace it. Meanwhile IPv4 and IPv6 could not simply communicate natively across every existing deployment, so transition required combinations of dual stack, tunnelling, or translation. Those compatibility and operational costs help explain slow adoption. The lecture provides this causal explanation, not a measured universal ranking of every adoption factor.\n\nSee [Why IPv6 exists](../lessons/03_ipv6/01_motivation.md); [Coexistence, encapsulation, and historical 6to4](../lessons/03_ipv6/19_tunnelling.md).",
       "lesson_id": "ipv6-01",
       "tags": [],
       "flags": []
@@ -453,7 +453,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "An IPv6-over-IPv4 tunnel encapsulates the IPv6 datagram in an IPv4 packet between tunnel endpoints. The IPv4-only portion forwards the outer packet normally, and the far endpoint recovers the inner IPv6 datagram. This directly addresses an incompatible intermediate network; it is different from header compression, DNS failover, or translating the endpoints' address families.\n\nSee [Coexistence, encapsulation, and historical 6to4](../lessons/03_ipv6/19_tunnelling.md).",
       "lesson_id": "ipv6-19",
       "tags": [],
       "flags": []
@@ -470,7 +470,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "The Flow Label identifies packets belonging to a flow so devices can apply suitable consistent handling without treating it as an address or next-hop field. It is separate from Traffic Class, which expresses differentiated handling, and Hop Limit, which bounds forwarding steps. A flow label does not itself carry transport session state or guarantee reserved bandwidth.\n\nSee [Reading the fixed IPv6 base header](../lessons/03_ipv6/16_base_header.md).",
       "lesson_id": "ipv6-16",
       "tags": [],
       "flags": []
@@ -487,7 +487,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Next Header identifies either an extension header or the upper-layer protocol that follows. An extension can then identify its successor, creating a chain while leaving the base header format fixed. This makes optional functions modular. It does not replace neighbor discovery or checksums at other layers, and the presence of a chain does not mean every extension is deployed successfully on every Internet path.\n\nSee [Source fragmentation and modular extension headers](../lessons/03_ipv6/17_fragmentation_and_extensions.md).",
       "lesson_id": "ipv6-17",
       "tags": [],
       "flags": []
@@ -523,7 +523,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A prefix length counts the high-order address bits identifying a network allocation or subnet. The remaining bits distinguish addresses within that range; a conventional /64 LAN leaves a 64-bit interface identifier. Shorter site allocations can be subdivided into longer subnet prefixes. This is address structure, independent of the packet's Flow Label, Hop Limit, or transport protocol.\n\nSee [IPv6 notation, compression, and prefixes](../lessons/03_ipv6/03_notation_and_prefixes.md).",
       "lesson_id": "ipv6-03",
       "tags": [],
       "flags": []
@@ -540,7 +540,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Forming a global SLAAC address normally requires suitable autonomous prefix information from an RA, but a host can solicit an RA instead of waiting for periodic unsolicited advertisements. Initial link-local address formation uses an already-known prefix and requires no RA. The preserved key therefore overstates periodic RAs as necessary for every form of stateless autoconfiguration; it should specify the address scope and required prefix information.\n\nSee [Router advertisements, SLAAC, and DHCPv6](../lessons/03_ipv6/08_slaac_and_dhcpv6.md).",
       "lesson_id": "ipv6-08",
       "tags": [],
       "flags": [

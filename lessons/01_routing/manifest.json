@@ -3,6 +3,7 @@
   "topic_id": "01_routing",
   "title": "Internet routing",
   "preparation_status": "approved",
+  "explanation_status": "reviewed",
   "created": "2026-10-22",
   "source_commit": "192e7eac3ea9889afb259a0199e0a0638e1aee29",
   "source_lecture": "lectures/lecture_01_internet_routing.md",

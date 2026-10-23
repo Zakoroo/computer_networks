@@ -22,6 +22,10 @@ Future application requirement: users must be able to add and remove tags manual
 
 Topic manifests also record `preparation_status`: `drafted` (content assembled), `reviewed` (content checks performed, awaiting user approval), or `approved` (user approved). Set this explicitly; neither a file's existence nor successful validation establishes approval. [PROGRESS.md](../PROGRESS.md) uses this metadata for its stage view, independently of commit/push status. Reassess the recorded stage when substantive content changes.
 
+`explanation_status` separately records review of newly authored quiz explanations using the same drafted/reviewed/approved distinction. Keeping an approved lesson conversion unchanged does not approve new answer text: the explanation pass can be reviewed while the lesson conversion remains approved. Current explanation counts and approval state are in [STATS.md](../STATS.md) and [STATUS.md](../STATUS.md); the generated topic-stage charts continue to describe lesson preparation.
+
+The quiz `explanation` field supports Markdown, with source links relative to its quiz file. Explanations teach the reasoning and cite primary/required lessons. A flagged key must receive an explicit qualification or correction note in the explanation, retaining the original key and flag until a separate correction is authorized. Empty fields on uncovered questions are not permission to invent missing lecture teaching.
+
 Before matching by source index after any edit, check `question_sha256`. Compute SHA-256 over UTF-8 JSON containing exactly `question` and `options`, with sorted keys, Unicode unescaped, and compact separators. The fingerprint excludes answer indices, tags, flags, and lesson assignments. If text or option order changes, update the manifest deliberately rather than silently attaching a different question.
 
 Coverage statuses are `routing_lesson` for this pilot, `covered_in_other_topic`, `partial_in_other_topic`, and `not_found_in_available_lectures`. Cross-topic targets use source-file/section references until their real lessons exist. Coverage and question validity are independent: a mapped question can still need wording review.

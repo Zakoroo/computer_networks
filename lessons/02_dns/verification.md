@@ -36,3 +36,13 @@ The root-KSK timeline, adoption measurements, and historical lookup results are 
 Additional standards checks used [RFC 1034](https://www.rfc-editor.org/rfc/rfc1034.html#section-5.3.1) for stub resolvers and CNAME processing, [RFC 1035 §6.1.3](https://www.rfc-editor.org/rfc/rfc1035.html#section-6.1.3) for ordinary cache expiry, [RFC 2308 §5](https://www.rfc-editor.org/rfc/rfc2308.html#section-5) for negative-cache timing, and [RFC 5452 §9.1](https://www.rfc-editor.org/rfc/rfc5452.html#section-9.1) for response matching. These checks support the identified clarifications, not an assertion that every external reference was audited.
 
 [Topic overview](README.md) · [Review queue](review.md)
+
+## Answer-explanation pass, 22 October 2026
+
+Against committed baseline `078b66f`, authored explanations for all 27 currently linked native questions in `quizzes/quiz_02_dns.json`. Reviewed each against its actual mapped teaching, ordered options, key, and relevant review notes. Cross-topic support uses the destination lessons; the canonical question remains here. The 4 linked wording findings are addressed explicitly, including any preserved key that conflicts with the source. The 4 unlinked questions keep their empty explanations and coverage gaps. No new coverage was claimed.
+
+A separate comparison verified that **only explanation fields changed in the quiz**: question text, option order, correct-answer indices, manual tags, lesson assignments, flags, and all other fields are identical to HEAD. Fingerprints remain valid. Every explanation links to its primary lesson and every explicitly required supporting lesson; all local targets were checked. No lecture teaching, numbered lesson, diagram, or dependency classification was changed.
+
+The saved validator without `--baseline` retains only the four previously documented Socket API/SDN diagram-preservation findings across the repository, plus the existing 49 legacy dependency warnings. With `--baseline HEAD`, it additionally reports a content difference for each of the six intentionally edited quizzes because explanations are protected content. Those generic messages do **not** indicate that keys changed: the stricter comparison allowing only explanation edits verified their preservation. This is not an overall strict-baseline validation pass. No validator behavior was weakened.
+
+`explanation_status` is now **reviewed**, awaiting the user's approval of the new text. `preparation_status` retains approval of the unchanged lesson conversion. The explanation pass does not classify missing legacy dependencies as empty or resolve existing wording flags by itself. No application code, answer-key corrections, new figures, commit, or push was produced.

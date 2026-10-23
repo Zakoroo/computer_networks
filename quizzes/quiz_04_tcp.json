@@ -13,7 +13,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "TCP establishes a connection and provides the application with a reliable, ordered byte stream, recovering from loss where possible. UDP provides connectionless datagrams without that built-in stream-reliability service. Ports and error-detection checks are not the distinguishing feature here. TCP's service still does not guarantee a minimum bandwidth, a bounded delivery time, or that a connection survives every failure.\n\nSee [TCP and UDP services](../lessons/04_tcp/02_tcp_udp_services.md).",
       "lesson_id": "tcp-02",
       "tags": [],
       "flags": []
@@ -30,7 +30,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "For a data-bearing TCP segment, the sequence number identifies the position of its first data byte in the byte stream. In the lesson's trace, Seq=1 with 1,448 data bytes covers positions 1–1448, so the next expected byte is 1449. Sequence numbers track byte positions rather than application-message identifiers or measured RTT values.\n\nSee [RTT estimation and retransmission timeouts](../lessons/04_tcp/07_rtt_and_timeouts.md).",
       "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
@@ -86,7 +86,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "EWMA combines a new RTT sample with the previous estimate, making older samples' influence decay over time. With alpha=1/8, the update weights the old estimate by 7/8 and the current sample by 1/8. This smooths fluctuations while remaining responsive to recent conditions. RTT deviation supplies an additional timeout safety margin; EWMA neither ignores spikes nor gives every historical sample equal weight.\n\nSee [RTT estimation and retransmission timeouts](../lessons/04_tcp/07_rtt_and_timeouts.md).",
       "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
@@ -103,13 +103,13 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "The receiver advertises available receive-buffer space as its receive window. The sender bounds its outstanding unacknowledged bytes by that allowance, preventing it from overrunning that receiver's buffer. Congestion control imposes a separate limit reflecting the network path. Reducing MSS alone does not bound the total number of outstanding bytes.\n\nSee [Flow control and the receive window](../lessons/04_tcp/08_flow_control.md); [End-to-end feedback and CWND](../lessons/04_tcp/10_congestion_feedback.md).",
       "lesson_id": "tcp-08",
       "tags": [],
       "flags": []
     },
     {
-      "question": "In TCP\u2019s sliding window protocol, what happens when the receiver sends an acknowledgment?",
+      "question": "In TCP’s sliding window protocol, what happens when the receiver sends an acknowledgment?",
       "options": [
         "The window slides forward, allowing more data to be sent",
         "The sender resets the entire window and restarts transmission",
@@ -120,7 +120,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** The sender advances its window's acknowledged edge when it receives a new cumulative ACK covering previously outstanding bytes. That can free space for further data, subject to the current flow and congestion limits. A duplicate ACK repeats an existing edge and does not itself slide it forward. The preserved stem is too broad because merely sending any ACK does not guarantee progress at the sender.\n\nSee [TCP byte numbers and the sender window](../lessons/04_tcp/06_byte_stream_window.md).",
       "lesson_id": "tcp-06",
       "tags": [],
       "flags": [
@@ -139,13 +139,13 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "An RTO that expires too soon can retransmit data that is only delayed, wasting capacity and potentially changing congestion-control state unnecessarily. An excessively long RTO makes genuine loss recovery slow. TCP therefore estimates RTT and its variation to choose a useful waiting interval. The timeout is a recovery timer, not the receiver window or a replacement for congestion control.\n\nSee [RTT estimation and retransmission timeouts](../lessons/04_tcp/07_rtt_and_timeouts.md).",
       "lesson_id": "tcp-07",
       "tags": [],
       "flags": []
     },
     {
-      "question": "What triggers TCP\u2019s fast retransmit mechanism?",
+      "question": "What triggers TCP’s fast retransmit mechanism?",
       "options": [
         "Sender's buffer reaching zero available space",
         "Three duplicate acknowledgments for the same data",
@@ -156,13 +156,13 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "In the classical fast-retransmit mechanism, three duplicate ACKs repeating the same next-expected byte indicate that later data is arriving while a gap remains. The sender retransmits the missing segment without waiting for its RTO. The threshold tolerates some reordering but is still a loss inference, not proof. A zero receive window concerns flow control rather than this trigger.\n\nSee [Fast retransmit and duplicate ACKs](../lessons/04_tcp/13_fast_retransmit.md).",
       "lesson_id": "tcp-13",
       "tags": [],
       "flags": []
     },
     {
-      "question": "How can delayed acknowledgments interfere with TCP\u2019s fast retransmit mechanism?",
+      "question": "How can delayed acknowledgments interfere with TCP’s fast retransmit mechanism?",
       "options": [
         "They reduce the maximum segment size",
         "They prevent duplicate ACKs from being generated quickly",
@@ -193,7 +193,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "Congestion control regulates aggregate demand on shared links and router resources, aiming to prevent collapse and share bottleneck capacity fairly. Excessive traffic can fill queues, cause losses, and waste capacity on retransmissions. This differs from protecting one receiver's buffer through flow control. Fairness and useful throughput are goals; TCP does not reserve bandwidth or guarantee deterministic RTTs.\n\nSee [Congestion, goodput, and fairness](../lessons/04_tcp/09_congestion_goals.md).",
       "lesson_id": "tcp-09",
       "tags": [],
       "flags": []
@@ -210,7 +210,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "CWND limits how much unacknowledged data the sender permits in the network according to its congestion-control feedback. Increasing it probes for capacity; reducing it backs off after a congestion indication in the model being studied. It is separate from the receiver's advertised capacity and from retransmission timing. Approximate throughput depends on both the usable in-flight window and RTT.\n\nSee [End-to-end feedback and CWND](../lessons/04_tcp/10_congestion_feedback.md).",
       "lesson_id": "tcp-10",
       "tags": [],
       "flags": []
@@ -227,13 +227,13 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "In the classical congestion-avoidance model, additive increase grows CWND by roughly one MSS per RTT, while multiplicative decrease reduces it by a fraction, commonly one half. This produces the sawtooth that probes for spare capacity and backs off under congestion. Doubling each RTT describes slow start, not the additive-growth phase. The simplified fairness argument does not guarantee equal shares for arbitrary RTTs or controllers.\n\nSee [Why AIMD approaches a fair share](../lessons/04_tcp/11_aimd_fairness.md).",
       "lesson_id": "tcp-11",
       "tags": [],
       "flags": []
     },
     {
-      "question": "What characterizes TCP\u2019s slow start phase?",
+      "question": "What characterizes TCP’s slow start phase?",
       "options": [
         "Using a fixed congestion window to probe bandwidth",
         "Linear growth of CWND regardless of network conditions",
@@ -244,13 +244,13 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Slow start increases CWND for each arriving ACK, giving approximately exponential growth per RTT under the lesson's assumptions. It changes to congestion avoidance near the threshold or reacts to a congestion event. Despite its name, it grows faster than additive congestion avoidance. The one-MSS starting value belongs to the classical example; the lesson also notes larger initial windows in modern stacks.\n\nSee [Slow start, congestion avoidance, and Tahoe](../lessons/04_tcp/12_slow_start_tahoe.md).",
       "lesson_id": "tcp-12",
       "tags": [],
       "flags": []
     },
     {
-      "question": "What distinguishes TCP Reno\u2019s response to packet loss from TCP Tahoe?",
+      "question": "What distinguishes TCP Reno’s response to packet loss from TCP Tahoe?",
       "options": [
         "Reno waits for application-layer feedback to adjust CWND",
         "Reno performs immediate retransmission after the first duplicate ACK",
@@ -261,7 +261,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** On the three-duplicate-ACK loss path, Reno uses fast retransmit followed by fast recovery, while Tahoe resets CWND and restarts slow start. Reno also falls back to slow start after a retransmission timeout, so the preserved key is not true of every loss event. The important distinction is the response to duplicate-ACK evidence that some data is still flowing.\n\nSee [Reno fast recovery and out-of-order buffering](../lessons/04_tcp/14_reno_fast_recovery.md); [Slow start, congestion avoidance, and Tahoe](../lessons/04_tcp/12_slow_start_tahoe.md); [Fast retransmit and duplicate ACKs](../lessons/04_tcp/13_fast_retransmit.md).",
       "lesson_id": "tcp-14",
       "tags": [],
       "flags": [
@@ -273,14 +273,14 @@
       "options": [
         "To trigger a three-way handshake from the sender",
         "To reset both sender and receiver buffers upon congestion",
-        "To reduce the receiver\u2019s advertised window after loss",
+        "To reduce the receiver’s advertised window after loss",
         "To avoid re-entering slow start by inflating the congestion window",
         "To immediately drop the connection after a timeout"
       ],
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "After fast retransmit, Reno sets a reduced threshold and temporarily inflates CWND to account for packets inferred to have left the network and reached the receiver. Continued duplicate ACKs can permit further transmissions. A new cumulative ACK ends recovery and returns to congestion avoidance instead of rebuilding from the initial slow-start window. This changes the sender's congestion window, not the receiver's advertised buffer space.\n\nSee [Reno fast recovery and out-of-order buffering](../lessons/04_tcp/14_reno_fast_recovery.md).",
       "lesson_id": "tcp-14",
       "tags": [],
       "flags": []
@@ -297,7 +297,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Supplementary (†):** This answer uses teaching marked supplementary in the supplied guide.\n\nIf several packets from a window are lost, Reno can leave recovery after an ACK that repairs only the first gap. NewReno modifies recovery so it can continue repairing losses from that recovery window before exiting, reducing repeated slowdowns or a later timeout. The improvement concerns interpreting progress during fast recovery; it does not discard ACK feedback or reset CWND to zero.\n\nSee [NewReno, SACK, Vegas, and Westwood †](../lessons/04_tcp/15_classical_variants.md).",
       "lesson_id": "tcp-15",
       "tags": [],
       "flags": [
@@ -316,7 +316,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Supplementary (†):** This answer uses teaching marked supplementary in the supplied guide.\n\nVegas watches RTT relative to a low-delay baseline to infer that a queue is building. It can reduce its sending rate before waiting for a drop, unlike the classical loss-based approach. Returned timing feedback, not router-supplied explicit notifications or duplicate-ACK counting alone, provides the signal in this comparison. Competing loss-based flows can still affect the bandwidth share Vegas obtains.\n\nSee [NewReno, SACK, Vegas, and Westwood †](../lessons/04_tcp/15_classical_variants.md).",
       "lesson_id": "tcp-15",
       "tags": [],
       "flags": [
@@ -335,7 +335,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "With classical ECN, an eligible packet can receive a Congestion Experienced mark at a congested router instead of being dropped for that signal. The receiver communicates the indication to the sender through TCP feedback, and the sender reduces its load. This can signal congestion earlier while preserving that packet. It does not eliminate CWND, guarantee bandwidth, or prevent all later drops.\n\nSee [Explicit Congestion Notification](../lessons/04_tcp/20_ecn.md).",
       "lesson_id": "tcp-20",
       "tags": [],
       "flags": []
@@ -352,13 +352,13 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "BBR builds a model using estimated bottleneck delivery bandwidth and a low propagation-RTT estimate, then uses pacing and an in-flight bound based on the path model. CUBIC is presented as loss-based, growing its congestion window with a cubic time function. This is a difference in the main control strategy, not a promise that every BBR version ignores all other feedback or that either controller guarantees fair, queue-free operation.\n\nSee [BBR path models and fairness caveats](../lessons/04_tcp/19_bbr.md); [Modern transport evolution and CUBIC](../lessons/04_tcp/17_cubic.md).",
       "lesson_id": "tcp-19",
       "tags": [],
       "flags": []
     },
     {
-      "question": "Which scenario most clearly violates TCP\u2019s fairness goal?",
+      "question": "Which scenario most clearly violates TCP’s fairness goal?",
       "options": [
         "All flows experiencing periodic slow start phases",
         "One flow throttling itself after loss while another continues to grow aggressively",
@@ -369,7 +369,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "The simplified AIMD fairness argument assumes competing senders participate in backing off when congestion occurs. If one flow reduces its rate while another keeps increasing aggressively, the latter can capture more of the shared capacity and frustrate that cooperative goal. Equal throughput at a bottleneck is not itself a fairness violation. Real fairness also depends on RTTs and the controllers involved.\n\nSee [Why AIMD approaches a fair share](../lessons/04_tcp/11_aimd_fairness.md).",
       "lesson_id": "tcp-11",
       "tags": [],
       "flags": []
@@ -424,7 +424,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "Bufferbloat is a persistently large queue that adds substantial waiting time to packets. A bulk flow may keep the bottleneck busy and show acceptable throughput while interactive traffic experiences very high latency. The problem is therefore not necessarily poor link utilization or connection-reset traffic. Queue management such as CoDel addresses excessive packet waiting rather than simply adding more buffer memory.\n\nSee [Bufferbloat, CoDel, and FQ-CoDel](../lessons/04_tcp/18_bufferbloat_aqm.md).",
       "lesson_id": "tcp-18",
       "tags": [],
       "flags": []
@@ -500,7 +500,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** The source's classical loss-based sender treats loss as a signal to back off even when a wireless error caused it without network congestion. That can reduce throughput unnecessarily on a noisy link. Standard TCP is too broad a label for every modern controller and wireless deployment; the preserved key should be understood within the loss-based model described, not as a universal statement about all TCP behavior.\n\nSee [Wireless loss and other congestion-control limits](../lessons/04_tcp/23_failure_modes.md).",
       "lesson_id": "tcp-23",
       "tags": [],
       "flags": [
@@ -519,7 +519,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Supplementary (†):** This answer uses teaching marked supplementary in the supplied guide.\n\nWestwood estimates available bandwidth from the rate at which ACKs return and uses that estimate to set congestion-control variables after loss. The aim is a more informed reduction than a blind response to every lossy-path event. It still uses ACKs and responds to losses; it does not obtain its improvement by ignoring duplicates or sending every segment twice.\n\nSee [NewReno, SACK, Vegas, and Westwood †](../lessons/04_tcp/15_classical_variants.md).",
       "lesson_id": "tcp-15",
       "tags": [],
       "flags": [

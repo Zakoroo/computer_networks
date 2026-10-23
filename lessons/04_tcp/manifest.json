@@ -3,6 +3,7 @@
   "topic_id": "04_tcp",
   "title": "End-to-End Communication and Congestion Control",
   "preparation_status": "approved",
+  "explanation_status": "reviewed",
   "source_commit": "436acd77efdf644d57b03b21c40365cc262b070d",
   "source_lecture": "lectures/lecture_04_tcp-ip.md",
   "source_quiz": "quizzes/quiz_04_tcp.json",

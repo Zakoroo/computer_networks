@@ -36,3 +36,13 @@ Source-span comparison, counts, and diagram semantic checks complement structura
 The primary OpenFlow 1.3.0 specification was consulted for selected matching, table-miss, and connection-interruption review findings. Those supplementary checks do not fill lecture gaps. Historical deployment/adoption claims, membership, acquisition value, slide visibility, supplied course suffix, every linked paper, and current implementation status were not independently authenticated. No answer-key correction, application work, commit, or push was performed.
 
 [Topic overview](README.md) · [Review queue](review.md)
+
+## Answer-explanation pass, 22 October 2026
+
+Against committed baseline `078b66f`, authored explanations for all 28 currently linked native questions in `quizzes/quiz_06_sdn.json`. Reviewed each against its actual mapped teaching, ordered options, key, and relevant review notes. Cross-topic support uses the destination lessons; the canonical question remains here. The 4 linked wording findings are addressed explicitly, including any preserved key that conflicts with the source. The 1 unlinked questions keep their empty explanations and coverage gaps. No new coverage was claimed.
+
+A separate comparison verified that **only explanation fields changed in the quiz**: question text, option order, correct-answer indices, manual tags, lesson assignments, flags, and all other fields are identical to HEAD. Fingerprints remain valid. Every explanation links to its primary lesson and every explicitly required supporting lesson; all local targets were checked. No lecture teaching, numbered lesson, diagram, or dependency classification was changed.
+
+The saved validator without `--baseline` retains only the four previously documented Socket API/SDN diagram-preservation findings across the repository, plus the existing 49 legacy dependency warnings. With `--baseline HEAD`, it additionally reports a content difference for each of the six intentionally edited quizzes because explanations are protected content. Those generic messages do **not** indicate that keys changed: the stricter comparison allowing only explanation edits verified their preservation. This is not an overall strict-baseline validation pass. No validator behavior was weakened.
+
+`explanation_status` is now **reviewed**, awaiting the user's approval of the new text. `preparation_status` retains approval of the unchanged lesson conversion. The explanation pass does not classify missing legacy dependencies as empty or resolve existing wording flags by itself. No application code, answer-key corrections, new figures, commit, or push was produced.

@@ -3,6 +3,7 @@
   "topic_id": "03_ipv6",
   "title": "IPv6, Multicast, and Anycast: Addressing, Configuration, and Deployment",
   "preparation_status": "approved",
+  "explanation_status": "reviewed",
   "source_commit": "ee91644287a55400038acf5c4ce63ad051c2a522",
   "source_lecture": "lectures/lecture_03_ipv6.md",
   "source_quiz": "quizzes/quiz_03_ipv6.json",

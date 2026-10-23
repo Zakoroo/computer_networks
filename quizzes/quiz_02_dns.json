@@ -13,7 +13,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Applications communicate using network addresses, while people and services commonly identify destinations by names. DNS supplies records that map those names to values such as IPv4 or IPv6 addresses, allowing address changes without requiring users to memorize a new number. It does not allocate MAC addresses, prevent every IP conflict, or provide reliable packet delivery.\n\nSee [Names, URLs, and the purpose of DNS](../lessons/02_dns/01_names_and_urls.md).",
       "lesson_id": "dns-01",
       "tags": [],
       "flags": [
@@ -32,7 +32,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "DNS separates the name an application uses from the address needed for IP communication. Looking up the name can return an address record, while other record types locate mail services or authoritative servers. Reliability and route selection belong to other protocols. This question duplicates Q001 with reordered options, so the correct concept is the same despite its different answer position.\n\nSee [Names, URLs, and the purpose of DNS](../lessons/02_dns/01_names_and_urls.md).",
       "lesson_id": "dns-01",
       "tags": [],
       "flags": [
@@ -51,7 +51,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "A single hosts.txt file required centralized administration and redistribution of an expanding name/address list. As the network grew, file size, naming conflicts, update authority, and slow propagation became difficult to manage. DNS distributes that responsibility through delegation and a hierarchy. The historical limitation was organizational and scaling-related, not dependence on DNSSEC, blockchain, or IPv6.\n\nSee [Why distributed naming and caching scale](../lessons/02_dns/02_scalable_naming.md).",
       "lesson_id": "dns-02",
       "tags": [],
       "flags": []
@@ -68,7 +68,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "DNS data is queried much more often than it changes, and many applications tolerate answers remaining unchanged for a bounded interval. Caches can therefore reuse records until their TTLs expire, saving network round trips and reducing authoritative-server work. The trade-off is delayed visibility of updates, not guaranteed immediate consistency. Cryptographic signatures can authenticate records but are not what makes caching useful.\n\nSee [Why distributed naming and caching scale](../lessons/02_dns/02_scalable_naming.md).",
       "lesson_id": "dns-02",
       "tags": [],
       "flags": []
@@ -85,7 +85,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "A recursive query asks the receiving server to obtain a final answer or error on the client's behalf, rather than merely return its next referral. The recursive resolver may perform an iterative sequence of non-recursive queries to other servers or use cached information. RD requests this service, but a server can refuse it; recursion is not guaranteed simply because the client asks.\n\nSee [Zones, delegation, and recursive resolution](../lessons/02_dns/03_hierarchy_and_resolution.md).",
       "lesson_id": "dns-03",
       "tags": [],
       "flags": []
@@ -102,7 +102,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "TTL states how long a resource record can remain usable in a cache, normally in seconds. A resolver counts down that lifetime and eventually needs fresh data for a subsequent lookup. TYPE identifies the kind of data, CLASS identifies its class, and RDATA contains the value. Those fields describe the record but do not specify its cache lifetime.\n\nSee [DNS headers and resource records](../lessons/02_dns/06_headers_and_records.md).",
       "lesson_id": "dns-06",
       "tags": [],
       "flags": []
@@ -119,7 +119,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "If example.com is delegated to ns1.example.com, resolving the server's address through the child would require first reaching that same child. The parent supplies address records alongside the referral to break this circular dependency. Those bootstrap A or AAAA records act as glue; glue is not a distinct record type or a cryptographic authentication mechanism.\n\nSee [Bootstrapping, glue, and delegation inspection](../lessons/02_dns/04_root_hints_and_glue.md).",
       "lesson_id": "dns-04",
       "tags": [],
       "flags": []
@@ -136,7 +136,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A referral normally places the child-zone NS records in Authority and useful address records for those servers in Additional. In-bailiwick bootstrap addresses in Additional can therefore serve as glue. Not every Additional record is glue, and a referral need not contain the final requested answer. The section roles matter more than simply whether the response has any records.\n\nSee [DNS transport and message sections](../lessons/02_dns/05_transport_and_sections.md); [Bootstrapping, glue, and delegation inspection](../lessons/02_dns/04_root_hints_and_glue.md).",
       "lesson_id": "dns-05",
       "tags": [],
       "flags": []
@@ -153,7 +153,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "RD means recursion desired: the requester wants the server to resolve the question fully on its behalf. RA is the separate indication that recursion is available, and AA indicates an authoritative answer. Setting RD does not prove the server offers recursion, make the response authoritative, or enable DNSSEC or TCP.\n\nSee [DNS headers and resource records](../lessons/02_dns/06_headers_and_records.md).",
       "lesson_id": "dns-06",
       "tags": [],
       "flags": []
@@ -170,7 +170,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "When the top two bits are 11, the two-byte encoding is a compression pointer rather than an ordinary length-prefixed label. Its remaining 14 bits identify an offset to a previously encoded name or suffix in the same DNS message. The first byte need not equal exactly 0xC0. Reusing a suffix saves space without changing the name's meaning.\n\nSee [Labels, name encoding, and compression](../lessons/02_dns/07_names_and_compression.md).",
       "lesson_id": "dns-07",
       "tags": [],
       "flags": []
@@ -187,7 +187,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "The SOA refresh interval tells a secondary how often to check for an updated zone. The serial identifies the version, retry governs another attempt after a failed check, and expire limits service without successful refresh. These are replication controls, distinct from the TTL controlling how long a recursive resolver can reuse an ordinary cached record.\n\nSee [Replication, SOA, and cache lifetimes](../lessons/02_dns/08_replication_and_caching.md).",
       "lesson_id": "dns-08",
       "tags": [],
       "flags": []
@@ -204,7 +204,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** A CNAME tells the resolver to follow another name to obtain the requested ordinary data, so it adds name indirection. That need not require an additional network lookup: the reply may already contain the target's address, or the address may be cached. The preserved key overstates this as an unavoidable extra lookup. CNAME following is also different from an HTTP redirect or an NS delegation.\n\nSee [CNAME chains and alias restrictions](../lessons/02_dns/09_aliases_and_cname.md).",
       "lesson_id": "dns-09",
       "tags": [],
       "flags": [
@@ -223,7 +223,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "Starting without a usable cached referral, a recursive resolver can ask a root server and receive the relevant TLD's name-server information. It then asks the TLD and follows further delegation toward the authoritative zone. The root provides the top-level referral rather than resolving every host itself. Cached referrals can let later queries bypass this initial step.\n\nSee [Zones, delegation, and recursive resolution](../lessons/02_dns/03_hierarchy_and_resolution.md).",
       "lesson_id": "dns-03",
       "tags": [],
       "flags": []
@@ -240,7 +240,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "**Review note:** NXDOMAIN says the queried name does not exist and can be cached as a negative result. Its negative-cache lifetime is bounded by the lesser of SOA.MINIMUM and the SOA record's own TTL, not MINIMUM alone as the preserved key suggests. For MINIMUM=900 and an SOA TTL of 300 seconds, the starting lifetime is at most 300 seconds. This is temporary caching, not permanent blacklisting.\n\nSee [Replication, SOA, and cache lifetimes](../lessons/02_dns/08_replication_and_caching.md).",
       "lesson_id": "dns-08",
       "tags": [],
       "flags": [
@@ -278,7 +278,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A name can return several A records, and the server or resolver can vary their order across replies. Clients that try different first entries can spread connections across the corresponding servers. This is basic round-robin distribution, not a guarantee of equal load or backend health. Client selection, caching, and connection reuse influence the actual result.\n\nSee [Round-robin DNS and address selection](../lessons/02_dns/12_load_balancing.md).",
       "lesson_id": "dns-12",
       "tags": [],
       "flags": []
@@ -295,7 +295,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "A long TTL allows a resolver to reuse an answer for longer, reducing repeat lookups and often their latency and server load. The same lifetime lets an old answer persist after the authoritative data changes, delaying what clients observe. This affects cached answers; it does not force authoritative servers to ignore secondary refresh or guarantee an immediate update everywhere.\n\nSee [Replication, SOA, and cache lifetimes](../lessons/02_dns/08_replication_and_caching.md).",
       "lesson_id": "dns-08",
       "tags": [],
       "flags": []
@@ -312,7 +312,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "A parent delegates a child zone by publishing NS information identifying the child's authoritative servers. That passes administrative responsibility for the delegated portion of the namespace while giving resolvers a route toward its answers. Delegation is not simply caching, copying a primary zone to a secondary, or forwarding a query through NAT.\n\nSee [Zones, delegation, and recursive resolution](../lessons/02_dns/03_hierarchy_and_resolution.md).",
       "lesson_id": "dns-03",
       "tags": [],
       "flags": []
@@ -329,7 +329,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** An attacker can poison a cache by racing a legitimate reply with a forged response that the resolver accepts. Predicting the transaction ID helps, but the response must also match relevant addresses, ports, and the question; ID prediction alone is insufficient. Those matching checks raise the difficulty of forgery without providing cryptographic data-origin authentication. A poisoned cached answer can then affect later clients.\n\nSee [Forgery and cache poisoning](../lessons/02_dns/13_forgery_and_cache_poisoning.md).",
       "lesson_id": "dns-13",
       "tags": [],
       "flags": [
@@ -348,7 +348,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "DNSSEC uses signed RRsets and a chain of trusted keys to let a validating resolver check DNS data's authenticity and integrity. It does not encrypt the records or guarantee that the authoritative server remains available. Signing and validation are separate deployment choices, so a signature helps clients only when the relevant trust chain is established and checked.\n\nSee [DNSSEC data authentication and deployment](../lessons/02_dns/14_dnssec.md).",
       "lesson_id": "dns-14",
       "tags": [],
       "flags": []
@@ -365,7 +365,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "A DS record in the parent contains a digest identifying a child zone's DNSKEY. Once the parent's data is authenticated, the resolver can check that the child's key matches that digest and continue validating the child's signatures. DS links trust across a delegation; it neither replaces NS reachability information nor encrypts the query payload.\n\nSee [DNSSEC data authentication and deployment](../lessons/02_dns/14_dnssec.md).",
       "lesson_id": "dns-14",
       "tags": [],
       "flags": []
@@ -401,7 +401,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "In the ordinary TTL model, an expired cached record cannot be reused as a fresh cache hit. When another request needs that data, the resolver obtains a fresh answer, following any still-usable cached referrals toward an authority. Expiry alone need not trigger an immediate background query or a new root lookup. The lesson does not cover special policies for serving stale answers.\n\nSee [Replication, SOA, and cache lifetimes](../lessons/02_dns/08_replication_and_caching.md).",
       "lesson_id": "dns-08",
       "tags": [],
       "flags": []
@@ -418,7 +418,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "UDP can carry a simple DNS request and response without first establishing a stream connection, avoiding that setup cost for a short exchange. DNS also supports TCP, including responses that cannot be delivered adequately over the chosen UDP exchange. UDP does not supply encryption by default, and its use is not evidence that TCP or DNSSEC is unsupported.\n\nSee [DNS transport and message sections](../lessons/02_dns/05_transport_and_sections.md).",
       "lesson_id": "dns-05",
       "tags": [],
       "flags": []
@@ -435,7 +435,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "TC indicates that a DNS response was truncated. A client can retry over TCP to obtain a complete response, with DNS messages framed by a two-byte length on the TCP byte stream. The original unextended UDP DNS size limit was 512 bytes; EDNS can permit larger UDP payloads. AA and RD describe different properties and do not themselves signal truncation.\n\nSee [DNS transport and message sections](../lessons/02_dns/05_transport_and_sections.md).",
       "lesson_id": "dns-05",
       "tags": [],
       "flags": []
@@ -471,7 +471,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "DoH and DoT encrypt the client-to-resolver transport, reducing what on-path observers can learn from DNS message contents on that connection. The receiving resolver still sees the query so it can answer it. Encrypted transport does not itself validate the DNSSEC chain or automatically protect every subsequent resolver-to-authoritative exchange; confidentiality and data authentication are separate concerns.\n\nSee [Encrypted DNS and resolver trust](../lessons/02_dns/16_encrypted_dns.md).",
       "lesson_id": "dns-16",
       "tags": [],
       "flags": []
@@ -488,7 +488,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "**Review note:** A public recursive resolver receives the names its clients ask about and can potentially log or analyze those queries. Encrypting the connection does not hide the query from that endpoint. Whether a particular provider profiles users or acts without consent depends on its policy and behavior, not a required property of public DNS. The preserved key should be read as a possible privacy risk, not a universal claim.\n\nSee [Encrypted DNS and resolver trust](../lessons/02_dns/16_encrypted_dns.md).",
       "lesson_id": "dns-16",
       "tags": [],
       "flags": [
@@ -507,7 +507,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "The stub resolver is the client-side component that asks a recursive resolver a DNS question for an application. It delegates the wider search rather than normally walking root, TLD, and authoritative referrals itself. A configured naming interface may also consult local sources, but a stub is not the authoritative database for the domain it queries.\n\nSee [Zones, delegation, and recursive resolution](../lessons/02_dns/03_hierarchy_and_resolution.md).",
       "lesson_id": "dns-03",
       "tags": [],
       "flags": []
@@ -543,7 +543,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "The root zone supplies delegations toward top-level domains such as .com or .se. A resolver uses the corresponding name-server information to continue down the hierarchy toward the requested zone. The root does not maintain the address of every host or complete every CNAME chain; delegation distributes both the search and administrative responsibility.\n\nSee [Zones, delegation, and recursive resolution](../lessons/02_dns/03_hierarchy_and_resolution.md).",
       "lesson_id": "dns-03",
       "tags": [],
       "flags": []

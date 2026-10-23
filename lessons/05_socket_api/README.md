@@ -59,7 +59,7 @@ The complete [source guide](../../lectures/lecture_05_socket-api.md) is retained
 
 All 80 question stems, ordered options, and keys were reviewed. **47** have socket API primary lessons. **32** lack sufficient explanation after checking networking guides 01–06, and **one** has partial background in TCP's archived Nagle timeline. These groups produce **33 coverage-gap flags**; their primary links stay empty and dependencies unresolved. Finding an API name or a related select example does not establish coverage of poll/epoll-specific semantics.
 
-**40 wording-review flags** overlap the coverage categories. Some mapped questions have false premises or incorrect keys, such as Q018 (invalid inet_pton input), Q027/Q028 (select result sets), Q044 (maxfd), and Q076 (FIN timing). Their lessons explain the relevant reasoning; assigning them is not approval to score those keys as correct. No text, options, answer indices, explanations, or manual tags were changed.
+**40 wording-review flags** overlap the coverage categories. Some mapped questions have false premises or incorrect keys, such as Q018 (invalid inet_pton input), Q027/Q028 (select result sets), Q044 (maxfd), and Q076 (FIN timing). Their lessons explain the relevant reasoning; assigning them is not approval to score those keys as correct. Text, options, answer indices, and manual tags are unchanged; the later answer-explanation pass is recorded below.
 
 **12 mapped questions require additional lessons** beyond their primary lesson; **46** have optional background. Required reading is listed in each Practice section and the [review dependency table](review.md#additional-required-lessons). Lesson-level prerequisites describe the study sequence and are not automatic per-question requirements. **18 lessons have no native quiz assignment** and remain included.
 
@@ -76,3 +76,11 @@ The 26 C blocks are retained as teaching fragments, with the course support defi
 Baseline: `ea7f3e7` (full commit in the manifest). Preparation status: **user-approved on 22 October 2026**. The working tree was clean at the start; TCP and DNS approval changes were already committed. Remote push state was not independently checked.
 
 Historical BSD timing, port and queue examples, release history, C10K/C10M milestones, and the ATC 2025 comparison remain source-reported material with their qualifications. Slide visibility, course suffix, historical claims, and every external resource were not independently authenticated. Supplementary API checks are review evidence only and do not close lecture gaps. Diagrams were preserved but not rendered locally. No commit or push was performed.
+
+## Answer explanations
+
+On 22 October 2026, all **47 linked questions** in [the canonical quiz](../../quizzes/quiz_05_socket_api.json) received authored explanations grounded in their actual primary/supporting lessons. The **20 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **33 unlinked questions** remain outside the pass and retain empty explanations.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).

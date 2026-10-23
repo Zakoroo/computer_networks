@@ -13,7 +13,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "SDN separates the logic choosing forwarding behavior from the devices that apply it to individual packets. A logically centralized control plane can therefore program several switches while those switches continue distributed packet forwarding. Logical centralization does not require one physical controller machine, and normal matching traffic need not visit the controller for every packet.\n\nSee [SDN separation, logical centralization, and interfaces](../lessons/06_sdn/01_definition_and_interfaces.md).",
       "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
@@ -30,7 +30,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "The architecture moves control decisions out of independent per-device control processes into a logically centralized controller platform and its applications. Switches retain the forwarding work. A controller cluster can implement that single logical role across several machines, so the structural change is the control/forwarding boundary rather than a requirement for static ASIC rules or a ban on software routers.\n\nSee [SDN separation, logical centralization, and interfaces](../lessons/06_sdn/01_definition_and_interfaces.md).",
       "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
@@ -47,7 +47,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "A control program can use the network-wide view to express traffic-engineering policies and derive forwarding changes for multiple devices. That is more direct than separately adjusting every router's parameters and hoping distributed protocols produce the intended paths. It enables programmable policy changes, but does not automatically make multi-switch updates atomic or every legacy device compatible.\n\nSee [SDN separation, logical centralization, and interfaces](../lessons/06_sdn/01_definition_and_interfaces.md); [The Network OS and control programs](../lessons/06_sdn/08_network_os.md).",
       "lesson_id": "sdn-01",
       "tags": [],
       "flags": []
@@ -64,7 +64,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "The NOS presents a network-wide topology and state abstraction that control applications can use for coordinated decisions. That reduces how much distributed discovery and synchronization each application must implement itself. Consistency and freshness still depend on the platform: observations can be stale, controllers can fail, and switch updates need not happen atomically. A global view is an abstraction, not automatic loop freedom.\n\nSee [The Network OS and control programs](../lessons/06_sdn/08_network_os.md).",
       "lesson_id": "sdn-08",
       "tags": [],
       "flags": []
@@ -81,7 +81,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "A switch compares supported packet-header fields with installed flow entries and applies the selected entry's actions, taking priority into account. The action may forward, drop, modify, or send traffic to the controller. This applies previously chosen forwarding state locally; it is not the same as running a shortest-path algorithm independently for each packet or picking random output ports.\n\nSee [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
@@ -98,7 +98,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "In-band control carries controller/switch messages over the same forwarding links used by data traffic. Out-of-band control uses a separate management path, with physical isolation depending on how it is built. Sharing links can save infrastructure but introduces bootstrap and protection requirements; separate cabling adds cost. Neither arrangement requires a replica of the controller logic in every switch.\n\nSee [Out-of-band and in-band controller reachability](../lessons/06_sdn/16_control_paths.md).",
       "lesson_id": "sdn-16",
       "tags": [],
       "flags": []
@@ -115,7 +115,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Flexible match-action entries can inspect supported fields across several protocol layers using available exact matches and masks. The preserved key overstates this as arbitrary packet header fields: the OpenFlow version and switch capabilities limit what can be parsed and matched. The abstraction is more general than one fixed destination-prefix lookup, but it is not an unrestricted parser for every possible header.\n\nSee [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-12",
       "tags": [],
       "flags": [
@@ -134,7 +134,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "The NOS collects distributed switch, link, host, and counter information into a network-wide view; a hypervisor can additionally expose virtual views to tenants. Applications can work against these abstractions instead of each reimplementing distributed state management. This moves complexity into reusable platforms rather than eliminating it, and does not guarantee real-time forwarding or unlimited controller scalability.\n\nSee [The Network OS and control programs](../lessons/06_sdn/08_network_os.md); [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md); [Moving complexity into reusable platform software](../lessons/06_sdn/11_reusable_complexity.md).",
       "lesson_id": "sdn-08",
       "tags": [],
       "flags": []
@@ -151,7 +151,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "A route change can create a permitted forwarding path that bypasses a filter installed for the old path. In the lecture's narrow example, R3–R1–R2 can bypass the R5-filtered path from chi-FO toward nyc-DC. A correct SDN policy application must update enforcement coverage and ordering as topology changes; simply deploying SDN does not make ACL correctness automatic.\n\nSee [How a new route can bypass a packet filter](../lessons/06_sdn/06_routing_and_acls.md).",
       "lesson_id": "sdn-06",
       "tags": [],
       "flags": []
@@ -168,7 +168,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "With indirect control, an operator changes inputs such as OSPF link weights so the distributed routing algorithm will hopefully choose the intended path. Predicting the inverse relationship between those parameters and network-wide behavior can be difficult, especially when mechanisms interact. Directly expressing desired forwarding or policy avoids some of that indirection, although implementation and safe updates still require work.\n\nSee [Indirect control and uncoordinated updates](../lessons/06_sdn/04_traditional_control.md); [Data, control, and management responsibilities](../lessons/06_sdn/03_networking_planes.md).",
       "lesson_id": "sdn-04",
       "tags": [],
       "flags": []
@@ -185,7 +185,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "Match-action rules associate supported header-field conditions with configurable packet-processing actions. Changing those rules changes handling without requiring a separate hardwired mechanism for every application policy. The primitive governs forwarding behavior; it is not itself a controller-replica synchronization protocol and is not restricted to just IPv4 and TCP.\n\nSee [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
@@ -202,7 +202,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "The source explicitly combines rewriting header fields with sending a matching packet to ports 5 and 6. That demonstrates both packet modification and replication to several outputs. A drop-only rule or a single-port forwarding rule shows only a narrower action. Actual available modifications remain constrained by the protocol version and the switch's advertised capabilities.\n\nSee [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
@@ -219,7 +219,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "A network hypervisor lets a tenant describe a virtual topology and policies over shared physical infrastructure, then translates that description into device-level enforcement. A tenant may see one logical switch even when traffic crosses several physical switches. Isolation depends on correct mapping and coverage; virtualization does not imply a dedicated physical switch or require every physical switch to receive an identical rule.\n\nSee [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md).",
       "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
@@ -236,7 +236,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "Controller replicas must exchange and coordinate state so their decisions and switch updates remain compatible. The NOS can hide much of that message passing behind a logical global view, but it still performs the underlying work. As the deployment grows, that coordination adds communication and processing overhead alongside event handling. Logical centralization therefore does not make consistency free or require flooding every data packet.\n\nSee [Scale, reliability, latency, consistency, and interoperability](../lessons/06_sdn/19_systems_challenges.md); [The Network OS and control programs](../lessons/06_sdn/08_network_os.md).",
       "lesson_id": "sdn-19",
       "tags": [],
       "flags": []
@@ -253,7 +253,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Review note:** Integrating devices without a compatible exposed forwarding interface can prevent a controller from programming them like OpenFlow switches, while neighboring routing domains still need interoperability. The preserved key is too broad: traditional equipment is not universally incapable of OpenFlow, and SDN is not defined by mandatory OpenFlow use. The challenge concerns actual device/interface compatibility and domain integration, not an IPv6-only or MPLS-only rule.\n\nSee [Scale, reliability, latency, consistency, and interoperability](../lessons/06_sdn/19_systems_challenges.md); [From integrated appliances to an open network stack](../lessons/06_sdn/07_open_network_stack.md).",
       "lesson_id": "sdn-19",
       "tags": [],
       "flags": [
@@ -272,7 +272,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "An open interface to packet forwarding separates how control software specifies behavior from a vendor's integrated control implementation and hardware. That boundary is a core component of the horizontal SDN stack, along with a controller platform and usable network view. Migrating to IPv6 or adopting MPLS alone does not establish this control/data separation.\n\nSee [From integrated appliances to an open network stack](../lessons/06_sdn/07_open_network_stack.md).",
       "lesson_id": "sdn-07",
       "tags": [],
       "flags": []
@@ -289,7 +289,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "Large cloud operators need fine-grained control, manageable multi-tenant networks, and economical infrastructure. Merchant silicon, programmatic control, and practical use of existing switch tables align with those demands. The source presents their combination as drivers of adoption; it does not claim that SDN mandates encryption, controls tenant CPU quotas, or requires inflexible hardware-defined routes.\n\nSee [Merchant silicon, cloud demand, and virtualization](../lessons/06_sdn/18_adoption_drivers.md).",
       "lesson_id": "sdn-18",
       "tags": [],
       "flags": []
@@ -306,7 +306,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "Network virtualization lets many tenants define their own isolated topologies, address spaces, and policies over shared servers and switches. A hypervisor translates those views into physical configurations, creating a useful service operators are willing to deploy and buy. This is the source's commercial killer application, not the removal of centralized control or consolidation of every tenant into one broadcast domain.\n\nSee [Merchant silicon, cloud demand, and virtualization](../lessons/06_sdn/18_adoption_drivers.md); [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md).",
       "lesson_id": "sdn-18",
       "tags": [],
       "flags": []
@@ -323,7 +323,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "The network hypervisor maps a tenant's abstract network and policy into configurations for the actual forwarding infrastructure. For example, one virtual A-to-B drop rule may require enforcement at selected physical ingress points that cover all relevant paths. It is a network-virtualization role, not CPU scheduling or a rule that MAC addresses follow OpenFlow priorities.\n\nSee [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md).",
       "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
@@ -340,7 +340,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "The compiler analogy describes moving distributed state handling and topology translation into reusable NOS and hypervisor layers. Application-specific control programs can then express policy against a simpler graph or virtual topology. The underlying synchronization and mapping problems still exist, but many applications can share their implementation rather than each solving them independently.\n\nSee [Moving complexity into reusable platform software](../lessons/06_sdn/11_reusable_complexity.md); [The Network OS and control programs](../lessons/06_sdn/08_network_os.md); [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md).",
       "lesson_id": "sdn-11",
       "tags": [],
       "flags": []
@@ -357,7 +357,7 @@
       "correct_answers": [
         4
       ],
-      "explanation": "",
+      "explanation": "**Review note:** In the lecture's example, a configured table-miss rule sends unmatched traffic to the controller using Packet-IN. That is an assumption, not an unconditional OpenFlow outcome. In OpenFlow 1.3, without a suitable table-miss entry the default is to drop unmatched packets. The preserved key therefore needs a version/configuration qualifier; a miss alone does not prove controller delivery.\n\nSee [Configured table misses, Packet-IN, and buffering](../lessons/06_sdn/13_table_misses.md).",
       "lesson_id": "sdn-13",
       "tags": [],
       "flags": [
@@ -376,7 +376,7 @@
       "correct_answers": [
         3
       ],
-      "explanation": "",
+      "explanation": "The rule that rewrites matching header fields and forwards to ports 5 and 6 includes both requested behaviors: modification and multiple-output delivery. Sending to the controller is a different action, and flooding without rewriting does not demonstrate modification. This describes the lecture's conceptual action combination, subject to the fields and actions a particular switch supports.\n\nSee [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-12",
       "tags": [],
       "flags": []
@@ -393,7 +393,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "A standardized forwarding interface lets control software describe supported behavior across compatible devices without depending on each vendor's private internal control API. The ISA analogy separates the program's abstraction from hardware implementation. Vendor neutrality does not require identical hardware or promise identical capabilities; the controller must still account for what each device supports.\n\nSee [A flexible, minimal, vendor-neutral forwarding abstraction](../lessons/06_sdn/09_forwarding_abstraction.md).",
       "lesson_id": "sdn-09",
       "tags": [],
       "flags": []
@@ -410,7 +410,7 @@
       "correct_answers": [
         1
       ],
-      "explanation": "",
+      "explanation": "An abstract view lets a tenant work with a desired logical topology even when its traffic is carried by a more complicated shared physical network. The hypervisor maps between those views and installs the needed enforcement. The purpose is topology and policy abstraction, not automatic IP-address anonymity, symmetric TCP routing, or mandatory translation between IPv4 and IPv6.\n\nSee [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md).",
       "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
@@ -427,7 +427,7 @@
       "correct_answers": [
         0
       ],
-      "explanation": "",
+      "explanation": "The hypervisor translates tenant policy and topology into physical enforcement rules. In the OpenFlow abstraction, those rules become match-action flow entries selecting traffic and specifying its treatment. Placement must cover relevant paths and tenant isolation; a virtual drop policy need not install the same entry on every switch. No separate physical switch or VM per rule is required.\n\nSee [Virtual topologies and physical policy enforcement](../lessons/06_sdn/10_virtual_topologies.md); [OpenFlow matches, actions, counters, and capabilities](../lessons/06_sdn/12_match_action_tables.md).",
       "lesson_id": "sdn-10",
       "tags": [],
       "flags": []
@@ -444,7 +444,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "Switch events, topology changes, counters, and reactive flow requests create work for controller servers. More switches and flows can increase that load until decision elements become bottlenecks. Distributing the controller can help capacity and reliability but also introduces coordination concerns. The architectural separation of control and forwarding does not itself guarantee unlimited event-processing capacity.\n\nSee [Scale, reliability, latency, consistency, and interoperability](../lessons/06_sdn/19_systems_challenges.md).",
       "lesson_id": "sdn-19",
       "tags": [],
       "flags": []
@@ -481,7 +481,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "**Review note:** An initial reactive miss can require a remote Packet-IN/Flow-MOD exchange before forwarding proceeds, adding communication and decision delay. The preserved per-packet wording is misleading if applied to every packet in the flow: once matching rules are installed, later packets can be forwarded locally while those rules remain valid. The latency issue is the consultation path, not intrinsically the cable material.\n\nSee [Scale, reliability, latency, consistency, and interoperability](../lessons/06_sdn/19_systems_challenges.md); [Configured table misses, Packet-IN, and buffering](../lessons/06_sdn/13_table_misses.md); [Packet-OUT, Flow-MOD, and rule lifetimes](../lessons/06_sdn/14_controller_responses.md); [A reactive TCP and HTTP exchange](../lessons/06_sdn/15_reactive_handshake.md).",
       "lesson_id": "sdn-19",
       "tags": [],
       "flags": [
@@ -500,7 +500,7 @@
       "correct_answers": [
         2
       ],
-      "explanation": "",
+      "explanation": "Multiple controllers can observe changes and issue updates at different times. Their state, ownership, and update decisions need coordination so they do not install incompatible forwarding behavior, particularly during failures or partitions. A single logical control plane does not make those replicas physically identical or eliminate synchronization. Compatibility between controller decisions is the challenge, not a universal 100-rule switch limit.\n\nSee [Scale, reliability, latency, consistency, and interoperability](../lessons/06_sdn/19_systems_challenges.md).",
       "lesson_id": "sdn-19",
       "tags": [],
       "flags": []

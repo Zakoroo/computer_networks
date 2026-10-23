@@ -37,7 +37,7 @@ The complete [source guide](../../lectures/lecture_06_sdn.md) is retained across
 
 All **29** native question stems, ordered options, and keys were reviewed. **28** have SDN primary lessons; **one** remains a lecture-coverage gap after checking networking guides 01–06. Q027 asks about behavior after controller failure, but the guide does not teach the relevant switch failure modes. Local forwarding while rules remain valid and a general reliability challenge are partial background, not a complete answer to the preserved key.
 
-**5 wording-review flags** overlap the coverage categories: Q007 (arbitrary header fields), Q015 (legacy OpenFlow support), Q021 (unqualified table-miss outcome), Q027 (failure mode), and Q028 (per-packet phrasing). Mapped teaching can expose a question's defective assumption; a lesson link does not endorse its key. Question text, option order, keys, explanations, and manual tags remain unchanged.
+**5 wording-review flags** overlap the coverage categories: Q007 (arbitrary header fields), Q015 (legacy OpenFlow support), Q021 (unqualified table-miss outcome), Q027 (failure mode), and Q028 (per-packet phrasing). Mapped teaching can expose a question's defective assumption; a lesson link does not endorse its key. Question text, option order, keys, and manual tags remain unchanged; the later answer-explanation pass is recorded below.
 
 **3 mapped questions require additional lessons:** Q014 needs the NOS state/message-passing explanation, Q015 the forwarding-interface boundary, and Q025 the flow-table representation of physical rules. **26** mapped questions have optional background. Required support appears in Practice and the [review dependency table](review.md#additional-required-lessons); prerequisites describe reading order separately. The gap's dependencies remain unresolved. **7 lessons have no native primary assignment** and remain included.
 
@@ -50,3 +50,11 @@ See the [review queue](review.md), [manifest](manifest.json), and [verification 
 Baseline: `8ba94d4` (full identity in the manifest). Preparation status: **user-approved on 22 October 2026**. The working tree was clean at the start; the approved Socket API conversion was committed. Remote push state was not independently checked.
 
 The historical production/adoption examples, monetary figures, intellectual-history dates, ONF membership, course suffix, and hidden-slide classification remain source-reported with their qualifications. Source-preservation checks report the documented diagram-format differences; they do not establish pedagogical sufficiency or a readable render. Mermaid CLI and a local browser were unavailable, so no rendering is claimed. No application work, answer-key corrections, commit, or push was performed.
+
+## Answer explanations
+
+On 22 October 2026, all **28 linked questions** in [the canonical quiz](../../quizzes/quiz_06_sdn.json) received authored explanations grounded in their actual primary/supporting lessons. The **4 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **one unlinked question** remains outside the pass and retains an empty explanation.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).

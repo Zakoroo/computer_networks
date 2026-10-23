@@ -70,3 +70,11 @@ The source metadata and cautions below are retained verbatim:
 Examples preserve the lecture's addresses and configurations. **Technical clarification** notes identify source contradictions or necessary standards context. Historical measurements and projections are labelled with their scope rather than presented as current universal facts.
 
 [All topics](../README.md)
+
+## Answer explanations
+
+On 22 October 2026, all **21 linked questions** in [the canonical quiz](../../quizzes/quiz_03_ipv6.json) received authored explanations grounded in their actual primary/supporting lessons. The **5 linked questions with wording flags** have specific review notes; the keys were preserved rather than silently corrected or falsely justified. The **9 unlinked questions** remain outside the pass and retain empty explanations.
+
+Explanations are Markdown stored in the existing quiz field, with source links relative to that quiz file. They explain the mechanism and useful misconceptions, not just the keyed option. Cross-topic questions stay in their original quiz. Additional explicit required lessons are cited; legacy related-reading classification is still unresolved where previously absent.
+
+The explanations have been checked against the teaching and are **reviewed, awaiting user approval** (`explanation_status: reviewed`). The existing `preparation_status: approved` records the unchanged lesson-conversion approval; it does not approve this new answer text. See [verification](verification.md#answer-explanation-pass-22-october-2026).
