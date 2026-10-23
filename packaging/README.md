@@ -10,7 +10,7 @@ Python, Tcl/Tk, the interface, course content, rendering libraries, and fonts ar
 
 ## Build locally
 
-Use Python 3.12 with working Tkinter, plus Node.js 22.12+ for the web build. Packaging dependencies are pinned in [requirements.txt](requirements.txt). On Linux, check Tkinter with `python3 -c "import tkinter; print(tkinter.Tcl().eval('info patchlevel'))"`; the native controls also need a display. Build on the oldest supported platform baseline, as described in the plan.
+Use Python 3.13.17 with working Tkinter to match CI, plus Node.js 22.12+ for the web build. Packaging dependencies are pinned in [requirements.txt](requirements.txt). On Linux, check Tkinter with `python3 -c "import tkinter; print(tkinter.Tcl().eval('info patchlevel'))"`; the native controls also need a display. Build on the oldest supported platform baseline, as described in the plan.
 
 Create and activate a packaging virtual environment, then install the pinned dependencies:
 
@@ -60,7 +60,9 @@ Commit and push the implementation through the normal repository workflow. Once 
 - [package-app.yml](../.github/workflows/package-app.yml) is manually invoked. Four native jobs build/test folder prototypes and create final downloads. Fresh jobs extract those downloads and run native-window and full browser checks. Linux uses a virtual display; no Docker is used.
 - Successful checks feed an assembly job. It requires all four matching clean candidates and matching successful reports, then uploads `release-candidate` containing downloads, `SHA256SUMS.txt`, `BUILD_INFO.json`, and release-note text. Intermediate candidate/check/browser artifacts are retained for 14 days; the assembled candidate is retained for 30 days.
 
-The workflows pin Python 3.12.14 and Node 22.14.0, and record actual packaging and runner versions. Dependencies/actions can be updated deliberately with another candidate run. The [content findings file](content-findings.json) records four pre-existing source-format errors and one warning covering 49 legacy dependency entries. [check_release_content.py](../tools/check_release_content.py) prints these and rejects any changed/new findings. This is an explicit packaging baseline, not a strict content-validation pass or a waiver for new findings.
+The workflows pin Python 3.13.17 and Node 22.14.0, and record actual packaging and runner versions. `setup-python` installs the pinned interpreter in each job; no manual VM installation is needed. Before changing the pin in either workflow, check the [Actions version manifest](https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json) for **all four targets**: Ubuntu 22.04 x64, Windows x64, macOS x64, and macOS arm64. Availability on Linux alone is insufficient. Python 3.12.14 is a [source-only release](https://www.python.org/downloads/release/python-31214/#no-installers); the Actions manifest provides it for Linux but lacks Windows/macOS packages. Python 3.13.17 has packages for all four targets. Keep build/test/assembly/draft jobs on the same pin, and verify a new candidate run after changes.
+
+The [content findings file](content-findings.json) records four pre-existing source-format errors and one warning covering 49 legacy dependency entries. [check_release_content.py](../tools/check_release_content.py) prints these and rejects any changed/new findings. This is an explicit packaging baseline, not a strict content-validation pass or a waiver for new findings.
 
 ## Drafts and publication
 
