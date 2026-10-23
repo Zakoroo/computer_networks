@@ -1,0 +1,11 @@
+{
+  "errors": [
+    "05_socket_api: 43 source lines absent; first: ['subgraph ClientHost[\"Client Host (128.2.194.242)\"]']",
+    "05_socket_api: source Mermaid blocks changed or missing",
+    "06_sdn: 43 source lines absent; first: ['subgraph Control[\"Logically centralized control\"]']",
+    "06_sdn: source Mermaid blocks changed or missing"
+  ],
+  "warnings": [
+    "49 legacy related-question entries lack required/optional classification (not treated as no requirements)"
+  ]
+}

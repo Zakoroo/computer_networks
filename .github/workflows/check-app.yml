@@ -1,0 +1,48 @@
+name: Check study app
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12.14'
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.14.0'
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+        working-directory: app
+      - name: Check tools and documented content findings
+        run: |
+          python -m unittest discover -s tools/tests
+          python tools/check_release_content.py
+          python tools/generate_progress.py --check
+          git diff --check
+      - run: npm test
+        working-directory: app
+      - run: npm run build
+        working-directory: app
+      - name: Inventory shared web assets
+        run: python tools/package_study.py --prepare-web
+      - uses: actions/upload-artifact@v7
+        with:
+          name: web-dist
+          path: app/dist/
+          if-no-files-found: error
+          retention-days: 14
+

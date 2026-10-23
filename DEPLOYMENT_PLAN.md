@@ -1,6 +1,6 @@
 # Packaging and release plan
 
-Prepared on 23 October 2026. This is a proposed implementation plan for downloadable Windows, macOS, and Linux releases. It does not describe an existing packaging pipeline or a published release. The local application is committed at `0b45373` and has passed the user's feature inspection. The working tree was clean when planning began.
+Prepared and approved on 23 October 2026; the plan is committed at `df5b55a`. Implementation began at the user's request from that clean commit. Native packaging tools, candidate workflows, and a locally tested Linux prototype are now implemented. Windows/macOS CI runs, distribution-specific desktop acceptance, and trusted signing remain pending. No public release has been published. See [packaging/README.md](packaging/README.md) for current commands and [app/verification.md](app/verification.md#packaging-implementation) for evidence; the sections below retain the release requirements and target matrix.
 
 The user chose all three operating systems and GitHub-hosted virtual machines for builds and testing. Docker is outside this plan. The implemented application is described in [app/ARCHITECTURE.md](app/ARCHITECTURE.md); development commands and existing evidence are in [app/README.md](app/README.md) and [app/verification.md](app/verification.md).
 
@@ -38,19 +38,21 @@ Include Fedora and Arch-based desktops in the packaging prototype. Aim to distri
 | Distribution target | Version to record | Required checks |
 | --- | --- | --- |
 | Ubuntu | 22.04 and 24.04 | Build-baseline and newer-desktop launch, study, persistence, and shutdown |
-| Fedora Workstation | Exact supported release selected when packaging starts | Extracted package, native launcher, default-browser opening, offline study, and lifecycle |
+| Fedora Workstation | 44 x64; recheck the supported release before a later candidate | Extracted package, native launcher, default-browser opening, offline study, and lifecycle |
 | Arch Linux | Fully updated installation; record test date and relevant library versions | The same downloaded package and full desktop lifecycle |
-| Arch-based desktop | Name and version of at least one selected derivative | Its own desktop checks; an Arch Linux result does not certify every derivative |
+| EndeavourOS | User's other computer; record test date and system/library versions | Its own desktop checks; an Arch Linux result does not certify every derivative |
+
+Fedora Workstation 44 is the stable download offered by the [Fedora Project](https://fedoraproject.org/workstation/download/) on 23 October 2026. The user identified EndeavourOS as the Arch-based system on their other computer. Both remain untested targets for this application. Use the [desktop checklist](packaging/DESKTOP_CHECKS.md) to record candidate-specific evidence.
 
 Building against an older glibc makes reuse on newer systems plausible, but desktop libraries and external-browser integration still need checking. Record any remaining system-library requirements for the packaged Tcl/Tk launcher on each target. Exercise the desktop session actually used, including Wayland/X11 integration where applicable, rather than relying exclusively on headless server tests. The glibc compatibility rationale comes from [PyInstaller's Linux guidance](https://pyinstaller.org/en/stable/usage.html#making-gnu-linux-apps-forward-compatible); cross-distribution compatibility remains a test result to establish.
 
 GitHub's standard Linux VM images are Ubuntu, with no standard Fedora or Arch runner labels in the [runner matrix](https://docs.github.com/en/actions/reference/runners/github-hosted-runners). Keep the Ubuntu native build and automated checks there. Initially run Fedora/Arch checks on separate desktop machines or VMs and attach the evidence to the candidate. Dedicated self-hosted VM runners can automate these checks later; this plan does not assume nested virtualization on GitHub-hosted machines. Docker is not required.
 
-Keep target, tested, and advertised support distinct. Select the Fedora release and Arch derivative before candidate acceptance, record failures explicitly, and list only successful combinations in release notes. Arch-family results describe the tested system state; rerun them for later releases rather than promising compatibility with every future update.
+Keep target, tested, and advertised support distinct. Record failures explicitly and list only successful combinations in release notes. Arch-family results describe the tested system state; rerun them for later releases rather than promising compatibility with every future update.
 
 ## Launcher changes
 
-The current [tools/serve_study.py](tools/serve_study.py) locates `app/dist/` relative to the checkout, prints to a terminal, and stops with Ctrl+C. It already binds to the correct fixed address and refuses an occupied port. Packaging must address the following before it is ready for ordinary use:
+At the start of implementation, [tools/serve_study.py](tools/serve_study.py) located `app/dist/` relative to the checkout, printed to a terminal, and stopped with Ctrl+C. It already bound to the correct fixed address and refused an occupied port. The implementation now addresses the requirements below; automated Linux evidence is recorded separately from pending desktop acceptance:
 
 1. **Find bundled files reliably.** Resolve the packaged asset directory independently of the current working directory. Preserve source-checkout launching as well. Check that the bundled index and catalogue exist before opening the browser. PyInstaller documents bundle-relative paths in its [runtime guide](https://pyinstaller.org/en/stable/runtime-information.html).
 2. **Provide visible lifecycle controls.** Add a small native launcher window showing status, version, local address, **Open study app**, and **Stop and quit**. Use Python's Tkinter as the initial implementation choice and verify its bundled Tcl/Tk support on all targets during the packaging prototype. Closing this window stops the server; closing a browser tab leaves the launcher running. Keep study content and personal controls in the existing browser interface.
@@ -119,9 +121,9 @@ Store credentials in repository/environment secrets, accessible only to trusted 
 
 ## Implementation order and files
 
-These files are planned; they do not exist as a result of this document.
+The implementation now provides the files below. Native workflow execution and desktop evidence remain separate milestones; file existence is not platform acceptance.
 
-| Order | Deliverable | Proposed files or affected entry points |
+| Order | Deliverable | Files or affected entry points |
 | --- | --- | --- |
 | 1 | Bundle-aware launcher and minimal native lifecycle controls | `tools/serve_study.py`, focused tests under `tools/tests/` |
 | 2 | Working folder bundles, then final package formats | `packaging/network_study.spec`, `packaging/requirements.txt`, `tools/package_study.py`; ignored build/output paths in `.gitignore` |
@@ -131,4 +133,4 @@ These files are planned; they do not exist as a result of this document.
 
 Complete a launcher/package prototype before investing in the release-writing job. Keep the current checkout launch path working throughout. Record successful candidate runs and unresolved platform limits in the verification report; do not overwrite historical evidence or treat a plan as a passed check.
 
-The remaining arrangements are desktop test access across the platform/distribution matrix, selection of the Fedora release and Arch-based derivative, and a decision about Windows/macOS signing credentials. The initial support targets and Tkinter launcher are implementation recommendations to validate in the prototype. This planning task does not approve explanation text, change content statistics, or authorize public publication.
+The remaining arrangements are desktop test access across the platform/distribution matrix and a decision about Windows/macOS signing credentials. Fedora Workstation 44 and EndeavourOS are the selected additional Linux targets. Packaging work does not approve explanation text or change content statistics; public publication remains a later maintainer action.

@@ -9,3 +9,6 @@ __pycache__/
 /app/*.tsbuildinfo
 /.sites-runtime/
 /app/.sites-runtime/
+/build/packaging/
+/dist/packages/
+/.venv-packaging/

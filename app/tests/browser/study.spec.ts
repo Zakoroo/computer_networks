@@ -3,7 +3,28 @@ import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import type { Catalogue, Profile } from '../../src/types';
 
-const catalogue = JSON.parse(readFileSync('public/content/catalogue.json', 'utf8')) as Catalogue;
+const catalogue = JSON.parse(readFileSync(process.env.NETWORK_STUDY_CATALOGUE ?? 'public/content/catalogue.json', 'utf8')) as Catalogue;
+
+test.beforeAll(async ({ request }) => {
+  const served = await (await request.get('/content/catalogue.json')).json() as Catalogue;
+  expect(served.content_version).toBe(catalogue.content_version);
+  if (process.env.NETWORK_STUDY_CONTENT_VERSION) {
+    expect(served.content_version).toBe(process.env.NETWORK_STUDY_CONTENT_VERSION);
+  }
+});
+
+test('honors a lesson heading after a slow cold-start catalogue load', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.route('**/content/catalogue.json', async route => {
+    // Keep the initial screen visible past the navigation timer.
+    await new Promise(resolve => setTimeout(resolve, 300));
+    await route.continue();
+  });
+  await page.goto('/#/lesson/tcp-06?anchor=learning-goals');
+  await expect(page.locator('#learning-goals')).toBeVisible();
+  await expect.poll(() => page.locator('#learning-goals').evaluate(heading => Math.round(heading.getBoundingClientRect().top))).toBe(0);
+});
 
 async function savedScroll(page: Page, lessonId: string) {
   return page.evaluate(async id => {

@@ -14,6 +14,7 @@ export default function App() {
   const [route, setRoute] = useState(routeNow);
   const [mobileMenu, setMobileMenu] = useState(false);
   const initialized = useRef(false);
+  const ready = Boolean(catalogue && profile);
   const navigate = useCallback((next: string) => {
     setRoute(next); location.hash = next; setMobileMenu(false);
   }, []);
@@ -36,6 +37,7 @@ export default function App() {
     }
   }, [profile, catalogue, update]);
   useEffect(() => {
+    if (!ready) return;
     const anchor = new URLSearchParams(route.split('?')[1]).get('anchor');
     const timer = setTimeout(() => {
       if (anchor) document.getElementById(anchor)?.scrollIntoView();
@@ -43,7 +45,7 @@ export default function App() {
       document.getElementById('main-content')?.focus({ preventScroll: true });
     }, 100);
     return () => clearTimeout(timer);
-  }, [route]);
+  }, [route, ready]);
   if (!catalogue || !profile) return <div className="loading-screen"><Network size={32} /><h1>Network Study</h1><p role={error ? 'alert' : 'status'}>{error || 'Opening your study space…'}</p>{error && <button className="button primary" onClick={() => location.reload()}>Try again</button>}</div>;
 
   const baseRoute = route.split('?')[0];
