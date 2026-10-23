@@ -16,7 +16,7 @@ For generated charts and tables, see [PROGRESS.md](PROGRESS.md). Its generator c
 
 ## Networking answer explanations
 
-Measured from the six networking manifests and their canonical quizzes on 22 October 2026. Explanations are authored and checked, awaiting user approval (`explanation_status: reviewed`). The user will review them through the graphical interface once built; that review does not block development. Application coding has not started. Wording findings overlap the linked-question population and do not all indicate incorrect keys.
+Measured from the six networking manifests and their canonical quizzes on 22 October 2026. Explanations are authored and checked, awaiting user approval (`explanation_status: reviewed`). The first local application now supports review through its graphical interface; see [app/README.md](app/README.md). Wording findings overlap the linked-question population and do not all indicate incorrect keys.
 
 | Topic | Linked questions | Linked questions with explanations | Linked questions with wording flags |
 | --- | ---: | ---: | ---: |

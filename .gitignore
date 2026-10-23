@@ -1,3 +1,11 @@
 /quiz_extraction
 /other
 __pycache__/
+/app/node_modules/
+/app/dist/
+/app/public/content/
+/app/test-results/
+/app/playwright-report/
+/app/*.tsbuildinfo
+/.sites-runtime/
+/app/.sites-runtime/
