@@ -74,6 +74,8 @@ The [content findings file](content-findings.json) records four pre-existing sou
 
 Candidate builds have read-only repository permissions. There is no automatic public publication or update mechanism. The optional draft job alone receives release-writing permissions, and creates a draft only when manually requested on an existing `v<app-version>` tag whose commit matches the tested packages. It uses the exact assembled asset bytes. It refuses to overwrite an existing release; it does not create a tag or publish a draft.
 
+The draft title is set separately to `Network Study <version>`. Generated notes begin with the candidate notice and omit a duplicate title heading.
+
 When tag/draft preparation is authorized:
 
 1. Confirm the intended source commit and matching versions in `app/package.json` and `app/package-lock.json`. Create/push its version tag through the normal Git workflow. The tag must be exactly `v<app-version>`; an `-rc.1` tag needs the same suffix in the app version. Use a new version for a subsequent release instead of moving a published tag.

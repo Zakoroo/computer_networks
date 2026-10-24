@@ -46,7 +46,7 @@ def collect(packages, reports, output):
                                           'checks': [check for _, _, check in verified],
                                           'manual_desktop_acceptance': 'pending'})
     version, commit, content, _ = next(iter(identity))
-    lines = [f'# Network Study {version}', '', 'Unpublished candidate. Desktop acceptance and distribution signing remain to verify.', '',
+    lines = ['Unpublished candidate. Desktop acceptance and distribution signing remain to verify.', '',
              '| Download | Platform | Signing |', '| --- | --- | --- |']
     lines.extend(f"| {asset.name} | {item['platform']} {item['architecture']} | {item['signing']} |" for asset, item, _ in verified)
     lines.extend(['', 'Download the asset for your computer; GitHub source archives are for development.',

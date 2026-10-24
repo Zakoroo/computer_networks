@@ -122,3 +122,7 @@ Guide links/anchors, skill validation, progress freshness, preservation, and whi
 ## Patch version preparation
 
 After the user approved the current changes, incremented the application version from `0.1.0` to `0.1.1` in `package.json` and both root version fields in `package-lock.json`. Checked that dependency records and other package data are unchanged, and that the packaging helper reads `0.1.1` through its existing source-identity check. All five packaging tests pass; progress freshness, documentation links, and whitespace checks pass. The application/browser checks above were not repeated for this metadata-only increment. No new native package, Git tag, or release was created; existing `v0.1.0` download evidence remains associated with its original bytes.
+
+## Release-note presentation
+
+Starting from clean commit `0157494`, removed the initial `# Network Study <version>` heading from generated `RELEASE_NOTES.md`. Notes now start with the candidate notice; draft creation still supplies the separate GitHub title through `--title`. All five packaging tests, documentation-link checks, progress freshness, and whitespace checks pass. Application/browser/native checks were not repeated for this notes-only change. No existing GitHub draft or release was modified.
