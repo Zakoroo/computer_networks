@@ -1216,6 +1216,18 @@ dialog::backdrop {
   font-size:10px;
   padding:6px
 }
+.controls-help {
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.6;
+  color:#4f625b
+}
+.controls-help summary {
+  cursor:pointer
+}
+.controls-help p {
+  margin:8px 0 0
+}
 .tags-row {
   display:flex;
   align-items:center;

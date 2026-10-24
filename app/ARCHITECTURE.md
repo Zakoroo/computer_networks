@@ -1,6 +1,26 @@
 # Application design and implementation
 
-This guide describes the implemented local study app. Start with the file map, then read the section relevant to the change. Course statistics and current work belong in [STATS.md](../STATS.md) and [STATUS.md](../STATUS.md); launch commands belong in [README.md](README.md), and test evidence belongs in [verification.md](verification.md). [APP_PLAN.md](../APP_PLAN.md) records design intent and future features, some of which are not implemented.
+This guide describes the implemented local study app. Start with the technology stack and file map, then read the section relevant to the change. Course statistics and current work belong in [STATS.md](../STATS.md) and [STATUS.md](../STATUS.md); launch commands belong in [README.md](README.md), and test evidence belongs in [verification.md](verification.md). [APP_PLAN.md](../APP_PLAN.md) records design intent and future features, some of which are not implemented.
+
+For the agent workflow, use [maintain-study-app](../skills/maintain-study-app/SKILL.md); for native packaging/CI/publication, use [release-study-app](../skills/release-study-app/SKILL.md). The [tools index](../tools/README.md) lists reusable command entry points and their effects.
+
+## Technology stack
+
+| Area | Technologies | Role |
+| --- | --- | --- |
+| Browser interface | React, TypeScript, CSS, Lucide React | Study views, interactive controls, styling, and icons. |
+| Web development and build | Node.js, npm, Vite, TypeScript compiler | Install locked dependencies, run development/preview servers, type-check, and bundle the interface. |
+| Lesson rendering | react-markdown, remark/rehype plugins, KaTeX | Render Markdown tables/code, sanitized HTML, heading links, and mathematical notation. |
+| Diagrams | Mermaid | Render lesson diagrams as SVG in the browser, with fitted and enlarged views. |
+| Personal data | IndexedDB through idb, BroadcastChannel | Store progress, attempts, and tags transactionally; notify other tabs of saved changes. |
+| Runtime data validation | Zod | Validate stored profiles and imported backup JSON against explicit schemas. |
+| Content preparation and local server | Python standard library, including http.server | Generate the course catalogue and serve the built interface at the fixed loopback address. |
+| Native launcher window | Tkinter, Tcl/Tk | Provide Open, Licenses, and Stop controls for the local server and system browser. |
+| Native packaging | PyInstaller and its hooks | Bundle Python, Tcl/Tk, and web assets into platform-specific downloads. |
+| Automated tests | Vitest, fake-indexeddb, Playwright, Python unittest | Check app rules/storage, browser study flows and diagrams, content tools, and launcher/package behavior. |
+| CI and release preparation | GitHub Actions | Build and test native candidates on Windows, Linux, and both Mac architectures; assemble downloads and optionally create a draft release. |
+
+Declared JavaScript dependencies are in [package.json](package.json); resolved versions are in [package-lock.json](package-lock.json). Python packaging dependencies are pinned in [packaging/requirements.txt](../packaging/requirements.txt). CI runtime versions and platform matrices are defined in [check-app.yml](../.github/workflows/check-app.yml) and [package-app.yml](../.github/workflows/package-app.yml).
 
 ## System boundaries
 
@@ -37,7 +57,7 @@ React/TypeScript handles the interface, Python handles content preparation and t
 | Durable storage | [src/storage.ts](src/storage.ts) | Runtime schemas, `createStore`, `parseBackup`, `makeBackup` |
 | Reader | [src/Markdown.tsx](src/Markdown.tsx) | Markdown plugins, `contentRoute`, stable renderers, Mermaid lifecycle |
 | Quiz interaction | [src/Quiz.tsx](src/Quiz.tsx) | Local answer state, submission, feedback, question-status notices |
-| Personal controls | [src/Controls.tsx](src/Controls.tsx) | `PersonalControls`, `Filters`, `BackupDialog` |
+| Personal controls | [src/Controls.tsx](src/Controls.tsx) | `PersonalControls`, contextual study-control help, `Filters`, `BackupDialog` |
 | Visual design | [src/styles.css](src/styles.css) | Theme variables, layout, result colors, responsive rules |
 
 ## Interface and navigation
@@ -101,6 +121,10 @@ The pure functions in `model.ts` define the behavior shared by views:
 | `latestAttempt` | Select the latest attempt matching question identity, wording fingerprint, key version, option count, and key snapshot |
 
 Topic filters use the question's **source topic**, while lesson practice uses its **actual primary lesson**. Search examines stems, options, and IDs, never answer explanations. Practice filters do not remove lessons from the reading roadmap. Lesson deferral affects continuation; question deferral affects practice selection. Required additional reading produces prompts, not hard completion gates. Optional context and unclassified related reading remain distinct.
+
+The root [user guide](../README.md#make-the-study-plan-your-own) explains these controls for readers. `PersonalControls` also provides a native HTML disclosure with lesson/question-specific Priority, Revisit, and Defer descriptions. Each control references its help text with `aria-describedby`; React `useId` keeps those references distinct across the lesson and its questions. Keep help copy aligned with ordering, continuation, and session-selection behavior when changing the model.
+
+Control handlers must capture input values before passing a mutation to the asynchronous store. The Priority handler copies the selected value immediately; reading a controlled select later can save its previous value after React restores the displayed selection.
 
 `Study` captures its selected questions when a session mounts. Its key combines lesson ID and serialized criteria. Thus changing lesson or filters starts a new selection, while answering or annotating an item does not remove its current feedback. This matters for an “unattempted” filter: after submission the global queue changes, but the current lesson session stays visible.
 

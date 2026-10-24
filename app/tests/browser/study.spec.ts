@@ -241,6 +241,21 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   expect(outsideRequests).toEqual([]);
 });
 
+test('persists independent lesson and question priorities after reopening', async ({ page }) => {
+  await page.goto('/#/lesson/dns-01');
+  const lessonPriority = page.getByRole('combobox', { name: 'lesson priority', exact: true });
+  const questionPriority = page.getByRole('region', { name: 'Question dns-q001', exact: true })
+    .getByRole('combobox', { name: 'question priority', exact: true });
+  await lessonPriority.selectOption('high');
+  await expect(lessonPriority).toHaveValue('high');
+  await questionPriority.selectOption('low');
+  await expect(questionPriority).toHaveValue('low');
+  await expect(page.locator('.save-status')).toHaveText('Saved in this browser');
+  await page.reload();
+  await expect(lessonPriority).toHaveValue('high');
+  await expect(questionPriority).toHaveValue('low');
+});
+
 test('keeps reading-only lessons, cross-topic practice, and flagged keys in their proper modes', async ({ page }) => {
   const readingOnly = catalogue.lessons.find(lesson => !catalogue.questions.some(question => question.lesson_id === lesson.id))!;
   await page.goto(`/#/lesson/${readingOnly.id}`);

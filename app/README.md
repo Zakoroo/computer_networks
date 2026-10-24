@@ -2,6 +2,8 @@
 
 A local study application for networking lectures 01–06: a complete reading roadmap, lessons followed by related questions, and a searchable question library. Personal progress, tags, flags, and priorities stay in IndexedDB in your browser. Course files stay unchanged.
 
+For downloads, first-time use, and explanations of Priority, Revisit, Defer, and filters, start with the [user guide](../README.md).
+
 For development, start with [ARCHITECTURE.md](ARCHITECTURE.md): implemented design, module map, data/storage flows, rendering decisions, and where to make common changes. [verification.md](verification.md) records checks and user acceptance; [STATUS.md](../STATUS.md) tracks current work. Launch commands are below.
 
 ## Run it
@@ -20,7 +22,7 @@ The launcher opens **http://127.0.0.1:4173/** in your browser. Keep the terminal
 
 Alternatively, run `npm run start` from `app/` to serve the existing build at the same address. For development, `npm run dev` regenerates the content and starts Vite there. Stop the other server first: the port is fixed and never silently changes. Changes to course Markdown/JSON require `npm run content` during development or `npm run build` for the production app.
 
-Use the same browser profile and **127.0.0.1:4173** address on later launches. Using `localhost`, another port, a private browsing window, or a different browser creates a separate storage location. Use **Backup & restore** to download your personal data regularly and move it between profiles. The commands above run from the checkout. Native candidate builds and GitHub Actions workflows are now available; see [packaging instructions](../packaging/README.md) and the approved [deployment plan](../DEPLOYMENT_PLAN.md). A public downloadable release has not been published.
+Use the same browser profile and **127.0.0.1:4173** address on later launches. Using `localhost`, another port, a private browsing window, or a different browser creates a separate storage location. Use **Backup & restore** to download your personal data regularly and move it between profiles. The commands above run from the checkout. Downloadable pre-releases are listed on [GitHub Releases](https://github.com/Zakoroo/computer_networks/releases). For native builds and GitHub Actions workflows, see [packaging instructions](../packaging/README.md) and the approved [deployment plan](../DEPLOYMENT_PLAN.md).
 
 `python3 tools/serve_study.py --gui` shows native launcher controls when Tkinter and a desktop display are available. Packaged downloads show those controls by default: **Open study app**, **Licenses**, and **Stop and quit**. Keep that window open while studying; closing a browser tab leaves the server running. Terminal launching remains available through `--headless --no-browser`.
 

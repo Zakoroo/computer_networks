@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Download, Flag, Plus, RotateCcw, Upload, X } from 'lucide-react';
 import { annotation, backupSummary, effectiveLabels } from './model';
 import { makeBackup, parseBackup } from './storage';
@@ -10,6 +10,7 @@ export function PersonalControls({ kind, id, question, profile, update }: {
   kind: 'lesson' | 'question'; id: string; question?: Question; profile: Profile; update: Update;
 }) {
   const note = annotation(profile, kind, id);
+  const helpId = useId();
   const [tag, setTag] = useState('');
   const tags = effectiveLabels(question?.tags ?? [], note.added_tags, note.removed_tags);
   const flags = effectiveLabels(question?.flags ?? [], note.added_flags, note.removed_flags);
@@ -26,12 +27,27 @@ export function PersonalControls({ kind, id, question, profile, update }: {
   });
   return <div className="personal-controls">
     <div className="control-row">
-      <button className={`chip-button ${flags.includes('revisit') ? 'active' : ''}`} aria-pressed={flags.includes('revisit')} onClick={() => toggleFlag('revisit')}><Flag size={14} /> Revisit</button>
-      <button className={`chip-button ${note.deferred ? 'active' : ''}`} aria-pressed={note.deferred} onClick={() => void edit(current => ({ ...current, deferred: !current.deferred }))}>Defer</button>
-      <label className="inline-label">Priority <select aria-label={`${kind} priority`} value={note.priority} onChange={event => void edit(current => ({ ...current, priority: event.target.value as Annotation['priority'] }))}>
+      <button className={`chip-button ${flags.includes('revisit') ? 'active' : ''}`} aria-pressed={flags.includes('revisit')} aria-describedby={`${helpId}-revisit`} onClick={() => toggleFlag('revisit')}><Flag size={14} /> Revisit</button>
+      <button className={`chip-button ${note.deferred ? 'active' : ''}`} aria-pressed={note.deferred} aria-describedby={`${helpId}-defer`} onClick={() => void edit(current => ({ ...current, deferred: !current.deferred }))}>Defer</button>
+      <label className="inline-label">Priority <select aria-label={`${kind} priority`} aria-describedby={`${helpId}-priority`} value={note.priority} onChange={event => {
+        const priority = event.currentTarget.value as Annotation['priority'];
+        void edit(current => ({ ...current, priority }));
+      }}>
         <option value="high">High</option><option value="normal">Normal</option><option value="low">Low</option>
       </select></label>
     </div>
+    <details className="controls-help">
+      <summary>What do these controls do?</summary>
+      <p id={`${helpId}-priority`}><strong>Priority.</strong> {kind === 'lesson'
+        ? 'Orders the roadmap High, then Normal, then Low where prerequisites allow. Continue studying can resume your unfinished lesson first.'
+        : 'Orders matching questions High, then Normal, then Low when a practice queue is built. An open lesson session keeps its current question order.'}</p>
+      <p id={`${helpId}-revisit`}><strong>Revisit.</strong> {kind === 'lesson'
+        ? 'Adds a bookmark flag to this lesson on your roadmap. Set Priority separately to change its order.'
+        : 'Bookmarks this question. Enter revisit in Include flags to find it again. Set Priority separately to change its order.'}</p>
+      <p id={`${helpId}-defer`}><strong>Defer.</strong> {kind === 'lesson'
+        ? 'Skips this lesson in Continue studying suggestions. It stays on the roadmap, and its questions remain available. Press Defer again to resume it.'
+        : 'Leaves this question out of future practice selections by default. Turn on Include deferred questions to include it, or press Defer again to resume it.'}</p>
+    </details>
     <div className="tags-row">
       {tags.map(value => <button className="tag" key={value} aria-label={`Remove tag ${value}`} onClick={() => void edit(current => ({ ...current,
         added_tags: current.added_tags.filter(item => item !== value), removed_tags: [...new Set([...current.removed_tags, value])],
