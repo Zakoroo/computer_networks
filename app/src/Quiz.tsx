@@ -37,7 +37,7 @@ export default function Quiz({ question, catalogue, profile, update, navigate }:
       {!question.lesson_id && !question.flags.includes('coverage_gap') && <p>No primary lesson is assigned to this question.</p>}
       <p>Correct/Incorrect compares your answer with the original answer key.{mode === 'review' && ' This review question is outside the ordinary score.'}</p>
     </div>
-    {unread.length > 0 && <div className="support-box"><strong>Additional required reading</strong><p className="small">These lessons are not marked read. Open them now, or choose to practice anyway.</p><div className="support-links">{unread.map(lessonLink)}</div></div>}
+    {unread.length > 0 && <div className="support-box"><strong>Additional required reading</strong><p className="small">These lessons are not marked read. You can open them now or submit your answer.</p><div className="support-links">{unread.map(lessonLink)}</div></div>}
     {question.dependency_status !== 'classified' && question.lesson_id && <p className="small muted">Supporting reading has not been fully classified. You can practice, but readiness has not been established.</p>}
     {question.optional_lesson_ids && question.optional_lesson_ids.length > 0 && <details className="support-box"><summary>Optional background ({question.optional_lesson_ids.length})</summary><div className="support-links">{question.optional_lesson_ids.map(lessonLink)}</div></details>}
     {question.dependency_status !== 'classified' && question.related_lesson_ids.length > 0 && <details className="support-box"><summary>Related reading · requirement unclassified</summary><div className="support-links">{question.related_lesson_ids.map(lessonLink)}</div></details>}
@@ -72,7 +72,7 @@ export default function Quiz({ question, catalogue, profile, update, navigate }:
       setBusy(true); const attempt = createAttempt(question, selected);
       if (await update(currentProfile => ({ ...currentProfile, attempts: [...currentProfile.attempts, attempt] }))) setSubmitted(true);
       setBusy(false);
-    }}>{busy ? 'Saving answer…' : unread.length ? 'Practice anyway & submit' : 'Submit answer'}<ArrowRight size={16} /></button>}
+    }}>{busy ? 'Saving answer…' : 'Submit'}<ArrowRight size={16} /></button>}
     {current && <div className={`feedback ${current.correct ? 'correct' : 'incorrect'}`} aria-live="polite">
       <h3>{current.correct ? <Check size={22} aria-hidden="true" /> : <X size={22} aria-hidden="true" />}
         {current.correct ? 'Correct' : 'Incorrect'}

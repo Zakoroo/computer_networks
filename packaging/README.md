@@ -52,6 +52,8 @@ Browser checks need the development npm dependencies and an installed Playwright
 
 The helper checks the download hash, extracts it outside the checkout into a path containing spaces, and starts it from a read-only working directory on POSIX. It checks served asset hashes, runtime notices, build/content identity, duplicate-launch refusal, clean shutdown, and immediate relaunch. `--gui` verifies the bundled Tk controls. `--browser` invokes the existing study/backup/diagram suite against that executable, with an isolated personal profile and the packaged content version. A busy port fails testing; an existing study server is never reused.
 
+Native checks still use the release's real study origin on port 4173. Development uses 5173 and normal local browser checks use a Vite preview on 5174; those can run beside an installed study app. Success on the local preview does not establish native launcher/package acceptance.
+
 The Python tests also cover source/bundle path resolution, missing assets, server lifecycle, pending-connection bursts from parallel module loads, browser environment restoration, stale web builds, and release identity/checksum guards. Run them with `python -m unittest discover -s tools/tests`; native-window tests skip when Tkinter or a desktop display is unavailable.
 
 ## GitHub Actions

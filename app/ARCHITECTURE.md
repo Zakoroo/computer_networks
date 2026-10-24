@@ -12,7 +12,7 @@ For the agent workflow, use [maintain-study-app](../skills/maintain-study-app/SK
 | Web development and build | Node.js, npm, Vite, TypeScript compiler | Install locked dependencies, run development/preview servers, type-check, and bundle the interface. |
 | Lesson rendering | react-markdown, remark/rehype plugins, KaTeX | Render Markdown tables/code, sanitized HTML, heading links, and mathematical notation. |
 | Diagrams | Mermaid | Render lesson diagrams as SVG in the browser, with fitted and enlarged views. |
-| Personal data | IndexedDB through idb, BroadcastChannel | Store progress, attempts, and tags transactionally; notify other tabs of saved changes. |
+| Personal data | IndexedDB through idb, BroadcastChannel | Store progress, attempts, comments, and tags transactionally; notify other tabs of saved changes. |
 | Runtime data validation | Zod | Validate stored profiles and imported backup JSON against explicit schemas. |
 | Content preparation and local server | Python standard library, including http.server | Generate the course catalogue and serve the built interface at the fixed loopback address. |
 | Native launcher window | Tkinter, Tcl/Tk | Provide Open, Licenses, and Stop controls for the local server and system browser. |
@@ -58,6 +58,7 @@ React/TypeScript handles the interface, Python handles content preparation and t
 | Reader | [src/Markdown.tsx](src/Markdown.tsx) | Markdown plugins, `contentRoute`, stable renderers, Mermaid lifecycle |
 | Quiz interaction | [src/Quiz.tsx](src/Quiz.tsx) | Local answer state, submission, feedback, question-status notices |
 | Personal controls | [src/Controls.tsx](src/Controls.tsx) | `PersonalControls`, contextual study-control help, `Filters`, `BackupDialog` |
+| Personal comments | [src/Comments.tsx](src/Comments.tsx) | Shared lesson/question editor, edit/delete actions, saved entries, and failed-save draft retention |
 | Visual design | [src/styles.css](src/styles.css) | Theme variables, layout, result colors, responsive rules |
 
 ## Interface and navigation
@@ -143,6 +144,8 @@ stateDiagram-v2
 
 `Quiz` owns temporary selection, submission, and busy state. `createAttempt` validates selected indices and snapshots the original key/version. The interface reveals feedback only after the attempt commits successfully. A fresh visit hides feedback even if an earlier attempt exists; Retry clears the current selection and reveal state.
 
+All questions use the **Submit** button label. Unread required supporting lessons remain visible as an advisory with links; they do not block submission or change its label.
+
 Single-answer keys use radio inputs; multiple-answer keys use checkboxes. `exactAnswer` requires the exact answer set without duplicates or partial credit. Option order remains unchanged. Reading a lesson does not create an attempt or imply a correct answer.
 
 Every submission displays Correct/Incorrect relative to the original answer key. Correct options are green; a selected incorrect option is red. The question-status notice describes every canonical content flag. A wording/key finding also receives a qualification beside the verdict, since matching a faulty key does not establish technical correctness. Review attempts keep the same feedback presentation but stay outside the ordinary score. Personal flag-display overrides do not change eligibility or remove the underlying finding.
@@ -179,6 +182,7 @@ The current database is `network-study-v1`, database version `1`, with object st
 | `schema_version` | Personal-data schema version |
 | `lessons` | Lesson-ID map of `read_at` and fractional `scroll` position |
 | `annotations` | Typed target keys such as `lesson:tcp-06` or `question:tcp-q007`; added/removed tags and flags, priority, deferral, and update time |
+| `comments` | Typed lesson/question target keys mapped to comment arrays; each entry has a UUID, plain text, creation time, and update time |
 | `attempts` | Attempt IDs, question/key versions, selected indices, key snapshot, option count, mode, result, and timestamp |
 | `criteria` | The active practice criteria |
 | `current_route` | Last page for reopening |
@@ -186,15 +190,19 @@ The current database is `network-study-v1`, database version `1`, with object st
 
 Annotations supply personal controls for both lessons and questions; there is no separate persisted question-state table. Unmatched history remains stored. Current progress uses version-matching attempts, so changed questions or keys are not silently regraded or attached by array position.
 
-The runtime contracts are Zod schemas in `storage.ts`, alongside TypeScript declarations in `types.ts`. Version 1 parsing is strict; there is no general migration framework. Changes to persistent fields require coordinated updates to types, runtime schemas, `emptyProfile`, compatibility/migration handling, and backup/storage tests. Renaming the database or changing the origin also requires an explicit data-transfer strategy.
+The runtime contracts are Zod schemas in `storage.ts`, alongside TypeScript declarations in `types.ts`. Current profiles use schema version 2. `parseStoredProfile` validates version 1 records with their legacy schema, retains existing fields, and supplies version 2 plus empty comments. The next successful write persists the migrated profile; the database name/version and object-store layout do not change. Mutations must produce a valid current profile rather than downgrade it. Changes to persistent fields require coordinated updates to types, runtime schemas, `emptyProfile`, compatibility/migration handling, and backup/storage tests. Renaming the database or changing the origin also requires an explicit data-transfer strategy.
 
-Production launch, Vite development, and Vite preview all use `http://127.0.0.1:4173/`. The launcher refuses an occupied port instead of silently choosing another. Hostname, scheme, port, and browser profile determine the storage location; hash routes do not. Moving to `localhost`, another port, or another browser requires a personal backup to transfer data.
+`Comments` appears below the reader in `Study` and inside question personal controls. Lesson comments use the main column rather than the narrow study rail. The shared component writes through `update`, applying changes to the latest target list inside the transaction so other entries and annotations are retained. A failed save leaves the editor draft available for retry; deleting an edited entry in another tab causes save to fail rather than resurrect it. Comments render as plain text with wrapped long lines. Saved entries are limited to 5,000 characters, and target lists reject duplicate comment IDs. Unsaved editor text is transient; users choose **Save comment** or **Save changes** before leaving. Comments stay local and are included when a user exports/shares a personal backup; there is no online comment service.
+
+Identity validation allows digits within topic names, including `ipv6-17`, `ipv6-q012`, and typed annotation keys such as `question:ipv6-q012`. Storage tests round-trip identities from the complete catalogue through reopening and backup/restore. Keep validation structural rather than requiring current catalogue membership, so unmatched history remains recoverable.
+
+Production launch and `npm run start` use `http://127.0.0.1:4173/`; `npm run dev` uses 5173; local Playwright checks use a Vite preview on 5174 through `npm run test:serve`. When `NETWORK_STUDY_EXECUTABLE` is set, Playwright instead uses the native launcher on 4173. Both test modes own their server and refuse reuse. Ports never silently change. Hostname, scheme, port, and browser profile determine the storage location; hash routes do not. Each development/test origin has separate personal data, while the existing study origin preserves progress. Moving data between them requires a personal backup. Released downloads have separate bundled assets; rebuilding checkout `dist/` also changes what a source study server serves.
 
 ## Backup and restore
 
-`BackupDialog` exports a versioned JSON envelope containing the profile, export time, and content version. It does not export another copy of the course. Download and restore controls are disabled while a save is active.
+`BackupDialog` exports a version 2 JSON envelope containing the profile, comments, export time, and content version. It does not export another copy of the course. Download and restore controls are disabled while a save is active. Version 1 backups are validated against their original schema and migrated to the current shape on import; newer exports require the updated app.
 
-Import checks the file-size limit and `parseBackup`'s strict schema, including dates, identities, answer-index bounds, duplicate attempt IDs, and stored-result consistency. `backupSummary` identifies unmatched lesson/annotation records and historical or unmatched attempts against the current catalogue. A changed content version is shown in the preview. Unknown records are retained rather than discarded.
+Import checks the file-size limit and `parseBackup`'s strict schemas, including dates, identities, answer-index bounds, duplicate attempt/comment IDs, comment lengths, and stored-result consistency. `backupSummary` counts comments and identifies unmatched lesson, annotation, and comment targets, plus historical or unmatched attempts against the current catalogue. A changed content version is shown in the preview. Unknown records are retained rather than discarded.
 
 Restore requires an explicit replacement choice after previewing imported and current counts. It replaces the whole personal profile atomically, then navigates to the imported current route. There is no merge mode. Invalid files and failed writes leave saved data intact. The browser remains the active store; a downloaded JSON file is the portable backup.
 
@@ -218,11 +226,12 @@ For Mermaid fences, `MarkdownPre` renders `Diagram`. Mermaid is imported/initial
 | Change question feedback or flag notices | `Quiz.tsx`, `styles.css` | Both verdicts for every flag; concealment; review-score exclusion |
 | Change filtering, ordering, or scoring | `model.ts`, then `Controls.tsx` for controls | [model.test.ts](tests/model.test.ts), affected browser flow |
 | Change saved fields or restore | `types.ts`, `storage.ts`, `useStudy.ts`, `BackupDialog` | [storage.test.ts](tests/storage.test.ts), export/restore browser flow, compatibility cases |
+| Change personal comments | `Comments.tsx`, `types.ts`, `storage.ts`; placement in `App.tsx`/`Controls.tsx` | Add/edit/delete/reload, failed-save draft retention, old-profile migration, backup/restore, narrow layout |
 | Change links or renderers | `Markdown.tsx`, route handling in `App.tsx` | Source-relative links, math/code, full diagram render, scrolling/enlargement |
 | Change lesson/question content | Canonical files and the [lecture workflow](../skills/prepare-lecture/SKILL.md) | Content validation and [catalogue tests](../tools/tests/test_app_content.py); regenerate/build the app |
 | Investigate missing or stale content | Builder output and `npm run content`/`npm run build` | Inspect IDs/fingerprints and the generated catalogue before changing UI logic |
 
-Launch and test commands are centralized in [README.md](README.md). Pure-rule/storage checks use Vitest; Python checks cover the content join and preservation; Playwright checks exercise the production build with isolated personal profiles. The browser suite covers all numbered-lesson diagrams and an explicit scroll-save regression. It may reuse a server on the fixed port, so ensure the server is serving the intended build. Avoid clearing a user's browser data to investigate a failure; use an isolated test profile or an exported backup.
+Launch and test commands are centralized in [README.md](README.md). Pure-rule/storage checks use Vitest; Python checks cover the content join and preservation; Playwright checks exercise the production build with isolated personal profiles. The browser suite covers all numbered-lesson diagrams and an explicit scroll-save regression. It never reuses an existing server; local previews use 5174, while native candidate checks use 4173. Avoid clearing a user's browser data to investigate a failure; use an isolated test profile or an exported backup.
 
 Keep acceptance and detailed verification in [verification.md](verification.md), current decisions in [STATUS.md](../STATUS.md), and this guide focused on implementation structure. A passing application test does not resolve the documented strict content-source findings or approve explanation text.
 

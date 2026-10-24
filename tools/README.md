@@ -31,7 +31,7 @@ For launch/build/test commands use [app/README.md](../app/README.md). For packag
 ## Shared modules and wrappers
 
 - [content_data.py](content_data.py) supplies the canonical loading, identity, and fingerprint rules used by the other tools. Import those rules instead of implementing another question join.
-- [run_packaged_study.mjs](run_packaged_study.mjs) is the internal Playwright process wrapper, not a standalone CLI with `--help`. The packaged test helper sets its executable environment; it launches from a temporary directory with an empty command search path and stops only its own process. Packaged mode refuses to reuse a server; normal Vite preview mode can reuse one, so confirm the intended server/build before testing.
+- [run_packaged_study.mjs](run_packaged_study.mjs) is the internal Playwright process wrapper, not a standalone CLI with `--help`. The packaged test helper sets its executable environment; it launches from a temporary directory with an empty command search path and stops only its own process. Packaged checks use study port 4173. Normal local browser checks own a Vite preview on 5174, separate from development on 5173. Both modes refuse to reuse an existing server.
 - [network_study.spec](../packaging/network_study.spec) is the native builder's PyInstaller input; the Python packaging tool supplies its configuration.
 
 ## Verification

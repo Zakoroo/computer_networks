@@ -56,6 +56,12 @@ export interface Annotation {
   deferred: boolean;
   updated_at: string;
 }
+export interface Comment {
+  id: string;
+  text: string;
+  created_at: string;
+  updated_at: string;
+}
 export interface LessonState { read_at: string | null; scroll: number }
 export interface Attempt {
   id: string;
@@ -83,9 +89,10 @@ export interface Criteria {
   search: string;
 }
 export interface Profile {
-  schema_version: 1;
+  schema_version: 2;
   lessons: Record<string, LessonState>;
   annotations: Record<string, Annotation>;
+  comments: Record<string, Comment[]>;
   attempts: Attempt[];
   criteria: Criteria;
   current_route: string;
@@ -93,7 +100,7 @@ export interface Profile {
 }
 export interface Backup {
   format: 'network-study-backup';
-  schema_version: 1;
+  schema_version: 2;
   exported_at: string;
   content_version: string;
   profile: Profile;

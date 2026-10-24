@@ -106,7 +106,7 @@ test('makes correct and incorrect answers explicit and keeps review status visib
   const right = question.locator('.option').filter({ hasText: 'To map human-readable names to IP addresses' });
   await expect(question.locator('.answer-indicator')).toHaveCount(0);
   await wrong.getByRole('radio').check();
-  await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(question.getByRole('heading', { name: 'Incorrect', exact: true })).toBeVisible();
   await expect(wrong.getByText('Your answer · incorrect', { exact: true })).toBeVisible();
   await expect(wrong).toHaveCSS('background-color', 'rgb(255, 240, 237)');
@@ -119,7 +119,7 @@ test('makes correct and incorrect answers explicit and keeps review status visib
   await expect(question.locator('.answer-indicator')).toHaveCount(0);
   await expect(question.locator('.feedback')).toHaveCount(0);
   await right.getByRole('radio').check();
-  await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(question.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
   await expect(right.getByText('Your answer · correct', { exact: true })).toBeVisible();
   await expect(question.locator('.answer-incorrect')).toHaveCount(0);
@@ -129,7 +129,7 @@ test('makes correct and incorrect answers explicit and keeps review status visib
   await page.goto('/#/question/tcp-q007');
   const review = page.getByRole('region', { name: 'Question tcp-q007', exact: true });
   await review.getByRole('radio', { name: /The sender resets the entire window/ }).check();
-  await review.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await review.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(review.getByRole('heading', { name: 'Incorrect', exact: true })).toBeVisible();
   await expect(review.locator('.answer-correct')).toHaveCount(1);
   await expect(review.locator('.answer-incorrect')).toHaveCount(1);
@@ -140,7 +140,7 @@ test('makes correct and incorrect answers explicit and keeps review status visib
   await expect(review.locator('.feedback.incorrect')).toContainText('may be ambiguous or incorrect');
   await review.getByRole('button', { name: 'Try again', exact: true }).click();
   await review.getByRole('radio', { name: /The window slides forward/ }).check();
-  await review.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await review.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(review.getByText('Your answer · correct', { exact: true })).toBeVisible();
   await expect(review.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
   await expect(review.locator('.feedback.correct')).toContainText('may be ambiguous or incorrect');
@@ -161,7 +161,7 @@ test('shows question status across all content flags with consistent answer feed
     await expect(status).toContainText('compares your answer with the original answer key');
     await expect(question.locator('.answer-indicator')).toHaveCount(0);
     await question.getByRole('radio').nth(source.correct_answers[0]).check();
-    await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+    await question.getByRole('button', { name: 'Submit', exact: true }).click();
     await expect(question.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
     await expect(question.locator('.answer-correct')).toHaveCSS('background-color', 'rgb(237, 247, 232)');
     await expect(status).toBeVisible();
@@ -171,16 +171,16 @@ test('shows question status across all content flags with consistent answer feed
     await question.getByRole('button', { name: 'Try again', exact: true }).click();
     const wrongIndex = source.options.findIndex((_, index) => !source.correct_answers.includes(index));
     await question.getByRole('radio').nth(wrongIndex).check();
-    await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+    await question.getByRole('button', { name: 'Submit', exact: true }).click();
     await expect(question.getByRole('heading', { name: 'Incorrect', exact: true })).toBeVisible();
     await expect(question.locator('.answer-incorrect')).toHaveCSS('background-color', 'rgb(255, 240, 237)');
     await expect(status).toBeVisible();
   }
 });
 
-test('read, answer, annotate, reopen, export, and restore a real study session', async ({ page, browser }, testInfo) => {
+test('read, answer, annotate, reopen, export, and restore a real study session', async ({ page, browser, baseURL }, testInfo) => {
   const outsideRequests: string[] = [];
-  page.on('request', request => { if (!request.url().startsWith('http://127.0.0.1:4173/')) outsideRequests.push(request.url()); });
+  page.on('request', request => { if (!request.url().startsWith(`${baseURL}/`)) outsideRequests.push(request.url()); });
   await page.goto('/#/lesson/dns-01');
   await expect(page.getByRole('heading', { name: /Names, URLs, and the purpose of DNS/ })).toBeVisible();
   const question = page.getByRole('region', { name: 'Question dns-q001', exact: true });
@@ -189,13 +189,23 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   await expect(question.getByText(/Applications communicate using network addresses/)).toHaveCount(0);
   await page.getByRole('button', { name: 'Mark lesson read', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Marked read · undo' })).toBeVisible();
+  const lessonComments = page.getByRole('region', { name: 'Comments on lesson dns-01', exact: true });
+  await lessonComments.locator('summary').click();
+  await lessonComments.getByRole('textbox', { name: 'lesson comment', exact: true }).fill('Could this lesson include a worked example?');
+  await lessonComments.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(lessonComments.getByText('Could this lesson include a worked example?', { exact: true })).toBeVisible();
+  const questionComments = question.getByRole('region', { name: 'Comments on question dns-q001', exact: true });
+  await questionComments.locator('summary').click();
+  await questionComments.getByRole('textbox', { name: 'question comment', exact: true }).fill('Please explain why the other four choices are wrong.');
+  await questionComments.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(questionComments.getByText('Please explain why the other four choices are wrong.', { exact: true })).toBeVisible();
   await question.getByRole('textbox', { name: 'Add question tag' }).fill('revision');
   await question.getByRole('button', { name: 'Save question tag' }).click();
   await expect(question.getByRole('button', { name: 'Remove tag revision' })).toBeVisible();
   await question.getByRole('button', { name: 'Revisit', exact: true }).click();
   await expect(question.getByRole('button', { name: 'Revisit', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await question.getByRole('radio', { name: /To map human-readable names to IP addresses/ }).check();
-  await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(question.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
   await expect(question.getByText(/Applications communicate using network addresses/)).toBeVisible();
   await page.reload();
@@ -204,6 +214,10 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   await expect(question.getByRole('button', { name: 'Revisit', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(question.locator('.feedback')).toHaveCount(0);
   await expect(question.getByText(/Previously attempted/)).toBeVisible();
+  await lessonComments.locator('summary').click();
+  await expect(lessonComments.getByText('Could this lesson include a worked example?', { exact: true })).toBeVisible();
+  await questionComments.locator('summary').click();
+  await expect(questionComments.getByText('Please explain why the other four choices are wrong.', { exact: true })).toBeVisible();
 
   await page.getByRole('button', { name: 'Backup & restore' }).click();
   const downloadEvent = page.waitForEvent('download');
@@ -214,6 +228,9 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   const exported = JSON.parse(await readFile(path, 'utf8'));
   expect(exported.profile.attempts).toHaveLength(1);
   expect(exported.profile.attempts[0].correct_answers).toEqual([4]);
+  expect(exported.schema_version).toBe(2);
+  expect(exported.profile.comments['lesson:dns-01'][0].text).toBe('Could this lesson include a worked example?');
+  expect(exported.profile.comments['question:dns-q001'][0].text).toBe('Please explain why the other four choices are wrong.');
 
   await page.getByLabel('Choose backup file', { exact: true }).setInputFiles({ name: 'invalid.json', mimeType: 'application/json', buffer: Buffer.from('{"schema_version":99}') });
   await expect(page.getByRole('alert')).toContainText('not a valid Network Study');
@@ -221,13 +238,14 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   await page.getByRole('button', { name: 'Close backup' }).click();
   await expect(page.getByRole('button', { name: 'Marked read · undo' })).toBeVisible();
 
-  const restoredContext = await browser.newContext({ baseURL: 'http://127.0.0.1:4173' });
+  const restoredContext = await browser.newContext({ baseURL });
   const restored = await restoredContext.newPage();
   await restored.goto('/');
   await expect(restored.getByRole('button', { name: 'Start studying' })).toBeVisible();
   await restored.getByRole('button', { name: 'Backup & restore' }).click();
   await restored.getByLabel('Choose backup file', { exact: true }).setInputFiles(path);
   await expect(restored.locator('.restore-preview')).toContainText('1 attempts');
+  await expect(restored.locator('.restore-preview')).toContainText('2 comments');
   await expect(restored.locator('.restore-preview')).toContainText('replace your current 0 attempts');
   await restored.getByRole('button', { name: 'Replace personal data with this backup' }).click();
   await expect(restored.getByRole('status').filter({ hasText: 'Backup restored' })).toBeVisible();
@@ -237,8 +255,125 @@ test('read, answer, annotate, reopen, export, and restore a real study session',
   await expect(restored.getByRole('region', { name: 'Question dns-q001', exact: true }).getByRole('button', { name: 'Remove tag revision' })).toBeVisible();
   await restored.reload();
   await expect(restored.getByRole('region', { name: 'Question dns-q001', exact: true }).getByText(/Previously attempted/)).toBeVisible();
+  const restoredComments = restored.getByRole('region', { name: 'Comments on question dns-q001', exact: true });
+  await restoredComments.locator('summary').click();
+  await expect(restoredComments.getByText('Please explain why the other four choices are wrong.', { exact: true })).toBeVisible();
+  const restoredLessonComments = restored.getByRole('region', { name: 'Comments on lesson dns-01', exact: true });
+  await restoredLessonComments.locator('summary').click();
+  await expect(restoredLessonComments.getByText('Could this lesson include a worked example?', { exact: true })).toBeVisible();
   await restoredContext.close();
   expect(outsideRequests).toEqual([]);
+});
+
+test('edits and deletes comments independently on lessons and questions', async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1440, height: 1050 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/#/lesson/dns-01');
+  const lesson = page.getByRole('region', { name: 'Comments on lesson dns-01', exact: true });
+  const question = page.getByRole('region', { name: 'Comments on question dns-q001', exact: true });
+  await lesson.locator('summary').click();
+  await expect(lesson.getByRole('button', { name: 'Save comment', exact: true })).toBeDisabled();
+  await lesson.getByRole('textbox', { name: 'lesson comment', exact: true }).fill('First comment');
+  await lesson.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(lesson.getByText('First comment', { exact: true })).toBeVisible();
+  await lesson.getByRole('textbox', { name: 'lesson comment', exact: true }).fill('Second comment');
+  await lesson.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(lesson.getByRole('article')).toHaveCount(2);
+  const first = lesson.getByRole('article', { name: 'lesson comment 1', exact: true });
+  await first.getByRole('button', { name: 'Edit', exact: true }).click();
+  await lesson.getByRole('textbox', { name: 'lesson comment', exact: true }).fill('Discarded edit');
+  await lesson.getByRole('button', { name: 'Cancel', exact: true }).click();
+  await expect(first.getByText('First comment', { exact: true })).toBeVisible();
+  await first.getByRole('button', { name: 'Edit', exact: true }).click();
+  const revised = 'Could you explain this term?\nExample: ' + 'long-example-'.repeat(20);
+  await lesson.getByRole('textbox', { name: 'lesson comment', exact: true }).fill(revised);
+  await lesson.getByRole('button', { name: 'Save changes', exact: true }).click();
+  await expect(first.locator('.comment-text')).toHaveText(revised);
+  await lesson.getByRole('article', { name: 'lesson comment 2', exact: true }).getByRole('button', { name: 'Delete', exact: true }).click();
+  await expect(lesson.getByRole('article')).toHaveCount(1);
+  await question.locator('summary').click();
+  await question.getByRole('textbox', { name: 'question comment', exact: true }).fill('Question-specific feedback.');
+  await question.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(question.getByText('Question-specific feedback.', { exact: true })).toBeVisible();
+  // Capture the settled session before reload starts its one-time scroll resume.
+  await lesson.screenshot({ path: testInfo.outputPath('comments-lesson-desktop.png') });
+  await question.screenshot({ path: testInfo.outputPath('comments-question-desktop.png') });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  await lesson.screenshot({ path: testInfo.outputPath('comments-lesson-mobile.png') });
+  await page.reload();
+  await lesson.locator('summary').click();
+  await question.locator('summary').click();
+  await expect(lesson.getByRole('article')).toHaveCount(1);
+  await expect(first.locator('.comment-text')).toHaveText(revised);
+  await expect(question.getByText('Question-specific feedback.', { exact: true })).toBeVisible();
+  await question.getByRole('button', { name: 'Delete', exact: true }).click();
+  await expect(question.getByRole('article')).toHaveCount(0);
+  await page.reload();
+  await question.locator('summary').click();
+  await expect(question.getByRole('article')).toHaveCount(0);
+});
+
+test('retains a comment draft after a failed save and allows retrying', async ({ page }) => {
+  await page.goto('/#/question/ipv6-q012');
+  const comments = page.getByRole('region', { name: 'Comments on question ipv6-q012', exact: true });
+  await comments.locator('summary').click();
+  const draft = comments.getByRole('textbox', { name: 'question comment', exact: true });
+  await draft.fill('Please expand the fragmentation example.');
+  await page.evaluate(() => {
+    const put = IDBObjectStore.prototype.put;
+    IDBObjectStore.prototype.put = function(value, key) {
+      if (value?.comments?.['question:ipv6-q012']?.length) {
+        IDBObjectStore.prototype.put = put;
+        throw new DOMException('Simulated storage failure', 'QuotaExceededError');
+      }
+      return put.call(this, value, key);
+    };
+  });
+  await comments.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(comments.getByRole('alert')).toContainText('Your draft is still here');
+  await expect(draft).toHaveValue('Please expand the fragmentation example.');
+  await expect(comments.getByRole('article')).toHaveCount(0);
+  await comments.getByRole('button', { name: 'Save comment', exact: true }).click();
+  await expect(comments.getByRole('article')).toHaveCount(1);
+  await expect(draft).toHaveValue('');
+  await expect(page.getByRole('alert')).toHaveCount(0);
+  await page.reload();
+  await comments.locator('summary').click();
+  await expect(comments.getByText('Please expand the fragmentation example.', { exact: true })).toBeVisible();
+});
+
+test('submits the cross-topic IPv6 question in routing-03 before supporting reading', async ({ page }) => {
+  await page.goto('/#/lesson/routing-03');
+  const question = page.getByRole('region', { name: 'Question ipv6-q012', exact: true });
+  const support = question.locator('.support-box').filter({ hasText: 'Additional required reading' });
+  await expect(support).toBeVisible();
+  await question.getByRole('radio', { name: /Only one fragment needs to be lost/ }).check();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
+  await expect(question.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
+  await expect(question.getByRole('note', { name: 'Question status' })).toContainText('Cross-topic:');
+  await expect(support).toBeVisible();
+  await question.getByRole('button', { name: 'Try again', exact: true }).click();
+  await question.getByRole('radio', { name: /Each router must reassemble/ }).check();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
+  await expect(question.getByRole('heading', { name: 'Incorrect', exact: true })).toBeVisible();
+  await page.reload();
+  await expect(question.getByText(/Previously attempted/)).toBeVisible();
+  await expect(question.locator('.feedback')).toHaveCount(0);
+  await support.getByRole('link', { name: 'Source fragmentation and modular extension headers' }).click();
+  await expect(page).toHaveURL(/#\/lesson\/ipv6-17$/);
+  await page.getByRole('button', { name: 'Mark lesson read', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Marked read · undo' })).toBeVisible();
+  await page.getByRole('textbox', { name: 'Add lesson tag', exact: true }).fill('fragmentation');
+  await page.getByRole('button', { name: 'Save lesson tag', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Remove tag fragmentation', exact: true })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Marked read · undo' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Remove tag fragmentation', exact: true })).toBeVisible();
+  await page.goto('/#/lesson/routing-03');
+  await expect(question.getByText(/Previously attempted/)).toBeVisible();
+  await expect(support).toHaveCount(0);
+  await expect(page.getByRole('alert')).toHaveCount(0);
 });
 
 test('persists independent lesson and question priorities after reopening', async ({ page }) => {
@@ -271,7 +406,7 @@ test('keeps reading-only lessons, cross-topic practice, and flagged keys in thei
   await expect(question.getByText('Review · outside score', { exact: true })).toBeVisible();
   await expect(question.locator('.feedback')).toHaveCount(0);
   await question.getByRole('radio', { name: /The window slides forward/ }).check();
-  await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(question.getByRole('heading', { name: 'Correct', exact: true })).toBeVisible();
   await expect(question.getByRole('note', { name: 'Question status' })).toContainText('Wording/key review');
   await expect(question.locator('.feedback')).toContainText('outside the ordinary score');
@@ -286,7 +421,7 @@ test('preserves feedback during a filtered session and persists add/remove tag a
   await page.goto('/#/lesson/dns-01');
   const question = page.getByRole('region', { name: 'Question dns-q001', exact: true });
   await question.getByRole('radio', { name: /To map human-readable names/ }).check();
-  await question.getByRole('button', { name: 'Submit answer', exact: true }).click();
+  await question.getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(question.locator('.feedback')).toBeVisible();
   await question.getByRole('textbox', { name: 'Add question tag' }).fill('temporary');
   await question.getByRole('button', { name: 'Save question tag' }).click();
@@ -318,13 +453,13 @@ test('supports local math, code, references, diagram enlargement, and mobile nav
   await expect(page.locator('.sidebar')).toBeHidden();
 });
 
-test('renders the complete numbered-lesson diagram set with local assets', async ({ page }, testInfo) => {
+test('renders the complete numbered-lesson diagram set with local assets', async ({ page, baseURL }, testInfo) => {
   test.setTimeout(240_000);
   const errors: string[] = [], outside: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.route('**/*', route => {
     const url = route.request().url();
-    if (!url.startsWith('http://127.0.0.1:4173/')) { outside.push(url); return route.abort(); }
+    if (!url.startsWith(`${baseURL}/`)) { outside.push(url); return route.abort(); }
     return route.continue();
   });
   await page.setViewportSize({ width: 1440, height: 1050 });

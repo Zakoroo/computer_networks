@@ -1,6 +1,6 @@
 # Network Study
 
-A local study application for networking lectures 01–06: a complete reading roadmap, lessons followed by related questions, and a searchable question library. Personal progress, tags, flags, and priorities stay in IndexedDB in your browser. Course files stay unchanged.
+A local study application for networking lectures 01–06: a complete reading roadmap, lessons followed by related questions, and a searchable question library. Personal progress, comments, tags, flags, and priorities stay in IndexedDB in your browser. Course files stay unchanged.
 
 For downloads, first-time use, and explanations of Priority, Revisit, Defer, and filters, start with the [user guide](../README.md).
 
@@ -20,7 +20,9 @@ python3 tools/serve_study.py
 
 The launcher opens **http://127.0.0.1:4173/** in your browser. Keep the terminal running while studying; press Ctrl+C to stop. Use `python3 tools/serve_study.py --no-browser` if automatic browser opening is unavailable (for example, some WSL setups). Once built, launching needs only Python, and study content, diagram libraries, and math fonts are served locally without Internet requests.
 
-Alternatively, run `npm run start` from `app/` to serve the existing build at the same address. For development, `npm run dev` regenerates the content and starts Vite there. Stop the other server first: the port is fixed and never silently changes. Changes to course Markdown/JSON require `npm run content` during development or `npm run build` for the production app.
+Alternatively, run `npm run start` from `app/` to serve the existing build at the same study address. For development, `npm run dev` regenerates the content and starts Vite at **http://127.0.0.1:5173/**. Local browser tests use a production-build preview at **http://127.0.0.1:5174/**. Each port is strict and never silently changes, so installed study, development, and local tests can run separately. Changes to course Markdown/JSON require `npm run content` during development or `npm run build` for the production app.
+
+Development and test origins have separate personal data from the study app on 4173. Use an exported backup if you intentionally want to copy progress between them. A released download has its own bundled assets; a source launcher and `npm run start` serve checkout `dist/`, which is replaced by `npm run build`. Use the installed download for uninterrupted studying while rebuilding the checkout.
 
 Use the same browser profile and **127.0.0.1:4173** address on later launches. Using `localhost`, another port, a private browsing window, or a different browser creates a separate storage location. Use **Backup & restore** to download your personal data regularly and move it between profiles. The commands above run from the checkout. Downloadable pre-releases are listed on [GitHub Releases](https://github.com/Zakoroo/computer_networks/releases). For native builds and GitHub Actions workflows, see [packaging instructions](../packaging/README.md) and the approved [deployment plan](../DEPLOYMENT_PLAN.md).
 
@@ -33,9 +35,12 @@ Use the same browser profile and **127.0.0.1:4173** address on later launches. U
 - See consistent Correct/Incorrect feedback with green/red options for every question, regardless of flags. A separate status notice describes coverage, wording/key review, supplementary material, cross-topic teaching, or duplicates. Results compare with the original key; known wording/key findings remain explicit beside the result, and review attempts stay outside the ordinary score.
 - Track read marks separately from attempts. Ordinary practice defaults to the 165 linked questions without a wording flag. The 45 flagged linked questions and 89 coverage-gap questions remain accessible in review mode, outside the ordinary score. Coverage is not a prediction about the exam.
 - Add/remove tags and revisit flags on questions and lessons; set priorities and deferral. Personal visibility overrides preserve original audit flags and do not change scoring eligibility.
+- Add, edit, and delete comments below lessons and within questions. Comments save with personal progress and appear in backup/restore previews. Sharing a backup can carry feedback to the maintainer; comments are not sent automatically.
 - Filter practice by source topic, tags, flags, coverage, attempt/read status, and text. Inclusions within a field combine with OR; fields combine with AND; exclusions win. Clear all criteria with Reset filters. Filters leave the full reading roadmap available.
 - See additional required reading, optional context, and unknown dependency classifications separately. Lesson priorities respect prerequisites. Explicit reading-focus routes and named saved roadmaps are not implemented yet.
 - Save attempts, current page, reading position, and annotations locally. Export and preview a versioned backup before explicitly replacing current personal data. Invalid restores preserve existing data; unmatched history is retained.
+
+Personal profiles and exported backups now use schema version 2 for comments. The updated app migrates version 1 stored profiles and imports version 1 backups, preserving existing progress and adding an empty comments collection. The IndexedDB name, object store, and study origin stay the same. Older app versions cannot read version 2 profiles/backups; export a backup before upgrading and use the updated app for later restores.
 
 Starting a question visit hides its answers even if it was attempted previously. Submit again to see feedback. While answering a lesson's current session, questions stay visible after submission so an “unattempted” filter cannot remove the feedback. Changing filters or navigating starts a newly computed queue. Attempt history retains the key snapshot and question fingerprint; changed questions/keys are not silently regraded.
 
@@ -60,6 +65,6 @@ npm run test:browser
 
 `npm test` runs `npm run content` through its `pretest` hook before Vitest. It works without a previous app build and refreshes stale generated content. Running Vitest directly bypasses that hook; use `npm test` for the normal checks.
 
-Browser installation is only needed for testing. An existing compatible Chromium can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/absolute/path/to/chrome`. Browser tests use the production build and start/reuse the fixed local preview; close a study session before running tests against its port. Tests use isolated browser profiles, not your study data.
+Browser installation is only needed for testing. An existing compatible Chromium can be selected with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/absolute/path/to/chrome`. Local browser tests start their own preview of the existing production build on 5174 through `npm run test:serve`; they never reuse an existing server and use isolated browser profiles. They can run while you study on 4173 or develop on 5173. Extracted-package checks set `NETWORK_STUDY_EXECUTABLE` and still test the native launcher on its real study port 4173; run those on an isolated machine or stop the study app first. These modes establish different evidence.
 
 From the root, `python3 -m unittest discover -s tools/tests` checks the content tools and catalogue preservation. Verification evidence and limits are in [verification.md](verification.md). Application checks do not replace semantic content review or erase the existing strict diagram-source findings in the content validator.

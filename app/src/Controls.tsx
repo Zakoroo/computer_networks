@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Download, Flag, Plus, RotateCcw, Upload, X } from 'lucide-react';
+import Comments from './Comments';
 import { annotation, backupSummary, effectiveLabels } from './model';
 import { makeBackup, parseBackup } from './storage';
 import type { Annotation, Backup, Catalogue, Criteria, Profile, Question } from './types';
@@ -62,6 +63,7 @@ export function PersonalControls({ kind, id, question, profile, update }: {
       <p className="muted small">Personal visibility changes preserve the original finding and scoring rules.</p>
       {question.flags.map(flag => <label className="check-label" key={flag}><input type="checkbox" checked={flags.includes(flag)} onChange={() => toggleFlag(flag)} />{flag.replaceAll('_', ' ')}</label>)}
     </details>}
+    {kind === 'question' && <Comments kind={kind} id={id} profile={profile} update={update} />}
   </div>;
 }
 
@@ -121,7 +123,7 @@ export function BackupDialog({ catalogue, profile, update, navigate, saving }: {
   return <><button className="backup-button" onClick={() => dialog.current?.showModal()}><Download size={16} /> Backup & restore</button>
     <dialog ref={dialog} className="backup-dialog" aria-labelledby="backup-title">
       <div className="dialog-heading"><h2 id="backup-title">Keep your place.</h2><button className="icon-button" aria-label="Close backup" onClick={() => dialog.current?.close()}><X /></button></div>
-      <p>Your progress, attempts, tags, and flags stay in this browser at <strong>{location.origin}</strong>. Export a backup before changing browsers or clearing browser data.</p>
+      <p>Your progress, attempts, tags, flags, and comments stay in this browser at <strong>{location.origin}</strong>. Export a backup before changing browsers or clearing browser data.</p>
       <button className="button primary" onClick={download} disabled={saving}><Download size={16} /> Download personal backup</button>
       <hr /><h3>Restore a backup</h3><p className="muted">Preview the file first. Restoring replaces your current personal study data; the course stays unchanged.</p>
       <label className="button secondary upload"><Upload size={16} /> Choose backup file<input type="file" accept=".json,application/json" aria-label="Choose backup file" onChange={async event => {
@@ -135,10 +137,10 @@ export function BackupDialog({ catalogue, profile, update, navigate, saving }: {
       {error && <p className="notice danger" role="alert">{error}</p>}
       {pending && summary && <div className="restore-preview">
         <h3>Backup from {new Date(pending.exported_at).toLocaleString()}</h3>
-        <p>{Object.values(pending.profile.lessons).filter(item => item.read_at).length} lessons marked read · {pending.profile.attempts.length} attempts · {Object.keys(pending.profile.annotations).length} annotated items</p>
-        <p className="small">This will replace your current {profile.attempts.length} attempts and {Object.values(profile.lessons).filter(item => item.read_at).length} read marks. Download a backup above if you want to keep them.</p>
+        <p>{Object.values(pending.profile.lessons).filter(item => item.read_at).length} lessons marked read · {pending.profile.attempts.length} attempts · {Object.keys(pending.profile.annotations).length} annotated items · {summary.commentCount} comments</p>
+        <p className="small">This will replace your current {profile.attempts.length} attempts, {Object.values(profile.lessons).filter(item => item.read_at).length} read marks, and {Object.values(profile.comments).reduce((sum, comments) => sum + comments.length, 0)} comments. Download a backup above if you want to keep them.</p>
         {pending.content_version !== catalogue.content_version && <p className="notice">The course has changed since this backup. Earlier attempts keep their original answer-key snapshots.</p>}
-        <p className="small">Unmatched lessons: {summary.unmatchedLessons.length}; unmatched annotations: {summary.unmatchedAnnotations.length}; historical or unmatched attempts: {summary.historicalAttempts.length}. These records will be retained.</p>
+        <p className="small">Unmatched lessons: {summary.unmatchedLessons.length}; unmatched annotations: {summary.unmatchedAnnotations.length}; unmatched comment targets: {summary.unmatchedComments.length}; historical or unmatched attempts: {summary.historicalAttempts.length}. These records will be retained.</p>
         <button className="button primary" disabled={busy || saving} onClick={async () => {
           setBusy(true);
           if (await update(() => pending.profile)) {

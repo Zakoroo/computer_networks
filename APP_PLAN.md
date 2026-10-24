@@ -90,6 +90,7 @@ Keep browser storage behind a small interface, with these records:
 - **Lesson state:** lesson ID, marked-read time, current reading position, personal priority, and deferral.
 - **Question state:** question ID, personal priority, deferral, and review status.
 - **Annotations:** typed target ID (lesson or question), added/removed tags and flags, and update time.
+- **Comments:** typed lesson/question target ID, comment ID, text, and creation/update times. Comments save with progress and are included when users export/share a personal backup. They support local feedback collection without an online service.
 - **Attempts:** question ID, question fingerprint, answer-key revision or snapshot, selected original option indices, result, scoring/review mode, and timestamp.
 - **Roadmap/settings:** criteria, ordering preferences, current position, and schema version.
 

@@ -3,6 +3,7 @@ import { ArrowDown, ArrowRight, BookOpen, Check, ChevronDown, ChevronRight, Circ
 import { annotation, defaultCriteria, labels, latestAttempt, nextLesson, orderedLessons, practiceMode, selectedQuestions } from './model';
 import { BackupDialog, Filters, PersonalControls, shortTitle, type Update } from './Controls';
 import Markdown from './Markdown';
+import Comments from './Comments';
 import Quiz from './Quiz';
 import { useStudy } from './useStudy';
 import type { Catalogue, Lesson, Profile, Question } from './types';
@@ -181,6 +182,7 @@ function Study({ lesson, catalogue, profile, questions, update, navigate, route 
         <div className="reader-completion"><button className={`button ${isRead ? 'secondary' : 'primary'}`} onClick={() => void update(current => ({ ...current, lessons: { ...current.lessons,
           [lesson.id]: { scroll: current.lessons[lesson.id]?.scroll ?? 0, read_at: current.lessons[lesson.id]?.read_at ? null : new Date().toISOString() } } }))}>{isRead ? <Check size={16} /> : <BookOpen size={16} />}{isRead ? 'Marked read · undo' : 'Mark lesson read'}</button><a href="#practice" className="text-button" onClick={event => { event.preventDefault(); document.getElementById('practice')?.scrollIntoView({ behavior: 'smooth' }); }}>Continue to practice<ArrowDown size={15} /></a></div>
       </article>
+      <div className="lesson-comments"><Comments kind="lesson" id={lesson.id} profile={profile} update={update} /></div>
       <section id="practice" className="lesson-practice"><div className="section-heading"><div><span className="eyebrow">PUT IT INTO PRACTICE</span><h2>Make the connection.</h2><p>{selected.length} of {assigned.length} assigned questions selected.</p></div></div>
         {assigned.length > selected.length && <p className="notice small">{assigned.length - selected.length} questions are hidden by your current practice filters. <button className="text-button" onClick={() => void update(current => ({ ...current, criteria: { ...defaultCriteria, practice: 'review' } }))}>Show all assigned questions</button></p>}
         {!assigned.length && <div className="empty-state compact"><BookOpen size={25} /><h3>A reading-only lesson.</h3><p>The lecture teaches this material without a supplied quiz question. Mark it read when you’re ready and continue.</p></div>}

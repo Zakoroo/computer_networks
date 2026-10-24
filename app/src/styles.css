@@ -1228,6 +1228,88 @@ dialog::backdrop {
 .controls-help p {
   margin:8px 0 0
 }
+.comments {
+  margin-top:14px;
+  border-top:1px solid var(--line);
+  padding-top:12px;
+  font-size:12px;
+  line-height:1.6;
+  min-width:0
+}
+.comments summary {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  font-weight:600
+}
+.comments summary>svg {
+  flex-shrink:0;
+  transition:transform .2s
+}
+.comments details[open]>summary>svg {
+  transform:rotate(180deg)
+}
+.lesson-comments {
+  margin:18px 0;
+  padding:18px 24px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:9px
+}
+.lesson-comments>.comments {
+  margin:0;
+  padding:0;
+  border:0
+}
+.comments-help, .comment time, .comment-limit {
+  font-size:11px;
+  color:#4f625b
+}
+.comments-help {
+  margin:10px 0
+}
+.comment {
+  padding:10px 0;
+  border-bottom:1px solid var(--line)
+}
+.comment-text {
+  margin:0 0 5px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere
+}
+.comment .text-button {
+  font-size:11px;
+  padding:5px 0
+}
+.comment-form {
+  margin-top:12px
+}
+.comment-form label {
+  display:block;
+  font-size:12px
+}
+.comment-form textarea {
+  display:block;
+  width:100%;
+  min-width:0;
+  resize:vertical;
+  margin:6px 0 8px;
+  padding:8px;
+  font:inherit;
+  line-height:1.5;
+  color:inherit;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:5px
+}
+.comment-form textarea:focus-visible {
+  outline:2px solid var(--green);
+  outline-offset:2px
+}
+.comment-form .control-row {
+  flex-wrap:wrap
+}
 .tags-row {
   display:flex;
   align-items:center;

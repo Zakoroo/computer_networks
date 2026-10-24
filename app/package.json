@@ -6,9 +6,10 @@
   "engines": { "node": ">=22.12.0" },
   "scripts": {
     "content": "python3 ../tools/build_app_content.py",
-    "dev": "npm run content && vite --host 127.0.0.1 --port 4173 --strictPort",
+    "dev": "npm run content && vite --host 127.0.0.1 --port 5173 --strictPort",
     "build": "npm run content && tsc -b && vite build",
     "start": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "test:serve": "vite preview --host 127.0.0.1 --port 5174 --strictPort",
     "pretest": "npm run content",
     "test": "vitest run",
     "test:browser": "playwright test"

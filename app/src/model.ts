@@ -7,7 +7,7 @@ export const defaultCriteria: Criteria = {
 };
 
 export const emptyProfile = (): Profile => ({
-  schema_version: 1, lessons: {}, annotations: {}, attempts: [],
+  schema_version: 2, lessons: {}, annotations: {}, comments: {}, attempts: [],
   criteria: { ...defaultCriteria }, current_route: '/roadmap', last_lesson_id: null,
 });
 
@@ -136,14 +136,17 @@ export function backupSummary(profile: Profile, catalogue: Catalogue) {
   const lessonIds = new Set(catalogue.lessons.map(lesson => lesson.id));
   const questions = new Map(catalogue.questions.map(question => [question.question_id, question]));
   const unmatchedLessons = Object.keys(profile.lessons).filter(id => !lessonIds.has(id));
-  const unmatchedAnnotations = Object.keys(profile.annotations).filter(key => {
+  const unmatchedTargets = (keys: string[]) => keys.filter(key => {
     const [kind, id] = key.split(':');
     return kind === 'lesson' ? !lessonIds.has(id) : !questions.has(id);
   });
+  const unmatchedAnnotations = unmatchedTargets(Object.keys(profile.annotations));
+  const unmatchedComments = unmatchedTargets(Object.keys(profile.comments));
+  const commentCount = Object.values(profile.comments).reduce((sum, comments) => sum + comments.length, 0);
   const historicalAttempts = profile.attempts.filter(attempt => {
     const question = questions.get(attempt.question_id);
     return !question || question.question_sha256 !== attempt.question_sha256 || question.answer_version !== attempt.answer_version
       || question.options.length !== attempt.option_count || !exactAnswer(attempt.correct_answers, question.correct_answers);
   });
-  return { unmatchedLessons, unmatchedAnnotations, historicalAttempts };
+  return { unmatchedLessons, unmatchedAnnotations, unmatchedComments, commentCount, historicalAttempts };
 }

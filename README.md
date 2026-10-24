@@ -28,7 +28,7 @@ You need a desktop web browser. You do not need to install Python, Node.js, or d
 1. On the **Roadmap**, choose **Start studying** or open a lesson from a topic.
 2. Read the lesson. Diagrams have an **Enlarge** button when you want a closer look.
 3. Choose **Mark lesson read** when you are done reading. This is separate from answering its quiz, and you can undo it.
-4. Continue to the questions, choose your answer, and press **Submit answer**. Questions with checkboxes can require several answers; select the complete set. The app shows **Correct** or **Incorrect**, the keyed answers, and an explanation when available.
+4. Continue to the questions, choose your answer, and press **Submit**. Questions with checkboxes can require several answers; select the complete set. The app shows **Correct** or **Incorrect**, the keyed answers, and an explanation when available.
 5. Use **Continue studying** to carry on. Your reading position and study choices save in the browser.
 
 Some lessons have no quiz questions. They remain on the roadmap as reading material. The **Question library** lets you find and practise questions separately from their lessons.
@@ -41,6 +41,7 @@ Your choices belong to you and can be changed at any time. They do not edit the 
 | --- | --- |
 | **Tags** | Add your own labels, such as `needs-practice` or `exam-week`. Remove a tag with its × button. Use **Include tags** or **Exclude tags** to find matching questions. Lesson tags and question tags are separate; tagging a lesson does not automatically tag its questions. |
 | **Revisit** | Bookmark a lesson or question to return to later. Marked lessons show a flag on the roadmap. To find bookmarked questions, enter `revisit` in **Include flags**. |
+| **Comments** | Save feedback about confusing wording or explanations. Open **Comments** below a lesson or within a question, write your feedback, and choose **Save comment**. Saved comments can be edited or deleted. |
 | **Defer** on a lesson | Pause it in **Continue studying** suggestions. It remains on the roadmap, and its questions are still available. Press **Defer** again to resume it. |
 | **Defer** on a question | Leave it out of future practice selections by default. Turn on **Include deferred questions** to include it, or press **Defer** again to resume it. |
 | **Mark lesson read** | Record that you have read the lesson. It does not require a perfect quiz score or mark questions as answered. |
@@ -70,11 +71,13 @@ Review questions show feedback against the original answer key but stay outside 
 
 ## Keep your progress safe
 
-Your progress, answers, tags, bookmarks, priorities, and filters are saved in the browser you use to study. Use the same browser profile and the app's usual address, **http://127.0.0.1:4173/**, each time. A different browser, private window, or address such as `localhost` has separate study data.
+Your progress, answers, comments, tags, bookmarks, priorities, and filters are saved in the browser you use to study. Use the same browser profile and the app's usual address, **http://127.0.0.1:4173/**, each time. A different browser, private window, or address such as `localhost` has separate study data.
 
 Use **Backup & restore → Download personal backup** regularly, especially before updating the app, clearing browser data, or moving to another computer. To move your progress, open the app in the destination browser, choose the backup file, review the preview, then confirm replacement. Restoring replaces that browser's current study data, so download its backup first if you want to keep it.
 
 There is no automatic account or device synchronization. Updating the downloaded app does not itself transfer data between browsers.
+
+Comments travel with your personal backup, so you can share feedback together with your saved progress. Saving a comment does not automatically send it to the maintainer. A shared backup also contains your attempts, tags, and other personal study choices. Older backups can still be restored in the updated app; backups containing comments require the updated app.
 
 ## If something does not work
 
